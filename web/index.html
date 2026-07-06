@@ -582,7 +582,7 @@ body { min-height: 100vh; }
 
     <!-- Finish -->
     <div class="section">
-      <h2 class="section-header">Finish</h2>
+      <h2 class="section-header">Transmitter Wristband</h2>
       <div class="swatch-row" id="swatchRow"></div>
       <div class="swatch-label">
         <span class="swatch-label-name" id="finishName">Galvanized</span>
@@ -638,11 +638,8 @@ const finishes = [
 ];
 
 const accessories = [
-  { id: 'bunks',  name: 'Bunk Boards',       sub: 'Carpeted composite bunks',            price: 320 },
-  { id: 'guides', name: 'Guide Poles',        sub: '60″ PVC with LED-illuminated caps',   price: 280 },
   { id: 'led',    name: 'Underwater LED Kit', sub: 'RGBW multi-color, app-controlled',    price: 475 },
-  { id: 'remote', name: 'Wireless Remote',    sub: '300 ft range keyfob transmitter',     price: 195 },
-  { id: 'solar',  name: 'Solar Charging Kit', sub: '30W panel with charge controller',    price: 385 },
+  { id: 'cover',  name: 'Remote Cover',       sub: 'Silicone cover to protect keypad',    price: 45.99 },
 ];
 
 // ── State ──
@@ -659,7 +656,7 @@ function total() {
   const mo = motors.find(x => x.id === state.motor);
   const f  = finishes.find(x => x.id === state.finish);
   let t = m.price * 100 + mo.delta + f.delta * 100;
-  for (const a of accessories) if (state.acc.has(a.id)) t += a.price * 100;
+  for (const a of accessories) if (state.acc.has(a.id)) t += Math.round(a.price * 100);
   return t;
 }
 
@@ -721,7 +718,7 @@ function render() {
         <div class="acc-name">${a.name}</div>
         <div class="acc-sub">${a.sub}</div>
       </div>
-      <div class="acc-price">+${fmt(a.price)}</div>
+      <div class="acc-price">+${a.price % 1 === 0 ? fmt(a.price) : fmtCents(a.price * 100)}</div>
     </div>
   `).join('');
 
