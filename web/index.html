@@ -383,9 +383,9 @@ body {
       <button class="home-nav-logo">Elevate</button>
       <div class="home-nav-center">
         <div class="nav-dropdown" id="boatLiftsDropdown">
-          <button class="nav-dropdown-trigger" onclick="document.getElementById('boatLiftsDropdown').classList.toggle('open')">Boat Lifts</button>
+          <button class="nav-dropdown-trigger" data-toggle-dropdown>Boat Lifts</button>
           <div class="nav-dropdown-menu">
-            <button onclick="showPage('config')">Boat Lift Remotes</button>
+            <button data-nav="config">Boat Lift Remotes</button>
             <button>Boat Lift Motors</button>
             <button>Boat Lift Accessories</button>
           </div>
@@ -414,7 +414,7 @@ body {
           <div class="slide-title">Elevate Mono S</div>
           <div class="slide-subtitle">Smart Control, Auto Stop Technology</div>
           <div class="slide-buttons">
-            <button class="btn-order" onclick="showPage('config')">Order Now</button>
+            <button class="btn-order" data-nav="config">Order Now</button>
             <button class="btn-learnmore">Learn More</button>
           </div>
         </div>
@@ -427,7 +427,7 @@ body {
           <div class="slide-title">Elevate Duo</div>
           <div class="slide-subtitle">Dual Motor Precision Control</div>
           <div class="slide-buttons">
-            <button class="btn-order" onclick="showPage('config')">Order Now</button>
+            <button class="btn-order" data-nav="config">Order Now</button>
             <button class="btn-learnmore">Learn More</button>
           </div>
         </div>
@@ -440,7 +440,7 @@ body {
           <div class="slide-title">App Membership</div>
           <div class="slide-subtitle">Full Control From Your Phone</div>
           <div class="slide-buttons">
-            <button class="btn-order" onclick="showPage('config')">Subscribe Now</button>
+            <button class="btn-order" data-nav="config">Subscribe Now</button>
             <button class="btn-learnmore">Learn More</button>
           </div>
         </div>
@@ -449,18 +449,18 @@ body {
     </div>
 
     <!-- Arrows -->
-    <button class="arrow arrow-left" onclick="slideCarousel(-1)">
+    <button class="arrow arrow-left" data-slide="-1">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
-    <button class="arrow arrow-right" onclick="slideCarousel(1)">
+    <button class="arrow arrow-right" data-slide="1">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
     </button>
 
     <!-- Dots -->
     <div class="carousel-dots" id="carouselDots">
-      <button class="dot active" onclick="goToSlide(0)"></button>
-      <button class="dot" onclick="goToSlide(1)"></button>
-      <button class="dot" onclick="goToSlide(2)"></button>
+      <button class="dot active" data-dot="0"></button>
+      <button class="dot" data-dot="1"></button>
+      <button class="dot" data-dot="2"></button>
     </div>
   </div>
 
@@ -474,13 +474,13 @@ body {
 
   <nav class="top-nav">
     <div class="top-nav-inner">
-      <button class="cfg-nav-logo" onclick="showPage('home')">Elevate</button>
+      <button class="cfg-nav-logo" data-nav="home">Elevate</button>
       <div class="cfg-nav-center">
-        <button onclick="showPage('home')">Home</button>
+        <button data-nav="home">Home</button>
         <span class="active">Design</span>
       </div>
       <div class="cfg-nav-right">
-        <button onclick="showPage('home')">Back to Home</button>
+        <button data-nav="home">Back to Home</button>
       </div>
     </div>
   </nav>
@@ -718,9 +718,26 @@ function render() {
 // ── Events ──
 
 document.addEventListener('click', e => {
+  // Dropdown toggle
+  if (e.target.closest('[data-toggle-dropdown]')) {
+    e.target.closest('.nav-dropdown').classList.toggle('open');
+    return;
+  }
   // Close dropdown when clicking outside
-  const dd = document.getElementById('boatLiftsDropdown');
-  if (dd && !dd.contains(e.target)) dd.classList.remove('open');
+  var dd = document.getElementById('boatLiftsDropdown');
+  if (dd) dd.classList.remove('open');
+
+  // Page navigation
+  var nav = e.target.closest('[data-nav]');
+  if (nav) { showPage(nav.getAttribute('data-nav')); return; }
+
+  // Carousel arrows
+  var arrow = e.target.closest('[data-slide]');
+  if (arrow) { slideCarousel(parseInt(arrow.getAttribute('data-slide'))); return; }
+
+  // Carousel dots
+  var dot = e.target.closest('[data-dot]');
+  if (dot) { goToSlide(parseInt(dot.getAttribute('data-dot'))); return; }
 
   const mc = e.target.closest('[data-model]');
   if (mc) { state.model = mc.dataset.model; render(); return; }
