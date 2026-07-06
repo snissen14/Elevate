@@ -45,6 +45,32 @@ body {
   transition: background 0.15s; border-radius: 4px;
 }
 .home-nav-center button:hover { background: rgba(0,0,0,0.05); }
+/* Dropdown */
+.nav-dropdown { position: relative; }
+.nav-dropdown-trigger {
+  font-size: 14px; font-weight: 500; color: #171A20;
+  background: none; border: none; cursor: pointer; padding: 6px 8px;
+  transition: background 0.15s; border-radius: 4px;
+}
+.nav-dropdown-trigger:hover { background: rgba(0,0,0,0.05); }
+.nav-dropdown-menu {
+  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  margin-top: 8px; min-width: 200px;
+  background: #fff; border: 1px solid #E8E8E8; border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1); padding: 8px 0;
+  z-index: 300;
+}
+.nav-dropdown-menu::before {
+  content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px;
+}
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu button {
+  display: block; width: 100%; text-align: left;
+  padding: 10px 20px; font-size: 14px; font-weight: 400; color: #171A20;
+  background: none; border: none; cursor: pointer; transition: background 0.1s;
+}
+.nav-dropdown-menu button:hover { background: #F5F5F5; }
+
 .home-nav-right { display: flex; align-items: center; gap: 16px; }
 .home-nav-right button {
   color: #171A20; background: none; border: none; cursor: pointer; padding: 4px; display: flex;
@@ -355,10 +381,18 @@ body {
     <div class="home-nav-inner">
       <button class="home-nav-logo">Elevate</button>
       <div class="home-nav-center">
-        <button onclick="showPage('config')">Products</button>
-        <button>App</button>
-        <button>Support</button>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger">Boat Lifts</button>
+          <div class="nav-dropdown-menu">
+            <button onclick="showPage('config')">Boat Lift Remotes</button>
+            <button>Boat Lift Motors</button>
+            <button>Boat Lift Accessories</button>
+          </div>
+        </div>
+        <button>Dock Protection</button>
+        <button>Hardware</button>
         <button>Dealers</button>
+        <button>Resources</button>
       </div>
       <div class="home-nav-right">
         <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
