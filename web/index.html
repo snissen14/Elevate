@@ -558,9 +558,9 @@ body { min-height: 100vh; }
   <!-- Right: Config -->
   <div class="config-panel" id="configPanel">
 
-    <h1 class="config-title" id="cfgTitle">Split 14</h1>
-    <p class="config-subtitle" id="cfgSubtitle">14,000 lb capacity · Dual Beam</p>
-    <p class="config-price-hero">Est. Price: <span id="cfgHeroPrice">$8,950</span></p>
+    <h1 class="config-title" id="cfgTitle">Elevate Mono</h1>
+    <p class="config-subtitle" id="cfgSubtitle">Remote control system for single motor operated lift</p>
+    <p class="config-price-hero">Est. Price: <span id="cfgHeroPrice">$599</span></p>
 
     <div class="config-divider"></div>
 
@@ -604,7 +604,7 @@ body { min-height: 100vh; }
 <!-- ── Bottom Bar ── -->
 <div class="bottom-bar">
   <div class="bar-left">
-    <span class="bar-price" id="totalPrice">$8,950</span>
+    <span class="bar-price" id="totalPrice">$599</span>
     <span class="bar-label">Est. Purchase Price</span>
   </div>
   <div class="bar-right">
@@ -617,10 +617,10 @@ body { min-height: 100vh; }
 // ── Data ──
 
 const models = [
-  { id: 'split14', name: 'Split 14', desc: '14,000 lb capacity · Dual beam design', price: 8950  },
-  { id: 'split16', name: 'Split 16', desc: '16,000 lb capacity · Dual beam design', price: 10450 },
-  { id: 'mono12',  name: 'Mono 12',  desc: '12,000 lb capacity · Single beam',      price: 7250  },
-  { id: 'mono20',  name: 'Mono 20',  desc: '20,000 lb capacity · Single beam',      price: 13900 },
+  { id: 'mono',   name: 'Elevate Mono',   desc: 'Remote control system for single motor operated lift',                          price: 599 },
+  { id: 'mono-s', name: 'Elevate Mono S', desc: 'Remote control system for single motor operated lift with auto stop capability', price: 615 },
+  { id: 'duo',    name: 'Elevate Duo',    desc: 'Remote control system for two motor operated lift',                              price: 625 },
+  { id: 'duo-s',  name: 'Elevate Duo S',  desc: 'Remote control system for two motor operated lift with auto stop capabilities',  price: 645 },
 ];
 
 const motors = [
@@ -648,7 +648,7 @@ const accessories = [
 // ── State ──
 
 const state = {
-  model: 'split14',
+  model: 'mono',
   motor: 'standard',
   finish: 'galvanized',
   acc: new Set(),
