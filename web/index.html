@@ -15,212 +15,128 @@ body {
 }
 
 /* ═══════════════════════════════════
-   PAGE: HOME
+   PAGE: HOME (Tesla.com style)
    ═══════════════════════════════════ */
 
-#page-home {
-  background: #0A0E1A;
-  color: #fff;
-}
+#page-home { background: #000; color: #171A20; }
 
-#page-home .hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(30,58,95,0.35) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 50% at 80% 70%, rgba(52,211,153,0.06) 0%, transparent 60%),
-    linear-gradient(180deg, #080C16 0%, #0E1525 40%, #111A2E 70%, #0A0E1A 100%);
-}
-
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 256px;
-}
-
-/* Nav (home) */
+/* Top nav */
 .home-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 52px; background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid #E8E8E8;
+}
+.home-nav-inner {
+  width: 100%; max-width: 1440px; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.home-nav-logo {
+  font-size: 17px; font-weight: 600; color: #171A20; letter-spacing: 1px;
+  text-transform: uppercase; cursor: pointer; background: none; border: none; padding: 0;
+}
+.home-nav-center {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 28px;
+}
+.home-nav-center button {
+  font-size: 14px; font-weight: 500; color: #171A20;
+  background: none; border: none; cursor: pointer; padding: 6px 8px;
+  transition: background 0.15s; border-radius: 4px;
+}
+.home-nav-center button:hover { background: rgba(0,0,0,0.05); }
+.home-nav-right { display: flex; align-items: center; gap: 16px; }
+.home-nav-right button {
+  color: #171A20; background: none; border: none; cursor: pointer; padding: 4px; display: flex;
+}
+.home-nav-right button svg { width: 20px; height: 20px; }
+
+/* Carousel */
+.carousel {
+  position: relative; width: 100%; overflow: hidden;
+}
+
+.carousel-track {
+  display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide {
+  min-width: 100%; height: 100vh;
+  display: flex; flex-direction: column; align-items: center;
   position: relative;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 40px;
 }
 
-.home-nav-left { display: flex; align-items: center; gap: 32px; }
-
-.hamburger {
-  width: 28px; height: 20px;
-  display: flex; flex-direction: column; justify-content: space-between;
-  cursor: pointer; background: none; border: none; padding: 0;
-}
-.hamburger span { display: block; width: 100%; height: 1.5px; background: #fff; border-radius: 1px; }
-
-.home-nav-link {
-  font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6);
-  text-decoration: none; letter-spacing: 0.3px; transition: color 0.2s;
-}
-.home-nav-link:hover { color: #fff; }
-
-.home-nav-brand {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-  text-decoration: none; cursor: pointer; background: none; border: none; padding: 0;
-}
-.brand-wordmark {
-  font-size: 18px; font-weight: 600; color: #fff;
-  letter-spacing: 4px; text-transform: uppercase;
+.slide-bg {
+  position: absolute; inset: 0; z-index: 0;
 }
 
-.home-nav-right { display: flex; align-items: center; gap: 24px; }
-
-.nav-icon-btn {
-  color: rgba(255,255,255,0.6); cursor: pointer; transition: color 0.2s;
-  background: none; border: none; padding: 0; display: flex;
-}
-.nav-icon-btn:hover { color: #fff; }
-.nav-icon-btn svg { width: 20px; height: 20px; }
-
-/* Hero content */
-.hero-content {
-  position: relative; z-index: 5; flex: 1;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 0 40px 60px;
+.slide-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  padding-top: 140px;
 }
 
-.hero-welcome {
-  font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.35);
-  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;
-}
-.hero-headline {
-  font-size: clamp(42px, 6vw, 72px); font-weight: 600;
-  line-height: 1.05; letter-spacing: -1.5px; max-width: 700px; margin-bottom: 20px;
-}
-.hero-sub {
-  font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.6);
-  max-width: 480px; line-height: 1.6; margin-bottom: 40px;
+.slide-title {
+  font-size: 40px; font-weight: 500; color: #fff;
+  letter-spacing: -0.5px; line-height: 1.15;
 }
 
-.hero-actions { display: flex; gap: 16px; align-items: center; }
-
-.btn-configure-hero {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 32px; font-size: 14px; font-weight: 500;
-  color: #0A0E1A; background: #fff; border: none; border-radius: 4px;
-  cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s;
-}
-.btn-configure-hero:hover { background: #E8E8E8; transform: translateY(-1px); }
-.btn-configure-hero svg { width: 16px; height: 16px; transition: transform 0.2s; }
-.btn-configure-hero:hover svg { transform: translateX(3px); }
-
-.btn-learn {
-  padding: 14px 32px; font-size: 14px; font-weight: 500; color: #fff;
-  background: transparent; border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 4px; cursor: pointer; text-decoration: none; transition: border-color 0.2s, background 0.2s;
-}
-.btn-learn:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
-
-.waterline {
-  position: absolute; bottom: 0; left: 0; right: 0; z-index: 4; height: 1px;
-  background: linear-gradient(90deg, transparent 5%, rgba(52,211,153,0.3) 30%, rgba(52,211,153,0.15) 70%, transparent 95%);
+.slide-subtitle {
+  font-size: 16px; font-weight: 400; color: rgba(255,255,255,0.8);
+  margin-top: 8px;
 }
 
-.scroll-hint {
-  position: absolute; bottom: 28px; right: 40px; z-index: 10;
-  display: flex; align-items: center; gap: 8px;
-  color: rgba(255,255,255,0.35); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+.slide-buttons {
+  display: flex; gap: 16px; margin-top: 28px;
 }
-.scroll-dot {
+
+.btn-order {
+  padding: 10px 56px; border-radius: 4px; font-size: 14px; font-weight: 500;
+  background: #3E6AE1; color: #fff; border: none; cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-order:hover { background: #3560CC; }
+
+.btn-learnmore {
+  padding: 10px 56px; border-radius: 4px; font-size: 14px; font-weight: 500;
+  background: rgba(255,255,255,0.85); color: #171A20; border: none; cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-learnmore:hover { background: rgba(255,255,255,1); }
+
+/* Arrows */
+.arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.arrow:hover { background: rgba(255,255,255,0.3); }
+.arrow svg { width: 18px; height: 18px; color: #fff; }
+.arrow-left { left: 20px; }
+.arrow-right { right: 20px; }
+
+/* Dots */
+.carousel-dots {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 10;
+  display: flex; gap: 8px;
+}
+.dot {
   width: 8px; height: 8px; border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.3); animation: pulse 2s ease-in-out infinite;
+  background: rgba(255,255,255,0.4); border: none; cursor: pointer;
+  transition: background 0.2s;
 }
-@keyframes pulse {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50%      { opacity: 1;   transform: scale(1.3); }
-}
-
-/* Products */
-.products { background: #fff; padding: 80px 40px; }
-.products-header { text-align: center; margin-bottom: 56px; }
-.products-label {
-  font-size: 11px; font-weight: 600; color: #878A8F;
-  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
-}
-.products-title { font-size: 32px; font-weight: 600; color: #171A20; letter-spacing: -0.5px; }
-
-.product-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 24px; max-width: 1200px; margin: 0 auto;
-}
-.product-card {
-  text-align: center; padding: 40px 24px;
-  border: 1px solid #E8E8E8; border-radius: 8px;
-  cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
-  background: #fff;
-}
-.product-card:hover { border-color: #D0D1D2; box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
-.product-icon {
-  width: 48px; height: 48px; margin: 0 auto 20px; border-radius: 12px;
-  background: #F5F5F5; display: flex; align-items: center; justify-content: center;
-}
-.product-icon svg { width: 24px; height: 24px; color: #171A20; }
-.product-name { font-size: 16px; font-weight: 600; color: #171A20; margin-bottom: 6px; }
-.product-desc { font-size: 13px; color: #5C5E62; line-height: 1.5; }
-.product-price { font-size: 14px; font-weight: 500; color: #171A20; margin-top: 16px; }
-
-/* Footer */
-.home-footer {
-  background: #0A0E1A; padding: 48px 40px;
-  display: flex; justify-content: space-between; align-items: center;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-.footer-brand { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; }
-.footer-links { display: flex; gap: 32px; }
-.footer-links a, .footer-links button {
-  font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none;
-  background: none; border: none; cursor: pointer; padding: 0; transition: color 0.2s;
-}
-.footer-links a:hover, .footer-links button:hover { color: rgba(255,255,255,0.7); }
-
-/* Home animations */
-.hero-welcome  { animation: fadeUp 0.8s ease 0.2s both; }
-.hero-headline { animation: fadeUp 0.8s ease 0.35s both; }
-.hero-sub      { animation: fadeUp 0.8s ease 0.5s both; }
-.hero-actions  { animation: fadeUp 0.8s ease 0.65s both; }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+.dot.active { background: #fff; }
 
 /* Home mobile */
 @media (max-width: 768px) {
-  .home-nav { padding: 20px; }
-  .home-nav-link { display: none; }
-  .hero-content { padding: 0 20px 48px; }
-  .hero-headline { font-size: 36px; }
-  .hero-sub { font-size: 15px; }
-  .hero-actions { flex-direction: column; align-items: flex-start; }
-  .scroll-hint { display: none; }
-  .product-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
-  .products { padding: 48px 20px; }
-  .home-footer { flex-direction: column; gap: 24px; padding: 32px 20px; }
-}
-@media (max-width: 480px) {
-  .product-grid { grid-template-columns: 1fr; }
-  .brand-wordmark { font-size: 15px; letter-spacing: 3px; }
+  .home-nav-center { display: none; }
+  .slide-title { font-size: 28px; }
+  .slide-content { padding-top: 100px; }
+  .slide-buttons { flex-direction: column; gap: 10px; }
+  .btn-order, .btn-learnmore { padding: 12px 40px; }
 }
 
 
@@ -434,89 +350,85 @@ body {
      ════════════════════════════════════════ -->
 <div id="page-home">
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-
-    <nav class="home-nav">
-      <div class="home-nav-left">
-        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-        <a href="#" class="home-nav-link">Find a Dealer</a>
+  <!-- Nav -->
+  <nav class="home-nav">
+    <div class="home-nav-inner">
+      <button class="home-nav-logo">Elevate</button>
+      <div class="home-nav-center">
+        <button onclick="showPage('config')">Products</button>
+        <button>App</button>
+        <button>Support</button>
+        <button>Dealers</button>
       </div>
-      <button class="home-nav-brand" onclick="showPage('home')">
-        <span class="brand-wordmark">Elevate</span>
-      </button>
       <div class="home-nav-right">
-        <button class="nav-icon-btn" aria-label="Location">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        </button>
-        <button class="nav-icon-btn" aria-label="Account">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </button>
-        <button class="nav-icon-btn" aria-label="Search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        </button>
-      </div>
-    </nav>
-
-    <div class="hero-content">
-      <div class="hero-welcome">Welcome</div>
-      <h1 class="hero-headline">Control Your<br>Lift, Effortlessly</h1>
-      <p class="hero-sub">Premium remote control systems engineered for boat lift owners who expect more. Smart. Reliable. Built to last.</p>
-      <div class="hero-actions">
-        <button class="btn-configure-hero" onclick="showPage('config')">
-          Configure Yours
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <a href="#products" class="btn-learn">Explore Products</a>
+        <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
+        <button aria-label="Globe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg></button>
+        <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
       </div>
     </div>
+  </nav>
 
-    <div class="waterline"></div>
-    <div class="scroll-hint"><div class="scroll-dot"></div>Scroll</div>
-  </section>
+  <!-- Carousel -->
+  <div class="carousel" id="carousel">
+    <div class="carousel-track" id="carouselTrack">
 
-  <section class="products" id="products">
-    <div class="products-header">
-      <div class="products-label">Product Lineup</div>
-      <div class="products-title">Choose Your System</div>
-    </div>
-    <div class="product-grid">
-      <div class="product-card" onclick="showPage('config')">
-        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4v16M6 8h12"/></svg></div>
-        <div class="product-name">Elevate Mono</div>
-        <div class="product-desc">Single motor remote control system</div>
-        <div class="product-price">$599</div>
+      <!-- Slide 1 -->
+      <div class="slide">
+        <div class="slide-bg" style="background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);"></div>
+        <div class="slide-content">
+          <div class="slide-title">Elevate Mono S</div>
+          <div class="slide-subtitle">Smart Control, Auto Stop Technology</div>
+          <div class="slide-buttons">
+            <button class="btn-order" onclick="showPage('config')">Order Now</button>
+            <button class="btn-learnmore">Learn More</button>
+          </div>
+        </div>
       </div>
-      <div class="product-card" onclick="showPage('config')">
-        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4v16M6 8h12"/><circle cx="12" cy="4" r="2"/></svg></div>
-        <div class="product-name">Elevate Mono S</div>
-        <div class="product-desc">Single motor with auto stop capability</div>
-        <div class="product-price">$615</div>
-      </div>
-      <div class="product-card" onclick="showPage('config')">
-        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/></svg></div>
-        <div class="product-name">Elevate Duo</div>
-        <div class="product-desc">Two motor remote control system</div>
-        <div class="product-price">$625</div>
-      </div>
-      <div class="product-card" onclick="showPage('config')">
-        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><circle cx="7" cy="4" r="2"/><circle cx="17" cy="4" r="2"/></svg></div>
-        <div class="product-name">Elevate Duo S</div>
-        <div class="product-desc">Two motor with auto stop capabilities</div>
-        <div class="product-price">$645</div>
-      </div>
-    </div>
-  </section>
 
-  <footer class="home-footer">
-    <div class="footer-brand">Elevate</div>
-    <div class="footer-links">
-      <button onclick="showPage('config')">Configure</button>
-      <a href="#">Support</a>
-      <a href="#">Dealers</a>
-      <a href="#">Contact</a>
+      <!-- Slide 2 -->
+      <div class="slide">
+        <div class="slide-bg" style="background: linear-gradient(180deg, #0c1821 0%, #1b2838 50%, #324a5f 100%);"></div>
+        <div class="slide-content">
+          <div class="slide-title">Elevate Duo</div>
+          <div class="slide-subtitle">Dual Motor Precision Control</div>
+          <div class="slide-buttons">
+            <button class="btn-order" onclick="showPage('config')">Order Now</button>
+            <button class="btn-learnmore">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <div class="slide-bg" style="background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%);"></div>
+        <div class="slide-content">
+          <div class="slide-title">App Membership</div>
+          <div class="slide-subtitle">Full Control From Your Phone</div>
+          <div class="slide-buttons">
+            <button class="btn-order" onclick="showPage('config')">Subscribe Now</button>
+            <button class="btn-learnmore">Learn More</button>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </footer>
+
+    <!-- Arrows -->
+    <button class="arrow arrow-left" onclick="slideCarousel(-1)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="arrow arrow-right" onclick="slideCarousel(1)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+
+    <!-- Dots -->
+    <div class="carousel-dots" id="carouselDots">
+      <button class="dot active" onclick="goToSlide(0)"></button>
+      <button class="dot" onclick="goToSlide(1)"></button>
+      <button class="dot" onclick="goToSlide(2)"></button>
+    </div>
+  </div>
+
 </div>
 
 
@@ -610,10 +522,32 @@ body {
 function showPage(page) {
   document.getElementById('page-home').classList.toggle('page-hidden', page !== 'home');
   document.getElementById('page-config').classList.toggle('page-hidden', page !== 'config');
-  document.body.style.background = page === 'home' ? '#0A0E1A' : '#fff';
+  document.body.style.background = page === 'home' ? '#000' : '#fff';
   window.scrollTo(0, 0);
   if (page === 'config') render();
 }
+
+// ── Carousel ──
+
+let currentSlide = 0;
+const slideCount = 3;
+
+function slideCarousel(dir) {
+  currentSlide = (currentSlide + dir + slideCount) % slideCount;
+  updateCarousel();
+}
+
+function goToSlide(i) {
+  currentSlide = i;
+  updateCarousel();
+}
+
+function updateCarousel() {
+  document.getElementById('carouselTrack').style.transform = `translateX(-${currentSlide * 100}%)`;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+}
+
+setInterval(() => slideCarousel(1), 6000);
 
 // ── Configurator Data ──
 
