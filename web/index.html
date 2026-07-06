@@ -200,18 +200,17 @@ body {
   display: flex; gap: 32px;
 }
 .cfg-nav-center a, .cfg-nav-center button {
-  font-size: 14px; font-weight: 500; color: #5C5E62;
-  text-decoration: none; padding: 4px 0; transition: color 0.15s;
-  background: none; border: none; cursor: pointer;
+  font-size: 14px; font-weight: 500; color: #171A20;
+  text-decoration: none; padding: 6px 8px; transition: background 0.15s;
+  background: none; border: none; cursor: pointer; border-radius: 4px;
 }
-.cfg-nav-center a:hover, .cfg-nav-center button:hover { color: #171A20; }
-.cfg-nav-center .active { color: #171A20; }
-.cfg-nav-right { display: flex; align-items: center; gap: 20px; }
+.cfg-nav-center a:hover, .cfg-nav-center button:hover { background: rgba(0,0,0,0.05); }
+.active-link { font-weight: 600 !important; }
+.cfg-nav-right { display: flex; align-items: center; gap: 16px; }
 .cfg-nav-right button {
-  font-size: 14px; font-weight: 500; color: #5C5E62;
-  text-decoration: none; background: none; border: none; cursor: pointer;
+  color: #171A20; background: none; border: none; cursor: pointer; padding: 4px; display: flex;
 }
-.cfg-nav-right button:hover { color: #171A20; }
+.cfg-nav-right button svg { width: 20px; height: 20px; }
 
 /* Config layout */
 .cfg-main {
@@ -476,11 +475,22 @@ body {
     <div class="top-nav-inner">
       <a class="cfg-nav-logo" href="#home">Elevate</a>
       <div class="cfg-nav-center">
-        <a href="#home">Home</a>
-        <span class="active">Design</span>
+        <div class="nav-dropdown" id="cfgBoatLiftsDropdown">
+          <button class="nav-dropdown-trigger" data-toggle-dropdown>Boat Lifts</button>
+          <div class="nav-dropdown-menu">
+            <a href="#config" class="active-link">Boat Lift Remotes</a>
+            <a href="#">Boat Lift Motors</a>
+            <a href="#">Boat Lift Accessories</a>
+          </div>
+        </div>
+        <button>Dock Protection</button>
+        <button>Hardware</button>
+        <button>Dealers</button>
+        <button>Resources</button>
       </div>
       <div class="cfg-nav-right">
-        <a href="#home">Back to Home</a>
+        <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
+        <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
       </div>
     </div>
   </nav>
@@ -728,9 +738,8 @@ document.addEventListener('click', e => {
     e.target.closest('.nav-dropdown').classList.toggle('open');
     return;
   }
-  // Close dropdown when clicking outside
-  var dd = document.getElementById('boatLiftsDropdown');
-  if (dd) dd.classList.remove('open');
+  // Close all dropdowns when clicking outside
+  document.querySelectorAll('.nav-dropdown').forEach(function(dd) { dd.classList.remove('open'); });
 
   // Carousel arrows
   var arrow = e.target.closest('[data-slide]');
