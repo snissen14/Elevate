@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct HeaderView: View {
+    @Binding var showConfigurator: Bool
+
     var body: some View {
         HStack {
             // Logo
@@ -17,9 +19,7 @@ struct HeaderView: View {
             Spacer()
 
             // Settings
-            Button {
-                // settings action
-            } label: {
+            Button { showConfigurator = true } label: {
                 Image(systemName: "gearshape.fill")
                     .font(.system(size: 20))
                     .foregroundStyle(AppTheme.textSecondary)

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(DeviceState.self) private var device
+    @State private var showConfigurator = false
 
     var body: some View {
         ZStack {
@@ -9,7 +10,7 @@ struct ContentView: View {
                 .ignoresSafeArea()
 
             VStack(spacing: 0) {
-                HeaderView()
+                HeaderView(showConfigurator: $showConfigurator)
                     .padding(.horizontal, 20)
                     .padding(.top, 8)
 
@@ -29,6 +30,9 @@ struct ContentView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .fullScreenCover(isPresented: $showConfigurator) {
+            ConfiguratorView()
+        }
     }
 }
 
