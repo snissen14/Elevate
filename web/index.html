@@ -63,7 +63,8 @@ body {
 .nav-dropdown-menu::before {
   content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px;
 }
-.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown.open .nav-dropdown-menu { display: block; }
 .nav-dropdown-menu button {
   display: block; width: 100%; text-align: left;
   padding: 10px 20px; font-size: 14px; font-weight: 400; color: #171A20;
@@ -381,8 +382,8 @@ body {
     <div class="home-nav-inner">
       <button class="home-nav-logo">Elevate</button>
       <div class="home-nav-center">
-        <div class="nav-dropdown">
-          <button class="nav-dropdown-trigger">Boat Lifts</button>
+        <div class="nav-dropdown" id="boatLiftsDropdown">
+          <button class="nav-dropdown-trigger" onclick="document.getElementById('boatLiftsDropdown').classList.toggle('open')">Boat Lifts</button>
           <div class="nav-dropdown-menu">
             <button onclick="showPage('config')">Boat Lift Remotes</button>
             <button>Boat Lift Motors</button>
@@ -717,6 +718,10 @@ function render() {
 // ── Events ──
 
 document.addEventListener('click', e => {
+  // Close dropdown when clicking outside
+  const dd = document.getElementById('boatLiftsDropdown');
+  if (dd && !dd.contains(e.target)) dd.classList.remove('open');
+
   const mc = e.target.closest('[data-model]');
   if (mc) { state.model = mc.dataset.model; render(); return; }
   const ls = e.target.closest('[data-limit]');
