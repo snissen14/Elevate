@@ -65,12 +65,13 @@ body {
 }
 .nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown.open .nav-dropdown-menu { display: block; }
-.nav-dropdown-menu button {
+.nav-dropdown-menu a {
   display: block; width: 100%; text-align: left;
   padding: 10px 20px; font-size: 14px; font-weight: 400; color: #171A20;
   background: none; border: none; cursor: pointer; transition: background 0.1s;
+  text-decoration: none;
 }
-.nav-dropdown-menu button:hover { background: #F5F5F5; }
+.nav-dropdown-menu a:hover { background: #F5F5F5; }
 
 .home-nav-right { display: flex; align-items: center; gap: 16px; }
 .home-nav-right button {
@@ -385,9 +386,9 @@ body {
         <div class="nav-dropdown" id="boatLiftsDropdown">
           <button class="nav-dropdown-trigger" data-toggle-dropdown>Boat Lifts</button>
           <div class="nav-dropdown-menu">
-            <button data-nav="config">Boat Lift Remotes</button>
-            <button>Boat Lift Motors</button>
-            <button>Boat Lift Accessories</button>
+            <a href="#config">Boat Lift Remotes</a>
+            <a href="#">Boat Lift Motors</a>
+            <a href="#">Boat Lift Accessories</a>
           </div>
         </div>
         <button>Dock Protection</button>
@@ -414,7 +415,7 @@ body {
           <div class="slide-title">Elevate Mono S</div>
           <div class="slide-subtitle">Smart Control, Auto Stop Technology</div>
           <div class="slide-buttons">
-            <button class="btn-order" data-nav="config">Order Now</button>
+            <a class="btn-order" href="#config">Order Now</a>
             <button class="btn-learnmore">Learn More</button>
           </div>
         </div>
@@ -427,7 +428,7 @@ body {
           <div class="slide-title">Elevate Duo</div>
           <div class="slide-subtitle">Dual Motor Precision Control</div>
           <div class="slide-buttons">
-            <button class="btn-order" data-nav="config">Order Now</button>
+            <a class="btn-order" href="#config">Order Now</a>
             <button class="btn-learnmore">Learn More</button>
           </div>
         </div>
@@ -440,7 +441,7 @@ body {
           <div class="slide-title">App Membership</div>
           <div class="slide-subtitle">Full Control From Your Phone</div>
           <div class="slide-buttons">
-            <button class="btn-order" data-nav="config">Subscribe Now</button>
+            <a class="btn-order" href="#config">Subscribe Now</a>
             <button class="btn-learnmore">Learn More</button>
           </div>
         </div>
@@ -474,13 +475,13 @@ body {
 
   <nav class="top-nav">
     <div class="top-nav-inner">
-      <button class="cfg-nav-logo" data-nav="home">Elevate</button>
+      <a class="cfg-nav-logo" href="#home">Elevate</a>
       <div class="cfg-nav-center">
-        <button data-nav="home">Home</button>
+        <a href="#home">Home</a>
         <span class="active">Design</span>
       </div>
       <div class="cfg-nav-right">
-        <button data-nav="home">Back to Home</button>
+        <a href="#home">Back to Home</a>
       </div>
     </div>
   </nav>
@@ -561,6 +562,13 @@ function showPage(page) {
   window.scrollTo(0, 0);
   if (page === 'config') render();
 }
+
+window.addEventListener('hashchange', function() {
+  var h = location.hash.replace('#', '') || 'home';
+  showPage(h);
+});
+
+if (location.hash === '#config') showPage('config');
 
 // ── Carousel ──
 
@@ -726,10 +734,6 @@ document.addEventListener('click', e => {
   // Close dropdown when clicking outside
   var dd = document.getElementById('boatLiftsDropdown');
   if (dd) dd.classList.remove('open');
-
-  // Page navigation
-  var nav = e.target.closest('[data-nav]');
-  if (nav) { showPage(nav.getAttribute('data-nav')); return; }
 
   // Carousel arrows
   var arrow = e.target.closest('[data-slide]');
