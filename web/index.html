@@ -120,6 +120,21 @@ body { min-height: 100vh; }
   align-items: center;
   justify-content: center;
   border-right: 1px solid var(--divider);
+  overflow: hidden;
+}
+
+.media-image {
+  max-width: 70%;
+  max-height: 80%;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.media-image.visible {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* ─── Config Panel (right) ─── */
@@ -552,8 +567,10 @@ body { min-height: 100vh; }
 <!-- ── Main ── -->
 <main class="main">
 
-  <!-- Left: Media (blank) -->
-  <section class="media-panel" id="mediaPanel"></section>
+  <!-- Left: Media -->
+  <section class="media-panel" id="mediaPanel">
+    <img id="mediaImage" src="wristband.png" alt="Transmitter Wristband" class="media-image">
+  </section>
 
   <!-- Right: Config -->
   <div class="config-panel" id="configPanel">
@@ -707,6 +724,14 @@ function render() {
   const sf = finishes.find(f => f.id === state.finish);
   document.getElementById('finishName').textContent = sf.name;
   document.getElementById('finishPrice').textContent = delta(sf.delta);
+
+  // Show wristband image in media panel when a color is selected
+  const img = document.getElementById('mediaImage');
+  if (state.finish) {
+    img.classList.add('visible');
+  } else {
+    img.classList.remove('visible');
+  }
 
   // Accessories
   document.getElementById('accList').innerHTML = accessories.map(a => `
