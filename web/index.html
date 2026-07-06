@@ -3,439 +3,436 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elevate – Configure Your Boat Lift</title>
+<title>Elevate – Design Your Boat Lift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ─── Reset & Base ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg-primary:    #0A0E1A;
-  --bg-card:       #141929;
-  --bg-elevated:   #1C2137;
-  --border:        #2A3050;
-  --border-active: #3D4A6E;
-  --accent:        #34D399;
-  --accent-muted:  rgba(52, 211, 153, 0.15);
-  --accent-dim:    rgba(52, 211, 153, 0.08);
-  --text-primary:  #FFFFFF;
-  --text-secondary:#8892B0;
-  --text-tertiary: #5A6380;
-  --radius-sm:     12px;
-  --radius-md:     16px;
-  --radius-lg:     20px;
+  /* Tesla exact palette */
+  --white:           #FFFFFF;
+  --bg:              #FFFFFF;
+  --bg-media:        #F5F5F5;
+  --text-primary:    #171A20;
+  --text-secondary:  #5C5E62;
+  --text-tertiary:   #878A8F;
+  --border:          #D0D1D2;
+  --border-hover:    #BABCBE;
+  --blue:            #3E6AE1;
+  --blue-light:      rgba(62, 106, 225, 0.06);
+  --divider:         #E8E8E8;
+  --bar-shadow:      rgba(0, 0, 0, 0.08);
 }
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif;
-  background: var(--bg-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   color: var(--text-primary);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+body { min-height: 100vh; }
 
-/* ─── Header ─── */
-.header {
+/* ─── Top Nav ─── */
+.top-nav {
   position: sticky;
   top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 40px;
-  background: rgba(10, 14, 26, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--accent);
+  z-index: 200;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--white);
+  border-bottom: 1px solid var(--divider);
 }
 
-.logo-icon svg { width: 18px; height: 18px; }
-
-.logo-text {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.3px;
-}
-
-.header-nav {
+.top-nav-inner {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 40px;
   display: flex;
-  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.header-nav a {
-  padding: 8px 18px;
-  border-radius: 10px;
+.nav-logo {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.2px;
+}
+
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 32px;
+}
+
+.nav-center a {
   font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: all 0.2s;
+  padding: 4px 0;
+  transition: color 0.15s;
 }
 
-.header-nav a:hover { color: var(--text-primary); background: var(--bg-card); }
-.header-nav a.active { color: var(--accent); background: var(--accent-muted); }
+.nav-center a:hover { color: var(--text-primary); }
+.nav-center a.active { color: var(--text-primary); }
 
-/* ─── Main Layout ─── */
-.main {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: calc(100vh - 65px);
-}
-
-/* ─── Hero (left panel) ─── */
-.hero {
-  position: sticky;
-  top: 65px;
-  height: calc(100vh - 65px);
+.nav-right {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  border-right: 1px solid var(--border);
-  overflow: hidden;
-}
-
-.hero-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-visual {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 20px;
 }
 
-.lift-schematic {
-  width: 320px;
-  height: 280px;
+.nav-right a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.nav-right a:hover { color: var(--text-primary); }
+
+/* ─── Main Split ─── */
+.main {
+  display: grid;
+  grid-template-columns: 58fr 42fr;
+  min-height: calc(100vh - 52px);
+}
+
+/* ─── Media Panel (left, blank) ─── */
+.media-panel {
+  position: sticky;
+  top: 52px;
+  height: calc(100vh - 52px);
+  background: var(--bg-media);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.lift-schematic svg {
-  width: 100%;
-  height: 100%;
-  opacity: 0.9;
-}
-
-.waterline {
-  width: 280px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0.4;
-}
-
-.hero-info {
-  text-align: center;
-  margin-top: 12px;
-}
-
-.hero-model {
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  transition: all 0.3s ease;
-}
-
-.hero-tagline {
-  font-size: 16px;
-  color: var(--text-secondary);
-  margin-top: 6px;
-  transition: all 0.3s ease;
-}
-
-.hero-price {
-  margin-top: 16px;
-  font-size: 14px;
-  color: var(--text-tertiary);
-}
-
-.hero-price span {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
+  border-right: 1px solid var(--divider);
 }
 
 /* ─── Config Panel (right) ─── */
 .config-panel {
-  padding: 48px 40px 140px;
+  padding: 40px 48px 120px;
   overflow-y: auto;
+  max-height: calc(100vh - 52px);
+}
+
+/* Title area */
+.config-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.4px;
+}
+
+.config-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.config-price-hero {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 12px;
+}
+
+.config-price-hero span {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.config-divider {
+  height: 1px;
+  background: var(--divider);
+  margin: 32px 0;
 }
 
 /* ─── Section ─── */
-.config-section {
-  margin-bottom: 48px;
-}
+.section { margin-bottom: 40px; }
+.section:last-child { margin-bottom: 0; }
 
-.config-section:last-child { margin-bottom: 0; }
-
-.section-label {
-  font-size: 11px;
+.section-header {
+  font-size: 16px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.8px;
-  color: var(--text-tertiary);
-  margin-bottom: 18px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
 }
 
-/* ─── Model Cards ─── */
-.model-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.model-card {
-  padding: 20px;
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all 0.2s ease;
+/* ─── Option Cards (Model, Motor) ─── */
+.option-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
 }
 
-.model-card:hover { border-color: var(--border-active); }
-.model-card.selected { border-color: var(--accent); background: rgba(52, 211, 153, 0.04); }
+.option-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
 
-.model-card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--bg-elevated);
+.option-card:hover { border-color: var(--border-hover); }
+
+.option-card.selected {
+  border-color: var(--blue);
+  border-width: 2px;
+  padding: 15px 19px;
+  background: var(--blue-light);
+}
+
+/* Radio circle */
+.radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  flex-shrink: 0;
+  transition: border-color 0.15s;
 }
 
-.model-card.selected .model-card-icon { background: var(--accent-muted); }
-.model-card-icon svg { width: 22px; height: 22px; color: var(--text-tertiary); transition: color 0.2s; }
-.model-card.selected .model-card-icon svg { color: var(--accent); }
+.option-card.selected .radio { border-color: var(--blue); }
 
-.model-card-name {
-  font-size: 17px;
-  font-weight: 600;
+.radio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.15s;
 }
 
-.model-card-spec {
+.option-card.selected .radio-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.option-text { flex: 1; }
+
+.option-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.option-desc {
   font-size: 13px;
   color: var(--text-secondary);
   margin-top: 2px;
 }
 
-.model-card-price {
-  font-size: 15px;
-  font-weight: 600;
+.option-price {
+  font-size: 14px;
+  font-weight: 500;
   color: var(--text-secondary);
-  margin-top: auto;
-  transition: color 0.2s;
+  flex-shrink: 0;
 }
 
-.model-card.selected .model-card-price { color: var(--accent); }
+.option-card.selected .option-price { color: var(--text-primary); }
 
-/* ─── Motor Cards ─── */
+/* ─── Motor Grid ─── */
 .motor-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
 .motor-card {
-  padding: 22px 16px;
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
 }
 
-.motor-card:hover { border-color: var(--border-active); }
-.motor-card.selected { border-color: var(--accent); background: rgba(52, 211, 153, 0.04); }
+.motor-card:hover { border-color: var(--border-hover); }
+
+.motor-card.selected {
+  border-color: var(--blue);
+  border-width: 2px;
+  padding: 19px 15px;
+  background: var(--blue-light);
+}
 
 .motor-name {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
+  color: var(--text-primary);
 }
 
 .motor-spec {
   font-size: 12px;
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   margin-top: 6px;
 }
 
 .motor-price {
   font-size: 13px;
-  font-weight: 600;
   color: var(--text-tertiary);
-  margin-top: 12px;
-  transition: color 0.2s;
+  margin-top: 10px;
 }
 
-.motor-card.selected .motor-price { color: var(--accent); }
+.motor-card.selected .motor-price { color: var(--text-primary); }
 
-/* ─── Finish Swatches ─── */
-.finish-swatches {
+/* ─── Paint / Finish Swatches ─── */
+.swatch-row {
   display: flex;
-  gap: 20px;
-  justify-content: flex-start;
+  gap: 16px;
+  align-items: center;
 }
 
-.swatch {
+.swatch-btn {
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.2s ease;
   border: none;
+  cursor: pointer;
+  transition: transform 0.15s;
   outline: none;
 }
 
-.swatch:hover { transform: scale(1.1); }
+.swatch-btn:hover { transform: scale(1.08); }
 
-.swatch::before {
+/* Outer ring on selection */
+.swatch-btn::after {
   content: '';
   position: absolute;
   inset: -5px;
   border-radius: 50%;
   border: 2px solid transparent;
-  transition: border-color 0.2s;
+  transition: border-color 0.15s;
+  pointer-events: none;
 }
 
-.swatch.selected { transform: scale(1.1); }
-.swatch.selected::before { border-color: var(--accent); }
+.swatch-btn.selected::after {
+  border-color: var(--blue);
+}
 
-.finish-info {
+/* Dark swatch gets a visible border */
+.swatch-btn.dark-swatch {
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12);
+}
+
+.swatch-label {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  padding: 14px 18px;
-  background: var(--bg-card);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
+  justify-content: space-between;
+  margin-top: 16px;
 }
 
-.finish-name { font-size: 15px; font-weight: 500; }
-.finish-price { font-size: 14px; font-weight: 600; color: var(--accent); }
-.finish-price.included { color: var(--text-tertiary); }
+.swatch-label-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
 
-/* ─── Accessories ─── */
-.accessory-list {
+.swatch-label-price {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* ─── Accessories (checkbox cards) ─── */
+.acc-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
-.accessory-card {
+.acc-card {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px;
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-md);
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.15s, background 0.15s;
   user-select: none;
 }
 
-.accessory-card:hover { border-color: var(--border-active); }
-.accessory-card.selected { border-color: var(--accent); background: rgba(52, 211, 153, 0.04); }
+.acc-card:hover { border-color: var(--border-hover); }
 
-.accessory-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: var(--bg-elevated);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: background 0.2s;
+.acc-card.selected {
+  border-color: var(--blue);
+  border-width: 2px;
+  padding: 15px 19px;
+  background: var(--blue-light);
 }
 
-.accessory-card.selected .accessory-icon { background: var(--accent-muted); }
-.accessory-icon svg { width: 20px; height: 20px; color: var(--text-tertiary); transition: color 0.2s; }
-.accessory-card.selected .accessory-icon svg { color: var(--accent); }
+.acc-text { flex: 1; }
 
-.accessory-info { flex: 1; min-width: 0; }
-.accessory-name { font-size: 15px; font-weight: 600; }
-.accessory-sub { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
-
-.accessory-end {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
-.accessory-price {
+.acc-name {
   font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  transition: color 0.2s;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
-.accessory-card.selected .accessory-price { color: var(--accent); }
+.acc-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
 
-.checkbox {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 2px solid var(--text-tertiary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
+.acc-price {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
   flex-shrink: 0;
 }
 
-.accessory-card.selected .checkbox {
-  border-color: var(--accent);
-  background: var(--accent);
+.acc-card.selected .acc-price { color: var(--text-primary); }
+
+.cbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s;
 }
 
-.checkbox svg { width: 14px; height: 14px; color: var(--bg-primary); opacity: 0; transition: opacity 0.15s; }
-.accessory-card.selected .checkbox svg { opacity: 1; }
+.acc-card.selected .cbox {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.cbox svg {
+  width: 12px;
+  height: 12px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.acc-card.selected .cbox svg { opacity: 1; }
 
 /* ─── Sticky Bottom Bar ─── */
 .bottom-bar {
@@ -443,395 +440,314 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 200;
+  height: 72px;
+  background: var(--white);
+  border-top: 1px solid var(--divider);
+  box-shadow: 0 -4px 20px var(--bar-shadow);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 40px;
-  background: rgba(20, 25, 41, 0.92);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-top: 1px solid var(--border);
+  padding: 0 48px;
 }
 
-.bottom-price-label {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
+.bar-left {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
 }
 
-.bottom-price-value {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-top: 2px;
-  transition: all 0.3s ease;
-}
-
-.bottom-actions { display: flex; gap: 12px; align-items: center; }
-
-.btn-secondary {
-  padding: 14px 28px;
-  border-radius: 14px;
-  font-size: 15px;
+.bar-price {
+  font-size: 24px;
   font-weight: 600;
-  background: var(--bg-elevated);
   color: var(--text-primary);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: all 0.2s;
+  letter-spacing: -0.3px;
+  transition: all 0.25s ease;
 }
 
-.btn-secondary:hover { border-color: var(--border-active); background: var(--bg-card); }
+.bar-label {
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
 
-.btn-primary {
-  padding: 14px 36px;
-  border-radius: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  background: var(--accent);
-  color: var(--bg-primary);
+.bar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-outline {
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--text-primary);
   border: none;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background 0.15s;
 }
 
-.btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
-.btn-primary:active { transform: translateY(0); }
+.btn-outline:hover { background: rgba(0,0,0,0.05); }
 
-/* ─── Responsive ─── */
+.btn-blue {
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-blue:hover { background: #3560CC; }
+
+/* ─── Mobile ─── */
 @media (max-width: 1024px) {
-  .main {
-    grid-template-columns: 1fr;
-  }
+  .main { grid-template-columns: 1fr; }
 
-  .hero {
+  .media-panel {
     position: relative;
     top: 0;
-    height: auto;
-    padding: 48px 24px 40px;
+    height: 50vw;
+    min-height: 240px;
+    max-height: 400px;
     border-right: none;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--divider);
   }
 
-  .hero-glow { width: 300px; height: 300px; }
-  .lift-schematic { width: 240px; height: 200px; }
-  .hero-model { font-size: 28px; }
+  .config-panel {
+    padding: 28px 20px 120px;
+    max-height: none;
+  }
 
-  .config-panel { padding: 32px 20px 140px; }
-  .model-grid { grid-template-columns: 1fr; }
-  .header { padding: 14px 20px; }
-  .bottom-bar { padding: 16px 20px; }
-  .bottom-price-value { font-size: 24px; }
-
-  .header-nav { display: none; }
+  .config-title { font-size: 24px; }
+  .motor-grid { grid-template-columns: 1fr; }
+  .swatch-row { flex-wrap: wrap; }
+  .nav-center { display: none; }
+  .bottom-bar { padding: 0 20px; }
 }
-
-/* ─── Animations ─── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.config-section {
-  animation: fadeUp 0.4s ease both;
-}
-
-.config-section:nth-child(1) { animation-delay: 0.05s; }
-.config-section:nth-child(2) { animation-delay: 0.12s; }
-.config-section:nth-child(3) { animation-delay: 0.19s; }
-.config-section:nth-child(4) { animation-delay: 0.26s; }
 </style>
 </head>
 <body>
 
-<!-- Header -->
-<header class="header">
-  <a href="#" class="logo">
-    <div class="logo-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#0A0E1A" stroke-width="2.5" stroke-linecap="round">
-        <path d="M12 19V5M5 12l7-7 7 7"/>
-      </svg>
+<!-- ── Top Nav ── -->
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a href="#" class="nav-logo">Elevate</a>
+    <div class="nav-center">
+      <a href="#" class="active">Design</a>
+      <a href="#">Features</a>
+      <a href="#">Specs</a>
+      <a href="#">FAQ</a>
     </div>
-    <span class="logo-text">Elevate</span>
-  </a>
-  <nav class="header-nav">
-    <a href="#" class="active">Configure</a>
-    <a href="#">Support</a>
-    <a href="#">Dealers</a>
-  </nav>
-</header>
+    <div class="nav-right">
+      <a href="#">Find a Dealer</a>
+    </div>
+  </div>
+</nav>
 
-<!-- Main -->
+<!-- ── Main ── -->
 <main class="main">
 
-  <!-- Hero (left) -->
-  <section class="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-visual">
-      <div class="lift-schematic">
-        <svg viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Vertical beams -->
-          <rect x="60"  y="30"  width="8" height="200" rx="3" fill="#2A3050"/>
-          <rect x="252" y="30"  width="8" height="200" rx="3" fill="#2A3050"/>
-          <!-- Cross beam top -->
-          <rect x="56" y="30" width="208" height="8" rx="3" fill="#3D4A6E"/>
-          <!-- Motor housing -->
-          <rect x="140" y="14" width="40" height="24" rx="6" fill="#3D4A6E"/>
-          <circle cx="160" cy="26" r="6" fill="#34D399" opacity="0.6"/>
-          <!-- Cables -->
-          <line x1="64" y1="38" x2="64"  y2="100" stroke="#5A6380" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <line x1="256" y1="38" x2="256" y2="100" stroke="#5A6380" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <!-- Cradle / bunks -->
-          <rect x="48" y="100" width="224" height="6" rx="3" fill="#8892B0"/>
-          <rect x="72" y="106" width="8" height="50" rx="3" fill="#2A3050"/>
-          <rect x="240" y="106" width="8" height="50" rx="3" fill="#2A3050"/>
-          <!-- Boat hull (simplified) -->
-          <path d="M90 148 Q160 108 230 148 L220 156 Q160 136 100 156 Z" fill="#1C2137" stroke="#3D4A6E" stroke-width="1.5"/>
-          <path d="M100 156 Q160 140 220 156 L210 170 Q160 158 110 170 Z" fill="#141929" stroke="#2A3050" stroke-width="1"/>
-          <!-- Waterline -->
-          <line x1="20" y1="210" x2="300" y2="210" stroke="#34D399" stroke-width="1.5" opacity="0.3"/>
-          <path d="M20 210 Q50 204 80 210 Q110 216 140 210 Q170 204 200 210 Q230 216 260 210 Q290 204 300 210" stroke="#34D399" stroke-width="1" opacity="0.15" fill="none"/>
-          <!-- Pilings -->
-          <rect x="54" y="200" width="20" height="60" rx="4" fill="#1C2137" stroke="#2A3050" stroke-width="1"/>
-          <rect x="246" y="200" width="20" height="60" rx="4" fill="#1C2137" stroke="#2A3050" stroke-width="1"/>
-        </svg>
-      </div>
+  <!-- Left: Media (blank) -->
+  <section class="media-panel" id="mediaPanel"></section>
 
-      <div class="hero-info">
-        <div class="hero-model" id="heroModel">Split 14</div>
-        <div class="hero-tagline" id="heroTagline">14,000 lb · Dual Beam</div>
-        <div class="hero-price">
-          Starting at <span id="heroPrice">$8,950</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Right: Config -->
+  <div class="config-panel" id="configPanel">
 
-  <!-- Config Panel (right) -->
-  <div class="config-panel">
+    <h1 class="config-title" id="cfgTitle">Split 14</h1>
+    <p class="config-subtitle" id="cfgSubtitle">14,000 lb capacity · Dual Beam</p>
+    <p class="config-price-hero">Est. Price: <span id="cfgHeroPrice">$8,950</span></p>
+
+    <div class="config-divider"></div>
 
     <!-- Model -->
-    <div class="config-section">
-      <div class="section-label">Model</div>
-      <div class="model-grid" id="modelGrid"></div>
+    <div class="section">
+      <h2 class="section-header">Model</h2>
+      <div class="option-list" id="modelList"></div>
     </div>
 
+    <div class="config-divider"></div>
+
     <!-- Motor -->
-    <div class="config-section">
-      <div class="section-label">Motor</div>
+    <div class="section">
+      <h2 class="section-header">Motor</h2>
       <div class="motor-grid" id="motorGrid"></div>
     </div>
 
+    <div class="config-divider"></div>
+
     <!-- Finish -->
-    <div class="config-section">
-      <div class="section-label">Finish</div>
-      <div class="finish-swatches" id="finishSwatches"></div>
-      <div class="finish-info">
-        <span class="finish-name" id="finishName">Galvanized</span>
-        <span class="finish-price included" id="finishPrice">Included</span>
+    <div class="section">
+      <h2 class="section-header">Finish</h2>
+      <div class="swatch-row" id="swatchRow"></div>
+      <div class="swatch-label">
+        <span class="swatch-label-name" id="finishName">Galvanized</span>
+        <span class="swatch-label-price" id="finishPrice">Included</span>
       </div>
     </div>
 
+    <div class="config-divider"></div>
+
     <!-- Accessories -->
-    <div class="config-section">
-      <div class="section-label">Accessories</div>
-      <div class="accessory-list" id="accessoryList"></div>
+    <div class="section">
+      <h2 class="section-header">Accessories</h2>
+      <div class="acc-list" id="accList"></div>
     </div>
 
   </div>
 </main>
 
-<!-- Sticky Bottom Bar -->
+<!-- ── Bottom Bar ── -->
 <div class="bottom-bar">
-  <div>
-    <div class="bottom-price-label">Estimated Total</div>
-    <div class="bottom-price-value" id="totalPrice">$8,950</div>
+  <div class="bar-left">
+    <span class="bar-price" id="totalPrice">$8,950</span>
+    <span class="bar-label">Est. Purchase Price</span>
   </div>
-  <div class="bottom-actions">
-    <button class="btn-secondary">Save Build</button>
-    <button class="btn-primary">Get Quote</button>
+  <div class="bar-right">
+    <button class="btn-outline">Save Configuration</button>
+    <button class="btn-blue">Order Now</button>
   </div>
 </div>
 
 <script>
-// ─── Data ───
+// ── Data ──
 
 const models = [
-  { id: 'split14', name: 'Split 14', tagline: '14,000 lb · Dual Beam',   icon: 'dual',   price: 8950  },
-  { id: 'split16', name: 'Split 16', tagline: '16,000 lb · Dual Beam',   icon: 'dual',   price: 10450 },
-  { id: 'mono12',  name: 'Mono 12',  tagline: '12,000 lb · Single Beam', icon: 'single', price: 7250  },
-  { id: 'mono20',  name: 'Mono 20',  tagline: '20,000 lb · Single Beam', icon: 'single', price: 13900 },
+  { id: 'split14', name: 'Split 14', desc: '14,000 lb capacity · Dual beam design', price: 8950  },
+  { id: 'split16', name: 'Split 16', desc: '16,000 lb capacity · Dual beam design', price: 10450 },
+  { id: 'mono12',  name: 'Mono 12',  desc: '12,000 lb capacity · Single beam',      price: 7250  },
+  { id: 'mono20',  name: 'Mono 20',  desc: '20,000 lb capacity · Single beam',      price: 13900 },
 ];
 
 const motors = [
-  { id: 'standard',  name: 'Standard',  spec: '1 HP · 110V',   delta: 0    },
+  { id: 'standard',  name: 'Standard',   spec: '1 HP · 110V',   delta: 0    },
   { id: 'highspeed', name: 'High-Speed', spec: '1.5 HP · 110V', delta: 650  },
   { id: 'premium',   name: 'Premium',    spec: '2 HP · 220V',   delta: 1400 },
 ];
 
 const finishes = [
-  { id: 'galvanized', name: 'Galvanized',     color: '#9CA3AF', delta: 0   },
-  { id: 'white',      name: 'Arctic White',   color: '#E8E8E8', delta: 450 },
-  { id: 'black',      name: 'Midnight Black', color: '#1F2937', delta: 450 },
-  { id: 'navy',       name: 'Nautical Blue',  color: '#1E3A5F', delta: 550 },
-  { id: 'bronze',     name: 'Bronze',         color: '#8B6914', delta: 550 },
+  { id: 'galvanized', name: 'Galvanized',     color: '#9CA3AF', dark: false, delta: 0   },
+  { id: 'white',      name: 'Arctic White',   color: '#EAECEE', dark: false, delta: 450 },
+  { id: 'black',      name: 'Midnight Black', color: '#1F2937', dark: true,  delta: 450 },
+  { id: 'navy',       name: 'Nautical Blue',  color: '#1E3A5F', dark: true,  delta: 550 },
+  { id: 'bronze',     name: 'Bronze',         color: '#8B6914', dark: false, delta: 550 },
 ];
 
 const accessories = [
-  { id: 'bunks',   name: 'Bunk Boards',       sub: 'Carpeted composite',     price: 320,
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="8" height="12" rx="2"/><rect x="13" y="6" width="8" height="12" rx="2"/></svg>' },
-  { id: 'guides',  name: 'Guide Poles',        sub: '60″ PVC w/ LED caps',    price: 280,
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="8" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="16" y2="21"/><circle cx="8" cy="4" r="2" fill="currentColor"/><circle cx="16" cy="4" r="2" fill="currentColor"/></svg>' },
-  { id: 'led',     name: 'Underwater LED Kit', sub: 'RGBW · App-controlled',  price: 475,
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 4 12.7V17H8v-2.3A7 7 0 0 1 12 2z"/></svg>' },
-  { id: 'remote',  name: 'Wireless Remote',    sub: '300 ft range · Keyfob',  price: 195,
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10a10 10 0 0 1 20 0"/><path d="M6 10a6 6 0 0 1 12 0"/><circle cx="12" cy="14" r="3"/></svg>' },
-  { id: 'solar',   name: 'Solar Charger',      sub: '30W panel + controller', price: 385,
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>' },
+  { id: 'bunks',  name: 'Bunk Boards',       sub: 'Carpeted composite bunks',            price: 320 },
+  { id: 'guides', name: 'Guide Poles',        sub: '60″ PVC with LED-illuminated caps',   price: 280 },
+  { id: 'led',    name: 'Underwater LED Kit', sub: 'RGBW multi-color, app-controlled',    price: 475 },
+  { id: 'remote', name: 'Wireless Remote',    sub: '300 ft range keyfob transmitter',     price: 195 },
+  { id: 'solar',  name: 'Solar Charging Kit', sub: '30W panel with charge controller',    price: 385 },
 ];
 
-// ─── State ───
+// ── State ──
 
-let state = {
+const state = {
   model: 'split14',
   motor: 'standard',
   finish: 'galvanized',
-  accessories: new Set(),
+  acc: new Set(),
 };
 
-function getTotal() {
+function total() {
   const m = models.find(x => x.id === state.model);
-  const mot = motors.find(x => x.id === state.motor);
-  const fin = finishes.find(x => x.id === state.finish);
-  let total = m.price + mot.delta + fin.delta;
-  for (const a of accessories) {
-    if (state.accessories.has(a.id)) total += a.price;
-  }
-  return total;
+  const mo = motors.find(x => x.id === state.motor);
+  const f  = finishes.find(x => x.id === state.finish);
+  let t = m.price + mo.delta + f.delta;
+  for (const a of accessories) if (state.acc.has(a.id)) t += a.price;
+  return t;
 }
 
-function fmt(n) {
-  return '$' + n.toLocaleString('en-US');
-}
+function fmt(n) { return '$' + n.toLocaleString('en-US'); }
 
-// ─── Render ───
+function delta(n) { return n === 0 ? 'Included' : '+' + fmt(n); }
 
-const dualIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 4v16M17 4v16M4 8h16"/></svg>`;
-const singleIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v16M6 8h12"/></svg>`;
+// ── Render ──
 
 function render() {
+  const cm = models.find(x => x.id === state.model);
+
+  // Title area
+  document.getElementById('cfgTitle').textContent = cm.name;
+  document.getElementById('cfgSubtitle').textContent = cm.desc;
+  document.getElementById('cfgHeroPrice').textContent = fmt(cm.price);
+
   // Models
-  const modelGrid = document.getElementById('modelGrid');
-  modelGrid.innerHTML = models.map(m => `
-    <div class="model-card ${state.model === m.id ? 'selected' : ''}" data-model="${m.id}">
-      <div class="model-card-icon">${m.icon === 'dual' ? dualIcon : singleIcon}</div>
-      <div>
-        <div class="model-card-name">${m.name}</div>
-        <div class="model-card-spec">${m.tagline}</div>
+  document.getElementById('modelList').innerHTML = models.map(m => `
+    <div class="option-card${state.model === m.id ? ' selected' : ''}" data-model="${m.id}">
+      <div class="radio"><div class="radio-dot"></div></div>
+      <div class="option-text">
+        <div class="option-name">${m.name}</div>
+        <div class="option-desc">${m.desc}</div>
       </div>
-      <div class="model-card-price">${fmt(m.price)}</div>
+      <div class="option-price">${fmt(m.price)}</div>
     </div>
   `).join('');
 
   // Motors
-  const motorGrid = document.getElementById('motorGrid');
-  motorGrid.innerHTML = motors.map(m => `
-    <div class="motor-card ${state.motor === m.id ? 'selected' : ''}" data-motor="${m.id}">
+  document.getElementById('motorGrid').innerHTML = motors.map(m => `
+    <div class="motor-card${state.motor === m.id ? ' selected' : ''}" data-motor="${m.id}">
       <div class="motor-name">${m.name}</div>
       <div class="motor-spec">${m.spec}</div>
-      <div class="motor-price">${m.delta > 0 ? '+' + fmt(m.delta) : 'Included'}</div>
+      <div class="motor-price">${delta(m.delta)}</div>
     </div>
   `).join('');
 
   // Finishes
-  const finishSwatches = document.getElementById('finishSwatches');
-  finishSwatches.innerHTML = finishes.map(f => `
-    <button class="swatch ${state.finish === f.id ? 'selected' : ''}"
+  document.getElementById('swatchRow').innerHTML = finishes.map(f => `
+    <button class="swatch-btn${state.finish === f.id ? ' selected' : ''}${f.dark ? ' dark-swatch' : ''}"
             data-finish="${f.id}"
-            style="background:${f.color};"
+            style="background:${f.color}"
             title="${f.name}"></button>
   `).join('');
 
-  const sel = finishes.find(f => f.id === state.finish);
-  document.getElementById('finishName').textContent = sel.name;
-  const fp = document.getElementById('finishPrice');
-  if (sel.delta > 0) {
-    fp.textContent = '+' + fmt(sel.delta);
-    fp.className = 'finish-price';
-  } else {
-    fp.textContent = 'Included';
-    fp.className = 'finish-price included';
-  }
+  const sf = finishes.find(f => f.id === state.finish);
+  document.getElementById('finishName').textContent = sf.name;
+  document.getElementById('finishPrice').textContent = delta(sf.delta);
 
   // Accessories
-  const accList = document.getElementById('accessoryList');
-  accList.innerHTML = accessories.map(a => `
-    <div class="accessory-card ${state.accessories.has(a.id) ? 'selected' : ''}" data-acc="${a.id}">
-      <div class="accessory-icon">${a.icon}</div>
-      <div class="accessory-info">
-        <div class="accessory-name">${a.name}</div>
-        <div class="accessory-sub">${a.sub}</div>
+  document.getElementById('accList').innerHTML = accessories.map(a => `
+    <div class="acc-card${state.acc.has(a.id) ? ' selected' : ''}" data-acc="${a.id}">
+      <div class="cbox">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <div class="accessory-end">
-        <span class="accessory-price">+${fmt(a.price)}</span>
-        <div class="checkbox">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
+      <div class="acc-text">
+        <div class="acc-name">${a.name}</div>
+        <div class="acc-sub">${a.sub}</div>
       </div>
+      <div class="acc-price">+${fmt(a.price)}</div>
     </div>
   `).join('');
 
-  // Hero
-  const cm = models.find(x => x.id === state.model);
-  document.getElementById('heroModel').textContent = cm.name;
-  document.getElementById('heroTagline').textContent = cm.tagline;
-  document.getElementById('heroPrice').textContent = fmt(cm.price);
-
-  // Total
-  document.getElementById('totalPrice').textContent = fmt(getTotal());
+  // Bottom bar
+  document.getElementById('totalPrice').textContent = fmt(total());
 }
 
-// ─── Events ───
+// ── Events ──
 
 document.addEventListener('click', e => {
-  const modelCard = e.target.closest('[data-model]');
-  if (modelCard) {
-    state.model = modelCard.dataset.model;
-    render();
-    return;
-  }
+  const mc = e.target.closest('[data-model]');
+  if (mc) { state.model = mc.dataset.model; render(); return; }
 
-  const motorCard = e.target.closest('[data-motor]');
-  if (motorCard) {
-    state.motor = motorCard.dataset.motor;
-    render();
-    return;
-  }
+  const mo = e.target.closest('[data-motor]');
+  if (mo) { state.motor = mo.dataset.motor; render(); return; }
 
-  const swatch = e.target.closest('[data-finish]');
-  if (swatch) {
-    state.finish = swatch.dataset.finish;
-    render();
-    return;
-  }
+  const sw = e.target.closest('[data-finish]');
+  if (sw) { state.finish = sw.dataset.finish; render(); return; }
 
-  const accCard = e.target.closest('[data-acc]');
-  if (accCard) {
-    const id = accCard.dataset.acc;
-    if (state.accessories.has(id)) {
-      state.accessories.delete(id);
-    } else {
-      state.accessories.add(id);
-    }
+  const ac = e.target.closest('[data-acc]');
+  if (ac) {
+    const id = ac.dataset.acc;
+    state.acc.has(id) ? state.acc.delete(id) : state.acc.add(id);
     render();
-    return;
   }
 });
 
-// ─── Init ───
 render();
 </script>
 </body>
