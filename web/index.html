@@ -567,8 +567,6 @@ window.addEventListener('hashchange', function() {
   showPage(h);
 });
 
-if (location.hash === '#config') showPage('config');
-
 // ── Carousel ──
 
 let currentSlide = 0;
@@ -759,6 +757,7 @@ document.addEventListener('click', e => {
 });
 
 render();
+if (location.hash === '#config') showPage('config');
 </script>
 </body>
 </html>
