@@ -7,28 +7,23 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-:root {
-  --white: #FFFFFF;
-  --text-primary: #FFFFFF;
-  --text-muted: rgba(255,255,255,0.6);
-  --text-dim: rgba(255,255,255,0.35);
-  --overlay: rgba(0,0,0,0.25);
-}
-
-html {
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  background: #0A0E1A;
-  color: var(--text-primary);
   overflow-x: hidden;
 }
 
-/* ─── Hero ─── */
-.hero {
+/* ═══════════════════════════════════
+   PAGE: HOME
+   ═══════════════════════════════════ */
+
+#page-home {
+  background: #0A0E1A;
+  color: #fff;
+}
+
+#page-home .hero {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -47,7 +42,6 @@ body {
     linear-gradient(180deg, #080C16 0%, #0E1525 40%, #111A2E 70%, #0A0E1A 100%);
 }
 
-/* Subtle animated grain */
 .hero-bg::after {
   content: '';
   position: absolute;
@@ -57,8 +51,8 @@ body {
   background-size: 256px;
 }
 
-/* ─── Nav ─── */
-.nav {
+/* Nav (home) */
+.home-nav {
   position: relative;
   z-index: 10;
   display: flex;
@@ -67,335 +61,154 @@ body {
   padding: 24px 40px;
 }
 
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
+.home-nav-left { display: flex; align-items: center; gap: 32px; }
 
 .hamburger {
-  width: 28px;
-  height: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
+  width: 28px; height: 20px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  cursor: pointer; background: none; border: none; padding: 0;
 }
+.hamburger span { display: block; width: 100%; height: 1.5px; background: #fff; border-radius: 1px; }
 
-.hamburger span {
-  display: block;
-  width: 100%;
-  height: 1.5px;
-  background: var(--text-primary);
-  border-radius: 1px;
+.home-nav-link {
+  font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6);
+  text-decoration: none; letter-spacing: 0.3px; transition: color 0.2s;
 }
+.home-nav-link:hover { color: #fff; }
 
-.nav-link {
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--text-muted);
-  text-decoration: none;
-  letter-spacing: 0.3px;
-  transition: color 0.2s;
+.home-nav-brand {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  text-decoration: none; cursor: pointer; background: none; border: none; padding: 0;
 }
-
-.nav-link:hover { color: var(--text-primary); }
-
-/* Center brand */
-.nav-brand {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-}
-
 .brand-wordmark {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: 4px;
-  text-transform: uppercase;
+  font-size: 18px; font-weight: 600; color: #fff;
+  letter-spacing: 4px; text-transform: uppercase;
 }
 
-.brand-divider {
-  width: 1px;
-  height: 16px;
-  background: rgba(255,255,255,0.25);
+.home-nav-right { display: flex; align-items: center; gap: 24px; }
+
+.nav-icon-btn {
+  color: rgba(255,255,255,0.6); cursor: pointer; transition: color 0.2s;
+  background: none; border: none; padding: 0; display: flex;
 }
+.nav-icon-btn:hover { color: #fff; }
+.nav-icon-btn svg { width: 20px; height: 20px; }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.nav-icon {
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: color 0.2s;
-  background: none;
-  border: none;
-  padding: 0;
-  display: flex;
-}
-
-.nav-icon:hover { color: var(--text-primary); }
-.nav-icon svg { width: 20px; height: 20px; }
-
-/* ─── Hero Content ─── */
+/* Hero content */
 .hero-content {
-  position: relative;
-  z-index: 5;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  position: relative; z-index: 5; flex: 1;
+  display: flex; flex-direction: column; justify-content: flex-end;
   padding: 0 40px 60px;
 }
 
 .hero-welcome {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--text-dim);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
+  font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.35);
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;
 }
-
 .hero-headline {
-  font-size: clamp(42px, 6vw, 72px);
-  font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -1.5px;
-  max-width: 700px;
-  margin-bottom: 20px;
+  font-size: clamp(42px, 6vw, 72px); font-weight: 600;
+  line-height: 1.05; letter-spacing: -1.5px; max-width: 700px; margin-bottom: 20px;
 }
-
 .hero-sub {
-  font-size: 17px;
-  font-weight: 400;
-  color: var(--text-muted);
-  max-width: 480px;
-  line-height: 1.6;
-  margin-bottom: 40px;
+  font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.6);
+  max-width: 480px; line-height: 1.6; margin-bottom: 40px;
 }
 
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  align-items: center;
+.hero-actions { display: flex; gap: 16px; align-items: center; }
+
+.btn-configure-hero {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; font-size: 14px; font-weight: 500;
+  color: #0A0E1A; background: #fff; border: none; border-radius: 4px;
+  cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s;
 }
-
-.btn-configure {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 32px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #0A0E1A;
-  background: var(--white);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.15s;
-  letter-spacing: 0.2px;
-}
-
-.btn-configure:hover { background: #E8E8E8; transform: translateY(-1px); }
-
-.btn-configure svg {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.2s;
-}
-
-.btn-configure:hover svg { transform: translateX(3px); }
+.btn-configure-hero:hover { background: #E8E8E8; transform: translateY(-1px); }
+.btn-configure-hero svg { width: 16px; height: 16px; transition: transform 0.2s; }
+.btn-configure-hero:hover svg { transform: translateX(3px); }
 
 .btn-learn {
-  padding: 14px 32px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-primary);
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: border-color 0.2s, background 0.2s;
+  padding: 14px 32px; font-size: 14px; font-weight: 500; color: #fff;
+  background: transparent; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px; cursor: pointer; text-decoration: none; transition: border-color 0.2s, background 0.2s;
 }
+.btn-learn:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
 
-.btn-learn:hover {
-  border-color: rgba(255,255,255,0.4);
-  background: rgba(255,255,255,0.05);
-}
-
-/* ─── Bottom Waterline ─── */
 .waterline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 4;
-  height: 1px;
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 4; height: 1px;
   background: linear-gradient(90deg, transparent 5%, rgba(52,211,153,0.3) 30%, rgba(52,211,153,0.15) 70%, transparent 95%);
 }
 
-/* ─── Scroll Indicator ─── */
 .scroll-hint {
-  position: absolute;
-  bottom: 28px;
-  right: 40px;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-dim);
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  position: absolute; bottom: 28px; right: 40px; z-index: 10;
+  display: flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.35); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
 }
-
 .scroll-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.3);
-  animation: pulse 2s ease-in-out infinite;
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.3); animation: pulse 2s ease-in-out infinite;
 }
-
 @keyframes pulse {
   0%, 100% { opacity: 0.4; transform: scale(1); }
   50%      { opacity: 1;   transform: scale(1.3); }
 }
 
-/* ─── Section 2: Product Strip ─── */
-.products {
-  background: #FFFFFF;
-  padding: 80px 40px;
-}
-
-.products-header {
-  text-align: center;
-  margin-bottom: 56px;
-}
-
+/* Products */
+.products { background: #fff; padding: 80px 40px; }
+.products-header { text-align: center; margin-bottom: 56px; }
 .products-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: #878A8F;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
+  font-size: 11px; font-weight: 600; color: #878A8F;
+  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
 }
-
-.products-title {
-  font-size: 32px;
-  font-weight: 600;
-  color: #171A20;
-  letter-spacing: -0.5px;
-}
+.products-title { font-size: 32px; font-weight: 600; color: #171A20; letter-spacing: -0.5px; }
 
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; max-width: 1200px; margin: 0 auto;
 }
-
 .product-card {
-  text-align: center;
-  padding: 40px 24px;
-  border: 1px solid #E8E8E8;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  cursor: pointer;
+  text-align: center; padding: 40px 24px;
+  border: 1px solid #E8E8E8; border-radius: 8px;
+  cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fff;
 }
-
-.product-card:hover {
-  border-color: #D0D1D2;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-}
-
+.product-card:hover { border-color: #D0D1D2; box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
 .product-icon {
-  width: 48px;
-  height: 48px;
-  margin: 0 auto 20px;
-  border-radius: 12px;
-  background: #F5F5F5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 48px; height: 48px; margin: 0 auto 20px; border-radius: 12px;
+  background: #F5F5F5; display: flex; align-items: center; justify-content: center;
 }
-
 .product-icon svg { width: 24px; height: 24px; color: #171A20; }
+.product-name { font-size: 16px; font-weight: 600; color: #171A20; margin-bottom: 6px; }
+.product-desc { font-size: 13px; color: #5C5E62; line-height: 1.5; }
+.product-price { font-size: 14px; font-weight: 500; color: #171A20; margin-top: 16px; }
 
-.product-name {
-  font-size: 16px;
-  font-weight: 600;
-  color: #171A20;
-  margin-bottom: 6px;
-}
-
-.product-desc {
-  font-size: 13px;
-  color: #5C5E62;
-  line-height: 1.5;
-}
-
-.product-price {
-  font-size: 14px;
-  font-weight: 500;
-  color: #171A20;
-  margin-top: 16px;
-}
-
-/* ─── Footer ─── */
-.footer {
-  background: #0A0E1A;
-  padding: 48px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Footer */
+.home-footer {
+  background: #0A0E1A; padding: 48px 40px;
+  display: flex; justify-content: space-between; align-items: center;
   border-top: 1px solid rgba(255,255,255,0.08);
 }
+.footer-brand { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; }
+.footer-links { display: flex; gap: 32px; }
+.footer-links a, .footer-links button {
+  font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none;
+  background: none; border: none; cursor: pointer; padding: 0; transition: color 0.2s;
+}
+.footer-links a:hover, .footer-links button:hover { color: rgba(255,255,255,0.7); }
 
-.footer-brand {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 2px;
-  text-transform: uppercase;
+/* Home animations */
+.hero-welcome  { animation: fadeUp 0.8s ease 0.2s both; }
+.hero-headline { animation: fadeUp 0.8s ease 0.35s both; }
+.hero-sub      { animation: fadeUp 0.8s ease 0.5s both; }
+.hero-actions  { animation: fadeUp 0.8s ease 0.65s both; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.footer-links {
-  display: flex;
-  gap: 32px;
-}
-
-.footer-links a {
-  font-size: 13px;
-  color: rgba(255,255,255,0.35);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-links a:hover { color: rgba(255,255,255,0.7); }
-
-/* ─── Mobile ─── */
+/* Home mobile */
 @media (max-width: 768px) {
-  .nav { padding: 20px 20px; }
-  .nav-link { display: none; }
+  .home-nav { padding: 20px; }
+  .home-nav-link { display: none; }
   .hero-content { padding: 0 20px 48px; }
   .hero-headline { font-size: 36px; }
   .hero-sub { font-size: 15px; }
@@ -403,132 +216,556 @@ body {
   .scroll-hint { display: none; }
   .product-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
   .products { padding: 48px 20px; }
-  .footer { flex-direction: column; gap: 24px; padding: 32px 20px; }
+  .home-footer { flex-direction: column; gap: 24px; padding: 32px 20px; }
 }
-
 @media (max-width: 480px) {
   .product-grid { grid-template-columns: 1fr; }
   .brand-wordmark { font-size: 15px; letter-spacing: 3px; }
 }
 
-/* ─── Load animation ─── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════
+   PAGE: CONFIGURATOR
+   ═══════════════════════════════════ */
+
+#page-config {
+  display: none;
+  background: #fff;
+  color: #171A20;
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 100vh;
 }
 
-.hero-welcome    { animation: fadeUp 0.8s ease 0.2s both; }
-.hero-headline   { animation: fadeUp 0.8s ease 0.35s both; }
-.hero-sub        { animation: fadeUp 0.8s ease 0.5s both; }
-.hero-actions    { animation: fadeUp 0.8s ease 0.65s both; }
+/* Config top nav */
+.top-nav {
+  position: sticky; top: 0; z-index: 200; height: 52px;
+  display: flex; align-items: center; justify-content: center;
+  background: #fff; border-bottom: 1px solid #E8E8E8;
+}
+.top-nav-inner {
+  width: 100%; max-width: 1440px; padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cfg-nav-logo {
+  font-size: 17px; font-weight: 600; color: #171A20;
+  text-decoration: none; letter-spacing: -0.2px; cursor: pointer;
+  background: none; border: none; padding: 0;
+}
+.cfg-nav-center {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 32px;
+}
+.cfg-nav-center a, .cfg-nav-center button {
+  font-size: 14px; font-weight: 500; color: #5C5E62;
+  text-decoration: none; padding: 4px 0; transition: color 0.15s;
+  background: none; border: none; cursor: pointer;
+}
+.cfg-nav-center a:hover, .cfg-nav-center button:hover { color: #171A20; }
+.cfg-nav-center .active { color: #171A20; }
+.cfg-nav-right { display: flex; align-items: center; gap: 20px; }
+.cfg-nav-right button {
+  font-size: 14px; font-weight: 500; color: #5C5E62;
+  text-decoration: none; background: none; border: none; cursor: pointer;
+}
+.cfg-nav-right button:hover { color: #171A20; }
+
+/* Config layout */
+.cfg-main {
+  display: grid; grid-template-columns: 58fr 42fr;
+  min-height: calc(100vh - 52px);
+}
+
+.media-panel {
+  position: sticky; top: 52px; height: calc(100vh - 52px);
+  background: #F5F5F5; display: flex; align-items: center; justify-content: center;
+  border-right: 1px solid #E8E8E8; overflow: hidden;
+}
+.media-image {
+  max-width: 70%; max-height: 80%; object-fit: contain;
+  opacity: 0; transform: scale(0.96);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.media-image.visible { opacity: 1; transform: scale(1); }
+
+.config-panel { padding: 40px 48px 120px; overflow-y: auto; max-height: calc(100vh - 52px); }
+
+.config-title { font-size: 28px; font-weight: 600; color: #171A20; letter-spacing: -0.4px; }
+.config-subtitle { font-size: 14px; color: #5C5E62; margin-top: 4px; }
+.config-price-hero { font-size: 14px; color: #5C5E62; margin-top: 12px; }
+.config-price-hero span { color: #171A20; font-weight: 500; }
+.config-divider { height: 1px; background: #E8E8E8; margin: 32px 0; }
+
+.section { margin-bottom: 40px; }
+.section:last-child { margin-bottom: 0; }
+.section-header { font-size: 16px; font-weight: 600; color: #171A20; margin-bottom: 4px; }
+.section-note { font-size: 13px; color: #878A8F; margin-bottom: 16px; }
+.section:not(:has(.section-note)) .section-header { margin-bottom: 16px; }
+
+/* Option cards */
+.option-list { display: flex; flex-direction: column; gap: 8px; }
+.option-card {
+  display: flex; align-items: center; gap: 16px; padding: 16px 20px;
+  border: 1px solid #D0D1D2; border-radius: 8px;
+  cursor: pointer; transition: border-color 0.15s, background 0.15s; user-select: none;
+}
+.option-card:hover { border-color: #BABCBE; }
+.option-card.selected { border-color: #3E6AE1; border-width: 2px; padding: 15px 19px; background: rgba(62,106,225,0.06); }
+
+.radio {
+  width: 20px; height: 20px; border-radius: 50%; border: 2px solid #D0D1D2;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.15s;
+}
+.option-card.selected .radio { border-color: #3E6AE1; }
+.radio-dot {
+  width: 10px; height: 10px; border-radius: 50%; background: #3E6AE1;
+  opacity: 0; transform: scale(0); transition: all 0.15s;
+}
+.option-card.selected .radio-dot { opacity: 1; transform: scale(1); }
+
+.option-text { flex: 1; }
+.option-name { font-size: 14px; font-weight: 500; color: #171A20; }
+.option-desc { font-size: 13px; color: #5C5E62; margin-top: 2px; }
+.option-price { font-size: 14px; font-weight: 500; color: #5C5E62; flex-shrink: 0; }
+.option-card.selected .option-price { color: #171A20; }
+
+/* Motor / membership grid */
+.motor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.motor-card {
+  padding: 20px 16px; border: 1px solid #D0D1D2; border-radius: 8px;
+  text-align: center; cursor: pointer; transition: border-color 0.15s, background 0.15s; user-select: none;
+}
+.motor-card:hover { border-color: #BABCBE; }
+.motor-card.selected { border-color: #3E6AE1; border-width: 2px; padding: 19px 15px; background: rgba(62,106,225,0.06); }
+.motor-name { font-size: 14px; font-weight: 600; color: #171A20; }
+.motor-spec { font-size: 12px; color: #5C5E62; margin-top: 6px; }
+.motor-price { font-size: 13px; color: #878A8F; margin-top: 10px; }
+.motor-card.selected .motor-price { color: #171A20; }
+
+/* Swatches */
+.swatch-row { display: flex; gap: 16px; align-items: center; }
+.swatch-btn {
+  position: relative; width: 36px; height: 36px; border-radius: 50%;
+  border: none; cursor: pointer; transition: transform 0.15s; outline: none;
+}
+.swatch-btn:hover { transform: scale(1.08); }
+.swatch-btn::after {
+  content: ''; position: absolute; inset: -5px; border-radius: 50%;
+  border: 2px solid transparent; transition: border-color 0.15s; pointer-events: none;
+}
+.swatch-btn.selected::after { border-color: #3E6AE1; }
+.swatch-btn.dark-swatch { box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12); }
+.swatch-label { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+.swatch-label-name { font-size: 14px; font-weight: 500; color: #171A20; }
+.swatch-label-price { font-size: 14px; color: #5C5E62; }
+
+/* Accessories */
+.acc-list { display: flex; flex-direction: column; gap: 8px; }
+.acc-card {
+  display: flex; align-items: center; gap: 16px; padding: 16px 20px;
+  border: 1px solid #D0D1D2; border-radius: 8px;
+  cursor: pointer; transition: border-color 0.15s, background 0.15s; user-select: none;
+}
+.acc-card:hover { border-color: #BABCBE; }
+.acc-card.selected { border-color: #3E6AE1; border-width: 2px; padding: 15px 19px; background: rgba(62,106,225,0.06); }
+.acc-text { flex: 1; }
+.acc-name { font-size: 14px; font-weight: 500; color: #171A20; }
+.acc-sub { font-size: 13px; color: #5C5E62; margin-top: 2px; }
+.acc-price { font-size: 14px; font-weight: 500; color: #5C5E62; flex-shrink: 0; }
+.acc-card.selected .acc-price { color: #171A20; }
+
+.cbox {
+  width: 20px; height: 20px; border-radius: 4px; border: 2px solid #D0D1D2;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s;
+}
+.acc-card.selected .cbox { background: #3E6AE1; border-color: #3E6AE1; }
+.cbox svg { width: 12px; height: 12px; color: #fff; opacity: 0; transition: opacity 0.12s; }
+.acc-card.selected .cbox svg { opacity: 1; }
+
+/* Bottom bar */
+.bottom-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  height: 72px; background: #fff; border-top: 1px solid #E8E8E8;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+  display: flex; align-items: center; justify-content: space-between; padding: 0 48px;
+}
+.bar-left { display: flex; align-items: baseline; gap: 8px; }
+.bar-price { font-size: 24px; font-weight: 600; color: #171A20; letter-spacing: -0.3px; transition: all 0.25s ease; }
+.bar-label { font-size: 13px; color: #878A8F; }
+.bar-right { display: flex; align-items: center; gap: 12px; }
+.btn-outline {
+  padding: 10px 24px; border-radius: 4px; font-size: 14px; font-weight: 500;
+  background: transparent; color: #171A20; border: none; cursor: pointer; transition: background 0.15s;
+}
+.btn-outline:hover { background: rgba(0,0,0,0.05); }
+.btn-blue {
+  padding: 10px 24px; border-radius: 4px; font-size: 14px; font-weight: 500;
+  background: #3E6AE1; color: #fff; border: none; cursor: pointer; transition: background 0.15s;
+}
+.btn-blue:hover { background: #3560CC; }
+
+/* Config mobile */
+@media (max-width: 1024px) {
+  .cfg-main { grid-template-columns: 1fr; }
+  .media-panel {
+    position: relative; top: 0; height: 50vw;
+    min-height: 240px; max-height: 400px;
+    border-right: none; border-bottom: 1px solid #E8E8E8;
+  }
+  .config-panel { padding: 28px 20px 120px; max-height: none; }
+  .config-title { font-size: 24px; }
+  .motor-grid { grid-template-columns: 1fr; }
+  .swatch-row { flex-wrap: wrap; }
+  .cfg-nav-center { display: none; }
+  .bottom-bar { padding: 0 20px; }
+}
+
+
+/* ═══════════════════════════════════
+   PAGE SWITCHING
+   ═══════════════════════════════════ */
+.page-hidden { display: none !important; }
 </style>
 </head>
 <body>
 
-<!-- ── Hero ── -->
-<section class="hero">
-  <div class="hero-bg"></div>
+<!-- ════════════════════════════════════════
+     PAGE: HOME
+     ════════════════════════════════════════ -->
+<div id="page-home">
 
-  <!-- Nav -->
-  <nav class="nav">
-    <div class="nav-left">
-      <button class="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <nav class="home-nav">
+      <div class="home-nav-left">
+        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        <a href="#" class="home-nav-link">Find a Dealer</a>
+      </div>
+      <button class="home-nav-brand" onclick="showPage('home')">
+        <span class="brand-wordmark">Elevate</span>
       </button>
-      <a href="#" class="nav-link">Find a Dealer</a>
+      <div class="home-nav-right">
+        <button class="nav-icon-btn" aria-label="Location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </button>
+        <button class="nav-icon-btn" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="nav-icon-btn" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <div class="hero-welcome">Welcome</div>
+      <h1 class="hero-headline">Control Your<br>Lift, Effortlessly</h1>
+      <p class="hero-sub">Premium remote control systems engineered for boat lift owners who expect more. Smart. Reliable. Built to last.</p>
+      <div class="hero-actions">
+        <button class="btn-configure-hero" onclick="showPage('config')">
+          Configure Yours
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <a href="#products" class="btn-learn">Explore Products</a>
+      </div>
     </div>
 
-    <a href="index.html" class="nav-brand">
-      <span class="brand-wordmark">Elevate</span>
-    </a>
+    <div class="waterline"></div>
+    <div class="scroll-hint"><div class="scroll-dot"></div>Scroll</div>
+  </section>
 
-    <div class="nav-right">
-      <button class="nav-icon" aria-label="Location">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-      </button>
-      <button class="nav-icon" aria-label="Account">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      </button>
-      <button class="nav-icon" aria-label="Search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      </button>
+  <section class="products" id="products">
+    <div class="products-header">
+      <div class="products-label">Product Lineup</div>
+      <div class="products-title">Choose Your System</div>
+    </div>
+    <div class="product-grid">
+      <div class="product-card" onclick="showPage('config')">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4v16M6 8h12"/></svg></div>
+        <div class="product-name">Elevate Mono</div>
+        <div class="product-desc">Single motor remote control system</div>
+        <div class="product-price">$599</div>
+      </div>
+      <div class="product-card" onclick="showPage('config')">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4v16M6 8h12"/><circle cx="12" cy="4" r="2"/></svg></div>
+        <div class="product-name">Elevate Mono S</div>
+        <div class="product-desc">Single motor with auto stop capability</div>
+        <div class="product-price">$615</div>
+      </div>
+      <div class="product-card" onclick="showPage('config')">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/></svg></div>
+        <div class="product-name">Elevate Duo</div>
+        <div class="product-desc">Two motor remote control system</div>
+        <div class="product-price">$625</div>
+      </div>
+      <div class="product-card" onclick="showPage('config')">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><circle cx="7" cy="4" r="2"/><circle cx="17" cy="4" r="2"/></svg></div>
+        <div class="product-name">Elevate Duo S</div>
+        <div class="product-desc">Two motor with auto stop capabilities</div>
+        <div class="product-price">$645</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="home-footer">
+    <div class="footer-brand">Elevate</div>
+    <div class="footer-links">
+      <button onclick="showPage('config')">Configure</button>
+      <a href="#">Support</a>
+      <a href="#">Dealers</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE: CONFIGURATOR
+     ════════════════════════════════════════ -->
+<div id="page-config" class="page-hidden">
+
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <button class="cfg-nav-logo" onclick="showPage('home')">Elevate</button>
+      <div class="cfg-nav-center">
+        <button onclick="showPage('home')">Home</button>
+        <span class="active">Design</span>
+      </div>
+      <div class="cfg-nav-right">
+        <button onclick="showPage('home')">Back to Home</button>
+      </div>
     </div>
   </nav>
 
-  <!-- Content -->
-  <div class="hero-content">
-    <div class="hero-welcome">Welcome</div>
-    <h1 class="hero-headline">Control Your<br>Lift, Effortlessly</h1>
-    <p class="hero-sub">Premium remote control systems engineered for boat lift owners who expect more. Smart. Reliable. Built to last.</p>
-    <div class="hero-actions">
-      <a href="configure.html" class="btn-configure">
-        Configure Yours
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#products" class="btn-learn">Explore Products</a>
+  <main class="cfg-main">
+    <section class="media-panel" id="mediaPanel">
+      <img id="mediaImage" src="wristband.png" alt="Transmitter Wristband" class="media-image">
+    </section>
+
+    <div class="config-panel" id="configPanel">
+      <h1 class="config-title" id="cfgTitle">Elevate Mono</h1>
+      <p class="config-subtitle" id="cfgSubtitle">Remote control system for single motor operated lift</p>
+      <p class="config-price-hero">Est. Price: <span id="cfgHeroPrice">$599</span></p>
+
+      <div class="config-divider"></div>
+
+      <div class="section">
+        <h2 class="section-header">Model</h2>
+        <div class="option-list" id="modelList"></div>
+      </div>
+
+      <div id="limitSwitchSection" style="display:none">
+        <div class="config-divider"></div>
+        <div class="section">
+          <h2 class="section-header">Limit Switch</h2>
+          <p class="section-note">Required for operation</p>
+          <div class="motor-grid" id="limitGrid"></div>
+        </div>
+      </div>
+
+      <div class="config-divider"></div>
+
+      <div class="section">
+        <h2 class="section-header">App Membership</h2>
+        <div class="motor-grid" id="motorGrid"></div>
+      </div>
+
+      <div class="config-divider"></div>
+
+      <div class="section">
+        <h2 class="section-header">Transmitter Wristband</h2>
+        <div class="swatch-row" id="swatchRow"></div>
+        <div class="swatch-label">
+          <span class="swatch-label-name" id="finishName">Galvanized</span>
+          <span class="swatch-label-price" id="finishPrice">Included</span>
+        </div>
+      </div>
+
+      <div class="config-divider"></div>
+
+      <div class="section">
+        <h2 class="section-header">Accessories</h2>
+        <div class="acc-list" id="accList"></div>
+      </div>
+    </div>
+  </main>
+
+  <div class="bottom-bar">
+    <div class="bar-left">
+      <span class="bar-price" id="totalPrice">$728.99</span>
+      <span class="bar-label">Est. Purchase Price</span>
+    </div>
+    <div class="bar-right">
+      <button class="btn-outline">Save Configuration</button>
+      <button class="btn-blue">Order Now</button>
     </div>
   </div>
+</div>
 
-  <div class="waterline"></div>
 
-  <div class="scroll-hint">
-    <div class="scroll-dot"></div>
-    Scroll
-  </div>
-</section>
+<script>
+// ── Page switching ──
 
-<!-- ── Products ── -->
-<section class="products" id="products">
-  <div class="products-header">
-    <div class="products-label">Product Lineup</div>
-    <div class="products-title">Choose Your System</div>
-  </div>
-  <div class="product-grid">
-    <a class="product-card" href="configure.html">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4v16M6 8h12"/></svg>
+function showPage(page) {
+  document.getElementById('page-home').classList.toggle('page-hidden', page !== 'home');
+  document.getElementById('page-config').classList.toggle('page-hidden', page !== 'config');
+  document.body.style.background = page === 'home' ? '#0A0E1A' : '#fff';
+  window.scrollTo(0, 0);
+  if (page === 'config') render();
+}
+
+// ── Configurator Data ──
+
+const models = [
+  { id: 'mono',   name: 'Elevate Mono',   desc: 'Remote control system for single motor operated lift',                          price: 599 },
+  { id: 'mono-s', name: 'Elevate Mono S', desc: 'Remote control system for single motor operated lift with auto stop capability', price: 615 },
+  { id: 'duo',    name: 'Elevate Duo',    desc: 'Remote control system for two motor operated lift',                              price: 625 },
+  { id: 'duo-s',  name: 'Elevate Duo S',  desc: 'Remote control system for two motor operated lift with auto stop capabilities',  price: 645 },
+];
+
+const motors = [
+  { id: '1year',    name: '1 Year',    spec: 'Recurring annually',       delta: 12999 },
+  { id: '3year',    name: '3 Years',   spec: 'Recurring every 3 years',  delta: 32999 },
+  { id: 'lifetime', name: 'Lifetime',  spec: 'Exclusive to launch',      delta: 69999 },
+];
+
+const finishes = [
+  { id: 'galvanized', name: 'Galvanized',     color: '#9CA3AF', dark: false, delta: 0   },
+  { id: 'white',      name: 'Arctic White',   color: '#EAECEE', dark: false, delta: 450 },
+  { id: 'black',      name: 'Midnight Black', color: '#1F2937', dark: true,  delta: 450 },
+  { id: 'navy',       name: 'Nautical Blue',  color: '#1E3A5F', dark: true,  delta: 550 },
+  { id: 'bronze',     name: 'Bronze',         color: '#8B6914', dark: false, delta: 550 },
+];
+
+const limitSwitches = [
+  { id: 'rotary',    name: 'Rotary',     price: 299 },
+  { id: 'flatplate', name: 'Flat Plate', price: 325 },
+  { id: 'kels',      name: 'Kels',       price: 325 },
+];
+
+const accessories = [
+  { id: 'led',   name: 'Underwater LED Kit', sub: 'RGBW multi-color, app-controlled', price: 475 },
+  { id: 'cover', name: 'Remote Cover',       sub: 'Silicone cover to protect keypad', price: 45.99 },
+];
+
+// ── State ──
+
+const state = {
+  model: 'mono',
+  motor: '1year',
+  finish: 'galvanized',
+  limitSwitch: 'rotary',
+  acc: new Set(),
+};
+
+function isS() { return state.model === 'mono-s' || state.model === 'duo-s'; }
+
+function total() {
+  const m  = models.find(x => x.id === state.model);
+  const mo = motors.find(x => x.id === state.motor);
+  const f  = finishes.find(x => x.id === state.finish);
+  let t = m.price * 100 + mo.delta + f.delta * 100;
+  if (isS()) {
+    const ls = limitSwitches.find(x => x.id === state.limitSwitch);
+    t += ls.price * 100;
+  }
+  for (const a of accessories) if (state.acc.has(a.id)) t += Math.round(a.price * 100);
+  return t;
+}
+
+function fmt(n)      { return '$' + n.toLocaleString('en-US'); }
+function fmtCents(n) { return '$' + (n / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+function delta(n)    { return n === 0 ? 'Included' : '+' + fmt(n); }
+
+// ── Render ──
+
+function render() {
+  const cm = models.find(x => x.id === state.model);
+  document.getElementById('cfgTitle').textContent = cm.name;
+  document.getElementById('cfgSubtitle').textContent = cm.desc;
+  document.getElementById('cfgHeroPrice').textContent = fmt(cm.price);
+
+  document.getElementById('modelList').innerHTML = models.map(m => `
+    <div class="option-card${state.model === m.id ? ' selected' : ''}" data-model="${m.id}">
+      <div class="radio"><div class="radio-dot"></div></div>
+      <div class="option-text">
+        <div class="option-name">${m.name}</div>
+        <div class="option-desc">${m.desc}</div>
       </div>
-      <div class="product-name">Elevate Mono</div>
-      <div class="product-desc">Single motor remote control system</div>
-      <div class="product-price">$599</div>
-    </a>
-    <a class="product-card" href="configure.html">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4v16M6 8h12"/><circle cx="12" cy="4" r="2"/></svg>
-      </div>
-      <div class="product-name">Elevate Mono S</div>
-      <div class="product-desc">Single motor with auto stop capability</div>
-      <div class="product-price">$615</div>
-    </a>
-    <a class="product-card" href="configure.html">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/></svg>
-      </div>
-      <div class="product-name">Elevate Duo</div>
-      <div class="product-desc">Two motor remote control system</div>
-      <div class="product-price">$625</div>
-    </a>
-    <a class="product-card" href="configure.html">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><circle cx="7" cy="4" r="2"/><circle cx="17" cy="4" r="2"/></svg>
-      </div>
-      <div class="product-name">Elevate Duo S</div>
-      <div class="product-desc">Two motor with auto stop capabilities</div>
-      <div class="product-price">$645</div>
-    </a>
-  </div>
-</section>
+      <div class="option-price">${fmt(m.price)}</div>
+    </div>
+  `).join('');
 
-<!-- ── Footer ── -->
-<footer class="footer">
-  <div class="footer-brand">Elevate</div>
-  <div class="footer-links">
-    <a href="configure.html">Configure</a>
-    <a href="#">Support</a>
-    <a href="#">Dealers</a>
-    <a href="#">Contact</a>
-  </div>
-</footer>
+  const lsSection = document.getElementById('limitSwitchSection');
+  if (isS()) {
+    lsSection.style.display = '';
+    document.getElementById('limitGrid').innerHTML = limitSwitches.map(ls => `
+      <div class="motor-card${state.limitSwitch === ls.id ? ' selected' : ''}" data-limit="${ls.id}">
+        <div class="motor-name">${ls.name}</div>
+        <div class="motor-price">${fmt(ls.price)}</div>
+      </div>
+    `).join('');
+  } else {
+    lsSection.style.display = 'none';
+  }
 
+  document.getElementById('motorGrid').innerHTML = motors.map(m => `
+    <div class="motor-card${state.motor === m.id ? ' selected' : ''}" data-motor="${m.id}">
+      <div class="motor-name">${m.name}</div>
+      <div class="motor-spec">${m.spec}</div>
+      <div class="motor-price">${fmtCents(m.delta)}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('swatchRow').innerHTML = finishes.map(f => `
+    <button class="swatch-btn${state.finish === f.id ? ' selected' : ''}${f.dark ? ' dark-swatch' : ''}"
+            data-finish="${f.id}" style="background:${f.color}" title="${f.name}"></button>
+  `).join('');
+
+  const sf = finishes.find(f => f.id === state.finish);
+  document.getElementById('finishName').textContent = sf.name;
+  document.getElementById('finishPrice').textContent = delta(sf.delta);
+
+  const img = document.getElementById('mediaImage');
+  if (state.finish) { img.classList.add('visible'); } else { img.classList.remove('visible'); }
+
+  document.getElementById('accList').innerHTML = accessories.map(a => `
+    <div class="acc-card${state.acc.has(a.id) ? ' selected' : ''}" data-acc="${a.id}">
+      <div class="cbox">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="acc-text">
+        <div class="acc-name">${a.name}</div>
+        <div class="acc-sub">${a.sub}</div>
+      </div>
+      <div class="acc-price">+${a.price % 1 === 0 ? fmt(a.price) : fmtCents(a.price * 100)}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('totalPrice').textContent = fmtCents(total());
+}
+
+// ── Events ──
+
+document.addEventListener('click', e => {
+  const mc = e.target.closest('[data-model]');
+  if (mc) { state.model = mc.dataset.model; render(); return; }
+  const ls = e.target.closest('[data-limit]');
+  if (ls) { state.limitSwitch = ls.dataset.limit; render(); return; }
+  const mo = e.target.closest('[data-motor]');
+  if (mo) { state.motor = mo.dataset.motor; render(); return; }
+  const sw = e.target.closest('[data-finish]');
+  if (sw) { state.finish = sw.dataset.finish; render(); return; }
+  const ac = e.target.closest('[data-acc]');
+  if (ac) {
+    const id = ac.dataset.acc;
+    state.acc.has(id) ? state.acc.delete(id) : state.acc.add(id);
+    render();
+  }
+});
+
+render();
+</script>
 </body>
 </html>
