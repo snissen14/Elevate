@@ -183,6 +183,20 @@ body { min-height: 100vh; }
   font-size: 16px;
   font-weight: 600;
   color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.section-note {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-bottom: 16px;
+}
+
+.section-header:last-of-type:not(:has(+ .section-note)) {
+  margin-bottom: 16px;
+}
+
+.section:not(:has(.section-note)) .section-header {
   margin-bottom: 16px;
 }
 
@@ -587,6 +601,16 @@ body { min-height: 100vh; }
       <div class="option-list" id="modelList"></div>
     </div>
 
+    <!-- Limit Switch (S models only) -->
+    <div id="limitSwitchSection" style="display:none">
+      <div class="config-divider"></div>
+      <div class="section">
+        <h2 class="section-header">Limit Switch</h2>
+        <p class="section-note">Required for operation</p>
+        <div class="motor-grid" id="limitGrid"></div>
+      </div>
+    </div>
+
     <div class="config-divider"></div>
 
     <!-- App Membership -->
@@ -654,6 +678,12 @@ const finishes = [
   { id: 'bronze',     name: 'Bronze',         color: '#8B6914', dark: false, delta: 550 },
 ];
 
+const limitSwitches = [
+  { id: 'rotary',    name: 'Rotary',     price: 299 },
+  { id: 'flatplate', name: 'Flat Plate', price: 325 },
+  { id: 'kels',      name: 'Kels',       price: 325 },
+];
+
 const accessories = [
   { id: 'led',    name: 'Underwater LED Kit', sub: 'RGBW multi-color, app-controlled',    price: 475 },
   { id: 'cover',  name: 'Remote Cover',       sub: 'Silicone cover to protect keypad',    price: 45.99 },
@@ -665,14 +695,21 @@ const state = {
   model: 'mono',
   motor: 'standard',
   finish: 'galvanized',
+  limitSwitch: 'rotary',
   acc: new Set(),
 };
+
+function isS() { return state.model === 'mono-s' || state.model === 'duo-s'; }
 
 function total() {
   const m = models.find(x => x.id === state.model);
   const mo = motors.find(x => x.id === state.motor);
   const f  = finishes.find(x => x.id === state.finish);
   let t = m.price * 100 + mo.delta + f.delta * 100;
+  if (isS()) {
+    const ls = limitSwitches.find(x => x.id === state.limitSwitch);
+    t += ls.price * 100;
+  }
   for (const a of accessories) if (state.acc.has(a.id)) t += Math.round(a.price * 100);
   return t;
 }
@@ -703,6 +740,20 @@ function render() {
       <div class="option-price">${fmt(m.price)}</div>
     </div>
   `).join('');
+
+  // Limit Switch (S models only)
+  const lsSection = document.getElementById('limitSwitchSection');
+  if (isS()) {
+    lsSection.style.display = '';
+    document.getElementById('limitGrid').innerHTML = limitSwitches.map(ls => `
+      <div class="motor-card${state.limitSwitch === ls.id ? ' selected' : ''}" data-limit="${ls.id}">
+        <div class="motor-name">${ls.name}</div>
+        <div class="motor-price">${fmt(ls.price)}</div>
+      </div>
+    `).join('');
+  } else {
+    lsSection.style.display = 'none';
+  }
 
   // Memberships
   document.getElementById('motorGrid').innerHTML = motors.map(m => `
@@ -756,6 +807,9 @@ function render() {
 document.addEventListener('click', e => {
   const mc = e.target.closest('[data-model]');
   if (mc) { state.model = mc.dataset.model; render(); return; }
+
+  const ls = e.target.closest('[data-limit]');
+  if (ls) { state.limitSwitch = ls.dataset.limit; render(); return; }
 
   const mo = e.target.closest('[data-motor]');
   if (mo) { state.motor = mo.dataset.motor; render(); return; }
