@@ -998,6 +998,109 @@ body {
 
 
 <!-- ════════════════════════════════════════
+     PAGE: MOTORS CONFIGURATOR
+     ════════════════════════════════════════ -->
+<div id="page-motors" class="page-hidden">
+
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <a class="cfg-nav-logo" href="#home"></a>
+      <div class="cfg-nav-center">
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
+        <button>Structure</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
+        <button>Dealers</button>
+        <button>Resources</button>
+      </div>
+      <div class="cfg-nav-right">
+        <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
+        <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="cfg-main">
+    <section class="media-panel" id="motorMediaPanel"></section>
+
+    <div class="config-panel" id="motorConfigPanel">
+      <h1 class="config-title" id="motorTitle">Standard Motor</h1>
+      <p class="config-subtitle" id="motorSubtitle">1 HP · 110V · Direct drive</p>
+      <p class="config-price-hero">Est. Price: <span id="motorHeroPrice">$1,450</span></p>
+
+      <div class="config-divider"></div>
+
+      <div class="section">
+        <h2 class="section-header">Motor Type</h2>
+        <div class="option-list" id="motorTypeList"></div>
+      </div>
+
+      <div class="config-divider"></div>
+
+      <div class="section">
+        <h2 class="section-header">Voltage</h2>
+        <div class="motor-grid" id="motorVoltageGrid"></div>
+      </div>
+
+      <div class="config-divider"></div>
+
+      <div class="section">
+        <h2 class="section-header">Drive System</h2>
+        <div class="option-list" id="motorDriveList"></div>
+      </div>
+
+      <div class="config-divider"></div>
+
+      <div class="section">
+        <h2 class="section-header">Warranty</h2>
+        <div class="motor-grid" id="motorWarrantyGrid"></div>
+      </div>
+
+      <div class="config-divider"></div>
+
+      <div class="section">
+        <h2 class="section-header">Add-Ons</h2>
+        <div class="acc-list" id="motorAddOnList"></div>
+      </div>
+
+      <div class="config-divider"></div>
+
+      <div class="section talk-sales">
+        <h2 class="section-header">Talk with Sales</h2>
+        <p class="talk-sales-desc">Not sure which motor fits your lift? Our team can match the right motor to your setup.</p>
+        <div class="talk-sales-options">
+          <a class="talk-sales-btn" href="tel:+1234567890">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Us
+          </a>
+          <a class="talk-sales-btn" href="mailto:sales@docksolutions.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email Sales
+          </a>
+          <a class="talk-sales-btn" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Live Chat
+          </a>
+        </div>
+        <p class="talk-sales-hours">Mon–Fri 8am–6pm EST &middot; Sat 9am–2pm EST</p>
+      </div>
+    </div>
+  </main>
+
+  <div class="bottom-bar">
+    <div class="bar-left">
+      <span class="bar-price" id="motorTotalPrice">$1,450</span>
+      <span class="bar-label">Est. Purchase Price</span>
+    </div>
+    <div class="bar-right">
+      <button class="btn-outline">Save Configuration</button>
+      <button class="btn-blue">Order Now</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
      PAGE: SHOP - ACCESSORIES
      ════════════════════════════════════════ -->
 <div id="page-shop" class="page-hidden">
@@ -1323,9 +1426,9 @@ body {
           <div class="mega-card-links"><a href="#learn">Learn</a><a href="#config">Order</a></div>
         </div>
         <div class="mega-product-card">
-          <a href="#" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></a>
+          <a href="#motors" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></a>
           <div class="mega-card-title">Boat Lift Motors</div>
-          <div class="mega-card-links"><a href="#">Learn</a><a href="#">Order</a></div>
+          <div class="mega-card-links"><a href="#">Learn</a><a href="#motors">Order</a></div>
         </div>
         <div class="mega-product-card">
           <a href="#shop" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></a>
@@ -1416,6 +1519,7 @@ function showPage(page) {
   document.getElementById('page-boatlift').classList.toggle('page-hidden', page !== 'boatlift');
   document.getElementById('page-learn').classList.toggle('page-hidden', page !== 'learn');
   document.getElementById('page-shop').classList.toggle('page-hidden', page !== 'shop');
+  document.getElementById('page-motors').classList.toggle('page-hidden', page !== 'motors');
   document.body.style.background = page === 'home' ? '#000' : '#fff';
   document.getElementById('megaPanel').classList.remove('open');
   document.getElementById('megaPanelLiving').classList.remove('open');
@@ -1423,6 +1527,7 @@ function showPage(page) {
   window.scrollTo(0, 0);
   if (page === 'config') render();
   if (page === 'boatlift') renderLift();
+  if (page === 'motors') renderMotor();
 }
 
 window.addEventListener('hashchange', function() {
@@ -1711,6 +1816,101 @@ function renderLift() {
   document.getElementById('liftTotalPrice').textContent = fmt(liftTotal());
 }
 
+// ── Motor Configurator Data ──
+
+const motorTypes = [
+  { id: 'standard',   name: 'Standard Motor',     desc: '1 HP · Direct drive, reliable everyday performance',        price: 1450 },
+  { id: 'highspeed',  name: 'High-Speed Motor',    desc: '1.5 HP · 25 ft/min cycle, cuts wait time in half',          price: 2100 },
+  { id: 'premium',    name: 'Premium Motor',        desc: '2 HP · Heavy-duty, built for 20,000 lb+ lifts',            price: 2850 },
+  { id: 'dual',       name: 'Dual Motor Kit',       desc: '2x 1 HP · Independent beam control for level loading',     price: 3200 },
+];
+
+const motorVoltages = [
+  { id: '110v',  name: '110V',  desc: 'Standard household', delta: 0 },
+  { id: '220v',  name: '220V',  desc: 'Dedicated circuit',  delta: 150 },
+  { id: 'solar', name: '12V DC', desc: 'Solar / battery',   delta: 350 },
+];
+
+const motorDrives = [
+  { id: 'direct',  name: 'Direct Drive',     desc: 'Motor mounts directly to the lift gear — simplest install, lowest maintenance', delta: 0 },
+  { id: 'belt',    name: 'Belt Drive',        desc: 'Quieter operation with reduced vibration, easy belt replacement',               delta: 120 },
+  { id: 'chain',   name: 'Chain Drive',       desc: 'Maximum torque transfer for heavy loads, industrial-grade durability',          delta: 180 },
+];
+
+const motorWarranties = [
+  { id: '1yr', name: '1 Year',   delta: 0 },
+  { id: '3yr', name: '3 Years',  delta: 149 },
+  { id: '5yr', name: '5 Years',  delta: 279 },
+];
+
+const motorAddOns = [
+  { id: 'cover',    name: 'Motor Cover',            sub: 'UV-resistant vinyl, protects from weather',  price: 89 },
+  { id: 'brake',    name: 'Electric Brake',          sub: 'Prevents drift under load, auto-engage',    price: 195 },
+  { id: 'thermal',  name: 'Thermal Overload Switch', sub: 'Auto shutoff on overheat, protects motor',  price: 65 },
+  { id: 'mounting', name: 'Universal Mount Kit',     sub: 'Fits all major lift brands',                price: 45 },
+];
+
+const motorState = {
+  type: 'standard',
+  voltage: '110v',
+  drive: 'direct',
+  warranty: '1yr',
+  addons: new Set(),
+};
+
+function motorTotal() {
+  var t = motorTypes.find(function(x) { return x.id === motorState.type; });
+  var v = motorVoltages.find(function(x) { return x.id === motorState.voltage; });
+  var d = motorDrives.find(function(x) { return x.id === motorState.drive; });
+  var w = motorWarranties.find(function(x) { return x.id === motorState.warranty; });
+  var total = t.price + v.delta + d.delta + w.delta;
+  motorAddOns.forEach(function(a) { if (motorState.addons.has(a.id)) total += a.price; });
+  return total;
+}
+
+function renderMotor() {
+  var ct = motorTypes.find(function(x) { return x.id === motorState.type; });
+  document.getElementById('motorTitle').textContent = ct.name;
+  document.getElementById('motorSubtitle').textContent = ct.desc;
+  document.getElementById('motorHeroPrice').textContent = fmt(ct.price);
+
+  document.getElementById('motorTypeList').innerHTML = motorTypes.map(function(m) {
+    return '<div class="option-card' + (motorState.type === m.id ? ' selected' : '') + '" data-motortype="' + m.id + '">' +
+      '<div class="radio"><div class="radio-dot"></div></div>' +
+      '<div class="option-text"><div class="option-name">' + m.name + '</div><div class="option-desc">' + m.desc + '</div></div>' +
+      '<div class="option-price">' + fmt(m.price) + '</div></div>';
+  }).join('');
+
+  document.getElementById('motorVoltageGrid').innerHTML = motorVoltages.map(function(v) {
+    return '<div class="motor-card' + (motorState.voltage === v.id ? ' selected' : '') + '" data-motorvolt="' + v.id + '">' +
+      '<div class="motor-name">' + v.name + '</div><div class="motor-spec">' + v.desc + '</div>' +
+      '<div class="motor-price">' + (v.delta === 0 ? 'Included' : '+' + fmt(v.delta)) + '</div></div>';
+  }).join('');
+
+  document.getElementById('motorDriveList').innerHTML = motorDrives.map(function(d) {
+    return '<div class="option-card' + (motorState.drive === d.id ? ' selected' : '') + '" data-motordrive="' + d.id + '">' +
+      '<div class="radio"><div class="radio-dot"></div></div>' +
+      '<div class="option-text"><div class="option-name">' + d.name + '</div><div class="option-desc">' + d.desc + '</div></div>' +
+      '<div class="option-price">' + (d.delta === 0 ? 'Included' : '+' + fmt(d.delta)) + '</div></div>';
+  }).join('');
+
+  document.getElementById('motorWarrantyGrid').innerHTML = motorWarranties.map(function(w) {
+    return '<div class="motor-card' + (motorState.warranty === w.id ? ' selected' : '') + '" data-motorwarr="' + w.id + '">' +
+      '<div class="motor-name">' + w.name + '</div>' +
+      '<div class="motor-price">' + (w.delta === 0 ? 'Included' : '+' + fmt(w.delta)) + '</div></div>';
+  }).join('');
+
+  document.getElementById('motorAddOnList').innerHTML = motorAddOns.map(function(a) {
+    var sel = motorState.addons.has(a.id);
+    return '<div class="acc-card' + (sel ? ' selected' : '') + '" data-motoradd="' + a.id + '">' +
+      '<div class="cbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>' +
+      '<div class="acc-text"><div class="acc-name">' + a.name + '</div><div class="acc-sub">' + a.sub + '</div></div>' +
+      '<div class="acc-price">+' + fmt(a.price) + '</div></div>';
+  }).join('');
+
+  document.getElementById('motorTotalPrice').textContent = fmt(motorTotal());
+}
+
 // ── Events ──
 
 document.addEventListener('click', e => {
@@ -1743,6 +1943,18 @@ document.addEventListener('click', e => {
   // Carousel dots
   var dot = e.target.closest('[data-dot]');
   if (dot) { goToSlide(parseInt(dot.getAttribute('data-dot'))); return; }
+
+  // Motor configurator
+  var mt = e.target.closest('[data-motortype]');
+  if (mt) { motorState.type = mt.dataset.motortype; renderMotor(); return; }
+  var mv = e.target.closest('[data-motorvolt]');
+  if (mv) { motorState.voltage = mv.dataset.motorvolt; renderMotor(); return; }
+  var md = e.target.closest('[data-motordrive]');
+  if (md) { motorState.drive = md.dataset.motordrive; renderMotor(); return; }
+  var mw = e.target.closest('[data-motorwarr]');
+  if (mw) { motorState.warranty = mw.dataset.motorwarr; renderMotor(); return; }
+  var ma = e.target.closest('[data-motoradd]');
+  if (ma) { var mid = ma.dataset.motoradd; motorState.addons.has(mid) ? motorState.addons.delete(mid) : motorState.addons.add(mid); renderMotor(); return; }
 
   // Boat lift configurator
   var lt = e.target.closest('[data-lifttype]');
@@ -1781,6 +1993,8 @@ if (location.hash === '#config') showPage('config');
 if (location.hash === '#boatlift') showPage('boatlift');
 if (location.hash === '#learn') showPage('learn');
 if (location.hash === '#shop') showPage('shop');
+if (location.hash === '#motors') showPage('motors');
+renderMotor();
 
 // ── Hover-based mega dropdowns (desktop) ──
 var megaTimer = null;
