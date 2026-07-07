@@ -298,6 +298,28 @@ body {
 .config-price-hero span { color: #171A20; font-weight: 500; }
 .config-divider { height: 1px; background: #E8E8E8; margin: 32px 0; }
 
+/* Talk with Sales */
+.talk-sales-desc {
+  font-size: 14px; color: #5C5E62; line-height: 1.6; margin-bottom: 20px;
+}
+.talk-sales-options {
+  display: flex; gap: 10px;
+}
+.talk-sales-btn {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 16px; border: 1px solid #D0D1D2; border-radius: 8px;
+  font-size: 14px; font-weight: 500; color: #171A20;
+  text-decoration: none; transition: border-color 0.15s, background 0.15s;
+}
+.talk-sales-btn:hover {
+  border-color: #3E6AE1; background: rgba(62,106,225,0.04); color: #3E6AE1;
+}
+.talk-sales-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+.talk-sales-btn:hover svg { color: #3E6AE1; }
+.talk-sales-hours {
+  font-size: 12px; color: #878A8F; margin-top: 14px;
+}
+
 .section { margin-bottom: 40px; }
 .section:last-child { margin-bottom: 0; }
 .section-header { font-size: 16px; font-weight: 600; color: #171A20; margin-bottom: 4px; }
@@ -593,6 +615,28 @@ body {
         <h2 class="section-header">Accessories</h2>
         <div class="acc-list" id="accList"></div>
       </div>
+
+      <div class="config-divider"></div>
+
+      <div class="section talk-sales">
+        <h2 class="section-header">Talk with Sales</h2>
+        <p class="talk-sales-desc">Have questions about which remote is right for your lift? Our team can help you choose the perfect setup.</p>
+        <div class="talk-sales-options">
+          <a class="talk-sales-btn" href="tel:+1234567890">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Us
+          </a>
+          <a class="talk-sales-btn" href="mailto:sales@docksolutions.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email Sales
+          </a>
+          <a class="talk-sales-btn" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Live Chat
+          </a>
+        </div>
+        <p class="talk-sales-hours">Mon–Fri 8am–6pm EST &middot; Sat 9am–2pm EST</p>
+      </div>
     </div>
   </main>
 
@@ -684,6 +728,28 @@ body {
       <div class="section">
         <h2 class="section-header">Accessories</h2>
         <div class="acc-list" id="liftAccList"></div>
+      </div>
+
+      <div class="config-divider"></div>
+
+      <div class="section talk-sales">
+        <h2 class="section-header">Talk with Sales</h2>
+        <p class="talk-sales-desc">Need help choosing the right lift for your boat and dock? Our experts will walk you through every option.</p>
+        <div class="talk-sales-options">
+          <a class="talk-sales-btn" href="tel:+1234567890">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Us
+          </a>
+          <a class="talk-sales-btn" href="mailto:sales@docksolutions.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email Sales
+          </a>
+          <a class="talk-sales-btn" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Live Chat
+          </a>
+        </div>
+        <p class="talk-sales-hours">Mon–Fri 8am–6pm EST &middot; Sat 9am–2pm EST</p>
       </div>
     </div>
   </main>
