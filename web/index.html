@@ -292,7 +292,13 @@ body {
 
 .config-panel { padding: 40px 48px 120px; overflow-y: auto; max-height: calc(100vh - 65px); }
 
-.config-title { font-size: 28px; font-weight: 600; color: #171A20; letter-spacing: -0.4px; }
+.config-title { font-size: 28px; font-weight: 600; color: #171A20; letter-spacing: -0.4px; display: flex; align-items: center; gap: 0; }
+
+.elevate-logo-mark {
+  display: inline-block; width: 160px; height: 36px; flex-shrink: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 650 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M58 10 L58 55 L73 40 L78 45 L55 68 L32 45 L37 40 L52 55 L52 10 Z' fill='%23171A20'/%3E%3Cpath d='M55 75 C30 75 10 95 10 120 L10 140 L20 140 L20 120 C20 100 35 85 55 85 C75 85 90 100 90 120 L90 140 L100 140 L100 120 C100 95 80 75 55 75 Z' fill='%23171A20'/%3E%3Ctext x='115' y='128' font-family='-apple-system,BlinkMacSystemFont,sans-serif' font-size='110' font-weight='700' fill='%23171A20' letter-spacing='-2'%3EElevate%3C/text%3E%3C/svg%3E") no-repeat left center;
+  background-size: contain;
+}
 .config-subtitle { font-size: 14px; color: #5C5E62; margin-top: 4px; }
 .config-price-hero { font-size: 14px; color: #5C5E62; margin-top: 12px; }
 .config-price-hero span { color: #171A20; font-weight: 500; }
@@ -910,7 +916,7 @@ body {
     <section class="media-panel" id="liftMediaPanel"></section>
 
     <div class="config-panel" id="liftConfigPanel">
-      <h1 class="config-title" id="liftTitle">Elevate Jet Ski Lift</h1>
+      <h1 class="config-title" id="liftTitle"><span class="elevate-logo-mark"></span> Jet Ski Lift</h1>
       <p class="config-subtitle" id="liftSubtitle">Personal watercraft lift system</p>
       <p class="config-price-hero">Est. Price: <span id="liftHeroPrice">$3,199</span></p>
 
@@ -1683,7 +1689,7 @@ function liftTotal() {
 }
 
 function renderLift() {
-  document.getElementById('liftTitle').textContent = 'Elevate Jet Ski Lift';
+  document.getElementById('liftTitle').innerHTML = '<span class="elevate-logo-mark"></span> Jet Ski Lift';
   document.getElementById('liftSubtitle').textContent = 'Personal watercraft lift system';
   document.getElementById('liftHeroPrice').textContent = fmt(pwcBase);
 
