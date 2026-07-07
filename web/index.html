@@ -41,7 +41,7 @@ body {
 }
 .home-nav-center {
   position: absolute; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 28px;
+  display: flex; gap: 28px; align-items: center;
 }
 .home-nav-center button {
   font-size: 14px; font-weight: 500; color: #171A20;
@@ -241,12 +241,12 @@ body {
 
 /* Config top nav */
 .top-nav {
-  position: sticky; top: 0; z-index: 200; height: 52px;
+  position: sticky; top: 0; z-index: 200; height: 65px;
   display: flex; align-items: center; justify-content: center;
   background: #fff; border-bottom: 1px solid #E8E8E8;
 }
 .top-nav-inner {
-  width: 100%; max-width: 1440px; padding: 0 40px;
+  width: 100%; max-width: 1440px; padding: 0 24px;
   display: flex; align-items: center; justify-content: space-between;
 }
 .cfg-nav-logo {
@@ -258,7 +258,7 @@ body {
 }
 .cfg-nav-center {
   position: absolute; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 32px;
+  display: flex; gap: 28px; align-items: center;
 }
 .cfg-nav-center a, .cfg-nav-center button {
   font-size: 14px; font-weight: 500; color: #171A20;
@@ -266,7 +266,6 @@ body {
   background: none; border: none; cursor: pointer; border-radius: 4px;
 }
 .cfg-nav-center a:hover, .cfg-nav-center button:hover { background: rgba(0,0,0,0.05); }
-.active-link { font-weight: 600 !important; }
 .cfg-nav-right { display: flex; align-items: center; gap: 16px; }
 .cfg-nav-right button {
   color: #171A20; background: none; border: none; cursor: pointer; padding: 4px; display: flex;
