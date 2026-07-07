@@ -601,7 +601,7 @@ body {
       <div class="home-nav-center">
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
-        <button>Protection</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
         <button>Dealers</button>
         <button>Resources</button>
@@ -689,7 +689,7 @@ body {
       <div class="cfg-nav-center">
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
-        <button>Protection</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
         <button>Dealers</button>
         <button>Resources</button>
@@ -800,7 +800,7 @@ body {
       <div class="cfg-nav-center">
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
-        <button>Protection</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
         <button>Dealers</button>
         <button>Resources</button>
@@ -914,7 +914,7 @@ body {
       <div class="cfg-nav-center">
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
-        <button>Protection</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
         <button>Dealers</button>
         <button>Resources</button>
@@ -1138,6 +1138,33 @@ body {
   </div>
 </div>
 
+<!-- Shared Mega Dropdown Panel: Protection -->
+<div class="mega-panel" id="megaPanelProtection">
+  <div class="mega-backdrop" id="megaBackdropProtection"></div>
+  <div class="mega-dropdown">
+    <div class="mega-inner">
+      <div class="mega-products">
+        <div class="mega-product-card">
+          <a href="#" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 10h20"/><path d="M2 16h20"/></svg></a>
+          <div class="mega-card-title">Foam Dock Bumper</div>
+          <div class="mega-card-links"><a href="#">Learn</a><a href="#">Order</a></div>
+        </div>
+        <div class="mega-product-card">
+          <a href="#" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v16"/><path d="M4 4h4c0 4-4 4-4 8h4c0 4-4 4-4 8"/></svg></a>
+          <div class="mega-card-title">Vinyl Dock Edge</div>
+          <div class="mega-card-links"><a href="#">Learn</a><a href="#">Order</a></div>
+        </div>
+      </div>
+      <div class="mega-sidebar">
+        <a href="#">Find a Dealer</a>
+        <a href="#">Request a Quote</a>
+        <a href="#">Support</a>
+        <a href="#">Protection Guide</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 // ── Page switching ──
 
@@ -1149,6 +1176,7 @@ function showPage(page) {
   document.body.style.background = page === 'home' ? '#000' : '#fff';
   document.getElementById('megaPanel').classList.remove('open');
   document.getElementById('megaPanelLiving').classList.remove('open');
+  document.getElementById('megaPanelProtection').classList.remove('open');
   window.scrollTo(0, 0);
   if (page === 'config') render();
   if (page === 'boatlift') renderLift();
@@ -1445,15 +1473,16 @@ function renderLift() {
 document.addEventListener('click', e => {
   // Close mega panel on backdrop click
   // Close on backdrop click
-  if (e.target.id === 'megaBackdrop' || e.target.id === 'megaBackdropLiving') {
+  if (e.target.id === 'megaBackdrop' || e.target.id === 'megaBackdropLiving' || e.target.id === 'megaBackdropProtection') {
     document.getElementById('megaPanel').classList.remove('open');
     document.getElementById('megaPanelLiving').classList.remove('open');
+    document.getElementById('megaPanelProtection').classList.remove('open');
     return;
   }
   // Toggle correct panel on click (mobile fallback)
   if (e.target.closest('[data-toggle-dropdown]')) {
     var which = e.target.closest('[data-toggle-dropdown]').getAttribute('data-toggle-dropdown');
-    var panels = { liftsystems: 'megaPanel', living: 'megaPanelLiving' };
+    var panels = { liftsystems: 'megaPanel', living: 'megaPanelLiving', protection: 'megaPanelProtection' };
     var targetPanel = panels[which];
     if (targetPanel) {
       var isOpen = document.getElementById(targetPanel).classList.contains('open');
@@ -1511,7 +1540,7 @@ if (location.hash === '#learn') showPage('learn');
 
 // ── Hover-based mega dropdowns (desktop) ──
 var megaTimer = null;
-var panelMap = { liftsystems: document.getElementById('megaPanel'), living: document.getElementById('megaPanelLiving') };
+var panelMap = { liftsystems: document.getElementById('megaPanel'), living: document.getElementById('megaPanelLiving'), protection: document.getElementById('megaPanelProtection') };
 
 function closeAllPanels() {
   Object.values(panelMap).forEach(function(p) { p.classList.remove('open'); });
