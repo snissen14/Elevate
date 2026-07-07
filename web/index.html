@@ -936,6 +936,13 @@ body {
 
       <div class="config-divider"></div>
 
+      <div class="section">
+        <h2 class="section-header">Bunks</h2>
+        <div class="option-list" id="liftBunkList"></div>
+      </div>
+
+      <div class="config-divider"></div>
+
       <div class="section talk-sales">
         <h2 class="section-header">Talk with Sales</h2>
         <p class="talk-sales-desc">Need help choosing the right lift for your boat and dock? Our experts will walk you through every option.</p>
@@ -1677,15 +1684,22 @@ const pwcTracks = [
   { id: '12ft', name: '12 Foot', delta: 450 },
 ];
 
+const pwcBunks = [
+  { id: 'wood',     name: 'Wood Carpeted Bunks', desc: 'Marine-grade carpeted wood bunks', delta: 0 },
+  { id: 'aluminum', name: 'Aluminum Bunks',      desc: 'Lightweight, corrosion-resistant aluminum', delta: 350 },
+];
+
 const liftState = {
   motor: '34hp',
   track: '9ft',
+  bunk: 'wood',
 };
 
 function liftTotal() {
   var m = pwcMotors.find(function(x) { return x.id === liftState.motor; });
   var t = pwcTracks.find(function(x) { return x.id === liftState.track; });
-  return pwcBase + m.delta + t.delta;
+  var b = pwcBunks.find(function(x) { return x.id === liftState.bunk; });
+  return pwcBase + m.delta + t.delta + b.delta;
 }
 
 function renderLift() {
@@ -1704,6 +1718,13 @@ function renderLift() {
     return '<div class="motor-card' + (liftState.track === t.id ? ' selected' : '') + '" data-lifttrack="' + t.id + '">' +
       '<div class="motor-name">' + t.name + '</div>' +
       '<div class="motor-price">' + (t.delta === 0 ? 'Included' : '+' + fmt(t.delta)) + '</div></div>';
+  }).join('');
+
+  document.getElementById('liftBunkList').innerHTML = pwcBunks.map(function(b) {
+    return '<div class="option-card' + (liftState.bunk === b.id ? ' selected' : '') + '" data-liftbunk="' + b.id + '">' +
+      '<div class="radio"><div class="radio-dot"></div></div>' +
+      '<div class="option-text"><div class="option-name">' + b.name + '</div><div class="option-desc">' + b.desc + '</div></div>' +
+      '<div class="option-price">' + (b.delta === 0 ? 'Included' : '+' + fmt(b.delta)) + '</div></div>';
   }).join('');
 
   document.getElementById('liftTotalPrice').textContent = fmt(liftTotal());
@@ -1854,6 +1875,8 @@ document.addEventListener('click', e => {
   if (lm) { liftState.motor = lm.dataset.liftmotor; renderLift(); return; }
   var ltr = e.target.closest('[data-lifttrack]');
   if (ltr) { liftState.track = ltr.dataset.lifttrack; renderLift(); return; }
+  var lb = e.target.closest('[data-liftbunk]');
+  if (lb) { liftState.bunk = lb.dataset.liftbunk; renderLift(); return; }
 
   // Remote configurator
   const mc = e.target.closest('[data-model]');
