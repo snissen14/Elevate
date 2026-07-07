@@ -599,10 +599,10 @@ body {
     <div class="home-nav-inner">
       <a class="home-nav-logo" href="#home"></a>
       <div class="home-nav-center">
-        <button class="nav-dropdown-trigger" data-toggle-dropdown>Lift Systems</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button>Protection</button>
-        <button>Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -687,10 +687,10 @@ body {
     <div class="top-nav-inner">
       <a class="cfg-nav-logo" href="#home"></a>
       <div class="cfg-nav-center">
-        <button class="nav-dropdown-trigger" data-toggle-dropdown>Lift Systems</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button>Protection</button>
-        <button>Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -798,10 +798,10 @@ body {
     <div class="top-nav-inner">
       <a class="cfg-nav-logo" href="#home"></a>
       <div class="cfg-nav-center">
-        <button class="nav-dropdown-trigger" data-toggle-dropdown>Lift Systems</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button>Protection</button>
-        <button>Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -912,10 +912,10 @@ body {
     <div class="top-nav-inner">
       <a class="cfg-nav-logo" href="#home"></a>
       <div class="cfg-nav-center">
-        <button class="nav-dropdown-trigger" data-toggle-dropdown>Lift Systems</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button>Protection</button>
-        <button>Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -1101,6 +1101,43 @@ body {
   </div>
 </div>
 
+<!-- Shared Mega Dropdown Panel: Living -->
+<div class="mega-panel" id="megaPanelLiving">
+  <div class="mega-backdrop" id="megaBackdropLiving"></div>
+  <div class="mega-dropdown">
+    <div class="mega-inner">
+      <div class="mega-products">
+        <div class="mega-product-card">
+          <a href="#" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20h16"/><path d="M6 20v-4h3v4"/><path d="M11 20v-8h3v8"/><path d="M16 20v-12h3v12"/></svg></a>
+          <div class="mega-card-title">Steps</div>
+          <div class="mega-card-links"><a href="#">Learn</a><a href="#">Order</a></div>
+        </div>
+        <div class="mega-product-card">
+          <a href="#" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v18M16 3v18"/><path d="M8 8h8M8 13h8M8 18h8"/></svg></a>
+          <div class="mega-card-title">Ladders</div>
+          <div class="mega-card-links"><a href="#">Learn</a><a href="#">Order</a></div>
+        </div>
+        <div class="mega-product-card">
+          <a href="#" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 16h16"/><path d="M6 16V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8"/><path d="M4 16l-1 4h18l-1-4"/></svg></a>
+          <div class="mega-card-title">Seating</div>
+          <div class="mega-card-links"><a href="#">Learn</a><a href="#">Order</a></div>
+        </div>
+        <div class="mega-product-card">
+          <a href="#" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><line x1="12" y1="10" x2="12" y2="19"/></svg></a>
+          <div class="mega-card-title">Storage</div>
+          <div class="mega-card-links"><a href="#">Learn</a><a href="#">Order</a></div>
+        </div>
+      </div>
+      <div class="mega-sidebar">
+        <a href="#">Find a Dealer</a>
+        <a href="#">Request a Quote</a>
+        <a href="#">Support</a>
+        <a href="#">Dock Living Ideas</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 // ── Page switching ──
 
@@ -1111,6 +1148,7 @@ function showPage(page) {
   document.getElementById('page-learn').classList.toggle('page-hidden', page !== 'learn');
   document.body.style.background = page === 'home' ? '#000' : '#fff';
   document.getElementById('megaPanel').classList.remove('open');
+  document.getElementById('megaPanelLiving').classList.remove('open');
   window.scrollTo(0, 0);
   if (page === 'config') render();
   if (page === 'boatlift') renderLift();
@@ -1406,14 +1444,23 @@ function renderLift() {
 
 document.addEventListener('click', e => {
   // Close mega panel on backdrop click
-  if (e.target.id === 'megaBackdrop') {
+  // Close on backdrop click
+  if (e.target.id === 'megaBackdrop' || e.target.id === 'megaBackdropLiving') {
     document.getElementById('megaPanel').classList.remove('open');
+    document.getElementById('megaPanelLiving').classList.remove('open');
     return;
   }
-  // Also close on click for mobile
+  // Toggle correct panel on click (mobile fallback)
   if (e.target.closest('[data-toggle-dropdown]')) {
-    var mp = document.getElementById('megaPanel');
-    mp.classList.toggle('open');
+    var which = e.target.closest('[data-toggle-dropdown]').getAttribute('data-toggle-dropdown');
+    var panels = { liftsystems: 'megaPanel', living: 'megaPanelLiving' };
+    var targetPanel = panels[which];
+    if (targetPanel) {
+      var isOpen = document.getElementById(targetPanel).classList.contains('open');
+      document.getElementById('megaPanel').classList.remove('open');
+      document.getElementById('megaPanelLiving').classList.remove('open');
+      if (!isOpen) document.getElementById(targetPanel).classList.add('open');
+    }
     return;
   }
 
@@ -1462,29 +1509,36 @@ if (location.hash === '#config') showPage('config');
 if (location.hash === '#boatlift') showPage('boatlift');
 if (location.hash === '#learn') showPage('learn');
 
-// ── Hover-based mega dropdown (desktop) ──
+// ── Hover-based mega dropdowns (desktop) ──
 var megaTimer = null;
-var megaPanel = document.getElementById('megaPanel');
+var panelMap = { liftsystems: document.getElementById('megaPanel'), living: document.getElementById('megaPanelLiving') };
+
+function closeAllPanels() {
+  Object.values(panelMap).forEach(function(p) { p.classList.remove('open'); });
+}
 
 document.querySelectorAll('[data-toggle-dropdown]').forEach(function(trigger) {
+  var which = trigger.getAttribute('data-toggle-dropdown');
+  var panel = panelMap[which];
+  if (!panel) return;
+
   trigger.addEventListener('mouseenter', function() {
     clearTimeout(megaTimer);
-    megaPanel.classList.add('open');
+    closeAllPanels();
+    panel.classList.add('open');
   });
   trigger.addEventListener('mouseleave', function() {
     megaTimer = setTimeout(function() {
-      if (!megaPanel.matches(':hover')) megaPanel.classList.remove('open');
+      if (!panel.matches(':hover')) panel.classList.remove('open');
     }, 150);
   });
 });
 
-megaPanel.addEventListener('mouseenter', function() {
-  clearTimeout(megaTimer);
-});
-megaPanel.addEventListener('mouseleave', function() {
-  megaTimer = setTimeout(function() {
-    megaPanel.classList.remove('open');
-  }, 200);
+Object.values(panelMap).forEach(function(panel) {
+  panel.addEventListener('mouseenter', function() { clearTimeout(megaTimer); });
+  panel.addEventListener('mouseleave', function() {
+    megaTimer = setTimeout(function() { panel.classList.remove('open'); }, 200);
+  });
 });
 </script>
 </body>
