@@ -807,7 +807,7 @@ body {
     </section>
 
     <div class="config-panel" id="configPanel">
-      <h1 class="config-title" id="cfgTitle">Elevate Mono</h1>
+      <h1 class="config-title" id="cfgTitle"><span class="elevate-logo-mark"></span> Mono</h1>
       <p class="config-subtitle" id="cfgSubtitle">Remote control system for single motor operated lift</p>
       <p class="config-price-hero">Est. Price: <span id="cfgHeroPrice">$599</span></p>
 
@@ -1605,7 +1605,7 @@ function delta(n)    { return n === 0 ? 'Included' : '+' + fmt(n); }
 
 function render() {
   const cm = models.find(x => x.id === state.model);
-  document.getElementById('cfgTitle').textContent = cm.name;
+  document.getElementById('cfgTitle').innerHTML = cm.name.replace('Elevate', '<span class="elevate-logo-mark"></span>');
   document.getElementById('cfgSubtitle').textContent = cm.desc;
   document.getElementById('cfgHeroPrice').textContent = fmt(cm.price);
 
