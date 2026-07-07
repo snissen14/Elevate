@@ -48,33 +48,82 @@ body {
   transition: background 0.15s; border-radius: 4px;
 }
 .home-nav-center button:hover { background: rgba(0,0,0,0.05); }
-/* Dropdown */
-.nav-dropdown { position: relative; }
+/* Mega Dropdown */
+.nav-dropdown { position: static; }
 .nav-dropdown-trigger {
   font-size: 14px; font-weight: 500; color: #171A20;
   background: none; border: none; cursor: pointer; padding: 6px 8px;
   transition: background 0.15s; border-radius: 4px;
 }
 .nav-dropdown-trigger:hover { background: rgba(0,0,0,0.05); }
-.nav-dropdown-menu {
-  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-  margin-top: 8px; min-width: 200px;
-  background: #fff; border: 1px solid #E8E8E8; border-radius: 8px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1); padding: 8px 0;
-  z-index: 300;
+
+.mega-overlay {
+  display: none; position: fixed; top: 65px; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3); z-index: 250;
 }
-.nav-dropdown-menu::before {
-  content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px;
+.nav-dropdown.open .mega-overlay { display: block; }
+
+.nav-dropdown-menu {
+  display: none; position: fixed; top: 65px; left: 0; right: 0;
+  background: #fff; z-index: 300;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  padding: 40px 0;
 }
 .nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown.open .nav-dropdown-menu { display: block; }
-.nav-dropdown-menu a {
-  display: block; width: 100%; text-align: left;
-  padding: 10px 20px; font-size: 14px; font-weight: 400; color: #171A20;
-  background: none; border: none; cursor: pointer; transition: background 0.1s;
-  text-decoration: none;
+
+.mega-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 40px;
+  display: flex; gap: 60px;
 }
-.nav-dropdown-menu a:hover { background: #F5F5F5; }
+
+.mega-products {
+  display: flex; gap: 40px; flex: 1;
+}
+
+.mega-product-card {
+  text-align: center; text-decoration: none; color: #171A20;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  min-width: 120px;
+}
+.mega-product-card:hover .mega-card-title { color: #3E6AE1; }
+
+.mega-card-icon {
+  width: 80px; height: 80px; border-radius: 12px;
+  background: #F5F5F5; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 4px;
+}
+.mega-card-icon svg { width: 36px; height: 36px; color: #171A20; }
+
+.mega-card-title {
+  font-size: 14px; font-weight: 500; transition: color 0.15s;
+}
+
+.mega-card-links {
+  display: flex; gap: 12px;
+}
+.mega-card-links a {
+  font-size: 12px; color: #5C5E62; text-decoration: underline;
+  text-underline-offset: 2px; transition: color 0.15s;
+}
+.mega-card-links a:hover { color: #171A20; }
+
+.mega-sidebar {
+  border-left: 1px solid #E8E8E8; padding-left: 40px;
+  display: flex; flex-direction: column; gap: 12px;
+  min-width: 180px;
+}
+.mega-sidebar a {
+  font-size: 14px; font-weight: 400; color: #171A20;
+  text-decoration: none; transition: color 0.15s;
+}
+.mega-sidebar a:hover { color: #3E6AE1; }
+
+@media (max-width: 768px) {
+  .mega-inner { flex-direction: column; gap: 24px; }
+  .mega-products { flex-wrap: wrap; gap: 20px; }
+  .mega-sidebar { border-left: none; border-top: 1px solid #E8E8E8; padding-left: 0; padding-top: 16px; }
+}
 
 .home-nav-right { display: flex; align-items: center; gap: 16px; }
 .home-nav-right button {
@@ -389,10 +438,37 @@ body {
         <div class="nav-dropdown" id="boatLiftsDropdown">
           <button class="nav-dropdown-trigger" data-toggle-dropdown>Boat Lifts</button>
           <div class="nav-dropdown-menu">
-            <a href="#boatlift">Build Your Boat Lift</a>
-            <a href="#config">Boat Lift Remotes</a>
-            <a href="#">Boat Lift Motors</a>
-            <a href="#">Boat Lift Accessories</a>
+            <div class="mega-overlay"></div>
+            <div class="mega-inner">
+              <div class="mega-products">
+                <a class="mega-product-card" href="#boatlift">
+                  <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><path d="M4 20h16" stroke-dasharray="2 2"/></svg></div>
+                  <div class="mega-card-title">Build Your Boat Lift</div>
+                  <div class="mega-card-links"><a href="#boatlift">Configure</a></div>
+                </a>
+                <a class="mega-product-card" href="#config">
+                  <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="9" r="2"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+                  <div class="mega-card-title">Boat Lift Remotes</div>
+                  <div class="mega-card-links"><a href="#config">Configure</a></div>
+                </a>
+                <a class="mega-product-card" href="#">
+                  <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+                  <div class="mega-card-title">Boat Lift Motors</div>
+                  <div class="mega-card-links"><a href="#">Learn</a></div>
+                </a>
+                <a class="mega-product-card" href="#">
+                  <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                  <div class="mega-card-title">Accessories</div>
+                  <div class="mega-card-links"><a href="#">Learn</a></div>
+                </a>
+              </div>
+              <div class="mega-sidebar">
+                <a href="#">Find a Dealer</a>
+                <a href="#">Request a Quote</a>
+                <a href="#">Support</a>
+                <a href="#">Compare Models</a>
+              </div>
+            </div>
           </div>
         </div>
         <button>Dock Protection</button>
@@ -579,10 +655,37 @@ body {
         <div class="nav-dropdown">
           <button class="nav-dropdown-trigger" data-toggle-dropdown>Boat Lifts</button>
           <div class="nav-dropdown-menu">
-            <a href="#boatlift" class="active-link">Build Your Boat Lift</a>
-            <a href="#config">Boat Lift Remotes</a>
-            <a href="#">Boat Lift Motors</a>
-            <a href="#">Boat Lift Accessories</a>
+            <div class="mega-overlay"></div>
+            <div class="mega-inner">
+              <div class="mega-products">
+                <a class="mega-product-card" href="#boatlift">
+                  <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><path d="M4 20h16" stroke-dasharray="2 2"/></svg></div>
+                  <div class="mega-card-title">Build Your Boat Lift</div>
+                  <div class="mega-card-links"><a href="#boatlift">Configure</a></div>
+                </a>
+                <a class="mega-product-card" href="#config">
+                  <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="9" r="2"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+                  <div class="mega-card-title">Boat Lift Remotes</div>
+                  <div class="mega-card-links"><a href="#config">Configure</a></div>
+                </a>
+                <a class="mega-product-card" href="#">
+                  <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+                  <div class="mega-card-title">Boat Lift Motors</div>
+                  <div class="mega-card-links"><a href="#">Learn</a></div>
+                </a>
+                <a class="mega-product-card" href="#">
+                  <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                  <div class="mega-card-title">Accessories</div>
+                  <div class="mega-card-links"><a href="#">Learn</a></div>
+                </a>
+              </div>
+              <div class="mega-sidebar">
+                <a href="#">Find a Dealer</a>
+                <a href="#">Request a Quote</a>
+                <a href="#">Support</a>
+                <a href="#">Compare Models</a>
+              </div>
+            </div>
           </div>
         </div>
         <button>Dock Protection</button>
