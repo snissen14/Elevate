@@ -910,54 +910,22 @@ body {
     <section class="media-panel" id="liftMediaPanel"></section>
 
     <div class="config-panel" id="liftConfigPanel">
-      <h1 class="config-title" id="liftTitle">Build Your Boat Lift</h1>
-      <p class="config-subtitle" id="liftSubtitle">Configure a custom boat lift for your dock</p>
-      <p class="config-price-hero">Est. Price: <span id="liftHeroPrice">$4,250</span></p>
+      <h1 class="config-title" id="liftTitle">PWC Lift</h1>
+      <p class="config-subtitle" id="liftSubtitle">Personal watercraft lift system</p>
+      <p class="config-price-hero">Est. Price: <span id="liftHeroPrice">$2,495</span></p>
 
       <div class="config-divider"></div>
 
       <div class="section">
-        <h2 class="section-header">Lift Type</h2>
-        <div class="option-list" id="liftTypeList"></div>
-      </div>
-
-      <div class="config-divider"></div>
-
-      <div class="section">
-        <h2 class="section-header">Weight Capacity</h2>
-        <div class="motor-grid" id="liftCapGrid"></div>
-      </div>
-
-      <div class="config-divider"></div>
-
-      <div class="section">
-        <h2 class="section-header">Motor</h2>
+        <h2 class="section-header">Motor Options</h2>
         <div class="option-list" id="liftMotorList"></div>
       </div>
 
       <div class="config-divider"></div>
 
       <div class="section">
-        <h2 class="section-header">Material</h2>
-        <div class="motor-grid" id="liftMaterialGrid"></div>
-      </div>
-
-      <div class="config-divider"></div>
-
-      <div class="section">
-        <h2 class="section-header">Finish</h2>
-        <div class="swatch-row" id="liftFinishRow"></div>
-        <div class="swatch-label">
-          <span class="swatch-label-name" id="liftFinishName">Hot-Dip Galvanized</span>
-          <span class="swatch-label-price" id="liftFinishPrice">Included</span>
-        </div>
-      </div>
-
-      <div class="config-divider"></div>
-
-      <div class="section">
-        <h2 class="section-header">Accessories</h2>
-        <div class="acc-list" id="liftAccList"></div>
+        <h2 class="section-header">Pipe Track</h2>
+        <div class="motor-grid" id="liftTrackGrid"></div>
       </div>
 
       <div class="config-divider"></div>
@@ -1417,7 +1385,7 @@ body {
       <div class="mega-products">
         <div class="mega-product-card">
           <a href="#boatlift" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><path d="M4 20h16" stroke-dasharray="2 2"/></svg></a>
-          <div class="mega-card-title">Build Your Boat Lift</div>
+          <div class="mega-card-title">PWC Lift</div>
           <div class="mega-card-links"><a href="#">Learn</a><a href="#boatlift">Order</a></div>
         </div>
         <div class="mega-product-card">
@@ -1690,128 +1658,46 @@ function render() {
 
 // ── Boat Lift Configurator Data ──
 
-const liftTypes = [
-  { id: 'piling',    name: 'Piling Mount',     desc: 'Mounts between existing pilings, ideal for most docks',       price: 4250 },
-  { id: 'elevator',  name: 'Elevator Lift',    desc: 'Full platform lift, raises boat out of the water completely', price: 6800 },
-  { id: 'cradle',    name: 'Cradle Lift',      desc: 'Adjustable cradle system, conforms to hull shape',            price: 5400 },
-  { id: 'floating',  name: 'Floating Lift',    desc: 'Free-standing, no piling required, air-assisted buoyancy',   price: 7200 },
+const pwcMotors = [
+  { id: '34hp', name: '3/4 HP Motor', desc: 'Compact and efficient, ideal for lighter PWC',  price: 2495 },
+  { id: '1hp',  name: '1 HP Motor',   desc: 'Standard power for most personal watercraft',   price: 2895 },
+  { id: '15hp', name: '1.5 HP Motor', desc: 'High-speed cycle for quick launch and retrieve', price: 3295 },
 ];
 
-const liftCapacities = [
-  { id: '6k',  name: '6,000 lb',  delta: 0 },
-  { id: '10k', name: '10,000 lb', delta: 1200 },
-  { id: '16k', name: '16,000 lb', delta: 2800 },
-  { id: '20k', name: '20,000 lb', delta: 4500 },
-];
-
-const liftMotors = [
-  { id: 'none',     name: 'No Motor',       desc: 'Manual operation with wheel drive',              delta: 0 },
-  { id: 'standard', name: 'Standard Motor',  desc: '1 HP · 110V · 15 ft/min cycle speed',           delta: 1450 },
-  { id: 'high',     name: 'High-Speed Motor', desc: '1.5 HP · 110V · 25 ft/min cycle speed',        delta: 2100 },
-  { id: 'dual',     name: 'Dual Motor',       desc: '2x 1 HP · 220V · independent beam control',   delta: 3200 },
-];
-
-const liftMaterials = [
-  { id: 'aluminum',  name: 'Aluminum',       delta: 0 },
-  { id: 'steel',     name: 'Steel',          delta: -400 },
-  { id: 'stainless', name: 'Stainless Steel', delta: 2200 },
-];
-
-const liftFinishes = [
-  { id: 'galvanized', name: 'Hot-Dip Galvanized', color: '#9CA3AF', dark: false, delta: 0 },
-  { id: 'white',      name: 'White',              color: '#EAECEE', dark: false, delta: 650 },
-  { id: 'tan',        name: 'Sandstone Tan',      color: '#C2A878', dark: false, delta: 650 },
-  { id: 'black',      name: 'Black',              color: '#1F2937', dark: true,  delta: 750 },
-  { id: 'bronze',     name: 'Bronze',             color: '#6B4C2A', dark: true,  delta: 750 },
-];
-
-const liftAccessories = [
-  { id: 'bunks',     name: 'Carpeted Bunk Boards',   sub: 'Marine-grade carpet, adjustable width',  price: 320 },
-  { id: 'guides',    name: 'Guide Poles',             sub: '60″ PVC w/ LED-illuminated caps',        price: 280 },
-  { id: 'remote',    name: 'Wireless Remote Control',  sub: 'Keyfob + wall-mount transmitter',       price: 195 },
-  { id: 'solar',     name: 'Solar Charging Kit',       sub: '30W panel with charge controller',      price: 385 },
-  { id: 'led',       name: 'Underwater LED Kit',       sub: 'RGBW multi-color, app-controlled',      price: 475 },
-  { id: 'cathodic',  name: 'Cathodic Protection',      sub: 'Zinc anode system for corrosion defense', price: 145 },
-  { id: 'canopy',    name: 'Boat Canopy Frame',        sub: 'Aluminum frame, cover sold separately',  price: 1850 },
+const pwcTracks = [
+  { id: '9ft',  name: '9 Foot',  delta: 0 },
+  { id: '12ft', name: '12 Foot', delta: 450 },
 ];
 
 const liftState = {
-  type: 'piling',
-  capacity: '6k',
-  motor: 'none',
-  material: 'aluminum',
-  finish: 'galvanized',
-  acc: new Set(),
+  motor: '34hp',
+  track: '9ft',
 };
 
 function liftTotal() {
-  const t = liftTypes.find(x => x.id === liftState.type);
-  const c = liftCapacities.find(x => x.id === liftState.capacity);
-  const m = liftMotors.find(x => x.id === liftState.motor);
-  const mat = liftMaterials.find(x => x.id === liftState.material);
-  const f = liftFinishes.find(x => x.id === liftState.finish);
-  let total = t.price + c.delta + m.delta + mat.delta + f.delta;
-  for (const a of liftAccessories) if (liftState.acc.has(a.id)) total += a.price;
-  return total;
+  var m = pwcMotors.find(function(x) { return x.id === liftState.motor; });
+  var t = pwcTracks.find(function(x) { return x.id === liftState.track; });
+  return m.price + t.delta;
 }
 
 function renderLift() {
-  const ct = liftTypes.find(x => x.id === liftState.type);
-  document.getElementById('liftTitle').textContent = ct.name;
-  document.getElementById('liftSubtitle').textContent = ct.desc;
-  document.getElementById('liftHeroPrice').textContent = fmt(ct.price);
+  var cm = pwcMotors.find(function(x) { return x.id === liftState.motor; });
+  document.getElementById('liftTitle').textContent = 'PWC Lift';
+  document.getElementById('liftSubtitle').textContent = cm.desc;
+  document.getElementById('liftHeroPrice').textContent = fmt(cm.price);
 
-  document.getElementById('liftTypeList').innerHTML = liftTypes.map(t => `
-    <div class="option-card${liftState.type === t.id ? ' selected' : ''}" data-lifttype="${t.id}">
-      <div class="radio"><div class="radio-dot"></div></div>
-      <div class="option-text">
-        <div class="option-name">${t.name}</div>
-        <div class="option-desc">${t.desc}</div>
-      </div>
-      <div class="option-price">${fmt(t.price)}</div>
-    </div>`).join('');
+  document.getElementById('liftMotorList').innerHTML = pwcMotors.map(function(m) {
+    return '<div class="option-card' + (liftState.motor === m.id ? ' selected' : '') + '" data-liftmotor="' + m.id + '">' +
+      '<div class="radio"><div class="radio-dot"></div></div>' +
+      '<div class="option-text"><div class="option-name">' + m.name + '</div><div class="option-desc">' + m.desc + '</div></div>' +
+      '<div class="option-price">' + fmt(m.price) + '</div></div>';
+  }).join('');
 
-  document.getElementById('liftCapGrid').innerHTML = liftCapacities.map(c => `
-    <div class="motor-card${liftState.capacity === c.id ? ' selected' : ''}" data-liftcap="${c.id}">
-      <div class="motor-name">${c.name}</div>
-      <div class="motor-price">${c.delta === 0 ? 'Included' : '+' + fmt(c.delta)}</div>
-    </div>`).join('');
-
-  document.getElementById('liftMotorList').innerHTML = liftMotors.map(m => `
-    <div class="option-card${liftState.motor === m.id ? ' selected' : ''}" data-liftmotor="${m.id}">
-      <div class="radio"><div class="radio-dot"></div></div>
-      <div class="option-text">
-        <div class="option-name">${m.name}</div>
-        <div class="option-desc">${m.desc}</div>
-      </div>
-      <div class="option-price">${m.delta === 0 ? 'Included' : '+' + fmt(m.delta)}</div>
-    </div>`).join('');
-
-  document.getElementById('liftMaterialGrid').innerHTML = liftMaterials.map(m => `
-    <div class="motor-card${liftState.material === m.id ? ' selected' : ''}" data-liftmat="${m.id}">
-      <div class="motor-name">${m.name}</div>
-      <div class="motor-price">${m.delta === 0 ? 'Standard' : (m.delta < 0 ? '-' + fmt(Math.abs(m.delta)) : '+' + fmt(m.delta))}</div>
-    </div>`).join('');
-
-  document.getElementById('liftFinishRow').innerHTML = liftFinishes.map(f => `
-    <button class="swatch-btn${liftState.finish === f.id ? ' selected' : ''}${f.dark ? ' dark-swatch' : ''}"
-            data-liftfinish="${f.id}" style="background:${f.color}" title="${f.name}"></button>`).join('');
-
-  const sf = liftFinishes.find(f => f.id === liftState.finish);
-  document.getElementById('liftFinishName').textContent = sf.name;
-  document.getElementById('liftFinishPrice').textContent = sf.delta === 0 ? 'Included' : '+' + fmt(sf.delta);
-
-  document.getElementById('liftAccList').innerHTML = liftAccessories.map(a => `
-    <div class="acc-card${liftState.acc.has(a.id) ? ' selected' : ''}" data-liftacc="${a.id}">
-      <div class="cbox">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <div class="acc-text">
-        <div class="acc-name">${a.name}</div>
-        <div class="acc-sub">${a.sub}</div>
-      </div>
-      <div class="acc-price">+${fmt(a.price)}</div>
-    </div>`).join('');
+  document.getElementById('liftTrackGrid').innerHTML = pwcTracks.map(function(t) {
+    return '<div class="motor-card' + (liftState.track === t.id ? ' selected' : '') + '" data-lifttrack="' + t.id + '">' +
+      '<div class="motor-name">' + t.name + '</div>' +
+      '<div class="motor-price">' + (t.delta === 0 ? 'Included' : '+' + fmt(t.delta)) + '</div></div>';
+  }).join('');
 
   document.getElementById('liftTotalPrice').textContent = fmt(liftTotal());
 }
@@ -1956,19 +1842,11 @@ document.addEventListener('click', e => {
   var ma = e.target.closest('[data-motoradd]');
   if (ma) { var mid = ma.dataset.motoradd; motorState.addons.has(mid) ? motorState.addons.delete(mid) : motorState.addons.add(mid); renderMotor(); return; }
 
-  // Boat lift configurator
-  var lt = e.target.closest('[data-lifttype]');
-  if (lt) { liftState.type = lt.dataset.lifttype; renderLift(); return; }
-  var lc = e.target.closest('[data-liftcap]');
-  if (lc) { liftState.capacity = lc.dataset.liftcap; renderLift(); return; }
+  // PWC Lift configurator
   var lm = e.target.closest('[data-liftmotor]');
   if (lm) { liftState.motor = lm.dataset.liftmotor; renderLift(); return; }
-  var lmat = e.target.closest('[data-liftmat]');
-  if (lmat) { liftState.material = lmat.dataset.liftmat; renderLift(); return; }
-  var lf = e.target.closest('[data-liftfinish]');
-  if (lf) { liftState.finish = lf.dataset.liftfinish; renderLift(); return; }
-  var la = e.target.closest('[data-liftacc]');
-  if (la) { var lid = la.dataset.liftacc; liftState.acc.has(lid) ? liftState.acc.delete(lid) : liftState.acc.add(lid); renderLift(); return; }
+  var ltr = e.target.closest('[data-lifttrack]');
+  if (ltr) { liftState.track = ltr.dataset.lifttrack; renderLift(); return; }
 
   // Remote configurator
   const mc = e.target.closest('[data-model]');
