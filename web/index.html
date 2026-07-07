@@ -912,7 +912,7 @@ body {
     <div class="config-panel" id="liftConfigPanel">
       <h1 class="config-title" id="liftTitle">PWC Lift</h1>
       <p class="config-subtitle" id="liftSubtitle">Personal watercraft lift system</p>
-      <p class="config-price-hero">Est. Price: <span id="liftHeroPrice">$2,495</span></p>
+      <p class="config-price-hero">Est. Price: <span id="liftHeroPrice">$3,199</span></p>
 
       <div class="config-divider"></div>
 
@@ -954,7 +954,7 @@ body {
 
   <div class="bottom-bar">
     <div class="bar-left">
-      <span class="bar-price" id="liftTotalPrice">$4,250</span>
+      <span class="bar-price" id="liftTotalPrice">$3,199</span>
       <span class="bar-label">Est. Purchase Price</span>
     </div>
     <div class="bar-right">
@@ -1658,10 +1658,12 @@ function render() {
 
 // ── Boat Lift Configurator Data ──
 
+var pwcBase = 3199;
+
 const pwcMotors = [
-  { id: '34hp', name: '3/4 HP Motor', desc: 'Compact and efficient, ideal for lighter PWC',  price: 2495 },
-  { id: '1hp',  name: '1 HP Motor',   desc: 'Standard power for most personal watercraft',   price: 2895 },
-  { id: '15hp', name: '1.5 HP Motor', desc: 'High-speed cycle for quick launch and retrieve', price: 3295 },
+  { id: '34hp', name: '3/4 HP Motor', desc: 'Compact and efficient, ideal for lighter PWC',  delta: 0 },
+  { id: '1hp',  name: '1 HP Motor',   desc: 'Standard power for most personal watercraft',   delta: 100 },
+  { id: '15hp', name: '1.5 HP Motor', desc: 'High-speed cycle for quick launch and retrieve', delta: 150 },
 ];
 
 const pwcTracks = [
@@ -1677,20 +1679,19 @@ const liftState = {
 function liftTotal() {
   var m = pwcMotors.find(function(x) { return x.id === liftState.motor; });
   var t = pwcTracks.find(function(x) { return x.id === liftState.track; });
-  return m.price + t.delta;
+  return pwcBase + m.delta + t.delta;
 }
 
 function renderLift() {
-  var cm = pwcMotors.find(function(x) { return x.id === liftState.motor; });
   document.getElementById('liftTitle').textContent = 'PWC Lift';
-  document.getElementById('liftSubtitle').textContent = cm.desc;
-  document.getElementById('liftHeroPrice').textContent = fmt(cm.price);
+  document.getElementById('liftSubtitle').textContent = 'Personal watercraft lift system';
+  document.getElementById('liftHeroPrice').textContent = fmt(pwcBase);
 
   document.getElementById('liftMotorList').innerHTML = pwcMotors.map(function(m) {
     return '<div class="option-card' + (liftState.motor === m.id ? ' selected' : '') + '" data-liftmotor="' + m.id + '">' +
       '<div class="radio"><div class="radio-dot"></div></div>' +
       '<div class="option-text"><div class="option-name">' + m.name + '</div><div class="option-desc">' + m.desc + '</div></div>' +
-      '<div class="option-price">' + fmt(m.price) + '</div></div>';
+      '<div class="option-price">' + (m.delta === 0 ? 'Included' : '+' + fmt(m.delta)) + '</div></div>';
   }).join('');
 
   document.getElementById('liftTrackGrid').innerHTML = pwcTracks.map(function(t) {
