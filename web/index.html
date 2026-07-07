@@ -918,7 +918,7 @@ body {
     <div class="config-panel" id="liftConfigPanel">
       <h1 class="config-title" id="liftTitle"><span class="elevate-logo-mark"></span> Jet Ski Lift</h1>
       <p class="config-subtitle" id="liftSubtitle">Personal watercraft lift system</p>
-      <p class="config-price-hero">Est. Price: <span id="liftHeroPrice">$3,199</span></p>
+      <p class="config-price-hero">Est. Price: <span id="liftHeroPrice">$3,399</span></p>
 
       <div class="config-divider"></div>
 
@@ -939,6 +939,13 @@ body {
       <div class="section">
         <h2 class="section-header">Bunks</h2>
         <div class="option-list" id="liftBunkList"></div>
+      </div>
+
+      <div class="config-divider"></div>
+
+      <div class="section">
+        <h2 class="section-header">Control System</h2>
+        <div class="option-list" id="liftControlList"></div>
       </div>
 
       <div class="config-divider"></div>
@@ -967,7 +974,7 @@ body {
 
   <div class="bottom-bar">
     <div class="bar-left">
-      <span class="bar-price" id="liftTotalPrice">$3,199</span>
+      <span class="bar-price" id="liftTotalPrice">$3,399</span>
       <span class="bar-label">Est. Purchase Price</span>
     </div>
     <div class="bar-right">
@@ -1671,7 +1678,7 @@ function render() {
 
 // ── Boat Lift Configurator Data ──
 
-var pwcBase = 3199;
+var pwcBase = 3399;
 
 const pwcMotors = [
   { id: '34hp', name: '3/4 HP Motor', desc: 'Compact and efficient, ideal for lighter PWC',  delta: 0 },
@@ -1689,17 +1696,24 @@ const pwcBunks = [
   { id: 'aluminum', name: 'Aluminum Bunks',      desc: 'Lightweight, corrosion-resistant aluminum', delta: 350 },
 ];
 
+const pwcControls = [
+  { id: 'remote', name: 'Elevate Remote Mono', desc: 'Wireless keyfob remote, 300 ft range', delta: 599 },
+  { id: 'switch', name: 'Aqua Marine Switch',  desc: 'Hardwired toggle switch',              delta: 99 },
+];
+
 const liftState = {
   motor: '34hp',
   track: '9ft',
   bunk: 'wood',
+  control: 'remote',
 };
 
 function liftTotal() {
   var m = pwcMotors.find(function(x) { return x.id === liftState.motor; });
   var t = pwcTracks.find(function(x) { return x.id === liftState.track; });
   var b = pwcBunks.find(function(x) { return x.id === liftState.bunk; });
-  return pwcBase + m.delta + t.delta + b.delta;
+  var c = pwcControls.find(function(x) { return x.id === liftState.control; });
+  return pwcBase + m.delta + t.delta + b.delta + c.delta;
 }
 
 function renderLift() {
@@ -1725,6 +1739,13 @@ function renderLift() {
       '<div class="radio"><div class="radio-dot"></div></div>' +
       '<div class="option-text"><div class="option-name">' + b.name + '</div><div class="option-desc">' + b.desc + '</div></div>' +
       '<div class="option-price">' + (b.delta === 0 ? 'Included' : '+' + fmt(b.delta)) + '</div></div>';
+  }).join('');
+
+  document.getElementById('liftControlList').innerHTML = pwcControls.map(function(c) {
+    return '<div class="option-card' + (liftState.control === c.id ? ' selected' : '') + '" data-liftcontrol="' + c.id + '">' +
+      '<div class="radio"><div class="radio-dot"></div></div>' +
+      '<div class="option-text"><div class="option-name">' + c.name + '</div><div class="option-desc">' + c.desc + '</div></div>' +
+      '<div class="option-price">+' + fmt(c.delta) + '</div></div>';
   }).join('');
 
   document.getElementById('liftTotalPrice').textContent = fmt(liftTotal());
@@ -1877,6 +1898,8 @@ document.addEventListener('click', e => {
   if (ltr) { liftState.track = ltr.dataset.lifttrack; renderLift(); return; }
   var lb = e.target.closest('[data-liftbunk]');
   if (lb) { liftState.bunk = lb.dataset.liftbunk; renderLift(); return; }
+  var lc = e.target.closest('[data-liftcontrol]');
+  if (lc) { liftState.control = lc.dataset.liftcontrol; renderLift(); return; }
 
   // Remote configurator
   const mc = e.target.closest('[data-model]');
