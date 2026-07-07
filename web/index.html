@@ -446,6 +446,100 @@ body {
 
 
 /* ═══════════════════════════════════
+   PAGE: SHOP / ACCESSORIES (YETI style)
+   ═══════════════════════════════════ */
+
+#page-shop { background: #fff; color: #171A20; }
+
+.shop-hero {
+  background: #F5F5F5; padding: 48px 40px 40px; text-align: center;
+}
+.shop-hero-eyebrow {
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1.5px; color: #878A8F; margin-bottom: 8px;
+}
+.shop-hero-title {
+  font-size: 36px; font-weight: 600; letter-spacing: -0.5px;
+}
+.shop-hero-sub {
+  font-size: 15px; color: #5C5E62; margin-top: 8px; max-width: 520px; margin-left: auto; margin-right: auto;
+}
+
+.shop-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 40px; border-bottom: 1px solid #E8E8E8;
+  position: sticky; top: 65px; background: #fff; z-index: 50;
+}
+.shop-count { font-size: 14px; color: #5C5E62; }
+.shop-sort {
+  display: flex; align-items: center; gap: 8px;
+}
+.shop-sort label { font-size: 13px; color: #5C5E62; }
+.shop-sort select {
+  padding: 6px 12px; border: 1px solid #D0D1D2; border-radius: 4px;
+  font-size: 13px; color: #171A20; background: #fff; cursor: pointer;
+}
+
+.shop-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: #E8E8E8; max-width: 1200px; margin: 0 auto;
+}
+
+.shop-card {
+  background: #fff; padding: 24px; text-decoration: none; color: #171A20;
+  display: flex; flex-direction: column; transition: box-shadow 0.2s;
+  cursor: pointer;
+}
+.shop-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1; }
+
+.shop-card-badge {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.8px; color: #fff; background: #171A20;
+  padding: 4px 10px; border-radius: 3px; align-self: flex-start;
+  margin-bottom: 8px;
+}
+.shop-card-badge.new { background: #3E6AE1; }
+.shop-card-badge.sale { background: #C0392B; }
+
+.shop-card-image {
+  width: 100%; aspect-ratio: 1; background: #F5F5F5; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px; overflow: hidden;
+}
+.shop-card-image svg {
+  width: 40%; height: 40%; color: #878A8F;
+  transition: transform 0.3s ease;
+}
+.shop-card:hover .shop-card-image svg { transform: scale(1.08); }
+
+.shop-card-title {
+  font-size: 15px; font-weight: 600; margin-bottom: 4px;
+}
+.shop-card-desc {
+  font-size: 13px; color: #5C5E62; line-height: 1.4; margin-bottom: 12px;
+  flex: 1;
+}
+.shop-card-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.shop-card-price { font-size: 16px; font-weight: 600; }
+.shop-card-btn {
+  font-size: 12px; font-weight: 500; color: #3E6AE1;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .shop-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .shop-grid { grid-template-columns: 1fr; }
+  .shop-hero { padding: 32px 20px; }
+  .shop-hero-title { font-size: 28px; }
+  .shop-toolbar { padding: 12px 20px; }
+}
+
+
+/* ═══════════════════════════════════
    PAGE: LEARN (Tesla Model Y style)
    ═══════════════════════════════════ */
 
@@ -904,6 +998,154 @@ body {
 
 
 <!-- ════════════════════════════════════════
+     PAGE: SHOP - ACCESSORIES
+     ════════════════════════════════════════ -->
+<div id="page-shop" class="page-hidden">
+
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <a class="cfg-nav-logo" href="#home"></a>
+      <div class="cfg-nav-center">
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
+        <button>Structure</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
+        <button>Dealers</button>
+        <button>Resources</button>
+      </div>
+      <div class="cfg-nav-right">
+        <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
+        <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="shop-hero">
+    <div class="shop-hero-eyebrow">Lift Systems</div>
+    <h1 class="shop-hero-title">Accessories</h1>
+    <p class="shop-hero-sub">Everything you need to complete your boat lift setup. Built tough for the water.</p>
+  </div>
+
+  <div class="shop-toolbar">
+    <div class="shop-count">8 Products</div>
+    <div class="shop-sort">
+      <label>Sort by</label>
+      <select>
+        <option>Featured</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Newest</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="shop-grid">
+
+    <a class="shop-card" href="#config">
+      <span class="shop-card-badge new">New</span>
+      <div class="shop-card-image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="6" width="8" height="12" rx="2"/><rect x="13" y="6" width="8" height="12" rx="2"/></svg>
+      </div>
+      <div class="shop-card-title">Carpeted Bunk Boards</div>
+      <div class="shop-card-desc">Marine-grade carpet, adjustable width. Protects your hull during lift and launch.</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">$320</span>
+        <span class="shop-card-btn">Add to Build</span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="#config">
+      <div class="shop-card-image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="8" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="16" y2="21"/><circle cx="8" cy="4" r="2" fill="currentColor"/><circle cx="16" cy="4" r="2" fill="currentColor"/></svg>
+      </div>
+      <div class="shop-card-title">Guide Poles</div>
+      <div class="shop-card-desc">60″ PVC with LED-illuminated caps. Guide your boat onto the lift every time.</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">$280</span>
+        <span class="shop-card-btn">Add to Build</span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="#config">
+      <span class="shop-card-badge">Best Seller</span>
+      <div class="shop-card-image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 10a10 10 0 0 1 20 0"/><path d="M6 10a6 6 0 0 1 12 0"/><circle cx="12" cy="14" r="3"/></svg>
+      </div>
+      <div class="shop-card-title">Wireless Remote Control</div>
+      <div class="shop-card-desc">Keyfob + wall-mount transmitter. 300 ft range, encrypted signal.</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">$195</span>
+        <span class="shop-card-btn">Add to Build</span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="#config">
+      <div class="shop-card-image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </div>
+      <div class="shop-card-title">Solar Charging Kit</div>
+      <div class="shop-card-desc">30W panel with charge controller. Keep your lift battery topped off year-round.</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">$385</span>
+        <span class="shop-card-btn">Add to Build</span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="#config">
+      <span class="shop-card-badge new">New</span>
+      <div class="shop-card-image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 4 12.7V17H8v-2.3A7 7 0 0 1 12 2z"/></svg>
+      </div>
+      <div class="shop-card-title">Underwater LED Kit</div>
+      <div class="shop-card-desc">RGBW multi-color, app-controlled. Light up your slip and attract fish.</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">$475</span>
+        <span class="shop-card-btn">Add to Build</span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="#">
+      <div class="shop-card-image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="shop-card-title">Cathodic Protection</div>
+      <div class="shop-card-desc">Zinc anode system for corrosion defense. Extends the life of your lift and dock hardware.</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">$145</span>
+        <span class="shop-card-btn">Add to Build</span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="#">
+      <div class="shop-card-image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="shop-card-title">Boat Canopy Frame</div>
+      <div class="shop-card-desc">Aluminum frame, cover sold separately. Protect your boat from sun and weather damage.</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">$1,850</span>
+        <span class="shop-card-btn">Add to Build</span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="#config">
+      <div class="shop-card-image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><ellipse cx="12" cy="8" rx="4" ry="6"/><path d="M8 14v4a4 4 0 0 0 8 0v-4"/></svg>
+      </div>
+      <div class="shop-card-title">Remote Cover</div>
+      <div class="shop-card-desc">Silicone cover to protect keypad. Keeps dirt, water, and UV damage out.</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">$45.99</span>
+        <span class="shop-card-btn">Add to Build</span>
+      </div>
+    </a>
+
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
      PAGE: LEARN - BOAT LIFT REMOTES
      ════════════════════════════════════════ -->
 <div id="page-learn" class="page-hidden">
@@ -1086,9 +1328,9 @@ body {
           <div class="mega-card-links"><a href="#">Learn</a><a href="#">Order</a></div>
         </div>
         <div class="mega-product-card">
-          <a href="#" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></a>
+          <a href="#shop" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></a>
           <div class="mega-card-title">Accessories</div>
-          <div class="mega-card-links"><a href="#">Learn</a><a href="#">Order</a></div>
+          <div class="mega-card-links"><a href="#shop">Learn</a><a href="#shop">Order</a></div>
         </div>
       </div>
       <div class="mega-sidebar">
@@ -1173,6 +1415,7 @@ function showPage(page) {
   document.getElementById('page-config').classList.toggle('page-hidden', page !== 'config');
   document.getElementById('page-boatlift').classList.toggle('page-hidden', page !== 'boatlift');
   document.getElementById('page-learn').classList.toggle('page-hidden', page !== 'learn');
+  document.getElementById('page-shop').classList.toggle('page-hidden', page !== 'shop');
   document.body.style.background = page === 'home' ? '#000' : '#fff';
   document.getElementById('megaPanel').classList.remove('open');
   document.getElementById('megaPanelLiving').classList.remove('open');
@@ -1537,6 +1780,7 @@ renderLift();
 if (location.hash === '#config') showPage('config');
 if (location.hash === '#boatlift') showPage('boatlift');
 if (location.hash === '#learn') showPage('learn');
+if (location.hash === '#shop') showPage('shop');
 
 // ── Hover-based mega dropdowns (desktop) ──
 var megaTimer = null;
