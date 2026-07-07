@@ -58,9 +58,13 @@ body {
 .nav-dropdown-trigger:hover { background: rgba(0,0,0,0.05); }
 
 .mega-panel {
-  display: none; position: fixed; top: 65px; left: 0; right: 0; bottom: 0; z-index: 300;
+  position: fixed; top: 65px; left: 0; right: 0; bottom: 0; z-index: 300;
+  pointer-events: none; opacity: 0; visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
-.mega-panel.open { display: block; }
+.mega-panel.open {
+  pointer-events: auto; opacity: 1; visibility: visible;
+}
 
 .mega-backdrop {
   position: absolute; inset: 0; background: rgba(0,0,0,0.25);
@@ -70,6 +74,11 @@ body {
   position: relative; z-index: 1;
   background: #fff; box-shadow: 0 8px 30px rgba(0,0,0,0.1);
   padding: 32px 0;
+  transform: translateY(-8px);
+  transition: transform 0.25s ease;
+}
+.mega-panel.open .mega-dropdown {
+  transform: translateY(0);
 }
 
 .mega-inner {
@@ -1040,15 +1049,15 @@ function renderLift() {
 // ── Events ──
 
 document.addEventListener('click', e => {
-  // Mega panel toggle
-  if (e.target.closest('[data-toggle-dropdown]')) {
-    var mp = document.getElementById('megaPanel');
-    mp.classList.toggle('open');
-    return;
-  }
   // Close mega panel on backdrop click
   if (e.target.id === 'megaBackdrop') {
     document.getElementById('megaPanel').classList.remove('open');
+    return;
+  }
+  // Also close on click for mobile
+  if (e.target.closest('[data-toggle-dropdown]')) {
+    var mp = document.getElementById('megaPanel');
+    mp.classList.toggle('open');
     return;
   }
 
@@ -1095,6 +1104,31 @@ render();
 renderLift();
 if (location.hash === '#config') showPage('config');
 if (location.hash === '#boatlift') showPage('boatlift');
+
+// ── Hover-based mega dropdown (desktop) ──
+var megaTimer = null;
+var megaPanel = document.getElementById('megaPanel');
+
+document.querySelectorAll('[data-toggle-dropdown]').forEach(function(trigger) {
+  trigger.addEventListener('mouseenter', function() {
+    clearTimeout(megaTimer);
+    megaPanel.classList.add('open');
+  });
+  trigger.addEventListener('mouseleave', function() {
+    megaTimer = setTimeout(function() {
+      if (!megaPanel.matches(':hover')) megaPanel.classList.remove('open');
+    }, 150);
+  });
+});
+
+megaPanel.addEventListener('mouseenter', function() {
+  clearTimeout(megaTimer);
+});
+megaPanel.addEventListener('mouseleave', function() {
+  megaTimer = setTimeout(function() {
+    megaPanel.classList.remove('open');
+  }, 200);
+});
 </script>
 </body>
 </html>
