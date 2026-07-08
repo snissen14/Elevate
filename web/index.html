@@ -217,6 +217,68 @@ body {
 }
 .dot.active { background: #fff; }
 
+/* Product scroll section */
+.product-scroll {
+  background: #fff; padding: 48px 0 56px; position: relative;
+}
+.product-scroll-header {
+  padding: 0 40px; margin-bottom: 28px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.product-scroll-title { font-size: 24px; font-weight: 600; color: #171A20; }
+.product-scroll-arrows { display: flex; gap: 8px; }
+.product-scroll-arrows button {
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid #D0D1D2;
+  background: #fff; cursor: pointer; display: flex; align-items: center;
+  justify-content: center; transition: background 0.15s;
+}
+.product-scroll-arrows button:hover { background: #F5F5F5; }
+.product-scroll-arrows button svg { width: 16px; height: 16px; color: #171A20; }
+
+.product-scroll-track {
+  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 0 40px; scrollbar-width: none; -ms-overflow-style: none;
+}
+.product-scroll-track::-webkit-scrollbar { display: none; }
+
+.product-scroll-card {
+  min-width: 48%; flex-shrink: 0; border-radius: 12px; overflow: hidden;
+  position: relative; scroll-snap-align: start; text-decoration: none;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  height: 420px; padding: 32px; color: #fff; cursor: pointer;
+}
+.product-scroll-card-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.product-scroll-card-label {
+  position: absolute; top: 20px; left: 24px; z-index: 2;
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7);
+}
+.product-scroll-card-content { position: relative; z-index: 2; }
+.product-scroll-card-name {
+  font-size: 28px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 4px;
+}
+.product-scroll-card-price {
+  font-size: 14px; color: rgba(255,255,255,0.8); margin-bottom: 20px;
+}
+.product-scroll-card-btns { display: flex; gap: 12px; }
+.product-scroll-card-btns a {
+  padding: 10px 32px; border-radius: 4px; font-size: 13px; font-weight: 500;
+  text-decoration: none; transition: background 0.15s;
+}
+.psc-btn-primary { background: #3E6AE1; color: #fff; }
+.psc-btn-primary:hover { background: #3560CC; }
+.psc-btn-secondary { background: rgba(255,255,255,0.2); color: #fff; backdrop-filter: blur(4px); }
+.psc-btn-secondary:hover { background: rgba(255,255,255,0.3); }
+
+.product-scroll-dots {
+  display: flex; justify-content: center; gap: 6px; margin-top: 24px;
+}
+.product-scroll-dots span {
+  width: 8px; height: 8px; border-radius: 50%; background: #D0D1D2;
+}
+.product-scroll-dots span:first-child { background: #171A20; }
+
 /* Home mobile */
 @media (max-width: 768px) {
   .home-nav-center { display: none; }
@@ -224,6 +286,10 @@ body {
   .slide-content { padding-top: 100px; }
   .slide-buttons { flex-direction: column; gap: 10px; }
   .btn-order, .btn-learnmore { padding: 12px 40px; }
+  .product-scroll-card { min-width: 85%; height: 340px; }
+  .product-scroll-card-name { font-size: 22px; }
+  .product-scroll-header { padding: 0 20px; }
+  .product-scroll-track { padding: 0 20px; }
 }
 
 
@@ -939,6 +1005,75 @@ body {
       <button class="dot" data-dot="2"></button>
     </div>
   </div>
+
+  <!-- Product Scroll Section -->
+  <section class="product-scroll">
+    <div class="product-scroll-header">
+      <div class="product-scroll-title">Shop by Product</div>
+      <div class="product-scroll-arrows">
+        <button data-pscroll="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button data-pscroll="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="product-scroll-track" id="productScrollTrack">
+
+      <div class="product-scroll-card">
+        <div class="product-scroll-card-bg" style="background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);"></div>
+        <div class="product-scroll-card-label">PWC Lift System</div>
+        <div class="product-scroll-card-content">
+          <div class="product-scroll-card-name">Elevate Jet Ski Lift</div>
+          <div class="product-scroll-card-price">Starting at $3,399</div>
+          <div class="product-scroll-card-btns">
+            <a class="psc-btn-primary" href="#boatlift">Order Now</a>
+            <a class="psc-btn-secondary" href="#">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-scroll-card">
+        <div class="product-scroll-card-bg" style="background: linear-gradient(160deg, #0c1821 0%, #1b2838 50%, #324a5f 100%);"></div>
+        <div class="product-scroll-card-label">Remote Control System</div>
+        <div class="product-scroll-card-content">
+          <div class="product-scroll-card-name">Elevate Remote</div>
+          <div class="product-scroll-card-price">Starting at $599</div>
+          <div class="product-scroll-card-btns">
+            <a class="psc-btn-primary" href="#config">Order Now</a>
+            <a class="psc-btn-secondary" href="#learn">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-scroll-card">
+        <div class="product-scroll-card-bg" style="background: linear-gradient(160deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%);"></div>
+        <div class="product-scroll-card-label">Lift Power</div>
+        <div class="product-scroll-card-content">
+          <div class="product-scroll-card-name">Boat Lift Motors</div>
+          <div class="product-scroll-card-price">Starting at $1,450</div>
+          <div class="product-scroll-card-btns">
+            <a class="psc-btn-primary" href="#motors">Order Now</a>
+            <a class="psc-btn-secondary" href="#">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-scroll-card">
+        <div class="product-scroll-card-bg" style="background: linear-gradient(160deg, #14213d 0%, #1d3557 50%, #457b9d 100%);"></div>
+        <div class="product-scroll-card-label">Accessories</div>
+        <div class="product-scroll-card-content">
+          <div class="product-scroll-card-name">Lift Accessories</div>
+          <div class="product-scroll-card-price">From $45.99</div>
+          <div class="product-scroll-card-btns">
+            <a class="psc-btn-primary" href="#shop">Shop All</a>
+            <a class="psc-btn-secondary" href="#shop">Browse</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="product-scroll-dots">
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </section>
 
 </div>
 
@@ -2148,6 +2283,15 @@ document.addEventListener('click', e => {
       document.getElementById('megaPanelLiving').classList.remove('open');
       if (!isOpen) document.getElementById(targetPanel).classList.add('open');
     }
+    return;
+  }
+
+  // Product scroll arrows
+  var pscroll = e.target.closest('[data-pscroll]');
+  if (pscroll) {
+    var track = document.getElementById('productScrollTrack');
+    var dir = parseInt(pscroll.dataset.pscroll);
+    track.scrollBy({ left: dir * 400, behavior: 'smooth' });
     return;
   }
 
