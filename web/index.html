@@ -918,6 +918,62 @@ body {
 
 
 /* ═══════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════ */
+
+.site-footer {
+  background: #fff; border-top: 1px solid #E8E8E8;
+  padding: 48px 40px 32px;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 40px; margin-bottom: 40px;
+}
+.footer-col-title {
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1.2px; color: #171A20; margin-bottom: 16px;
+}
+.footer-col a {
+  display: block; font-size: 13px; color: #5C5E62;
+  text-decoration: none; padding: 4px 0; transition: color 0.15s;
+}
+.footer-col a:hover { color: #171A20; }
+
+.footer-brand-col p {
+  font-size: 13px; color: #5C5E62; line-height: 1.6; margin-bottom: 16px; max-width: 280px;
+}
+.footer-social { display: flex; gap: 12px; }
+.footer-social a {
+  width: 32px; height: 32px; border-radius: 50%; background: #F5F5F5;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.footer-social a:hover { background: #E8E8E8; }
+.footer-social svg { width: 16px; height: 16px; color: #5C5E62; }
+
+.footer-bottom {
+  border-top: 1px solid #E8E8E8; padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-copyright { font-size: 12px; color: #878A8F; }
+.footer-legal { display: flex; gap: 24px; }
+.footer-legal a {
+  font-size: 12px; color: #878A8F; text-decoration: none; transition: color 0.15s;
+}
+.footer-legal a:hover { color: #171A20; }
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .site-footer { padding: 32px 20px 24px; }
+}
+
+
+/* ═══════════════════════════════════
    PAGE SWITCHING
    ═══════════════════════════════════ */
 .page-hidden { display: none !important; }
@@ -1080,6 +1136,60 @@ body {
       <span></span><span></span><span></span><span></span>
     </div>
   </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand-col">
+          <div class="footer-col-title">DockSolutions Inc.</div>
+          <p>Premium boat lift systems, dock accessories, and marine hardware. Engineered for waterfront living.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43zM9.75 15.02V8.48l5.75 3.27-5.75 3.27z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Products</div>
+          <a href="#boatlift">Jet Ski Lifts</a>
+          <a href="#config">Lift Remotes</a>
+          <a href="#motors">Lift Motors</a>
+          <a href="#shop">Accessories</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a href="#">About Us</a>
+          <a href="#">Find a Dealer</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Support</div>
+          <a href="#">Help Center</a>
+          <a href="#">Installation Guides</a>
+          <a href="#">Warranty Info</a>
+          <a href="#">Returns &amp; Exchanges</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Contact</div>
+          <a href="mailto:info@docksolutions.com">info@docksolutions.com</a>
+          <a href="tel:+1234567890">(123) 456-7890</a>
+          <a href="#">Mon–Fri 8am–6pm EST</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copyright">&copy; 2026 DockSolutions Inc. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Refund Policy</a>
+          <a href="#">Shipping Policy</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </div>
 
