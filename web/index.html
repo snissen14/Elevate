@@ -457,32 +457,28 @@ body {
 
 #page-pdp { background: #fff; color: #171A20; }
 
-.pdp-main {
-  display: grid; grid-template-columns: 1fr 1fr;
-  max-width: 1200px; margin: 0 auto; padding: 40px 40px 0; gap: 48px;
-  min-height: calc(100vh - 65px);
+.pdp-layout {
+  display: grid; grid-template-columns: 3fr 2fr;
+  max-width: 1400px; margin: 0 auto;
 }
 
+/* Left: scrolling 2-col image grid */
 .pdp-gallery {
-  position: sticky; top: 105px; align-self: start;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
 }
-.pdp-image-main {
-  width: 100%; aspect-ratio: 1; background: #F5F5F5; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
-}
-.pdp-image-main svg { width: 40%; height: 40%; color: #878A8F; }
-
-.pdp-thumbs { display: flex; gap: 8px; }
-.pdp-thumb {
-  width: 72px; height: 72px; background: #F5F5F5; border-radius: 8px;
-  border: 2px solid transparent; cursor: pointer;
+.pdp-gallery-img {
+  width: 100%; aspect-ratio: 1; background: #F5F5F5;
   display: flex; align-items: center; justify-content: center;
-  transition: border-color 0.15s;
 }
-.pdp-thumb.active, .pdp-thumb:hover { border-color: #171A20; }
-.pdp-thumb svg { width: 50%; height: 50%; color: #878A8F; }
+.pdp-gallery-img svg { width: 35%; height: 35%; color: #878A8F; }
+.pdp-gallery-img.wide { grid-column: span 2; aspect-ratio: 2/1; }
 
-.pdp-info { padding-top: 8px; }
+/* Right: sticky info panel */
+.pdp-info {
+  position: sticky; top: 65px; align-self: start;
+  height: calc(100vh - 65px); overflow-y: auto;
+  padding: 32px 40px 40px;
+}
 .pdp-breadcrumb {
   font-size: 12px; color: #878A8F; margin-bottom: 12px;
 }
@@ -566,11 +562,10 @@ body {
 .pdp-specs-table td:last-child { color: #5C5E62; }
 
 @media (max-width: 768px) {
-  .pdp-main { grid-template-columns: 1fr; padding: 20px; gap: 24px; }
-  .pdp-gallery { position: relative; top: 0; }
+  .pdp-layout { grid-template-columns: 1fr; }
+  .pdp-gallery { grid-template-columns: 1fr; }
+  .pdp-info { position: relative; top: 0; height: auto; overflow: visible; padding: 24px 20px; }
   .pdp-title { font-size: 24px; }
-  .pdp-section-banner { flex-direction: column; padding: 32px 24px; }
-  .pdp-full-sections { padding: 0 20px 40px; }
 }
 
 
@@ -1131,15 +1126,8 @@ body {
     </div>
   </nav>
 
-  <div class="pdp-main">
-    <div class="pdp-gallery">
-      <div class="pdp-image-main" id="pdpImage"></div>
-      <div class="pdp-thumbs">
-        <div class="pdp-thumb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div>
-        <div class="pdp-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="9"/></svg></div>
-        <div class="pdp-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></div>
-      </div>
-    </div>
+  <div class="pdp-layout">
+    <div class="pdp-gallery" id="pdpGallery"></div>
 
     <div class="pdp-info">
       <div class="pdp-breadcrumb">
@@ -1164,21 +1152,6 @@ body {
         <div class="pdp-features-title">Features</div>
         <ul class="pdp-feature-list" id="pdpFeatures"></ul>
       </div>
-    </div>
-  </div>
-
-  <div class="pdp-full-sections">
-    <div class="pdp-section-banner">
-      <div class="pdp-section-banner-icon" id="pdpBannerIcon"></div>
-      <div>
-        <h3 id="pdpBannerTitle">Built for the Water</h3>
-        <p id="pdpBannerDesc">Every DockSolutions accessory is engineered to withstand the harshest marine environments while delivering reliable performance season after season.</p>
-      </div>
-    </div>
-
-    <div class="pdp-specs-grid">
-      <div class="pdp-specs-title">Specifications</div>
-      <table class="pdp-specs-table" id="pdpSpecs"></table>
     </div>
   </div>
 
@@ -2199,14 +2172,14 @@ function showProduct(name) {
   document.getElementById('pdpPrice').textContent = p.price;
   document.getElementById('pdpDesc').textContent = p.desc;
   document.getElementById('pdpReviews').textContent = p.reviews + ' Reviews';
-  document.getElementById('pdpImage').innerHTML = p.icon;
   document.getElementById('pdpFeatures').innerHTML = p.features.map(function(f) {
     return '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>' + f + '</li>';
   }).join('');
-  document.getElementById('pdpSpecs').innerHTML = p.specs.map(function(s) {
-    return '<tr><td>' + s[0] + '</td><td>' + s[1] + '</td></tr>';
+  // Build scrolling 2-col image grid (6 panels)
+  var bg = ['#F5F5F5','#EBEDF0','#F5F5F5','#EBEDF0','#F5F5F5','#EBEDF0'];
+  document.getElementById('pdpGallery').innerHTML = bg.map(function(c, i) {
+    return '<div class="pdp-gallery-img" style="background:' + c + '">' + p.icon + '</div>';
   }).join('');
-  document.getElementById('pdpBannerIcon').innerHTML = p.icon;
   showPage('pdp');
 }
 
