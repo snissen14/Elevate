@@ -1014,6 +1014,19 @@ body {
   <div class="carousel" id="carousel">
     <div class="carousel-track" id="carouselTrack">
 
+      <!-- Slide 0: Video placeholder -->
+      <div class="slide">
+        <div class="slide-bg" style="background: linear-gradient(180deg, #0a1628 0%, #122240 30%, #1a3a5c 60%, #2a5f8f 100%);"></div>
+        <div class="slide-content" style="padding-top: 0; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <div class="slide-title" style="font-size: clamp(40px, 5vw, 64px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.05; text-align: center;">Create Your Dream<br>Waterfront</div>
+          <div class="slide-subtitle" style="margin-top: 16px; font-size: 18px;">Premium dock systems engineered for waterfront living</div>
+          <div class="slide-buttons" style="margin-top: 32px;">
+            <a class="btn-order" href="#shop">Explore Products</a>
+            <button class="btn-learnmore">Watch Video</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Slide 1 -->
       <div class="slide">
         <div class="slide-bg" style="background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);"></div>
@@ -1068,6 +1081,7 @@ body {
       <button class="dot active" data-dot="0"></button>
       <button class="dot" data-dot="1"></button>
       <button class="dot" data-dot="2"></button>
+      <button class="dot" data-dot="3"></button>
     </div>
   </div>
 
@@ -2079,7 +2093,7 @@ window.addEventListener('hashchange', function() {
 // ── Carousel ──
 
 let currentSlide = 0;
-const slideCount = 3;
+const slideCount = 4;
 
 function slideCarousel(dir) {
   currentSlide = (currentSlide + dir + slideCount) % slideCount;
