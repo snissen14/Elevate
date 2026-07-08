@@ -452,6 +452,129 @@ body {
 
 
 /* ═══════════════════════════════════
+   PAGE: PRODUCT DETAIL (YETI PDP style)
+   ═══════════════════════════════════ */
+
+#page-pdp { background: #fff; color: #171A20; }
+
+.pdp-main {
+  display: grid; grid-template-columns: 1fr 1fr;
+  max-width: 1200px; margin: 0 auto; padding: 40px 40px 0; gap: 48px;
+  min-height: calc(100vh - 65px);
+}
+
+.pdp-gallery {
+  position: sticky; top: 105px; align-self: start;
+}
+.pdp-image-main {
+  width: 100%; aspect-ratio: 1; background: #F5F5F5; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
+}
+.pdp-image-main svg { width: 40%; height: 40%; color: #878A8F; }
+
+.pdp-thumbs { display: flex; gap: 8px; }
+.pdp-thumb {
+  width: 72px; height: 72px; background: #F5F5F5; border-radius: 8px;
+  border: 2px solid transparent; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.15s;
+}
+.pdp-thumb.active, .pdp-thumb:hover { border-color: #171A20; }
+.pdp-thumb svg { width: 50%; height: 50%; color: #878A8F; }
+
+.pdp-info { padding-top: 8px; }
+.pdp-breadcrumb {
+  font-size: 12px; color: #878A8F; margin-bottom: 12px;
+}
+.pdp-breadcrumb a { color: #878A8F; text-decoration: none; }
+.pdp-breadcrumb a:hover { color: #171A20; text-decoration: underline; }
+
+.pdp-title { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 8px; }
+.pdp-price { font-size: 22px; font-weight: 600; margin-bottom: 20px; }
+
+.pdp-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+.pdp-stars { display: flex; gap: 2px; }
+.pdp-stars svg { width: 16px; height: 16px; fill: #171A20; }
+.pdp-review-count { font-size: 13px; color: #5C5E62; }
+
+.pdp-desc {
+  font-size: 15px; color: #5C5E62; line-height: 1.7; margin-bottom: 24px;
+  border-bottom: 1px solid #E8E8E8; padding-bottom: 24px;
+}
+
+.pdp-add-btn {
+  display: block; width: 100%; padding: 16px; border: none; border-radius: 6px;
+  font-size: 16px; font-weight: 600; background: #171A20; color: #fff;
+  cursor: pointer; transition: background 0.15s; margin-bottom: 16px;
+}
+.pdp-add-btn:hover { background: #000; }
+
+.pdp-secondary-btn {
+  display: block; width: 100%; padding: 14px; border: 2px solid #171A20; border-radius: 6px;
+  font-size: 14px; font-weight: 500; background: transparent; color: #171A20;
+  cursor: pointer; transition: background 0.15s; margin-bottom: 32px; text-align: center;
+  text-decoration: none;
+}
+.pdp-secondary-btn:hover { background: #F5F5F5; }
+
+.pdp-features {
+  border-top: 1px solid #E8E8E8; padding-top: 24px;
+}
+.pdp-features-title {
+  font-size: 14px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1px; color: #171A20; margin-bottom: 16px;
+}
+.pdp-feature-list { list-style: none; padding: 0; }
+.pdp-feature-list li {
+  font-size: 14px; color: #5C5E62; padding: 8px 0;
+  border-bottom: 1px solid #F0F0F0;
+  display: flex; align-items: center; gap: 10px;
+}
+.pdp-feature-list li svg { width: 16px; height: 16px; color: #171A20; flex-shrink: 0; }
+
+/* Full-width sections below */
+.pdp-full-sections {
+  max-width: 1200px; margin: 0 auto; padding: 0 40px 60px;
+}
+
+.pdp-section-banner {
+  margin-top: 48px; padding: 48px; background: #F5F5F5; border-radius: 12px;
+  display: flex; gap: 40px; align-items: center;
+}
+.pdp-section-banner-icon {
+  width: 120px; height: 120px; background: #E8E8E8; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.pdp-section-banner-icon svg { width: 48px; height: 48px; color: #5C5E62; }
+.pdp-section-banner h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+.pdp-section-banner p { font-size: 14px; color: #5C5E62; line-height: 1.6; }
+
+.pdp-specs-grid {
+  margin-top: 48px;
+}
+.pdp-specs-title {
+  font-size: 20px; font-weight: 600; margin-bottom: 20px;
+}
+.pdp-specs-table {
+  width: 100%; border-collapse: collapse;
+}
+.pdp-specs-table tr { border-bottom: 1px solid #E8E8E8; }
+.pdp-specs-table td {
+  padding: 12px 0; font-size: 14px;
+}
+.pdp-specs-table td:first-child { font-weight: 500; color: #171A20; width: 40%; }
+.pdp-specs-table td:last-child { color: #5C5E62; }
+
+@media (max-width: 768px) {
+  .pdp-main { grid-template-columns: 1fr; padding: 20px; gap: 24px; }
+  .pdp-gallery { position: relative; top: 0; }
+  .pdp-title { font-size: 24px; }
+  .pdp-section-banner { flex-direction: column; padding: 32px 24px; }
+  .pdp-full-sections { padding: 0 20px 40px; }
+}
+
+
+/* ═══════════════════════════════════
    PAGE: SHOP / ACCESSORIES (YETI style)
    ═══════════════════════════════════ */
 
@@ -986,6 +1109,83 @@ body {
 
 
 <!-- ════════════════════════════════════════
+     PAGE: PRODUCT DETAIL
+     ════════════════════════════════════════ -->
+<div id="page-pdp" class="page-hidden">
+
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <a class="cfg-nav-logo" href="#home"></a>
+      <div class="cfg-nav-center">
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
+        <button>Structure</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
+        <button>Dealers</button>
+        <button>Resources</button>
+      </div>
+      <div class="cfg-nav-right">
+        <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
+        <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="pdp-main">
+    <div class="pdp-gallery">
+      <div class="pdp-image-main" id="pdpImage"></div>
+      <div class="pdp-thumbs">
+        <div class="pdp-thumb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div>
+        <div class="pdp-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="9"/></svg></div>
+        <div class="pdp-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></div>
+      </div>
+    </div>
+
+    <div class="pdp-info">
+      <div class="pdp-breadcrumb">
+        <a href="#shop">Accessories</a> / <span id="pdpBreadcrumb">Product</span>
+      </div>
+      <h1 class="pdp-title" id="pdpTitle">Product Name</h1>
+      <div class="pdp-price" id="pdpPrice">$0</div>
+      <div class="pdp-rating">
+        <div class="pdp-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z" fill-opacity="0.3"/></svg>
+        </div>
+        <span class="pdp-review-count" id="pdpReviews">24 Reviews</span>
+      </div>
+      <div class="pdp-desc" id="pdpDesc">Product description goes here.</div>
+      <button class="pdp-add-btn">Add to Cart</button>
+      <a class="pdp-secondary-btn" href="#boatlift">Add to Lift Build</a>
+      <div class="pdp-features">
+        <div class="pdp-features-title">Features</div>
+        <ul class="pdp-feature-list" id="pdpFeatures"></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdp-full-sections">
+    <div class="pdp-section-banner">
+      <div class="pdp-section-banner-icon" id="pdpBannerIcon"></div>
+      <div>
+        <h3 id="pdpBannerTitle">Built for the Water</h3>
+        <p id="pdpBannerDesc">Every DockSolutions accessory is engineered to withstand the harshest marine environments while delivering reliable performance season after season.</p>
+      </div>
+    </div>
+
+    <div class="pdp-specs-grid">
+      <div class="pdp-specs-title">Specifications</div>
+      <table class="pdp-specs-table" id="pdpSpecs"></table>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
      PAGE: MOTORS CONFIGURATOR
      ════════════════════════════════════════ -->
 <div id="page-motors" class="page-hidden">
@@ -1508,6 +1708,7 @@ function showPage(page) {
   document.getElementById('page-learn').classList.toggle('page-hidden', page !== 'learn');
   document.getElementById('page-shop').classList.toggle('page-hidden', page !== 'shop');
   document.getElementById('page-motors').classList.toggle('page-hidden', page !== 'motors');
+  document.getElementById('page-pdp').classList.toggle('page-hidden', page !== 'pdp');
   document.body.style.background = page === 'home' ? '#000' : '#fff';
   document.getElementById('megaPanel').classList.remove('open');
   document.getElementById('megaPanelLiving').classList.remove('open');
@@ -1901,6 +2102,15 @@ document.addEventListener('click', e => {
   var lc = e.target.closest('[data-liftcontrol]');
   if (lc) { liftState.control = lc.dataset.liftcontrol; renderLift(); return; }
 
+  // Shop card click → product detail
+  var shopCard = e.target.closest('.shop-card');
+  if (shopCard) {
+    e.preventDefault();
+    var title = shopCard.querySelector('.shop-card-title').textContent;
+    showProduct(title);
+    return;
+  }
+
   // Remote configurator
   const mc = e.target.closest('[data-model]');
   if (mc) { state.model = mc.dataset.model; render(); return; }
@@ -1920,6 +2130,86 @@ document.addEventListener('click', e => {
 
 render();
 renderLift();
+// ── Product Detail Catalog ──
+
+var productCatalog = {
+  'Carpeted Bunk Boards': {
+    price: '$320', desc: 'Marine-grade carpeted bunk boards designed to protect your hull during every lift and launch cycle. Adjustable width fits most boat configurations. UV-resistant carpet resists fading and wear.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="6" width="8" height="12" rx="2"/><rect x="13" y="6" width="8" height="12" rx="2"/></svg>',
+    features: ['Marine-grade outdoor carpet', 'Adjustable width brackets', 'Pressure-treated lumber core', 'Stainless steel hardware', 'UV and mildew resistant'],
+    specs: [['Material', 'Pressure-treated wood + marine carpet'], ['Width', 'Adjustable 14″–22″'], ['Length', '72″ standard'], ['Hardware', '316 stainless steel'], ['Weight', '18 lbs per pair']],
+    reviews: 47
+  },
+  'Guide Poles': {
+    price: '$280', desc: 'Heavy-duty 60″ PVC guide poles with LED-illuminated caps help you center your boat on the lift every time — even in low light. Simple clamp-on installation, no drilling required.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="8" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="16" y2="21"/><circle cx="8" cy="4" r="2" fill="currentColor"/><circle cx="16" cy="4" r="2" fill="currentColor"/></svg>',
+    features: ['60″ heavy-wall PVC construction', 'Solar-powered LED caps', 'Clamp-on installation', 'Adjustable height', 'Fits 2″–3″ cross members'],
+    specs: [['Material', 'Schedule 40 PVC'], ['Height', '60″'], ['LED', 'Solar-powered, auto on/off'], ['Mount', 'Universal clamp-on'], ['Weight', '6 lbs per pair']],
+    reviews: 32
+  },
+  'Wireless Remote Control': {
+    price: '$195', desc: 'Encrypted wireless keyfob transmitter with 300 ft range. Raise, lower, and stop your boat lift with one touch. Includes wall-mount transmitter for dock-side operation.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 10a10 10 0 0 1 20 0"/><path d="M6 10a6 6 0 0 1 12 0"/><circle cx="12" cy="14" r="3"/></svg>',
+    features: ['300 ft wireless range', 'AES encrypted signal', 'Keyfob + wall-mount included', 'IP67 waterproof', '2-year battery life'],
+    specs: [['Range', '300 ft line of sight'], ['Encryption', 'AES 128-bit'], ['Battery', 'CR2032 (2 yr life)'], ['Rating', 'IP67 waterproof'], ['Frequency', '433 MHz']],
+    reviews: 89
+  },
+  'Solar Charging Kit': {
+    price: '$385', desc: 'Keep your lift battery topped off year-round with this 30W solar panel and intelligent charge controller. Mounts to any piling or canopy frame. Set it and forget it.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>',
+    features: ['30W monocrystalline panel', 'MPPT charge controller', 'Universal piling mount', 'Weatherproof connections', 'Overcharge protection'],
+    specs: [['Panel', '30W monocrystalline'], ['Controller', 'MPPT with LCD'], ['Output', '12V / 2.5A max'], ['Mount', 'Adjustable piling bracket'], ['Cable', '15 ft with MC4 connectors']],
+    reviews: 28
+  },
+  'Underwater LED Kit': {
+    price: '$475', desc: 'Transform your slip with app-controlled RGBW underwater lights. Attract fish, light up your dock at night, and set the mood with millions of color options.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 4 12.7V17H8v-2.3A7 7 0 0 1 12 2z"/></svg>',
+    features: ['RGBW multi-color LEDs', 'Bluetooth app control', 'Submersible to 30 ft', '50,000 hr LED lifespan', 'Timer and schedule modes'],
+    specs: [['LEDs', '4x 10W RGBW pods'], ['Control', 'Bluetooth 5.0 app'], ['Depth', 'Rated to 30 ft'], ['Power', '12V DC, 40W total'], ['Lifespan', '50,000 hours']],
+    reviews: 63
+  },
+  'Cathodic Protection': {
+    price: '$145', desc: 'Zinc anode cathodic protection system prevents galvanic corrosion on your lift, dock hardware, and underwater metals. Simple bolt-on installation extends equipment life by years.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    features: ['Military-grade zinc anodes', 'Bolt-on installation', 'Protects all underwater metals', '12–18 month service life', 'Visual wear indicator'],
+    specs: [['Material', 'MIL-spec zinc alloy'], ['Protection', 'Up to 20 ft radius'], ['Service Life', '12–18 months'], ['Install', 'Bolt-on, no welding'], ['Weight', '2.5 lbs per anode']],
+    reviews: 19
+  },
+  'Boat Canopy Frame': {
+    price: '$1,850', desc: 'Heavy-duty aluminum canopy frame protects your boat from sun, rain, and debris. Cover sold separately for easy replacement. Fits most standard lift configurations.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    features: ['6061-T6 aluminum frame', 'Powder-coated finish', 'Universal lift fitment', 'Cover sold separately', 'Wind-rated to 50 mph'],
+    specs: [['Material', '6061-T6 aluminum'], ['Finish', 'Powder-coated'], ['Wind Rating', '50 mph'], ['Fitment', 'Universal, adjustable'], ['Weight', '85 lbs']],
+    reviews: 14
+  },
+  'Remote Cover': {
+    price: '$45.99', desc: 'Protective silicone cover keeps your keypad safe from dirt, water, and UV damage. Snug fit, tactile button feel preserved. Available in multiple colors.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><ellipse cx="12" cy="8" rx="4" ry="6"/><path d="M8 14v4a4 4 0 0 0 8 0v-4"/></svg>',
+    features: ['Medical-grade silicone', 'UV and salt resistant', 'Preserves button feel', 'Snug precision fit', 'Multiple colors available'],
+    specs: [['Material', 'Medical-grade silicone'], ['Compatibility', 'Elevate Remote series'], ['Protection', 'IP68 when sealed'], ['Colors', '5 options'], ['Weight', '0.3 oz']],
+    reviews: 41
+  }
+};
+
+function showProduct(name) {
+  var p = productCatalog[name];
+  if (!p) return;
+  document.getElementById('pdpTitle').textContent = name;
+  document.getElementById('pdpBreadcrumb').textContent = name;
+  document.getElementById('pdpPrice').textContent = p.price;
+  document.getElementById('pdpDesc').textContent = p.desc;
+  document.getElementById('pdpReviews').textContent = p.reviews + ' Reviews';
+  document.getElementById('pdpImage').innerHTML = p.icon;
+  document.getElementById('pdpFeatures').innerHTML = p.features.map(function(f) {
+    return '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>' + f + '</li>';
+  }).join('');
+  document.getElementById('pdpSpecs').innerHTML = p.specs.map(function(s) {
+    return '<tr><td>' + s[0] + '</td><td>' + s[1] + '</td></tr>';
+  }).join('');
+  document.getElementById('pdpBannerIcon').innerHTML = p.icon;
+  showPage('pdp');
+}
+
 if (location.hash === '#config') showPage('config');
 if (location.hash === '#boatlift') showPage('boatlift');
 if (location.hash === '#learn') showPage('learn');
