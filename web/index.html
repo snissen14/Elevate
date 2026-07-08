@@ -223,6 +223,77 @@ body {
 }
 .dot.active { background: #fff; }
 
+/* App showcase section */
+.app-showcase {
+  background: #fff; padding: 80px 40px; overflow: hidden;
+}
+.app-showcase-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.app-showcase-text h2 {
+  font-size: 36px; font-weight: 600; letter-spacing: -0.5px; color: #171A20;
+  line-height: 1.15; margin-bottom: 12px;
+}
+.app-showcase-text .app-sub {
+  font-size: 15px; color: #5C5E62; margin-bottom: 24px;
+}
+.app-showcase-stats {
+  display: flex; gap: 40px; margin-bottom: 28px;
+}
+.app-stat-value {
+  font-size: 36px; font-weight: 700; color: #171A20; letter-spacing: -0.5px;
+}
+.app-stat-label {
+  font-size: 13px; color: #878A8F; margin-top: 2px;
+}
+.app-showcase-btns {
+  display: flex; gap: 12px;
+}
+.app-btn-dark {
+  padding: 12px 28px; border-radius: 4px; font-size: 14px; font-weight: 500;
+  background: #171A20; color: #fff; border: none; cursor: pointer;
+  text-decoration: none; transition: background 0.15s;
+}
+.app-btn-dark:hover { background: #000; }
+.app-btn-outline {
+  padding: 12px 28px; border-radius: 4px; font-size: 14px; font-weight: 500;
+  background: transparent; color: #171A20; border: 1px solid #D0D1D2;
+  cursor: pointer; text-decoration: none; transition: border-color 0.15s;
+}
+.app-btn-outline:hover { border-color: #171A20; }
+
+.app-showcase-media {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.app-media-item {
+  background: #F5F5F5; border-radius: 12px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.app-media-item.tall { grid-row: span 2; aspect-ratio: 9/16; }
+.app-media-item.wide { aspect-ratio: 16/10; }
+.app-media-item svg { width: 40px; height: 40px; color: #C0C0C0; }
+.app-media-play {
+  width: 48px; height: 48px; border-radius: 50%; background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  position: absolute; cursor: pointer; transition: background 0.15s;
+}
+.app-media-play:hover { background: rgba(0,0,0,0.8); }
+.app-media-play svg { width: 20px; height: 20px; color: #fff; margin-left: 2px; }
+.app-media-caption {
+  position: absolute; bottom: 16px; left: 0; right: 0;
+  text-align: center; font-size: 14px; font-weight: 500; color: #171A20;
+}
+
+@media (max-width: 768px) {
+  .app-showcase-inner { grid-template-columns: 1fr; gap: 32px; }
+  .app-showcase-text h2 { font-size: 28px; }
+  .app-showcase { padding: 48px 20px; }
+  .app-showcase-stats { gap: 24px; }
+  .app-stat-value { font-size: 28px; }
+}
+
 /* Product scroll section */
 .product-scroll {
   background: #fff; padding: 48px 0 56px; position: relative;
@@ -1120,6 +1191,44 @@ body {
       <button class="dot" data-dot="3"></button>
     </div>
   </div>
+
+  <!-- App Showcase Section -->
+  <section class="app-showcase">
+    <div class="app-showcase-inner">
+      <div class="app-showcase-text">
+        <h2>Take Control, Be the Captain On and Off the Boat</h2>
+        <p class="app-sub">Manage your boat lift from anywhere with the Elevate app. Monitor status, control your lift, and get maintenance alerts — all from your phone.</p>
+        <div class="app-showcase-stats">
+          <div>
+            <div class="app-stat-value">100%</div>
+            <div class="app-stat-label">Remote Control</div>
+          </div>
+          <div>
+            <div class="app-stat-value">24/7</div>
+            <div class="app-stat-label">Lift Monitoring</div>
+          </div>
+        </div>
+        <div class="app-showcase-btns">
+          <a class="app-btn-dark" href="#config">Get the App</a>
+          <a class="app-btn-outline" href="#learn">Learn More</a>
+        </div>
+      </div>
+      <div class="app-showcase-media">
+        <div class="app-media-item tall">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="app-media-item wide">
+          <div class="app-media-play">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+        </div>
+        <div class="app-media-item wide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div class="app-media-caption">Real-time alerts</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Product Scroll Section -->
   <section class="product-scroll">
