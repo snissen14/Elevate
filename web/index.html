@@ -724,14 +724,14 @@ body {
 }
 
 .shop-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
-  max-width: 100%; margin: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 1400px; margin: 0 auto; padding: 0 24px;
 }
 
 .shop-card {
   background: #fff; padding: 20px 24px 28px; text-decoration: none; color: #171A20;
   display: flex; flex-direction: column; transition: box-shadow 0.2s;
-  cursor: pointer; border: 0.5px solid #F0F0F0;
+  cursor: pointer; border: 1px solid #E8E8E8; border-radius: 8px;
 }
 .shop-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1; }
 
@@ -745,7 +745,7 @@ body {
 .shop-card-badge.sale { background: #C0392B; }
 
 .shop-card-image {
-  width: 100%; aspect-ratio: 3/4; background: #F5F5F5; border-radius: 0;
+  width: 100%; aspect-ratio: 1; background: #F5F5F5; border-radius: 8px 8px 0 0;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 20px; overflow: hidden;
 }
@@ -997,7 +997,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
-        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="lifestyle">Lifestyle</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -1209,7 +1209,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
-        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="lifestyle">Lifestyle</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -1321,7 +1321,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
-        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="lifestyle">Lifestyle</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -1424,7 +1424,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
-        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="lifestyle">Lifestyle</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -1455,7 +1455,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
-        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="lifestyle">Lifestyle</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -1511,7 +1511,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
-        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="lifestyle">Lifestyle</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -1615,7 +1615,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
-        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="lifestyle">Lifestyle</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -1764,7 +1764,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
         <button>Structure</button>
         <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
-        <button class="nav-dropdown-trigger" data-toggle-dropdown="living">Living</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="lifestyle">Lifestyle</button>
         <button>Dealers</button>
         <button>Resources</button>
       </div>
@@ -2112,9 +2112,9 @@ const state = {
 function isS() { return state.model === 'mono-s' || state.model === 'duo-s'; }
 
 function total() {
-  const m  = models.find(x => x.id === state.model);
-  const mo = motors.find(x => x.id === state.motor);
-  const f  = finishes.find(x => x.id === state.finish);
+  const m  = models.find(x => x.id === state.model) || {price:0};
+  const mo = motors.find(x => x.id === state.motor) || {delta:0};
+  const f  = finishes.find(x => x.id === state.finish) || {delta:0};
   let t = m.price * 100 + mo.delta + f.delta * 100;
   if (isS()) {
     const ls = limitSwitches.find(x => x.id === state.limitSwitch);
@@ -2235,11 +2235,11 @@ const liftState = {
 };
 
 function liftTotal() {
-  var m = pwcMotors.find(function(x) { return x.id === liftState.motor; });
-  var t = pwcTracks.find(function(x) { return x.id === liftState.track; });
-  var b = pwcBunks.find(function(x) { return x.id === liftState.bunk; });
-  var g = pwcGuides.find(function(x) { return x.id === liftState.guide; });
-  var c = pwcControls.find(function(x) { return x.id === liftState.control; });
+  var m = pwcMotors.find(function(x) { return x.id === liftState.motor; }) || {delta:0};
+  var t = pwcTracks.find(function(x) { return x.id === liftState.track; }) || {delta:0};
+  var b = pwcBunks.find(function(x) { return x.id === liftState.bunk; }) || {delta:0};
+  var g = pwcGuides.find(function(x) { return x.id === liftState.guide; }) || {delta:0};
+  var c = pwcControls.find(function(x) { return x.id === liftState.control; }) || {delta:0};
   return pwcBase + m.delta + t.delta + b.delta + g.delta + c.delta;
 }
 
@@ -2328,10 +2328,10 @@ const motorState = {
 };
 
 function motorTotal() {
-  var t = motorTypes.find(function(x) { return x.id === motorState.type; });
-  var v = motorVoltages.find(function(x) { return x.id === motorState.voltage; });
-  var d = motorDrives.find(function(x) { return x.id === motorState.drive; });
-  var w = motorWarranties.find(function(x) { return x.id === motorState.warranty; });
+  var t = motorTypes.find(function(x) { return x.id === motorState.type; }) || {price:0};
+  var v = motorVoltages.find(function(x) { return x.id === motorState.voltage; }) || {delta:0};
+  var d = motorDrives.find(function(x) { return x.id === motorState.drive; }) || {delta:0};
+  var w = motorWarranties.find(function(x) { return x.id === motorState.warranty; }) || {delta:0};
   var total = t.price + v.delta + d.delta + w.delta;
   motorAddOns.forEach(function(a) { if (motorState.addons.has(a.id)) total += a.price; });
   return total;
@@ -2394,7 +2394,7 @@ document.addEventListener('click', e => {
   // Toggle correct panel on click (mobile fallback)
   if (e.target.closest('[data-toggle-dropdown]')) {
     var which = e.target.closest('[data-toggle-dropdown]').getAttribute('data-toggle-dropdown');
-    var panels = { liftsystems: 'megaPanel', living: 'megaPanelLiving', protection: 'megaPanelProtection' };
+    var panels = { liftsystems: 'megaPanel', lifestyle: 'megaPanelLiving', protection: 'megaPanelProtection' };
     var targetPanel = panels[which];
     if (targetPanel) {
       var isOpen = document.getElementById(targetPanel).classList.contains('open');
@@ -2424,27 +2424,27 @@ document.addEventListener('click', e => {
 
   // Motor configurator
   var mt = e.target.closest('[data-motortype]');
-  if (mt) { motorState.type = mt.dataset.motortype; renderMotor(); return; }
+  if (mt) { motorState.type = motorState.type === mt.dataset.motortype ? null : mt.dataset.motortype; renderMotor(); return; }
   var mv = e.target.closest('[data-motorvolt]');
-  if (mv) { motorState.voltage = mv.dataset.motorvolt; renderMotor(); return; }
+  if (mv) { motorState.voltage = motorState.voltage === mv.dataset.motorvolt ? null : mv.dataset.motorvolt; renderMotor(); return; }
   var md = e.target.closest('[data-motordrive]');
-  if (md) { motorState.drive = md.dataset.motordrive; renderMotor(); return; }
+  if (md) { motorState.drive = motorState.drive === md.dataset.motordrive ? null : md.dataset.motordrive; renderMotor(); return; }
   var mw = e.target.closest('[data-motorwarr]');
-  if (mw) { motorState.warranty = mw.dataset.motorwarr; renderMotor(); return; }
+  if (mw) { motorState.warranty = motorState.warranty === mw.dataset.motorwarr ? null : mw.dataset.motorwarr; renderMotor(); return; }
   var ma = e.target.closest('[data-motoradd]');
   if (ma) { var mid = ma.dataset.motoradd; motorState.addons.has(mid) ? motorState.addons.delete(mid) : motorState.addons.add(mid); renderMotor(); return; }
 
   // PWC Lift configurator
   var lm = e.target.closest('[data-liftmotor]');
-  if (lm) { liftState.motor = lm.dataset.liftmotor; renderLift(); return; }
+  if (lm) { liftState.motor = liftState.motor === lm.dataset.liftmotor ? null : lm.dataset.liftmotor; renderLift(); return; }
   var ltr = e.target.closest('[data-lifttrack]');
-  if (ltr) { liftState.track = ltr.dataset.lifttrack; renderLift(); return; }
+  if (ltr) { liftState.track = liftState.track === ltr.dataset.lifttrack ? null : ltr.dataset.lifttrack; renderLift(); return; }
   var lb = e.target.closest('[data-liftbunk]');
-  if (lb) { liftState.bunk = lb.dataset.liftbunk; renderLift(); return; }
+  if (lb) { liftState.bunk = liftState.bunk === lb.dataset.liftbunk ? null : lb.dataset.liftbunk; renderLift(); return; }
   var lg = e.target.closest('[data-liftguide]');
-  if (lg) { liftState.guide = lg.dataset.liftguide; renderLift(); return; }
+  if (lg) { liftState.guide = liftState.guide === lg.dataset.liftguide ? null : lg.dataset.liftguide; renderLift(); return; }
   var lc = e.target.closest('[data-liftcontrol]');
-  if (lc) { liftState.control = lc.dataset.liftcontrol; renderLift(); return; }
+  if (lc) { liftState.control = liftState.control === lc.dataset.liftcontrol ? null : lc.dataset.liftcontrol; renderLift(); return; }
 
   // Cart toggle
   if (e.target.closest('[data-cart-toggle]')) { showPage('cart'); return; }
@@ -2482,13 +2482,13 @@ document.addEventListener('click', e => {
 
   // Remote configurator
   const mc = e.target.closest('[data-model]');
-  if (mc) { state.model = mc.dataset.model; render(); return; }
+  if (mc) { state.model = state.model === mc.dataset.model ? null : mc.dataset.model; render(); return; }
   const ls = e.target.closest('[data-limit]');
-  if (ls) { state.limitSwitch = ls.dataset.limit; render(); return; }
+  if (ls) { state.limitSwitch = state.limitSwitch === ls.dataset.limit ? null : ls.dataset.limit; render(); return; }
   const mo = e.target.closest('[data-motor]');
-  if (mo) { state.motor = mo.dataset.motor; render(); return; }
+  if (mo) { state.motor = state.motor === mo.dataset.motor ? null : mo.dataset.motor; render(); return; }
   const sw = e.target.closest('[data-finish]');
-  if (sw) { state.finish = sw.dataset.finish; render(); return; }
+  if (sw) { state.finish = state.finish === sw.dataset.finish ? null : sw.dataset.finish; render(); return; }
   const ac = e.target.closest('[data-acc]');
   if (ac) {
     const id = ac.dataset.acc;
@@ -2667,7 +2667,7 @@ renderMotor();
 
 // ── Hover-based mega dropdowns (desktop) ──
 var megaTimer = null;
-var panelMap = { liftsystems: document.getElementById('megaPanel'), living: document.getElementById('megaPanelLiving'), protection: document.getElementById('megaPanelProtection') };
+var panelMap = { liftsystems: document.getElementById('megaPanel'), lifestyle: document.getElementById('megaPanelLiving'), protection: document.getElementById('megaPanelProtection') };
 
 function closeAllPanels() {
   Object.values(panelMap).forEach(function(p) { p.classList.remove('open'); });
