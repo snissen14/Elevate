@@ -232,6 +232,13 @@ body {
 .nav-search-bar svg { width: 18px; height: 18px; color: #5C5E62; }
 .nav-search-bar span { font-size: 14px; color: #878A8F; }
 
+@media (max-width: 768px) {
+  .nav-search-bar { min-width: auto; padding: 6px; border: none; background: none; }
+  .nav-search-bar span { display: none; }
+  .nav-search-bar svg { width: 20px; height: 20px; color: #171A20; }
+  .nav-search-bar:hover { background: none; }
+}
+
 .home-nav-right { display: flex; align-items: center; gap: 16px; }
 .home-nav-right button {
   color: #171A20; background: none; border: none; cursor: pointer; padding: 4px; display: flex;
