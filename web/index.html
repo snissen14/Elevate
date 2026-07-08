@@ -138,6 +138,89 @@ body {
   .mega-sidebar { border-left: none; border-top: 1px solid #E8E8E8; padding-left: 0; padding-top: 16px; }
 }
 
+/* Search overlay */
+.search-trigger { position: relative; }
+.search-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 500;
+  opacity: 0; visibility: hidden; transition: opacity 0.25s, visibility 0.25s;
+}
+.search-overlay.open { opacity: 1; visibility: visible; }
+.search-overlay-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
+.search-panel {
+  position: relative; z-index: 1; background: #fff;
+  padding: 0; transform: translateY(-8px); transition: transform 0.25s;
+}
+.search-overlay.open .search-panel { transform: translateY(0); }
+.search-bar-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 20px 40px; border-bottom: 1px solid #E8E8E8;
+}
+.search-bar-row svg { width: 20px; height: 20px; color: #878A8F; flex-shrink: 0; }
+.search-bar-input {
+  flex: 1; border: none; outline: none; font-size: 18px; color: #171A20;
+  background: transparent;
+}
+.search-bar-input::placeholder { color: #C0C0C0; }
+.search-close {
+  background: none; border: none; cursor: pointer; padding: 4px;
+  color: #878A8F; display: flex; transition: color 0.15s;
+}
+.search-close:hover { color: #171A20; }
+.search-close svg { width: 24px; height: 24px; }
+
+.search-content {
+  display: grid; grid-template-columns: 280px 1fr 220px;
+  gap: 0; padding: 32px 40px 40px; max-width: 1200px; margin: 0 auto;
+}
+
+.search-help {
+  background: linear-gradient(135deg, #0f3460, #1a5276); border-radius: 12px;
+  padding: 32px 24px; color: #fff; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+}
+.search-help-title { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+.search-help-btn {
+  padding: 10px 20px; border-radius: 100px; background: rgba(255,255,255,0.15);
+  color: #fff; font-size: 13px; font-weight: 500; border: 1px solid rgba(255,255,255,0.3);
+  cursor: pointer; text-decoration: none; transition: background 0.15s;
+}
+.search-help-btn:hover { background: rgba(255,255,255,0.25); }
+
+.search-popular {
+  padding: 0 40px; border-right: 1px solid #E8E8E8;
+}
+.search-section-title {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.2px; color: #171A20; margin-bottom: 20px;
+}
+.search-product-item {
+  display: flex; align-items: center; gap: 14px; padding: 10px 0;
+  text-decoration: none; color: #171A20; transition: opacity 0.15s;
+  cursor: pointer;
+}
+.search-product-item:hover { opacity: 0.7; }
+.search-product-thumb {
+  width: 48px; height: 48px; background: #F5F5F5; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.search-product-thumb svg { width: 24px; height: 24px; color: #878A8F; }
+.search-product-name { font-size: 14px; font-weight: 500; }
+.search-product-meta { font-size: 12px; color: #878A8F; margin-top: 2px; }
+
+.search-categories { padding-left: 32px; }
+.search-categories a {
+  display: block; font-size: 14px; font-weight: 500; color: #171A20;
+  text-decoration: none; padding: 6px 0; transition: color 0.15s;
+}
+.search-categories a:hover { color: #3E6AE1; }
+
+@media (max-width: 768px) {
+  .search-content { grid-template-columns: 1fr; gap: 24px; }
+  .search-popular { padding: 0; border-right: none; }
+  .search-categories { padding-left: 0; border-top: 1px solid #E8E8E8; padding-top: 16px; }
+  .search-bar-row { padding: 16px 20px; }
+}
+
 .home-nav-right { display: flex; align-items: center; gap: 16px; }
 .home-nav-right button {
   color: #171A20; background: none; border: none; cursor: pointer; padding: 4px; display: flex;
@@ -1109,6 +1192,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
       </div>
       <div class="home-nav-right">
+        <button class="search-trigger" aria-label="Search" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
         <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
         <button aria-label="Globe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg></button>
         <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
@@ -1373,6 +1457,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
       </div>
       <div class="cfg-nav-right">
+        <button class="search-trigger" aria-label="Search" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
         <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
         <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
         <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
@@ -1485,6 +1570,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
       </div>
       <div class="cfg-nav-right">
+        <button class="search-trigger" aria-label="Search" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
         <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
         <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
         <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
@@ -1666,6 +1752,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
       </div>
       <div class="cfg-nav-right">
+        <button class="search-trigger" aria-label="Search" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
         <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
         <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
         <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
@@ -1697,6 +1784,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
       </div>
       <div class="cfg-nav-right">
+        <button class="search-trigger" aria-label="Search" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
         <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
         <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
         <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
@@ -1753,6 +1841,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
       </div>
       <div class="cfg-nav-right">
+        <button class="search-trigger" aria-label="Search" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
         <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
         <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
         <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
@@ -1857,6 +1946,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
       </div>
       <div class="cfg-nav-right">
+        <button class="search-trigger" aria-label="Search" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
         <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
         <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
         <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
@@ -2006,6 +2096,7 @@ body {
         <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
       </div>
       <div class="cfg-nav-right">
+        <button class="search-trigger" aria-label="Search" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
         <button aria-label="Help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></button>
         <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
         <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
@@ -2279,6 +2370,51 @@ body {
         <a href="#">Installation Guides</a>
         <a href="#">Warranty Info</a>
         <a href="#">Find a Dealer</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-overlay-bg" id="searchOverlayBg"></div>
+  <div class="search-panel">
+    <div class="search-bar-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input class="search-bar-input" type="text" placeholder="Search" id="searchInput" autocomplete="off">
+      <button class="search-close" id="searchClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="search-content">
+      <div class="search-help">
+        <div class="search-help-title">Need Help Finding Your Gear?</div>
+        <a class="search-help-btn" href="#build">Talk to an Expert</a>
+      </div>
+      <div class="search-popular">
+        <div class="search-section-title">Popular Right Now</div>
+        <a class="search-product-item" href="#config">
+          <div class="search-product-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10a10 10 0 0 1 20 0"/><path d="M6 10a6 6 0 0 1 12 0"/><circle cx="12" cy="14" r="3"/></svg></div>
+          <div><div class="search-product-name">Elevate Remote Mono</div><div class="search-product-meta">Starting at $599</div></div>
+        </a>
+        <a class="search-product-item" href="#boatlift">
+          <div class="search-product-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/></svg></div>
+          <div><div class="search-product-name">Elevate Jet Ski Lift</div><div class="search-product-meta">Starting at $3,399</div></div>
+        </a>
+        <a class="search-product-item" href="#motors">
+          <div class="search-product-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg></div>
+          <div><div class="search-product-name">Elevate Lift Motors</div><div class="search-product-meta">Starting at $1,450</div></div>
+        </a>
+        <a class="search-product-item" href="#shop">
+          <div class="search-product-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 4 12.7V17H8v-2.3A7 7 0 0 1 12 2z"/></svg></div>
+          <div><div class="search-product-name">Underwater LED Kit</div><div class="search-product-meta">$475</div></div>
+        </a>
+      </div>
+      <div class="search-categories">
+        <div class="search-section-title">Shop and Compare</div>
+        <a href="#boatlift">Jet Ski Lifts</a>
+        <a href="#config">Lift Remotes</a>
+        <a href="#motors">Lift Motors</a>
+        <a href="#shop">Accessories</a>
+        <a href="#learn">Learn More</a>
       </div>
     </div>
   </div>
@@ -2675,6 +2811,22 @@ document.addEventListener('click', e => {
       if (!isOpen) document.getElementById(targetPanel).classList.add('open');
     }
     return;
+  }
+
+  // Search overlay
+  if (e.target.closest('[data-search-open]')) {
+    document.getElementById('searchOverlay').classList.add('open');
+    document.getElementById('searchInput').focus();
+    return;
+  }
+  if (e.target.id === 'searchOverlayBg' || e.target.closest('#searchClose')) {
+    document.getElementById('searchOverlay').classList.remove('open');
+    document.getElementById('searchInput').value = '';
+    return;
+  }
+  if (e.target.closest('.search-product-item') || e.target.closest('.search-categories a') || e.target.closest('.search-help-btn')) {
+    document.getElementById('searchOverlay').classList.remove('open');
+    document.getElementById('searchInput').value = '';
   }
 
   // Product scroll arrows
