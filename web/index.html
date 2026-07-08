@@ -1329,53 +1329,58 @@ body {
   </section>
 
   <!-- Membership Section -->
-  <section style="background:#0a0a0a; padding:80px 40px; text-align:center; color:#fff;">
-    <h2 style="font-size:40px; font-weight:600; letter-spacing:-0.5px; margin-bottom:48px;">Choose Your Membership</h2>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1100px; margin:0 auto;">
+  <section style="background:#0a0a0a; padding:100px 40px 80px; text-align:center; color:#fff;">
+    <h2 style="font-size:clamp(32px,5vw,52px); font-weight:500; margin-bottom:60px; letter-spacing:-0.5px;">Choose a membership</h2>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1100px; margin:0 auto; align-items:start;">
 
-      <div style="background:#1a1a1a; border-radius:16px; padding:32px 28px; display:flex; flex-direction:column; border:1px solid #2a2a2a; text-align:left;">
-        <div style="text-align:center; margin-bottom:20px;"><div style="font-size:22px; font-weight:700; letter-spacing:4px; text-transform:uppercase;">Basic</div><div style="font-size:14px; color:rgba(255,255,255,0.6); margin-top:4px;">$129.99/yr</div></div>
-        <div style="background:#111; border-radius:12px; height:180px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" width="60" height="60"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <div style="font-size:13px; color:rgba(255,255,255,0.7); line-height:2; flex:1;">
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Remote lift control</div>
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Lift status monitoring</div>
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Usage history</div>
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Push notifications</div>
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 1 lift connection</div>
+      <!-- BASIC -->
+      <div style="background:#fff; border-radius:20px; padding:36px 32px 32px; display:flex; flex-direction:column; text-align:center; color:#171A20; min-height:680px;">
+        <div style="margin-bottom:4px;"><div style="font-size:24px; font-weight:700; letter-spacing:6px; text-transform:uppercase;">BASIC</div></div>
+        <div style="font-size:15px; font-weight:600; color:#171A20; margin-bottom:24px;">Starts at $129.99/yr</div>
+        <div style="background:#0a0a0a; border-radius:14px; height:220px; display:flex; align-items:center; justify-content:center; margin-bottom:24px; overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8" width="80" height="80"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div style="text-align:left; font-size:14px; color:#393C41; line-height:2.2; flex:1; padding:0 4px;">
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Remote lift control</div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Lift status monitoring</div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Usage history</div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Push notifications</div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 1 lift connection</div>
         </div>
-        <a href="#config" style="display:block; padding:14px; background:#fff; color:#0a0a0a; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; text-align:center; margin-top:20px; text-transform:uppercase; letter-spacing:0.5px;">Start with Basic</a>
-        <a href="#learn" style="display:block; padding:12px; border:1px solid #444; color:#fff; border-radius:8px; font-size:13px; font-weight:500; text-decoration:none; text-align:center; margin-top:8px;">Learn More</a>
+        <a href="#config" style="display:block; padding:16px; background:#171A20; color:#fff; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; text-align:center; margin-top:24px; text-transform:uppercase; letter-spacing:1px;">Start with Basic</a>
+        <a href="#learn" style="display:block; padding:14px; border:1.5px solid #D0D1D2; color:#171A20; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; text-align:center; margin-top:10px; text-transform:uppercase; letter-spacing:1px;">Learn More</a>
       </div>
 
-      <div style="background:#1a1a1a; border-radius:16px; padding:32px 28px; display:flex; flex-direction:column; border:1px solid #3E6AE1; text-align:left; position:relative;">
-        <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:#3E6AE1; color:#fff; font-size:11px; font-weight:600; padding:4px 16px; border-radius:100px; text-transform:uppercase; letter-spacing:1px;">Most Popular</div>
-        <div style="text-align:center; margin-bottom:20px;"><div style="font-size:22px; font-weight:700; letter-spacing:4px; text-transform:uppercase;">Pro</div><div style="font-size:14px; color:rgba(255,255,255,0.6); margin-top:4px;">$329.99/3yr</div></div>
-        <div style="background:#111; border-radius:12px; height:180px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" width="60" height="60"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="10" r="3"/><line x1="12" y1="18" x2="12" y2="18.01" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <div style="font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:8px;">Everything in Basic, plus</div>
-        <div style="font-size:13px; color:rgba(255,255,255,0.7); line-height:2; flex:1;">
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Advanced diagnostics</div>
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Maintenance scheduling</div>
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Multi-user access</div>
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Up to 3 lift connections</div>
+      <!-- PRO -->
+      <div style="background:#fff; border-radius:20px; padding:36px 32px 32px; display:flex; flex-direction:column; text-align:center; color:#171A20; min-height:680px; position:relative; box-shadow:0 0 0 2px #3E6AE1;">
+        <div style="margin-bottom:4px;"><div style="font-size:24px; font-weight:700; letter-spacing:6px; text-transform:uppercase;">PRO</div></div>
+        <div style="font-size:15px; font-weight:600; color:#171A20; margin-bottom:24px;">Starts at $329.99/3yr</div>
+        <div style="background:#0a0a0a; border-radius:14px; height:220px; display:flex; align-items:center; justify-content:center; margin-bottom:24px; overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8" width="80" height="80"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="10" r="3"/><line x1="12" y1="18" x2="12" y2="18.01" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div style="text-align:left; font-size:14px; color:#878A8F; margin-bottom:4px; padding:0 4px;">Everything on Basic, plus</div>
+        <div style="text-align:left; font-size:14px; color:#393C41; line-height:2.2; flex:1; padding:0 4px;">
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Advanced diagnostics</div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Maintenance scheduling</div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Multi-user access</div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Up to 3 lift connections</div>
         </div>
-        <a href="#config" style="display:block; padding:14px; background:#fff; color:#0a0a0a; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; text-align:center; margin-top:20px; text-transform:uppercase; letter-spacing:0.5px;">Start with Pro</a>
-        <a href="#learn" style="display:block; padding:12px; border:1px solid #444; color:#fff; border-radius:8px; font-size:13px; font-weight:500; text-decoration:none; text-align:center; margin-top:8px;">Learn More</a>
-        <div style="text-align:center; font-size:12px; color:rgba(255,255,255,0.4); margin-top:12px;">Free trial available</div>
+        <a href="#config" style="display:block; padding:16px; background:#171A20; color:#fff; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; text-align:center; margin-top:24px; text-transform:uppercase; letter-spacing:1px;">Start with Pro</a>
+        <a href="#learn" style="display:block; padding:14px; border:1.5px solid #D0D1D2; color:#171A20; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; text-align:center; margin-top:10px; text-transform:uppercase; letter-spacing:1px;">Learn More</a>
+        <div style="text-align:center; font-size:13px; color:#878A8F; margin-top:14px;">Free trial available</div>
       </div>
 
-      <div style="background:#1a1a1a; border-radius:16px; padding:32px 28px; display:flex; flex-direction:column; border:1px solid #2a2a2a; text-align:left;">
-        <div style="text-align:center; margin-bottom:20px;"><div style="font-size:22px; font-weight:700; letter-spacing:4px; text-transform:uppercase;">Lifetime</div><div style="font-size:14px; color:rgba(255,255,255,0.6); margin-top:4px;">$699.99 one-time</div></div>
-        <div style="background:#111; border-radius:12px; height:180px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" width="60" height="60"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 8l2 4h-4l2-4z" fill="rgba(255,255,255,0.3)"/><line x1="12" y1="18" x2="12" y2="18.01" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <div style="font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:8px;">Everything in Pro, plus</div>
-        <div style="font-size:13px; color:rgba(255,255,255,0.7); line-height:2; flex:1;">
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Unlimited lift connections</div>
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Priority support</div>
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Lifetime updates</div>
-          <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Early access features</div>
+      <!-- LIFETIME -->
+      <div style="background:#fff; border-radius:20px; padding:36px 32px 32px; display:flex; flex-direction:column; text-align:center; color:#171A20; min-height:680px;">
+        <div style="margin-bottom:4px;"><div style="font-size:24px; font-weight:700; letter-spacing:6px; text-transform:uppercase;">LIFETIME</div></div>
+        <div style="font-size:15px; font-weight:600; color:#171A20; margin-bottom:24px;">Starts at $699.99</div>
+        <div style="background:#0a0a0a; border-radius:14px; height:220px; display:flex; align-items:center; justify-content:center; margin-bottom:24px; overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8" width="80" height="80"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 8l2 4h-4l2-4z" fill="rgba(255,255,255,0.25)"/><line x1="12" y1="18" x2="12" y2="18.01" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div style="text-align:left; font-size:14px; color:#878A8F; margin-bottom:4px; padding:0 4px;">Everything on Pro, plus</div>
+        <div style="text-align:left; font-size:14px; color:#393C41; line-height:2.2; flex:1; padding:0 4px;">
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Unlimited lift connections</div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Priority support</div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Lifetime updates</div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171A20" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Early access features</div>
         </div>
-        <a href="#config" style="display:block; padding:14px; background:#fff; color:#0a0a0a; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; text-align:center; margin-top:20px; text-transform:uppercase; letter-spacing:0.5px;">Start with Lifetime</a>
-        <a href="#learn" style="display:block; padding:12px; border:1px solid #444; color:#fff; border-radius:8px; font-size:13px; font-weight:500; text-decoration:none; text-align:center; margin-top:8px;">Learn More</a>
-        <div style="text-align:center; font-size:12px; color:rgba(255,255,255,0.4); margin-top:12px;">Launch exclusive</div>
+        <a href="#config" style="display:block; padding:16px; background:#171A20; color:#fff; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; text-align:center; margin-top:24px; text-transform:uppercase; letter-spacing:1px;">Start with Lifetime</a>
+        <a href="#learn" style="display:block; padding:14px; border:1.5px solid #D0D1D2; color:#171A20; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; text-align:center; margin-top:10px; text-transform:uppercase; letter-spacing:1px;">Learn More</a>
+        <div style="text-align:center; font-size:13px; color:#878A8F; margin-top:14px;">Launch exclusive</div>
       </div>
 
     </div>
