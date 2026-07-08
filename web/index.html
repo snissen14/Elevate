@@ -523,6 +523,42 @@ body {
 }
 
 
+/* Build landing page */
+#page-build { background: #0a0a0a; color: #fff; }
+.build-hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 100px 40px 60px; }
+.build-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.8); margin-bottom: 40px; }
+.build-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #3E6AE1; animation: bpulse 2s ease-in-out infinite; }
+@keyframes bpulse { 0%,100%{opacity:.6} 50%{opacity:1} }
+.build-headline { font-size: clamp(36px,5vw,60px); font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; line-height: 1.05; max-width: 800px; margin-bottom: 24px; }
+.build-sub { font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 650px; margin-bottom: 40px; }
+.build-video { width: 100%; max-width: 700px; aspect-ratio: 16/9; background: #1a1a1a; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 40px; cursor: pointer; border: 1px solid rgba(255,255,255,0.08); }
+.build-video-play { width: 64px; height: 64px; border-radius: 50%; background: #3E6AE1; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+.build-video:hover .build-video-play { transform: scale(1.1); }
+.build-video-play svg { width: 28px; height: 28px; color: #fff; margin-left: 3px; }
+.build-desc { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 600px; margin-bottom: 48px; }
+.build-desc strong { color: #fff; }
+.build-cta-btn { display: inline-block; padding: 18px 64px; border-radius: 6px; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; background: #3E6AE1; color: #fff; text-decoration: none; border: none; cursor: pointer; transition: background 0.15s, transform 0.15s; }
+.build-cta-btn:hover { background: #3560CC; transform: translateY(-2px); }
+.build-form-section { background: #111; padding: 80px 40px; text-align: center; }
+.build-form-title { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+.build-form-sub { font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.build-form { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+.build-input { width: 100%; padding: 16px 20px; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; background: rgba(255,255,255,0.05); color: #fff; font-size: 15px; outline: none; transition: border-color 0.15s; }
+.build-input::placeholder { color: rgba(255,255,255,0.3); }
+.build-input:focus { border-color: #3E6AE1; }
+.build-input-row { display: flex; gap: 16px; }
+.build-input-row .build-input { flex: 1; }
+.build-select { width: 100%; padding: 16px 20px; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6); font-size: 15px; outline: none; appearance: none; cursor: pointer; }
+.build-select option { background: #1a1a1a; color: #fff; }
+.build-submit { padding: 18px; border: none; border-radius: 6px; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; background: #3E6AE1; color: #fff; cursor: pointer; transition: background 0.15s; margin-top: 8px; }
+.build-submit:hover { background: #3560CC; }
+.build-features { display: flex; justify-content: center; gap: 48px; padding: 60px 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+.build-feature { text-align: center; max-width: 200px; }
+.build-feature svg { width: 32px; height: 32px; color: #3E6AE1; margin-bottom: 12px; }
+.build-feature-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.build-feature-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+@media (max-width: 768px) { .build-hero { padding: 80px 20px 40px; } .build-input-row { flex-direction: column; } .build-features { flex-direction: column; align-items: center; gap: 32px; } .build-form-section { padding: 48px 20px; } }
+
 /* Cart icon + badge */
 .cart-icon-btn { position: relative; }
 .cart-badge {
@@ -1021,7 +1057,7 @@ body {
           <div class="slide-title" style="font-size: clamp(40px, 5vw, 64px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.05; text-align: center;">Create Your Dream<br>Waterfront</div>
           <div class="slide-subtitle" style="margin-top: 16px; font-size: 18px;">Get everything you need from the team that has helped waterfront owners build, protect, and enjoy their docks since 2001.</div>
           <div class="slide-buttons" style="margin-top: 32px;">
-            <a class="btn-order" href="#shop">I'm Ready To Build</a>
+            <a class="btn-order" href="#build">I'm Ready To Build</a>
           </div>
         </div>
       </div>
@@ -1423,6 +1459,84 @@ body {
       <button class="btn-blue">Get Quote</button>
     </div>
   </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE: BUILD YOUR DOCK
+     ════════════════════════════════════════ -->
+<div id="page-build" class="page-hidden">
+
+  <section class="build-hero">
+    <div class="build-badge"><span class="build-badge-dot"></span> Free Consultation Available</div>
+    <h1 class="build-headline">Ready To Build Your Dream Waterfront?</h1>
+    <p class="build-sub">Tell us about your dock project and our team of waterfront experts will design a custom solution — from boat lifts and lighting to seating and protection.</p>
+
+    <div class="build-video">
+      <div class="build-video-play">
+        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </div>
+    </div>
+
+    <p class="build-desc">We've helped <strong>thousands of waterfront owners</strong> build, protect, and enjoy their docks since 2001. Whether you're starting from scratch or upgrading an existing setup, we'll guide you through every step.</p>
+
+    <a class="build-cta-btn" href="#build-form">Start My Project</a>
+  </section>
+
+  <section class="build-form-section" id="build-form">
+    <h2 class="build-form-title">Tell Us About Your Project</h2>
+    <p class="build-form-sub">Fill out the form below and a dock specialist will reach out within 24 hours.</p>
+    <form class="build-form" onsubmit="event.preventDefault(); alert('Thank you! A dock specialist will contact you within 24 hours.');">
+      <div class="build-input-row">
+        <input class="build-input" type="text" placeholder="First Name" required>
+        <input class="build-input" type="text" placeholder="Last Name" required>
+      </div>
+      <input class="build-input" type="email" placeholder="Email Address" required>
+      <input class="build-input" type="tel" placeholder="Phone Number">
+      <select class="build-select">
+        <option value="" disabled selected>What are you looking for?</option>
+        <option>New Boat Lift Installation</option>
+        <option>Boat Lift Upgrade</option>
+        <option>Dock Accessories &amp; Add-Ons</option>
+        <option>Remote / Motor Replacement</option>
+        <option>Full Dock Build</option>
+        <option>Not Sure — Need Guidance</option>
+      </select>
+      <select class="build-select">
+        <option value="" disabled selected>What's your timeline?</option>
+        <option>Ready now</option>
+        <option>Within 1 month</option>
+        <option>Within 3 months</option>
+        <option>Just researching</option>
+      </select>
+      <textarea class="build-input" rows="3" placeholder="Tell us more about your project (optional)" style="resize:vertical;"></textarea>
+      <button class="build-submit" type="submit">Get My Free Consultation</button>
+    </form>
+  </section>
+
+  <section class="build-features">
+    <div class="build-feature">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <div class="build-feature-title">Expert Guidance</div>
+      <div class="build-feature-desc">Our team has 20+ years of waterfront experience</div>
+    </div>
+    <div class="build-feature">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="build-feature-title">Quality Guaranteed</div>
+      <div class="build-feature-desc">Marine-grade materials built to last</div>
+    </div>
+    <div class="build-feature">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <div class="build-feature-title">24hr Response</div>
+      <div class="build-feature-desc">We'll get back to you within one business day</div>
+    </div>
+    <div class="build-feature">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <div class="build-feature-title">Nationwide Service</div>
+      <div class="build-feature-desc">Dealer network across the United States</div>
+    </div>
+  </section>
+
 </div>
 
 
@@ -2072,6 +2186,7 @@ function showPage(page) {
   document.getElementById('page-motors').classList.toggle('page-hidden', page !== 'motors');
   document.getElementById('page-pdp').classList.toggle('page-hidden', page !== 'pdp');
   document.getElementById('page-cart').classList.toggle('page-hidden', page !== 'cart');
+  document.getElementById('page-build').classList.toggle('page-hidden', page !== 'build');
   if (page === 'cart') renderCart();
   document.body.style.background = page === 'home' ? '#000' : '#fff';
   document.getElementById('megaPanel').classList.remove('open');
@@ -2705,6 +2820,7 @@ function parsePrice(str) {
 }
 
 if (location.hash === '#cart') showPage('cart');
+if (location.hash === '#build') showPage('build');
 if (location.hash === '#config') showPage('config');
 if (location.hash === '#boatlift') showPage('boatlift');
 if (location.hash === '#learn') showPage('learn');
