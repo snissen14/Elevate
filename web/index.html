@@ -2401,31 +2401,16 @@ body {
       <input class="search-bar-input" type="text" placeholder="Search" id="searchInput" autocomplete="off">
       <button class="search-close" id="searchClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     </div>
-    <div class="search-content">
+    <div class="search-content" id="searchContent">
       <div class="search-help">
         <div class="search-help-title">Need Help Finding Your Gear?</div>
         <a class="search-help-btn" href="#build">Talk to an Expert</a>
       </div>
-      <div class="search-popular">
-        <div class="search-section-title">Popular Right Now</div>
-        <a class="search-product-item" href="#config">
-          <div class="search-product-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10a10 10 0 0 1 20 0"/><path d="M6 10a6 6 0 0 1 12 0"/><circle cx="12" cy="14" r="3"/></svg></div>
-          <div><div class="search-product-name">Elevate Remote Mono</div><div class="search-product-meta">Starting at $599</div></div>
-        </a>
-        <a class="search-product-item" href="#boatlift">
-          <div class="search-product-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/></svg></div>
-          <div><div class="search-product-name">Elevate Jet Ski Lift</div><div class="search-product-meta">Starting at $3,399</div></div>
-        </a>
-        <a class="search-product-item" href="#motors">
-          <div class="search-product-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg></div>
-          <div><div class="search-product-name">Elevate Lift Motors</div><div class="search-product-meta">Starting at $1,450</div></div>
-        </a>
-        <a class="search-product-item" href="#shop">
-          <div class="search-product-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 4 12.7V17H8v-2.3A7 7 0 0 1 12 2z"/></svg></div>
-          <div><div class="search-product-name">Underwater LED Kit</div><div class="search-product-meta">$475</div></div>
-        </a>
+      <div class="search-popular" id="searchResults">
+        <div class="search-section-title" id="searchResultsTitle">Popular Right Now</div>
+        <div id="searchResultsList"></div>
       </div>
-      <div class="search-categories">
+      <div class="search-categories" id="searchCategories">
         <div class="search-section-title">Shop and Compare</div>
         <a href="#boatlift">Jet Ski Lifts</a>
         <a href="#config">Lift Remotes</a>
@@ -3097,6 +3082,70 @@ function renderCart() {
 function parsePrice(str) {
   return parseFloat(str.replace(/[^0-9.]/g, ''));
 }
+
+// ── Search Index ──
+
+var searchIndex = [
+  { name: 'Elevate Remote Mono', meta: 'Remote control system for single motor · $599', href: '#config', tags: 'remote control wireless mono single motor lift' },
+  { name: 'Elevate Remote Mono S', meta: 'Single motor with auto stop · $615', href: '#config', tags: 'remote control wireless mono auto stop limit switch' },
+  { name: 'Elevate Remote Duo', meta: 'Two motor remote control · $625', href: '#config', tags: 'remote control wireless duo dual two motor' },
+  { name: 'Elevate Remote Duo S', meta: 'Two motor with auto stop · $645', href: '#config', tags: 'remote control wireless duo dual auto stop limit switch' },
+  { name: 'Elevate Jet Ski Lift', meta: 'PWC lift system · Starting at $3,399', href: '#boatlift', tags: 'jet ski pwc personal watercraft lift boat' },
+  { name: 'Elevate Lift Motors', meta: 'Standard to dual motor kits · From $1,450', href: '#motors', tags: 'motor engine power hp horsepower drive belt chain' },
+  { name: 'Carpeted Bunk Boards', meta: 'Marine-grade carpet · $320', href: '#shop', tags: 'bunk board carpet hull protection' },
+  { name: 'Guide Poles', meta: '60″ PVC with LED caps · $280', href: '#shop', tags: 'guide pole led light dock alignment' },
+  { name: 'Wireless Remote Control', meta: 'Keyfob transmitter · $195', href: '#shop', tags: 'remote wireless keyfob transmitter 300ft' },
+  { name: 'Solar Charging Kit', meta: '30W panel · $385', href: '#shop', tags: 'solar panel charger battery sun power' },
+  { name: 'Underwater LED Kit', meta: 'RGBW app-controlled · $475', href: '#shop', tags: 'led light underwater rgb color fish night' },
+  { name: 'Cathodic Protection', meta: 'Zinc anode system · $145', href: '#shop', tags: 'cathodic protection zinc anode corrosion rust' },
+  { name: 'Boat Canopy Frame', meta: 'Aluminum frame · $1,850', href: '#shop', tags: 'canopy cover frame aluminum shade sun protection' },
+  { name: 'Remote Cover', meta: 'Silicone keypad cover · $45.99', href: '#shop', tags: 'cover silicone case protection keypad remote' },
+  { name: 'App Membership', meta: 'Monitor and control from your phone', href: '#config', tags: 'app membership subscription phone bluetooth monitor' },
+  { name: 'Foam Dock Bumper', meta: 'Dock protection', href: '#home', tags: 'foam bumper dock protection cushion impact' },
+  { name: 'Vinyl Dock Edge', meta: 'Edge protection', href: '#home', tags: 'vinyl edge dock protection trim profile' },
+  { name: 'Build Your Dock', meta: 'Free consultation with our experts', href: '#build', tags: 'build consultation expert help design custom project' },
+  { name: 'Wiring Diagrams', meta: 'Installation resources', href: '#home', tags: 'wiring diagram install installation electric schematic' },
+  { name: 'Contact Us', meta: 'Get in touch with our team', href: '#build', tags: 'contact us phone email support help' },
+];
+
+var defaultResults = searchIndex.slice(0, 4);
+
+function renderSearchResults(items, title) {
+  document.getElementById('searchResultsTitle').textContent = title;
+  var html = '';
+  items.forEach(function(item) {
+    html += '<a class="search-product-item" href="' + item.href + '">' +
+      '<div class="search-product-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2 2"/></svg></div>' +
+      '<div><div class="search-product-name">' + item.name + '</div><div class="search-product-meta">' + item.meta + '</div></div>' +
+      '</a>';
+  });
+  if (items.length === 0) {
+    html = '<div style="padding:20px 0;color:#878A8F;font-size:14px;">No results found. Try a different search term.</div>';
+  }
+  document.getElementById('searchResultsList').innerHTML = html;
+}
+
+function doSearch(query) {
+  if (!query || query.length < 1) {
+    renderSearchResults(defaultResults, 'Popular Right Now');
+    document.getElementById('searchCategories').style.display = '';
+    return;
+  }
+  var q = query.toLowerCase();
+  var results = searchIndex.filter(function(item) {
+    return item.name.toLowerCase().indexOf(q) !== -1 ||
+           item.tags.indexOf(q) !== -1 ||
+           item.meta.toLowerCase().indexOf(q) !== -1;
+  });
+  renderSearchResults(results, results.length + ' Result' + (results.length !== 1 ? 's' : ''));
+  document.getElementById('searchCategories').style.display = results.length > 0 ? 'none' : '';
+}
+
+document.getElementById('searchInput').addEventListener('input', function() {
+  doSearch(this.value.trim());
+});
+
+renderSearchResults(defaultResults, 'Popular Right Now');
 
 if (location.hash === '#cart') showPage('cart');
 if (location.hash === '#build') showPage('build');
