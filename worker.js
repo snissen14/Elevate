@@ -119,7 +119,9 @@ function buildConfigLineItems(config) {
 }
 
 async function handleCheckout(request, env) {
-  if (!env.STRIPE_SECRET_KEY) {
+  // Accept the standard name or the shorthand "Stripe" set in the dashboard.
+  const stripeKey = env.STRIPE_SECRET_KEY || env.Stripe || env.STRIPE;
+  if (!stripeKey) {
     return json({ error: 'Checkout is not configured yet.' }, 500);
   }
 
@@ -158,7 +160,7 @@ async function handleCheckout(request, env) {
     resp = await fetch('https://api.stripe.com/v1/checkout/sessions', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer ' + env.STRIPE_SECRET_KEY,
+        'Authorization': 'Bearer ' + stripeKey,
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: params.toString(),
