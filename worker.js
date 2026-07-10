@@ -3,15 +3,14 @@
 // Serves the static site from ./web (via the ASSETS binding) and handles the
 // dynamic checkout endpoint at POST /api/checkout.
 //
-// The checkout total is computed from the SERVER-SIDE price table below, never
-// from prices sent by the browser, so prices cannot be tampered with client-side.
+// Totals are computed from the SERVER-SIDE price tables below, never from prices
+// sent by the browser, so they cannot be tampered with client-side.
 //
-// Requires an environment variable STRIPE_SECRET_KEY, added in the Cloudflare
-// dashboard once this Worker has code (Settings -> Variables and secrets).
-// Use sk_test_… for testing and sk_live_… for live payments.
+// Requires an environment variable STRIPE_SECRET_KEY (Settings -> Variables and
+// secrets). Use sk_test_… for testing and sk_live_… for live payments.
 
-// Authoritative price table — amounts in cents (USD). Keys MUST match the
-// product names used by the cart (productCatalog in web/index.html).
+// ── Accessories catalog (cart page) — amounts in cents (USD). Keys MUST match
+//    the product names used by the cart (productCatalog in web/index.html). ──
 const CATALOG = {
   'Carpeted Bunk Boards':    32000,
   'Guide Poles':             28000,
@@ -23,11 +22,100 @@ const CATALOG = {
   'Remote Cover':             4599,
 };
 
+// ── Remote configurator pricing. Mirrors the data + total() in web/index.html.
+//    Base model / finish / limit switch / accessory prices are in DOLLARS;
+//    membership deltas are already in CENTS (matching the source data). ──
+const CFG = {
+  models: {
+    'mono':   { name: 'Elevate Mono',   price: 599 },
+    'mono-s': { name: 'Elevate Mono S', price: 615 },
+    'duo':    { name: 'Elevate Duo',    price: 625 },
+    'duo-s':  { name: 'Elevate Duo S',  price: 645 },
+  },
+  memberships: {
+    '1year':    { name: '1 Year',   cents: 12999 },
+    '3year':    { name: '3 Years',  cents: 32999 },
+    'lifetime': { name: 'Lifetime', cents: 69999 },
+  },
+  finishes: {
+    'galvanized': { name: 'Galvanized',     price: 0 },
+    'white':      { name: 'Arctic White',   price: 450 },
+    'black':      { name: 'Midnight Black',  price: 450 },
+    'navy':       { name: 'Nautical Blue',   price: 550 },
+    'bronze':     { name: 'Bronze',          price: 550 },
+  },
+  limitSwitches: {
+    'rotary':    { name: 'Rotary',     price: 299 },
+    'flatplate': { name: 'Flat Plate', price: 325 },
+    'kels':      { name: 'Kels',       price: 325 },
+  },
+  accessories: {
+    'led':   { name: 'Underwater LED Kit', price: 475 },
+    'cover': { name: 'Remote Cover',       price: 45.99 },
+  },
+};
+
 function json(data, status) {
   return new Response(JSON.stringify(data), {
     status: status,
     headers: { 'Content-Type': 'application/json' },
   });
+}
+
+// Build line items from the cart (accessories). Returns { items } or { error }.
+function buildCartLineItems(cartItems) {
+  const items = Array.isArray(cartItems) ? cartItems : [];
+  if (items.length === 0) return { error: 'Your cart is empty.' };
+  const lineItems = [];
+  for (const item of items) {
+    const name = item && item.name;
+    const qty = Math.max(1, Math.min(99, parseInt(item && item.qty, 10) || 1));
+    const amount = CATALOG[name];
+    if (!Number.isInteger(amount)) return { error: 'Unknown item in cart: ' + name };
+    lineItems.push({ name: name, amount: amount, qty: qty });
+  }
+  return { items: lineItems };
+}
+
+// Build a single line item for a configured remote system. The total is
+// recomputed here from the selection ids; any client-sent price is ignored.
+function buildConfigLineItems(config) {
+  const c = config || {};
+  const model = CFG.models[c.model];
+  const membership = CFG.memberships[c.motor];
+  const finish = CFG.finishes[c.finish];
+  if (!model) return { error: 'Invalid model selection.' };
+  if (!membership) return { error: 'Invalid membership selection.' };
+  if (!finish) return { error: 'Invalid finish selection.' };
+
+  let cents = model.price * 100 + membership.cents + finish.price * 100;
+
+  const details = ['Membership: ' + membership.name, 'Finish: ' + finish.name];
+
+  const isS = c.model === 'mono-s' || c.model === 'duo-s';
+  if (isS) {
+    const ls = CFG.limitSwitches[c.limitSwitch];
+    if (!ls) return { error: 'Invalid limit switch selection.' };
+    cents += ls.price * 100;
+    details.push('Limit switch: ' + ls.name);
+  }
+
+  const accIds = Array.isArray(c.acc) ? c.acc : [];
+  const accNames = [];
+  for (const id of accIds) {
+    const a = CFG.accessories[id];
+    if (!a) return { error: 'Invalid accessory selection.' };
+    cents += Math.round(a.price * 100);
+    accNames.push(a.name);
+  }
+  if (accNames.length) details.push('Add-ons: ' + accNames.join(', '));
+
+  return { items: [{
+    name: model.name + ' — Custom Configuration',
+    description: details.join(' · '),
+    amount: Math.round(cents),
+    qty: 1,
+  }] };
 }
 
 async function handleCheckout(request, env) {
@@ -42,10 +130,10 @@ async function handleCheckout(request, env) {
     return json({ error: 'Invalid request.' }, 400);
   }
 
-  const items = body && Array.isArray(body.items) ? body.items : [];
-  if (items.length === 0) {
-    return json({ error: 'Your cart is empty.' }, 400);
-  }
+  const built = body && body.config
+    ? buildConfigLineItems(body.config)
+    : buildCartLineItems(body && body.items);
+  if (built.error) return json({ error: built.error }, 400);
 
   const origin = new URL(request.url).origin;
   const params = new URLSearchParams();
@@ -55,20 +143,15 @@ async function handleCheckout(request, env) {
   params.append('shipping_address_collection[allowed_countries][]', 'US');
   params.append('shipping_address_collection[allowed_countries][]', 'CA');
 
-  let i = 0;
-  for (const item of items) {
-    const name = item && item.name;
-    const qty = Math.max(1, Math.min(99, parseInt(item && item.qty, 10) || 1));
-    const amount = CATALOG[name];
-    if (!Number.isInteger(amount)) {
-      return json({ error: 'Unknown item in cart: ' + name }, 400);
-    }
+  built.items.forEach(function (li, i) {
     params.set('line_items[' + i + '][price_data][currency]', 'usd');
-    params.set('line_items[' + i + '][price_data][product_data][name]', name);
-    params.set('line_items[' + i + '][price_data][unit_amount]', String(amount));
-    params.set('line_items[' + i + '][quantity]', String(qty));
-    i++;
-  }
+    params.set('line_items[' + i + '][price_data][product_data][name]', li.name);
+    if (li.description) {
+      params.set('line_items[' + i + '][price_data][product_data][description]', li.description);
+    }
+    params.set('line_items[' + i + '][price_data][unit_amount]', String(li.amount));
+    params.set('line_items[' + i + '][quantity]', String(li.qty));
+  });
 
   let resp, data;
   try {

@@ -1585,7 +1585,7 @@ body {
     </div>
     <div class="bar-right">
       <button class="btn-outline">Save Configuration</button>
-      <a class="btn-blue" href="https://buy.stripe.com/cNi3cufSqb7jbpH7Vv73G02" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none;line-height:normal">Order Now</a>
+      <button class="btn-blue" data-config-checkout>Order Now</button>
     </div>
   </div>
 </div>
@@ -2903,7 +2903,42 @@ document.addEventListener('click', e => {
   if (cremove) { removeFromCart(parseInt(cremove.dataset.cartRemove)); return; }
   // Continue shopping
   if (e.target.closest('[data-cart-continue]')) { showPage('shop'); return; }
-  // Stripe checkout — server computes the total from the cart (functions/api/checkout.js)
+  // Configurator checkout — server computes the total from the selected options (worker.js)
+  var cfgCheckout = e.target.closest('[data-config-checkout]');
+  if (cfgCheckout) {
+    var cfgLabel = cfgCheckout.textContent;
+    cfgCheckout.disabled = true;
+    cfgCheckout.textContent = 'Redirecting to secure checkout…';
+    fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ config: {
+        model: state.model,
+        motor: state.motor,
+        finish: state.finish,
+        limitSwitch: state.limitSwitch,
+        acc: Array.from(state.acc)
+      } })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+    .then(function(res) {
+      if (res.ok && res.data.url) {
+        window.location = res.data.url;
+      } else {
+        alert(res.data.error || 'Sorry, checkout could not start. Please try again.');
+        cfgCheckout.disabled = false;
+        cfgCheckout.textContent = cfgLabel;
+      }
+    })
+    .catch(function() {
+      alert('Network error starting checkout. Please try again.');
+      cfgCheckout.disabled = false;
+      cfgCheckout.textContent = cfgLabel;
+    });
+    return;
+  }
+
+  // Stripe checkout — server computes the total from the cart (worker.js)
   var checkoutBtn = e.target.closest('[data-stripe-checkout]');
   if (checkoutBtn) {
     if (cart.length === 0) return;
