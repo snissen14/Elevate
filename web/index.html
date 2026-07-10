@@ -1585,7 +1585,10 @@ body {
     </div>
     <div class="bar-right">
       <button class="btn-outline">Save Configuration</button>
-      <button class="btn-blue">Order Now</button>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1Trf3HCBMUEZAqX87xlmXGdJ"
+        publishable-key="pk_live_51Ps4AACBMUEZAqX8vDL9GZXIiGUkIT7v9VacDxGRYGEx9HtgmzdBxmIJuanvcQiBwLwcQUMloU3DarEa4xUdXGWv005Y6nz2Qn">
+      </stripe-buy-button>
     </div>
   </div>
 </div>
@@ -3208,5 +3211,7 @@ Object.values(panelMap).forEach(function(panel) {
   });
 });
 </script>
+<!-- Stripe Buy Button (Elevate Mono checkout on remote configurator) -->
+<script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </body>
 </html>
