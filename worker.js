@@ -1,13 +1,14 @@
-// Cloudflare Pages Function — POST /api/checkout
+// Cloudflare Worker entry point.
 //
-// Creates a Stripe Checkout Session from the cart and lets Stripe compute the
-// total. Prices are looked up from the SERVER-SIDE table below, never taken
-// from the request body, so a customer cannot tamper with prices in the browser.
+// Serves the static site from ./web (via the ASSETS binding) and handles the
+// dynamic checkout endpoint at POST /api/checkout.
 //
-// Requires an environment variable STRIPE_SECRET_KEY (set in the Cloudflare
-// Pages dashboard → Settings → Environment variables). Use a test-mode key
-// (sk_test_…) for the preview environment and the live key (sk_live_…) for
-// production.
+// The checkout total is computed from the SERVER-SIDE price table below, never
+// from prices sent by the browser, so prices cannot be tampered with client-side.
+//
+// Requires an environment variable STRIPE_SECRET_KEY, added in the Cloudflare
+// dashboard once this Worker has code (Settings -> Variables and secrets).
+// Use sk_test_… for testing and sk_live_… for live payments.
 
 // Authoritative price table — amounts in cents (USD). Keys MUST match the
 // product names used by the cart (productCatalog in web/index.html).
@@ -29,9 +30,7 @@ function json(data, status) {
   });
 }
 
-export async function onRequestPost(context) {
-  const { request, env } = context;
-
+async function handleCheckout(request, env) {
   if (!env.STRIPE_SECRET_KEY) {
     return json({ error: 'Checkout is not configured yet.' }, 500);
   }
@@ -92,3 +91,19 @@ export async function onRequestPost(context) {
 
   return json({ url: data.url }, 200);
 }
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (url.pathname === '/api/checkout') {
+      if (request.method !== 'POST') {
+        return json({ error: 'Method not allowed.' }, 405);
+      }
+      return handleCheckout(request, env);
+    }
+
+    // Everything else: serve the static site.
+    return env.ASSETS.fetch(request);
+  },
+};
