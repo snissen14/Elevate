@@ -2274,6 +2274,247 @@ body {
 </div>
 
 
+<!-- ════════════════════════════════════════
+     PAGE: CUSTOM BOAT LIFTS (LEARN / SERVICE)
+     ════════════════════════════════════════ -->
+<style>
+.ugc-section { background:#fff; padding:80px 24px 110px; }
+.ugc-inner { max-width:1200px; margin:0 auto; }
+.ugc-head { margin:0 0 40px; }
+.ugc-head h2 { font-size:clamp(36px,5vw,64px); font-weight:700; letter-spacing:-1.5px; line-height:1.05; color:#171A20; margin:0; }
+.ugc-head p { margin:16px 0 0; font-size:18px; line-height:1.5; color:#5C5E62; max-width:540px; }
+.ugc-grid { columns:4 258px; column-gap:16px; position:relative; }
+@media (max-width:680px){ .ugc-grid{ columns:2 150px; } }
+.ugc-card { break-inside:avoid; margin:0 0 16px; }
+.ugc-media { position:relative; border-radius:16px; overflow:hidden; display:flex; align-items:flex-end; padding:18px; }
+.ugc-media::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.62) 0%, rgba(0,0,0,0) 55%); }
+.ugc-media-label { position:relative; z-index:2; }
+.ugc-media-name { color:#fff; font-weight:600; font-size:16px; line-height:1.2; }
+.ugc-media-role { color:rgba(255,255,255,.82); font-size:12.5px; margin-top:3px; }
+.ugc-play { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:52px; height:52px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; z-index:2; box-shadow:0 4px 14px rgba(0,0,0,.25); }
+.ugc-play svg { width:20px; height:20px; fill:#171A20; margin-left:2px; }
+.ugc-plus { position:absolute; bottom:14px; right:14px; width:34px; height:34px; border-radius:50%; background:#171A20; color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px; line-height:1; z-index:3; }
+.ugc-quote { background:#F2EEE7; border-radius:16px; padding:24px 22px; position:relative; }
+.ugc-quote-text { font-size:18px; font-weight:600; color:#171A20; line-height:1.35; }
+.ugc-quote-author { margin-top:26px; }
+.ugc-quote-name { font-weight:600; color:#171A20; font-size:14.5px; }
+.ugc-quote-role { color:#8A8D91; font-size:12.5px; margin-top:2px; }
+.ugc-cta-pill { position:absolute; left:50%; bottom:20px; transform:translateX(-50%); background:#3E6AE1; color:#fff; padding:14px 32px; border-radius:30px; font-weight:600; font-size:14px; letter-spacing:.5px; text-decoration:none; z-index:6; box-shadow:0 10px 30px rgba(62,106,225,.4); white-space:nowrap; }
+.ugc-cta-pill:hover { background:#3560CC; }
+</style>
+<div id="page-learn-lifts" class="page-hidden">
+
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <a class="cfg-nav-logo" href="#home"></a>
+      <div class="cfg-nav-center">
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="liftsystems">Lift Systems</button>
+        <button>Structure</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="protection">Protection</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="lifestyle">Lifestyle</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="dealers">Dealers</button>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
+      </div>
+      <div class="cfg-nav-right">
+        <button class="search-trigger" aria-label="Search" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+        <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+        <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="learn-hero">
+    <div class="learn-hero-text">
+      <h1 class="learn-hero-title">Custom Boat Lifts</h1>
+      <p class="learn-hero-sub">Engineered for your dock, your boat, your water.</p>
+      <div class="learn-hero-ctas">
+        <a class="learn-cta-primary" href="#build">Get a Quote</a>
+        <a class="learn-cta-secondary" href="#build">Talk to an Expert</a>
+      </div>
+    </div>
+    <div class="learn-hero-stats">
+      <div class="learn-stat">
+        <div class="learn-stat-value">40,000 lb</div>
+        <div class="learn-stat-label">Max Capacity</div>
+      </div>
+      <div class="learn-stat">
+        <div class="learn-stat-value">100%</div>
+        <div class="learn-stat-label">Built to Your Slip</div>
+      </div>
+      <div class="learn-stat">
+        <div class="learn-stat-value">25 yr</div>
+        <div class="learn-stat-label">Structural Warranty</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service 1: Custom Design -->
+  <section class="learn-section learn-bg-light">
+    <div class="learn-section-inner">
+      <div class="learn-section-text">
+        <h2>Designed Around Your Dock</h2>
+        <p>No two waterfronts are the same, so no two lifts should be either. We engineer every system to your exact slip dimensions, water depth, bottom conditions, and vessel weight — down to the beam and cradle spacing.</p>
+        <a class="learn-section-link" href="#build">Start your design</a>
+      </div>
+      <div class="learn-section-visual" style="background:#F0F2F5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service 2: Site Assessment -->
+  <section class="learn-section learn-bg-dark reverse">
+    <div class="learn-section-inner">
+      <div class="learn-section-text">
+        <h2>Free On-Site Assessment</h2>
+        <p>Our team visits your property to survey the shoreline, measure water levels, and understand how you use your dock. You get a clear recommendation and a firm quote — before anything is built.</p>
+        <a class="learn-section-link" href="#build">Book an assessment</a>
+      </div>
+      <div class="learn-section-visual" style="background:#E8EAED">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service 3: Professional Installation -->
+  <section class="learn-section learn-bg-accent">
+    <div class="learn-section-inner">
+      <div class="learn-section-text">
+        <h2>Professional Installation</h2>
+        <p>Certified installers handle everything — permitting, delivery, and precision setup. Your lift is anchored, leveled, and tested on the water, so it's ready to run the day we hand it over.</p>
+        <a class="learn-section-link" href="#build">See how it works</a>
+      </div>
+      <div class="learn-section-visual">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2.1-.7-.7-2.1z"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service 4: Service & Maintenance -->
+  <section class="learn-section learn-bg-light reverse">
+    <div class="learn-section-inner">
+      <div class="learn-section-text">
+        <h2>Service &amp; Maintenance</h2>
+        <p>We don't disappear after install. Seasonal maintenance, spring commissioning, winterization, and repairs keep your lift running smoothly for decades — with local technicians a call away.</p>
+        <a class="learn-section-link" href="#build">Explore service plans</a>
+      </div>
+      <div class="learn-section-visual" style="background:#F0F2F5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs / Build Quality Grid -->
+  <section class="learn-full learn-bg-dark">
+    <h2>Built to Last on the Water</h2>
+    <p>Marine-grade materials and over-engineered structures mean your custom lift stands up to sun, salt, and storms — season after season.</p>
+    <div class="learn-spec-grid">
+      <div class="learn-spec-card">
+        <div class="learn-spec-card-value">40,000 lb</div>
+        <div class="learn-spec-card-label">Lifting Capacity</div>
+      </div>
+      <div class="learn-spec-card">
+        <div class="learn-spec-card-value">6061-T6</div>
+        <div class="learn-spec-card-label">Marine Aluminum</div>
+      </div>
+      <div class="learn-spec-card">
+        <div class="learn-spec-card-value">316</div>
+        <div class="learn-spec-card-label">Stainless Hardware</div>
+      </div>
+      <div class="learn-spec-card">
+        <div class="learn-spec-card-value">25 yr</div>
+        <div class="learn-spec-card-label">Structural Warranty</div>
+      </div>
+      <div class="learn-spec-card">
+        <div class="learn-spec-card-value">Fresh + Salt</div>
+        <div class="learn-spec-card-label">Water Rated</div>
+      </div>
+      <div class="learn-spec-card">
+        <div class="learn-spec-card-value">Local</div>
+        <div class="learn-spec-card-label">Service Network</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UGC / Social Proof (WHOOP-style mosaic) -->
+  <section class="ugc-section">
+    <div class="ugc-inner">
+      <div class="ugc-head">
+        <h2>Trusted on Waterfronts Everywhere</h2>
+        <p>From first-time dock owners to lakefront estates, Elevate builds custom lifts people are proud to show off.</p>
+      </div>
+      <div class="ugc-grid">
+
+        <div class="ugc-card"><div class="ugc-media" style="height:360px;background:linear-gradient(135deg,#1e3a5f,#2c5f8a)">
+          <div class="ugc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="ugc-media-label"><div class="ugc-media-name">The Hansen Dock</div><div class="ugc-media-role">24,000 lb Custom Lift · Lake Wylie</div></div>
+        </div></div>
+
+        <div class="ugc-card"><div class="ugc-quote">
+          <div class="ugc-quote-text">"Elevate built us a lift that fits our shallow slip perfectly. Nobody else could figure it out."</div>
+          <div class="ugc-quote-author"><div class="ugc-quote-name">James R.</div><div class="ugc-quote-role">Lakefront Owner</div></div>
+          <div class="ugc-plus">+</div>
+        </div></div>
+
+        <div class="ugc-card"><div class="ugc-media" style="height:300px;background:linear-gradient(135deg,#1e40af,#3b6fd4)">
+          <div class="ugc-media-label"><div class="ugc-media-name">Coastal Marina Project</div><div class="ugc-media-role">Commercial Install</div></div>
+          <div class="ugc-plus">+</div>
+        </div></div>
+
+        <div class="ugc-card"><div class="ugc-media" style="height:260px;background:linear-gradient(135deg,#0f766e,#155e63)">
+          <div class="ugc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="ugc-media-label"><div class="ugc-media-name">Sunset Cove</div><div class="ugc-media-role">Pontoon Lift</div></div>
+        </div></div>
+
+        <div class="ugc-card"><div class="ugc-quote">
+          <div class="ugc-quote-text">"The install was seamless — permitting, delivery, everything handled for us."</div>
+          <div class="ugc-quote-author"><div class="ugc-quote-name">Dana K.</div><div class="ugc-quote-role">Waterfront Owner</div></div>
+          <div class="ugc-plus">+</div>
+        </div></div>
+
+        <div class="ugc-card"><div class="ugc-media" style="height:330px;background:linear-gradient(135deg,#334155,#1e293b)">
+          <div class="ugc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="ugc-media-label"><div class="ugc-media-name">Miller Boathouse</div><div class="ugc-media-role">Enclosed Slip Lift</div></div>
+        </div></div>
+
+        <div class="ugc-card"><div class="ugc-quote">
+          <div class="ugc-quote-text">"Three seasons in and it runs like day one. Best money we've spent on the dock."</div>
+          <div class="ugc-quote-author"><div class="ugc-quote-name">Marcus T.</div><div class="ugc-quote-role">Boat Owner</div></div>
+          <div class="ugc-plus">+</div>
+        </div></div>
+
+        <div class="ugc-card"><div class="ugc-media" style="height:250px;background:linear-gradient(135deg,#c2703d,#8b4a2b)">
+          <div class="ugc-media-label"><div class="ugc-media-name">Lake Norman Build</div><div class="ugc-media-role">Twin-Motor Cradle</div></div>
+          <div class="ugc-plus">+</div>
+        </div></div>
+
+        <div class="ugc-card"><div class="ugc-quote">
+          <div class="ugc-quote-text">"The custom cradle fits our wake boat like a glove."</div>
+          <div class="ugc-quote-author"><div class="ugc-quote-name">Priya S.</div><div class="ugc-quote-role">Homeowner</div></div>
+          <div class="ugc-plus">+</div>
+        </div></div>
+
+        <div class="ugc-card"><div class="ugc-media" style="height:300px;background:linear-gradient(135deg,#155e75,#0e7490)">
+          <div class="ugc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="ugc-media-label"><div class="ugc-media-name">The Coleman Dock</div><div class="ugc-media-role">16,000 lb Lift · Smith Mountain Lake</div></div>
+        </div></div>
+
+        <a class="ugc-cta-pill" href="#build">GET A QUOTE</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="learn-bottom-cta">
+    <h2>Ready to build your custom lift?</h2>
+    <p>Tell us about your dock and boat — we'll design the perfect lift and send a quote.</p>
+    <a href="#build">Get a Quote</a>
+  </section>
+
+</div>
+
+
 <!-- Shared Mega Dropdown Panel -->
 <div class="mega-panel" id="megaPanel">
   <div class="mega-backdrop" id="megaBackdrop"></div>
@@ -2283,7 +2524,7 @@ body {
         <div class="mega-product-card">
           <a href="#build" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></a>
           <div class="mega-card-title">Custom Boat Lifts</div>
-          <div class="mega-card-links"><a href="#build">Get Started</a><a href="#build">Learn</a></div>
+          <div class="mega-card-links"><a href="#build">Get Started</a><a href="#learn-lifts">Learn</a></div>
         </div>
         <div class="mega-product-card">
           <a href="#boatlift" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><path d="M4 20h16" stroke-dasharray="2 2"/></svg></a>
@@ -2470,6 +2711,7 @@ function showPage(page) {
   document.getElementById('page-config').classList.toggle('page-hidden', page !== 'config');
   document.getElementById('page-boatlift').classList.toggle('page-hidden', page !== 'boatlift');
   document.getElementById('page-learn').classList.toggle('page-hidden', page !== 'learn');
+  document.getElementById('page-learn-lifts').classList.toggle('page-hidden', page !== 'learn-lifts');
   document.getElementById('page-shop').classList.toggle('page-hidden', page !== 'shop');
   document.getElementById('page-motors').classList.toggle('page-hidden', page !== 'motors');
   document.getElementById('page-pdp').classList.toggle('page-hidden', page !== 'pdp');
@@ -3250,6 +3492,7 @@ if (location.hash === '#build') showPage('build');
 if (location.hash === '#config') showPage('config');
 if (location.hash === '#boatlift') showPage('boatlift');
 if (location.hash === '#learn') showPage('learn');
+if (location.hash === '#learn-lifts') showPage('learn-lifts');
 if (location.hash === '#shop') showPage('shop');
 if (location.hash === '#motors') showPage('motors');
 renderMotor();
