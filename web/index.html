@@ -2903,9 +2903,33 @@ document.addEventListener('click', e => {
   if (cremove) { removeFromCart(parseInt(cremove.dataset.cartRemove)); return; }
   // Continue shopping
   if (e.target.closest('[data-cart-continue]')) { showPage('shop'); return; }
-  // Stripe checkout
-  if (e.target.closest('[data-stripe-checkout]')) {
-    alert('Stripe checkout integration ready.\\n\\nTo connect:\\n1. Add your Stripe publishable key\\n2. Create products in Stripe Dashboard\\n3. Call stripe.redirectToCheckout()\\n\\nTotal: ' + fmt(cartTotal()));
+  // Stripe checkout — server computes the total from the cart (functions/api/checkout.js)
+  var checkoutBtn = e.target.closest('[data-stripe-checkout]');
+  if (checkoutBtn) {
+    if (cart.length === 0) return;
+    var origLabel = checkoutBtn.textContent;
+    checkoutBtn.disabled = true;
+    checkoutBtn.textContent = 'Redirecting to secure checkout…';
+    fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: cart.map(function(it) { return { name: it.name, qty: it.qty }; }) })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+    .then(function(res) {
+      if (res.ok && res.data.url) {
+        window.location = res.data.url;
+      } else {
+        alert(res.data.error || 'Sorry, checkout could not start. Please try again.');
+        checkoutBtn.disabled = false;
+        checkoutBtn.textContent = origLabel;
+      }
+    })
+    .catch(function() {
+      alert('Network error starting checkout. Please try again.');
+      checkoutBtn.disabled = false;
+      checkoutBtn.textContent = origLabel;
+    });
     return;
   }
   // Add to Cart buttons (PDP)
