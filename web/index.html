@@ -2389,37 +2389,26 @@ body {
     </div>
   </section>
 
-  <!-- Map + Stats Section -->
+  <!-- Map + Counter Section -->
   <section style="background:#fff; padding:0;">
-    <div style="position:relative; width:100%; height:500px; background:#E8ECF1; overflow:hidden;">
-      <canvas id="mapCanvas" style="width:100%; height:100%;"></canvas>
-      <div style="position:absolute; bottom:16px; left:20px; background:#fff; border-radius:8px; padding:8px 14px; box-shadow:0 2px 8px rgba(0,0,0,0.1); display:flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:#171A20; cursor:pointer;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Find a Dealer
-      </div>
+    <div style="position:relative; width:100%; height:500px; overflow:hidden;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13800000!2d-98.5!3d39.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus" style="width:100%; height:100%; border:0; filter:grayscale(1) opacity(0.7);" allowfullscreen loading="lazy"></iframe>
     </div>
-    <div style="max-width:1200px; margin:0 auto; padding:48px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;">
-      <div>
-        <div style="font-size:32px; font-weight:600; color:#171A20; margin-bottom:6px;">Find Your Local Expert</div>
-        <div style="font-size:15px; color:#5C5E62; max-width:480px;">View the network of DockSolutions dealers and certified installers available near you.</div>
-        <div style="display:flex; gap:12px; margin-top:20px;">
-          <a href="#build" style="padding:12px 28px; background:#171A20; color:#fff; border-radius:4px; font-size:14px; font-weight:500; text-decoration:none;">Find a Dealer</a>
-          <a href="#build" style="padding:12px 28px; border:1px solid #D0D1D2; color:#171A20; border-radius:4px; font-size:14px; font-weight:500; text-decoration:none;">Learn More</a>
-        </div>
-      </div>
-      <div style="display:flex; gap:48px;">
-        <div style="text-align:center;">
+    <div style="max-width:600px; margin:0 auto; padding:48px 40px; text-align:center;">
+      <div style="display:flex; justify-content:center; gap:64px;">
+        <div>
           <div style="display:flex; align-items:baseline; justify-content:center;">
-            <span id="counterCustomers" style="font-size:48px; font-weight:700; color:#171A20;">0</span>
-            <span style="font-size:24px; font-weight:600; color:#171A20;">+</span>
+            <span id="counterCustomers" style="font-size:56px; font-weight:700; color:#171A20;">0</span>
+            <span style="font-size:28px; font-weight:600; color:#171A20;">+</span>
           </div>
-          <div style="font-size:14px; color:#5C5E62;">Customers Helped</div>
+          <div style="font-size:15px; color:#5C5E62;">Customers Helped</div>
         </div>
-        <div style="text-align:center;">
+        <div>
           <div style="display:flex; align-items:baseline; justify-content:center;">
-            <span id="counterDealers" style="font-size:48px; font-weight:700; color:#171A20;">0</span>
+            <span id="counterYears" style="font-size:56px; font-weight:700; color:#171A20;">0</span>
+            <span style="font-size:28px; font-weight:600; color:#171A20;">+</span>
           </div>
-          <div style="font-size:14px; color:#5C5E62;">Certified Dealers</div>
+          <div style="font-size:15px; color:#5C5E62;">Years in Business</div>
         </div>
       </div>
     </div>
@@ -3610,62 +3599,12 @@ Object.values(panelMap).forEach(function(panel) {
   });
 });
 
-// ── Map Canvas + Counter Animation ──
+// ── Counter Animation ──
 (function() {
-  var canvas = document.getElementById('mapCanvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  function resize() { canvas.width = canvas.offsetWidth * 2; canvas.height = canvas.offsetHeight * 2; ctx.scale(2, 2); draw(); }
-  window.addEventListener('resize', resize);
-
-  // Simplified US outline points (normalized 0-1)
-  var outline = [[0.05,0.35],[0.08,0.28],[0.12,0.22],[0.18,0.18],[0.22,0.15],[0.28,0.12],[0.35,0.1],[0.42,0.08],[0.5,0.08],[0.55,0.1],[0.6,0.08],[0.65,0.07],[0.7,0.08],[0.75,0.1],[0.8,0.12],[0.85,0.15],[0.88,0.18],[0.92,0.22],[0.95,0.28],[0.95,0.35],[0.93,0.42],[0.92,0.5],[0.93,0.55],[0.95,0.6],[0.95,0.65],[0.93,0.72],[0.9,0.78],[0.85,0.82],[0.8,0.85],[0.75,0.87],[0.7,0.88],[0.65,0.9],[0.6,0.92],[0.55,0.9],[0.5,0.88],[0.45,0.9],[0.4,0.92],[0.35,0.9],[0.3,0.88],[0.25,0.85],[0.2,0.82],[0.15,0.78],[0.1,0.72],[0.07,0.65],[0.05,0.55],[0.04,0.45]];
-
-  // Generate random pin points concentrated in US regions
-  var pins = [];
-  var hotspots = [[0.82,0.7],[0.85,0.55],[0.75,0.65],[0.7,0.45],[0.6,0.55],[0.55,0.4],[0.5,0.6],[0.45,0.45],[0.4,0.55],[0.35,0.4],[0.3,0.6],[0.25,0.45],[0.2,0.55],[0.15,0.4],[0.8,0.35],[0.65,0.3],[0.5,0.3],[0.35,0.7],[0.6,0.75],[0.45,0.7],[0.88,0.45],[0.78,0.55],[0.68,0.6],[0.55,0.5],[0.42,0.35],[0.3,0.3],[0.18,0.35],[0.12,0.45],[0.9,0.65],[0.72,0.75]];
-  for (var h = 0; h < hotspots.length; h++) {
-    var count = 8 + Math.floor(h * 1.3) % 12;
-    for (var j = 0; j < count; j++) {
-      pins.push([hotspots[h][0] + (Math.sin(j*7+h*3)*0.06), hotspots[h][1] + (Math.cos(j*11+h*5)*0.06)]);
-    }
-  }
-
-  function draw() {
-    var w = canvas.offsetWidth, h = canvas.offsetHeight;
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = '#E8ECF1';
-    ctx.fillRect(0, 0, w, h);
-
-    // Draw simplified landmass
-    ctx.beginPath();
-    var mx = w * 0.05, my = h * 0.05, sw = w * 0.9, sh = h * 0.9;
-    ctx.moveTo(mx + outline[0][0] * sw, my + outline[0][1] * sh);
-    for (var i = 1; i < outline.length; i++) ctx.lineTo(mx + outline[i][0] * sw, my + outline[i][1] * sh);
-    ctx.closePath();
-    ctx.fillStyle = '#D4DAE0';
-    ctx.fill();
-    ctx.strokeStyle = '#C0C8D0';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-
-    // Draw pins
-    for (var p = 0; p < pins.length; p++) {
-      var px = mx + pins[p][0] * sw, py = my + pins[p][1] * sh;
-      ctx.beginPath();
-      ctx.arc(px, py, 3, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(220, 50, 50, 0.7)';
-      ctx.fill();
-    }
-  }
-
-  resize();
-
-  // Counter animation
   function animateCounter(id, target, duration) {
     var el = document.getElementById(id);
     if (!el) return;
-    var start = 0, startTime = null;
+    var startTime = null;
     function step(ts) {
       if (!startTime) startTime = ts;
       var progress = Math.min((ts - startTime) / duration, 1);
@@ -3678,9 +3617,8 @@ Object.values(panelMap).forEach(function(panel) {
     }, { threshold: 0.3 });
     observer.observe(el);
   }
-
   animateCounter('counterCustomers', 15000, 2000);
-  animateCounter('counterDealers', 247, 1800);
+  animateCounter('counterYears', 24, 1800);
 })();
 </script>
 </body>
