@@ -3757,21 +3757,32 @@ Object.values(panelMap).forEach(function(panel) {
 
 // ── Boat Lift Selector ──
 (function() {
+  var boatImages = {
+    pwc: 'pwc-boat.png',
+    runabout: '10k%20boat.png',
+    center: '10k%20boat.png',
+    pontoon: '10k%20boat.png'
+  };
+
   var boats = document.querySelectorAll('.boat-option');
   if (!boats.length) return;
 
   boats.forEach(function(boat) {
     boat.addEventListener('click', function() {
       boats.forEach(function(b) {
-        b.style.opacity = '0.5';
-        b.style.transform = 'scale(0.8)';
-        b.querySelector('div').style.fontWeight = '400';
-        b.querySelector('div').style.color = 'rgba(255,255,255,0.6)';
+        b.style.border = '1.5px solid transparent';
+        b.style.background = 'transparent';
+        var svgs = b.querySelectorAll('svg');
+        svgs.forEach(function(s) { s.setAttribute('stroke', '#878A8F'); });
       });
-      this.style.opacity = '1';
-      this.style.transform = 'scale(1.1)';
-      this.querySelector('div').style.fontWeight = '600';
-      this.querySelector('div').style.color = '#fff';
+      this.style.border = '1.5px solid #C0C8D0';
+      this.style.background = '#fff';
+      var svgs = this.querySelectorAll('svg');
+      svgs.forEach(function(s) { s.setAttribute('stroke', '#171A20'); });
+
+      var type = this.getAttribute('data-boat');
+      var mainImg = document.getElementById('selectorMainImage');
+      if (mainImg && boatImages[type]) mainImg.src = boatImages[type];
     });
   });
 
