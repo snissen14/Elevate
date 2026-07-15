@@ -2391,8 +2391,8 @@ body {
 
   <!-- Map + Counter Section -->
   <section style="background:#fff; padding:0;">
-    <div style="position:relative; width:100%; height:500px; overflow:hidden;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13800000!2d-98.5!3d39.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus" style="width:100%; height:100%; border:0; filter:grayscale(1) opacity(0.7);" allowfullscreen loading="lazy"></iframe>
+    <div style="position:relative; width:100%; height:500px; overflow:hidden; background:#E8ECF1;">
+      <canvas id="mapCanvas" style="width:100%; height:100%; display:block;"></canvas>
     </div>
     <div style="max-width:600px; margin:0 auto; padding:48px 40px; text-align:center;">
       <div style="display:flex; justify-content:center; gap:64px;">
@@ -3599,8 +3599,97 @@ Object.values(panelMap).forEach(function(panel) {
   });
 });
 
-// ── Counter Animation ──
+// ── Map + Counter Animation ──
 (function() {
+  var canvas = document.getElementById('mapCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+
+  // Real US continental outline (simplified but accurate)
+  var usPath = 'M220,140 L205,135 195,128 180,120 165,115 150,112 135,115 120,120 108,128 95,138 85,148 78,160 72,175 68,190 65,205 63,220 62,235 65,250 70,262 78,272 88,278 98,282 105,288 110,295 115,305 118,315 108,320 100,325 95,332 92,340 95,348 102,355 112,358 125,360 140,358 155,355 168,352 178,355 188,360 200,365 215,368 230,370 248,372 265,375 280,378 295,380 310,382 328,380 345,378 360,375 378,370 395,365 410,358 425,350 438,342 448,335 455,325 462,315 468,305 472,295 475,282 478,268 480,255 482,240 485,225 488,210 490,195 492,180 488,168 482,158 475,150 465,142 455,138 442,135 428,132 415,130 400,128 385,125 370,122 355,120 340,118 325,120 310,122 295,125 280,128 265,132 250,135 235,138 Z';
+
+  function resize() {
+    canvas.width = canvas.offsetWidth * 2;
+    canvas.height = canvas.offsetHeight * 2;
+    ctx.scale(2, 2);
+    draw();
+  }
+
+  // Pin locations (spread across US waterfront areas)
+  var pins = [];
+  var regions = [
+    // Florida
+    [420,340],[430,350],[440,355],[435,345],[425,338],[415,335],[445,360],[438,352],
+    [432,342],[418,330],[410,325],[405,320],[428,348],[440,350],[422,332],
+    // Gulf Coast
+    [350,345],[340,342],[330,340],[320,338],[310,335],[300,332],[290,330],
+    [355,348],[345,345],[335,342],[325,340],[315,338],[305,335],
+    // East Coast
+    [460,310],[465,300],[468,290],[470,280],[472,268],[475,255],[478,242],
+    [480,228],[482,215],[485,200],[488,185],[485,175],[480,165],[475,155],
+    [458,305],[462,295],[466,285],[470,272],[474,260],[477,248],
+    // Carolinas/Virginia
+    [455,295],[450,288],[445,280],[440,275],[448,290],[452,300],
+    // Great Lakes
+    [380,165],[370,162],[360,158],[350,155],[340,158],[330,162],
+    [385,170],[375,168],[365,165],[355,162],[345,160],[335,165],
+    [395,175],[390,172],[378,168],[368,165],
+    // Texas Coast
+    [280,345],[270,342],[260,340],[250,345],[275,348],[265,345],
+    // Pacific NW
+    [82,155],[85,165],[88,175],[90,185],[78,150],[80,160],
+    // California
+    [72,195],[68,210],[65,225],[63,238],[70,200],[66,215],
+    // Lake areas
+    [300,180],[310,175],[320,170],[330,168],[290,185],[295,182],
+    // Midwest lakes
+    [280,195],[270,200],[260,205],[250,210],[240,215],
+    // More scatter
+    [200,180],[210,185],[220,190],[230,195],[190,175],
+    [150,160],[160,165],[170,170],[180,175],[140,155],
+    [400,200],[395,210],[390,220],[385,230],[405,195],
+  ];
+  for (var r = 0; r < regions.length; r++) pins.push(regions[r]);
+
+  function draw() {
+    var w = canvas.offsetWidth, h = canvas.offsetHeight;
+    ctx.clearRect(0, 0, w, h);
+
+    // Background
+    ctx.fillStyle = '#EDF0F4';
+    ctx.fillRect(0, 0, w, h);
+
+    // Scale map to fit
+    var sx = w / 560, sy = h / 420;
+    var s = Math.min(sx, sy);
+    var ox = (w - 560 * s) / 2, oy = (h - 420 * s) / 2;
+
+    ctx.save();
+    ctx.translate(ox, oy);
+    ctx.scale(s, s);
+
+    // Draw US shape
+    var p = new Path2D(usPath);
+    ctx.fillStyle = '#D8DDE4';
+    ctx.fill(p);
+    ctx.strokeStyle = '#C4CAD2';
+    ctx.lineWidth = 1.5;
+    ctx.stroke(p);
+
+    // Draw pins
+    for (var i = 0; i < pins.length; i++) {
+      ctx.beginPath();
+      ctx.arc(pins[i][0], pins[i][1], 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(210, 45, 45, 0.75)';
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
   function animateCounter(id, target, duration) {
     var el = document.getElementById(id);
     if (!el) return;
