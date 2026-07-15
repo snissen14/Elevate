@@ -2375,55 +2375,56 @@ body {
   </section>
 
   <!-- Boat Lift Selector -->
-  <section style="background:linear-gradient(180deg, #2563EB 0%, #3B82F6 50%, #60A5FA 100%); padding:80px 40px 60px; color:#fff; position:relative; overflow:hidden;">
-    <div style="position:absolute; inset:0; opacity:0.06; background-image:url('data:image/svg+xml,%3Csvg width=\'400\' height=\'400\' viewBox=\'0 0 400 400\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Ccircle cx=\'200\' cy=\'200\' r=\'180\' stroke=\'white\' stroke-width=\'0.5\'/%3E%3Ccircle cx=\'200\' cy=\'200\' r=\'120\' stroke=\'white\' stroke-width=\'0.5\'/%3E%3Ccircle cx=\'200\' cy=\'200\' r=\'60\' stroke=\'white\' stroke-width=\'0.5\'/%3E%3C/svg%3E'); background-size:400px;"></div>
-    <div style="max-width:1200px; margin:0 auto; position:relative; z-index:1;">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:40px;">
+  <section style="background:#F8F9FA; padding:60px 40px 50px; color:#171A20; position:relative;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
         <div>
-          <div style="font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; opacity:0.7; margin-bottom:8px;">/ Interactive</div>
-          <div style="font-size:36px; font-weight:800; text-transform:uppercase; letter-spacing:2px; line-height:1.1;">Boat Lift<br>Selector</div>
+          <div style="font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#878A8F; margin-bottom:6px;">Boat Lift</div>
+          <div style="font-size:32px; font-weight:800; text-transform:uppercase; letter-spacing:3px; line-height:1.1; color:#171A20;">Selector</div>
         </div>
         <div style="text-align:center;">
-          <div style="display:flex; gap:12px; margin-bottom:20px;" id="selectorDots">
-            <div style="width:14px; height:14px; border-radius:50%; background:#F59E0B; cursor:pointer;" data-step="0"></div>
-            <div style="width:14px; height:14px; border-radius:50%; background:rgba(255,255,255,0.3); cursor:pointer;" data-step="1"></div>
-            <div style="width:14px; height:14px; border-radius:50%; background:rgba(255,255,255,0.3); cursor:pointer;" data-step="2"></div>
-            <div style="width:14px; height:14px; border-radius:50%; background:rgba(255,255,255,0.2); cursor:pointer;" data-step="3"></div>
-          </div>
-          <div style="font-size:22px; font-weight:500;" id="selectorQuestion">What type of vessel do you have?</div>
+          <div style="font-size:12px; color:#878A8F; letter-spacing:1px; text-transform:uppercase; margin-bottom:16px;">Step 1 of 4</div>
+          <div style="font-size:32px; font-weight:500; color:#171A20; line-height:1.2;">What type of vessel<br>do you have?</div>
+          <div style="font-size:14px; color:#878A8F; margin-top:8px;">This helps us recommend the right lift for your boat.</div>
         </div>
-        <a href="#build" style="display:flex; align-items:center; gap:8px; color:#fff; text-decoration:none; font-size:14px; opacity:0.8; transition:opacity 0.15s;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg>
+        <a href="#build" style="display:flex; align-items:center; gap:6px; color:#878A8F; text-decoration:none; font-size:13px; border:1px solid #D0D1D2; border-radius:50px; padding:8px 16px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg>
           Need help?
         </a>
       </div>
 
-      <div style="position:relative;">
-        <button style="position:absolute; left:-20px; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%; border:2px solid rgba(255,255,255,0.3); background:transparent; color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:2; font-size:20px;" id="selectorPrev">&#8249;</button>
-        <button style="position:absolute; right:-20px; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%; border:2px solid rgba(255,255,255,0.3); background:transparent; color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:2; font-size:20px;" id="selectorNext">&#8250;</button>
+      <!-- Main boat image -->
+      <div style="text-align:center; padding:20px 0;">
+        <img src="10k%20boat.png" alt="Boat" style="max-width:700px; width:100%; height:auto;" id="selectorMainImage">
+      </div>
 
-        <div style="display:flex; justify-content:center; align-items:flex-end; gap:40px; min-height:280px; padding:0 60px;" id="selectorBoats">
-          <div class="boat-option" data-boat="pwc" style="text-align:center; cursor:pointer; opacity:0.5; transition:all 0.3s; transform:scale(0.8);">
-            <svg viewBox="0 0 200 120" fill="none" stroke="#fff" stroke-width="1.5" width="160" height="96"><path d="M30 80 Q60 40 100 45 Q140 50 170 80 L165 85 Q140 65 100 60 Q60 55 35 85 Z" fill="rgba(255,255,255,0.1)"/><path d="M90 45 L95 25 L105 25 L100 45"/><path d="M70 55 Q80 35 95 30"/></svg>
-            <div style="font-size:13px; margin-top:8px; color:rgba(255,255,255,0.6);">PWC / Jet Ski</div>
-            <div style="font-size:11px; color:rgba(255,255,255,0.4);">Under 3,000 lbs</div>
-          </div>
-          <div class="boat-option selected" data-boat="runabout" style="text-align:center; cursor:pointer; opacity:1; transition:all 0.3s; transform:scale(1.1);">
-            <svg viewBox="0 0 200 120" fill="none" stroke="#fff" stroke-width="1.5" width="200" height="120"><path d="M20 75 Q50 35 100 30 Q150 35 180 75 L175 80 Q150 50 100 45 Q50 50 25 80 Z" fill="rgba(255,255,255,0.15)"/><path d="M85 30 L88 15 L92 15 L90 30" fill="rgba(255,255,255,0.1)"/><rect x="75" y="28" width="50" height="18" rx="4" fill="rgba(255,255,255,0.08)"/><path d="M60 50 Q70 38 85 32"/></svg>
-            <div style="font-size:14px; margin-top:8px; font-weight:600;">Runabout / Bowrider</div>
-            <div style="font-size:12px; color:rgba(255,255,255,0.7);">3,000 – 10,000 lbs</div>
-          </div>
-          <div class="boat-option" data-boat="center" style="text-align:center; cursor:pointer; opacity:0.5; transition:all 0.3s; transform:scale(0.8);">
-            <svg viewBox="0 0 200 120" fill="none" stroke="#fff" stroke-width="1.5" width="160" height="96"><path d="M15 78 Q45 30 100 25 Q155 30 185 78 L180 82 Q155 42 100 38 Q45 42 20 82 Z" fill="rgba(255,255,255,0.1)"/><line x1="100" y1="25" x2="100" y2="8"/><path d="M98 8 L102 8 L100 5 Z" fill="rgba(255,255,255,0.3)"/><rect x="70" y="30" width="60" height="12" rx="3" fill="rgba(255,255,255,0.06)"/><rect x="85" y="25" width="30" height="20" rx="3" fill="rgba(255,255,255,0.08)"/></svg>
-            <div style="font-size:13px; margin-top:8px; color:rgba(255,255,255,0.6);">Center Console</div>
-            <div style="font-size:11px; color:rgba(255,255,255,0.4);">12,000 – 30,000 lbs</div>
-          </div>
+      <!-- Boat type thumbnails -->
+      <div style="display:flex; justify-content:center; gap:24px; margin-top:8px;" id="selectorBoats">
+        <div class="boat-option" data-boat="pwc" style="text-align:center; cursor:pointer; padding:16px 20px; border-radius:12px; border:1.5px solid transparent; transition:all 0.2s; min-width:140px;">
+          <svg viewBox="0 0 200 120" fill="none" stroke="#878A8F" stroke-width="1.5" width="80" height="48"><path d="M30 80 Q60 40 100 45 Q140 50 170 80 L165 85 Q140 65 100 60 Q60 55 35 85 Z" fill="none"/><path d="M90 45 L95 25 L105 25 L100 45"/></svg>
+          <div style="font-size:13px; font-weight:500; color:#171A20; margin-top:6px;">PWC / Jet Ski</div>
+          <div style="font-size:11px; color:#878A8F;">Under 3,000 lbs</div>
+        </div>
+        <div class="boat-option" data-boat="runabout" style="text-align:center; cursor:pointer; padding:16px 20px; border-radius:12px; border:1.5px solid #C0C8D0; transition:all 0.2s; min-width:140px; background:#fff;">
+          <svg viewBox="0 0 200 120" fill="none" stroke="#171A20" stroke-width="1.5" width="80" height="48"><path d="M20 75 Q50 35 100 30 Q150 35 180 75 L175 80 Q150 50 100 45 Q50 50 25 80 Z" fill="none"/><rect x="75" y="28" width="50" height="18" rx="4" fill="none"/></svg>
+          <div style="font-size:13px; font-weight:600; color:#171A20; margin-top:6px;">Runabout / Bowrider</div>
+          <div style="font-size:11px; color:#5C5E62;">3,000 – 10,000 lbs</div>
+        </div>
+        <div class="boat-option" data-boat="center" style="text-align:center; cursor:pointer; padding:16px 20px; border-radius:12px; border:1.5px solid transparent; transition:all 0.2s; min-width:140px;">
+          <svg viewBox="0 0 200 120" fill="none" stroke="#878A8F" stroke-width="1.5" width="80" height="48"><path d="M15 78 Q45 30 100 25 Q155 30 185 78 L180 82 Q155 42 100 38 Q45 42 20 82 Z" fill="none"/><rect x="85" y="25" width="30" height="20" rx="3" fill="none"/></svg>
+          <div style="font-size:13px; font-weight:500; color:#171A20; margin-top:6px;">Center Console</div>
+          <div style="font-size:11px; color:#878A8F;">12,000 – 30,000 lbs</div>
+        </div>
+        <div class="boat-option" data-boat="pontoon" style="text-align:center; cursor:pointer; padding:16px 20px; border-radius:12px; border:1.5px solid transparent; transition:all 0.2s; min-width:140px;">
+          <svg viewBox="0 0 200 120" fill="none" stroke="#878A8F" stroke-width="1.5" width="80" height="48"><rect x="25" y="50" width="150" height="20" rx="4" fill="none"/><rect x="30" y="75" width="140" height="8" rx="4" fill="none"/><rect x="30" y="88" width="140" height="8" rx="4" fill="none"/></svg>
+          <div style="font-size:13px; font-weight:500; color:#171A20; margin-top:6px;">Pontoon</div>
+          <div style="font-size:11px; color:#878A8F;">4,000 – 8,000 lbs</div>
         </div>
       </div>
 
-      <div style="display:flex; justify-content:center; gap:16px; margin-top:40px;" id="selectorActions">
-        <a href="#build" style="padding:14px 40px; background:#fff; color:#2563EB; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; text-transform:uppercase; letter-spacing:0.5px;">Get My Custom Quote</a>
-        <a href="#build" style="padding:14px 40px; border:1.5px solid rgba(255,255,255,0.4); color:#fff; border-radius:8px; font-size:14px; font-weight:500; text-decoration:none;">Talk to an Expert</a>
+      <div style="display:flex; justify-content:center; gap:16px; margin-top:36px;">
+        <a href="#build" style="padding:16px 56px; background:#171A20; color:#fff; border-radius:6px; font-size:14px; font-weight:600; text-decoration:none; text-transform:uppercase; letter-spacing:1px;">Get My Custom Quote</a>
+        <a href="#build" style="padding:16px 56px; border:1.5px solid #D0D1D2; color:#171A20; border-radius:6px; font-size:14px; font-weight:500; text-decoration:none; text-transform:uppercase; letter-spacing:0.5px;">Talk to an Expert</a>
       </div>
     </div>
   </section>
