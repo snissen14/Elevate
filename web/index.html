@@ -48,12 +48,13 @@ body {
   font-size: 17px; font-weight: 500; color: #171A20;
   background: none; border: none; cursor: pointer; padding: 6px 10px;
   transition: background 0.15s; border-radius: 4px;
+  text-decoration: none;
 }
-.home-nav-center button:hover { background: rgba(0,0,0,0.05); }
+.home-nav-center button:hover, .home-nav-center a:hover { background: rgba(0,0,0,0.05); }
 .shop-cat-link:hover { background: #F5F5F5 !important; }
 
 @media (max-width: 1280px) { .home-nav-center { gap: 16px; } }
-@media (max-width: 1100px) { .home-nav-center { gap: 8px; } .home-nav-center button { font-size: 13px; padding: 4px 6px; } }
+@media (max-width: 1100px) { .home-nav-center { gap: 8px; } .home-nav-center button, .home-nav-center a { font-size: 13px; padding: 4px 6px; } }
 /* Mega Dropdown — rendered outside nav via JS portal */
 .nav-dropdown-trigger {
   font-size: 14px; font-weight: 500; color: #171A20;
