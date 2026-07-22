@@ -2632,7 +2632,7 @@ body {
         <a href="#" class="shop-cat-link" data-cat="lifts" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s; background:#F5F5F5;">Lift Systems <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
         <a href="#" class="shop-cat-link" data-cat="structure" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s;">Structure <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
         <a href="#" class="shop-cat-link" data-cat="docking" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s;">Docking <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
-        <a href="#" class="shop-cat-link" data-cat="lifestyle" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s;">Lifestyle <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
+        <a href="#" class="shop-cat-link" data-cat="wateraccess" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s;">Lifestyle <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
         <a href="#shop" style="display:inline-block; margin:20px 28px 0; padding:10px 24px; background:#171A20; color:#fff; border-radius:6px; font-size:13px; font-weight:600; text-decoration:none; text-transform:uppercase; letter-spacing:0.5px;">Shop All</a>
       </div>
       <div style="flex:1; padding:32px 40px; display:flex; gap:20px;" id="shopCatCards">
@@ -3292,7 +3292,7 @@ document.addEventListener('click', e => {
   // Toggle correct panel on click (mobile fallback)
   if (e.target.closest('[data-toggle-dropdown]')) {
     var which = e.target.closest('[data-toggle-dropdown]').getAttribute('data-toggle-dropdown');
-    var panels = { 'shop-mega': 'megaPanelShop', resources: 'megaPanelResources', liftsystems: 'megaPanel', lifestyle: 'megaPanelLiving', docking: 'megaPanelProtection', dealers: 'megaPanelDealers', structure: 'megaPanelStructure' };
+    var panels = { 'shop-mega': 'megaPanelShop', resources: 'megaPanelResources', liftsystems: 'megaPanel', wateraccess: 'megaPanelLiving', docking: 'megaPanelProtection', dealers: 'megaPanelDealers', structure: 'megaPanelStructure' };
     var targetPanel = panels[which];
     if (targetPanel) {
       var isOpen = document.getElementById(targetPanel).classList.contains('open');
@@ -3709,7 +3709,7 @@ renderMotor();
 
 // ── Hover-based mega dropdowns (desktop) ──
 var megaTimer = null;
-var panelMap = { 'shop-mega': document.getElementById('megaPanelShop'), resources: document.getElementById('megaPanelResources'), liftsystems: document.getElementById('megaPanel'), lifestyle: document.getElementById('megaPanelLiving'), docking: document.getElementById('megaPanelProtection'), dealers: document.getElementById('megaPanelDealers'), structure: document.getElementById('megaPanelStructure') };
+var panelMap = { 'shop-mega': document.getElementById('megaPanelShop'), resources: document.getElementById('megaPanelResources'), liftsystems: document.getElementById('megaPanel'), wateraccess: document.getElementById('megaPanelLiving'), docking: document.getElementById('megaPanelProtection'), dealers: document.getElementById('megaPanelDealers'), structure: document.getElementById('megaPanelStructure') };
 
 function closeAllPanels() {
   Object.values(panelMap).forEach(function(p) { p.classList.remove('open'); });
@@ -3822,7 +3822,7 @@ Object.values(panelMap).forEach(function(panel) {
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 10h20"/><path d="M2 16h20"/></svg>', title: 'Foam Dock Bumper' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v16"/><path d="M4 4h4c0 4-4 4-4 8h4c0 4-4 4-4 8"/></svg>', title: 'Vinyl Dock Edge' },
     ],
-    lifestyle: [
+    wateraccess: [
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20h16"/><path d="M6 20v-4h3v4"/><path d="M11 20v-8h3v8"/><path d="M16 20v-12h3v12"/></svg>', title: 'Steps' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v18M16 3v18"/><path d="M8 8h8M8 13h8M8 18h8"/></svg>', title: 'Ladders' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 16h16"/><path d="M6 16V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8"/><path d="M4 16l-1 4h18l-1-4"/></svg>', title: 'Seating' },
