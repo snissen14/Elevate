@@ -35,14 +35,11 @@ const CFG = {
   memberships: {
     '1year':    { name: '1 Year',   cents: 12999 },
     '3year':    { name: '3 Years',  cents: 32999 },
-    'lifetime': { name: 'Lifetime', cents: 69999 },
   },
   finishes: {
-    'galvanized': { name: 'Galvanized',     price: 0 },
-    'white':      { name: 'Arctic White',   price: 450 },
-    'black':      { name: 'Midnight Black',  price: 450 },
-    'navy':       { name: 'Nautical Blue',   price: 550 },
-    'bronze':     { name: 'Bronze',          price: 550 },
+    'inlet':    { name: 'Inlet Green',    price: 0 },
+    'offshore': { name: 'Offshore Black', price: 0 },
+    'harbour':  { name: 'Harbour Mist',   price: 0 },
   },
   limitSwitches: {
     'rotary':    { name: 'Rotary',     price: 299 },
@@ -50,7 +47,7 @@ const CFG = {
     'kels':      { name: 'Kels',       price: 325 },
   },
   accessories: {
-    'led':   { name: 'Underwater LED Kit', price: 475 },
+    'led':   { name: 'Underwater LED Kit', price: 375.99 },
     'cover': { name: 'Remote Cover',       price: 45.99 },
   },
 };
@@ -82,22 +79,29 @@ function buildCartLineItems(cartItems) {
 function buildConfigLineItems(config) {
   const c = config || {};
   const model = CFG.models[c.model];
-  const membership = CFG.memberships[c.motor];
-  const finish = CFG.finishes[c.finish];
+  const membership = c.motor ? CFG.memberships[c.motor] : null;
+  const finish = c.finish ? CFG.finishes[c.finish] : null;
   if (!model) return { error: 'Invalid model selection.' };
-  if (!membership) return { error: 'Invalid membership selection.' };
-  if (!finish) return { error: 'Invalid finish selection.' };
 
-  let cents = model.price * 100 + membership.cents + finish.price * 100;
+  let cents = model.price * 100;
+  const details = [];
 
-  const details = ['Membership: ' + membership.name, 'Finish: ' + finish.name];
+  if (membership) {
+    cents += membership.cents;
+    details.push('Membership: ' + membership.name);
+  }
+  if (finish) {
+    cents += finish.price * 100;
+    details.push('Finish: ' + finish.name);
+  }
 
   const isS = c.model === 'mono-s' || c.model === 'duo-s';
-  if (isS) {
+  if (isS && c.limitSwitch) {
     const ls = CFG.limitSwitches[c.limitSwitch];
-    if (!ls) return { error: 'Invalid limit switch selection.' };
-    cents += ls.price * 100;
-    details.push('Limit switch: ' + ls.name);
+    if (ls) {
+      cents += ls.price * 100;
+      details.push('Limit switch: ' + ls.name);
+    }
   }
 
   const accIds = Array.isArray(c.acc) ? c.acc : [];
