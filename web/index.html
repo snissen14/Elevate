@@ -2976,11 +2976,9 @@ const motors = [
 ];
 
 const finishes = [
-  { id: 'galvanized', name: 'Galvanized',     color: '#9CA3AF', dark: false, delta: 0   },
-  { id: 'white',      name: 'Arctic White',   color: '#EAECEE', dark: false, delta: 450 },
-  { id: 'black',      name: 'Midnight Black', color: '#1F2937', dark: true,  delta: 450 },
-  { id: 'navy',       name: 'Nautical Blue',  color: '#1E3A5F', dark: true,  delta: 550 },
-  { id: 'bronze',     name: 'Bronze',         color: '#8B6914', dark: false, delta: 550 },
+  { id: 'inlet',    name: 'Inlet Green',    color: '#597978', dark: true,  delta: 0 },
+  { id: 'offshore', name: 'Offshore Black', color: '#151213', dark: true,  delta: 0 },
+  { id: 'harbour',  name: 'Harbour Mist',   color: '#AFB8BA', dark: false, delta: 0 },
 ];
 
 const limitSwitches = [
@@ -2999,7 +2997,7 @@ const accessories = [
 const state = {
   model: 'mono',
   motor: '1year',
-  finish: 'galvanized',
+  finish: 'inlet',
   limitSwitch: 'rotary',
   acc: new Set(),
 };
