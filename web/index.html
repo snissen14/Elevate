@@ -1951,6 +1951,190 @@ body {
 <!-- ════════════════════════════════════════
      PAGE: LIFT HARDWARE
      ════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════
+     PAGE: QUICK SHOP — LIFT SYSTEMS
+     ════════════════════════════════════════ -->
+<div id="page-qs-lifts" class="page-hidden">
+  <nav class="home-nav" style="position:sticky; top:0;">
+    <div class="home-nav-inner">
+      <a class="home-nav-logo" href="#home"></a>
+      <div class="home-nav-center">
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="shop-mega">Shop</button>
+        <a href="#learn-lifts" style="color:#171A20; text-decoration:none; border-bottom:2px solid #4B5EA1; padding-bottom:4px;">Build My Boat Lift</a>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
+      </div>
+      <div class="home-nav-right">
+        <div class="nav-search-bar" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span>Search</span></div>
+        <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+        <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
+      </div>
+    </div>
+  </nav>
+  <div style="display:flex; min-height:calc(100vh - 80px);">
+    <div style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
+      <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
+      <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Lift Systems</div>
+      <a href="#" class="qs-cat" data-qscat="cables" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Cables &amp; Cable Hardware</a>
+      <a href="#" class="qs-cat" data-qscat="pulleys" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Pulleys &amp; Sheaves</a>
+      <a href="#" class="qs-cat" data-qscat="fasteners" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Fasteners &amp; Bolts</a>
+      <a href="#" class="qs-cat" data-qscat="switches" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Switches &amp; Controls</a>
+      <a href="#" class="qs-cat" data-qscat="bearings" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Bearings &amp; Bushings</a>
+      <a href="#" class="qs-cat" data-qscat="gears" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Gears &amp; Drive Components</a>
+      <a href="#" class="qs-cat" data-qscat="pads" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Bunks &amp; Pads</a>
+      <a href="#" class="qs-cat" data-qscat="electrical" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Electrical Components</a>
+    </div>
+    <div style="flex:1; padding:32px 40px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
+        <div>
+          <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Lift Systems / Quick Shop</div>
+          <h1 style="font-size:28px; font-weight:600; color:#171A20; margin-top:4px;" id="qsLiftsTitle">Cables &amp; Cable Hardware</h1>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <input type="text" placeholder="Search parts..." style="padding:8px 16px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; width:220px; outline:none;">
+          <select style="padding:8px 12px; border:1px solid #D0D1D2; border-radius:6px; font-size:13px; color:#171A20; background:#fff;"><option>Sort by: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Part Number</option></select>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr; gap:0; border:1px solid #E8E8E8; border-radius:8px; overflow:hidden;" id="qsLiftsGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: QUICK SHOP — STRUCTURE
+     ════════════════════════════════════════ -->
+<div id="page-qs-structure" class="page-hidden">
+  <nav class="home-nav" style="position:sticky; top:0;">
+    <div class="home-nav-inner">
+      <a class="home-nav-logo" href="#home"></a>
+      <div class="home-nav-center">
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="shop-mega">Shop</button>
+        <a href="#learn-lifts" style="color:#171A20; text-decoration:none; border-bottom:2px solid #4B5EA1; padding-bottom:4px;">Build My Boat Lift</a>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
+      </div>
+      <div class="home-nav-right">
+        <div class="nav-search-bar" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span>Search</span></div>
+        <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+        <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
+      </div>
+    </div>
+  </nav>
+  <div style="display:flex; min-height:calc(100vh - 80px);">
+    <div style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
+      <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
+      <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Structure</div>
+      <a href="#" class="qs-cat" data-qscat="decking" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Decking Boards</a>
+      <a href="#" class="qs-cat" data-qscat="framing" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Framing</a>
+      <a href="#" class="qs-cat" data-qscat="pilings" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Pilings &amp; Posts</a>
+      <a href="#" class="qs-cat" data-qscat="brackets" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Hardware &amp; Brackets</a>
+      <a href="#" class="qs-cat" data-qscat="composite" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Composite Lumber</a>
+    </div>
+    <div style="flex:1; padding:32px 40px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
+        <div>
+          <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Structure / Quick Shop</div>
+          <h1 style="font-size:28px; font-weight:600; color:#171A20; margin-top:4px;" id="qsStructureTitle">Decking Boards</h1>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <input type="text" placeholder="Search parts..." style="padding:8px 16px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; width:220px; outline:none;">
+          <select style="padding:8px 12px; border:1px solid #D0D1D2; border-radius:6px; font-size:13px; color:#171A20; background:#fff;"><option>Sort by: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Part Number</option></select>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr; gap:0; border:1px solid #E8E8E8; border-radius:8px; overflow:hidden;" id="qsStructureGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: QUICK SHOP — DOCKING
+     ════════════════════════════════════════ -->
+<div id="page-qs-docking" class="page-hidden">
+  <nav class="home-nav" style="position:sticky; top:0;">
+    <div class="home-nav-inner">
+      <a class="home-nav-logo" href="#home"></a>
+      <div class="home-nav-center">
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="shop-mega">Shop</button>
+        <a href="#learn-lifts" style="color:#171A20; text-decoration:none; border-bottom:2px solid #4B5EA1; padding-bottom:4px;">Build My Boat Lift</a>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
+      </div>
+      <div class="home-nav-right">
+        <div class="nav-search-bar" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span>Search</span></div>
+        <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+        <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
+      </div>
+    </div>
+  </nav>
+  <div style="display:flex; min-height:calc(100vh - 80px);">
+    <div style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
+      <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
+      <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Docking</div>
+      <a href="#" class="qs-cat" data-qscat="bumpers" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Bumpers &amp; Fenders</a>
+      <a href="#" class="qs-cat" data-qscat="dockedge" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Edge Profiles</a>
+      <a href="#" class="qs-cat" data-qscat="cleats" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Cleats &amp; Ties</a>
+      <a href="#" class="qs-cat" data-qscat="dockboxes" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Boxes &amp; Storage</a>
+    </div>
+    <div style="flex:1; padding:32px 40px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
+        <div>
+          <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Docking / Quick Shop</div>
+          <h1 style="font-size:28px; font-weight:600; color:#171A20; margin-top:4px;" id="qsDockingTitle">Bumpers &amp; Fenders</h1>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <input type="text" placeholder="Search parts..." style="padding:8px 16px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; width:220px; outline:none;">
+          <select style="padding:8px 12px; border:1px solid #D0D1D2; border-radius:6px; font-size:13px; color:#171A20; background:#fff;"><option>Sort by: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Part Number</option></select>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr; gap:0; border:1px solid #E8E8E8; border-radius:8px; overflow:hidden;" id="qsDockingGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: QUICK SHOP — WATER ACCESS
+     ════════════════════════════════════════ -->
+<div id="page-qs-access" class="page-hidden">
+  <nav class="home-nav" style="position:sticky; top:0;">
+    <div class="home-nav-inner">
+      <a class="home-nav-logo" href="#home"></a>
+      <div class="home-nav-center">
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="shop-mega">Shop</button>
+        <a href="#learn-lifts" style="color:#171A20; text-decoration:none; border-bottom:2px solid #4B5EA1; padding-bottom:4px;">Build My Boat Lift</a>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
+      </div>
+      <div class="home-nav-right">
+        <div class="nav-search-bar" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span>Search</span></div>
+        <button aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+        <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
+      </div>
+    </div>
+  </nav>
+  <div style="display:flex; min-height:calc(100vh - 80px);">
+    <div style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
+      <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
+      <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Water Access</div>
+      <a href="#" class="qs-cat" data-qscat="steps" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Dock Steps</a>
+      <a href="#" class="qs-cat" data-qscat="ladders" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Ladders</a>
+      <a href="#" class="qs-cat" data-qscat="platforms" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Swim Platforms</a>
+      <a href="#" class="qs-cat" data-qscat="handrails" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Handrails &amp; Grab Bars</a>
+    </div>
+    <div style="flex:1; padding:32px 40px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
+        <div>
+          <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Water Access / Quick Shop</div>
+          <h1 style="font-size:28px; font-weight:600; color:#171A20; margin-top:4px;" id="qsAccessTitle">Dock Steps</h1>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <input type="text" placeholder="Search parts..." style="padding:8px 16px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; width:220px; outline:none;">
+          <select style="padding:8px 12px; border:1px solid #D0D1D2; border-radius:6px; font-size:13px; color:#171A20; background:#fff;"><option>Sort by: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Part Number</option></select>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr; gap:0; border:1px solid #E8E8E8; border-radius:8px; overflow:hidden;" id="qsAccessGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: QUICK SHOP ALL — HARDWARE
+     ════════════════════════════════════════ -->
 <div id="page-hardware" class="page-hidden">
   <nav class="home-nav" style="position:sticky; top:0;">
     <div class="home-nav-inner">
@@ -2781,7 +2965,7 @@ body {
           <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
           <div class="mega-card-title">Elevate Lift Motors</div>
         </a>
-        <a href="#hardware" class="mega-product-card" style="flex:1;" data-qs-cat="cables" data-qs-section="Lift Systems">
+        <a href="#qs-lifts" class="mega-product-card" style="flex:1;">
           <div class="mega-card-icon" style="background:#3E6AE1;"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
           <div class="mega-card-title" style="color:#3E6AE1; font-weight:600;">Quick Shop</div>
         </a>
@@ -3053,6 +3237,10 @@ function showPage(page) {
   document.getElementById('page-cart').classList.toggle('page-hidden', page !== 'cart');
   document.getElementById('page-build').classList.toggle('page-hidden', page !== 'build');
   document.getElementById('page-hardware').classList.toggle('page-hidden', page !== 'hardware');
+  document.getElementById('page-qs-lifts').classList.toggle('page-hidden', page !== 'qs-lifts');
+  document.getElementById('page-qs-structure').classList.toggle('page-hidden', page !== 'qs-structure');
+  document.getElementById('page-qs-docking').classList.toggle('page-hidden', page !== 'qs-docking');
+  document.getElementById('page-qs-access').classList.toggle('page-hidden', page !== 'qs-access');
   if (page === 'cart') renderCart();
   document.body.style.background = page === 'home' ? '#000' : '#fff';
   document.getElementById('megaPanel').classList.remove('open');
@@ -3070,6 +3258,10 @@ function showPage(page) {
     pendingHwCat = null;
     pendingHwSection = null;
   }
+  if (page === 'qs-lifts') renderQsPage('lifts', 'cables');
+  if (page === 'qs-structure') renderQsPage('structure', 'decking');
+  if (page === 'qs-docking') renderQsPage('docking', 'bumpers');
+  if (page === 'qs-access') renderQsPage('access', 'steps');
 }
 
 window.addEventListener('hashchange', function() {
@@ -3416,15 +3608,6 @@ function renderMotor() {
 var pendingHwCat = null;
 var pendingHwSection = null;
 document.addEventListener('click', e => {
-  // Quick Shop card in mega menu — navigate to hardware with pre-selected category
-  var qsCard = e.target.closest('[data-qs-cat]');
-  if (qsCard) {
-    e.preventDefault();
-    pendingHwCat = qsCard.getAttribute('data-qs-cat');
-    pendingHwSection = qsCard.getAttribute('data-qs-section');
-    location.hash = '#hardware';
-    return;
-  }
   // Close mega panel on backdrop click
   // Close on backdrop click
   if (e.target.id === 'megaBackdrop' || e.target.id === 'megaBackdropLiving' || e.target.id === 'megaBackdropProtection' || e.target.id === 'megaBackdropResources') {
@@ -3853,6 +4036,10 @@ if (location.hash === '#learn-lifts') showPage('learn-lifts');
 if (location.hash === '#shop') showPage('shop');
 if (location.hash === '#motors') showPage('motors');
 if (location.hash === '#hardware') showPage('hardware');
+if (location.hash === '#qs-lifts') showPage('qs-lifts');
+if (location.hash === '#qs-structure') showPage('qs-structure');
+if (location.hash === '#qs-docking') showPage('qs-docking');
+if (location.hash === '#qs-access') showPage('qs-access');
 
 // ── Hardware page: category sidebar + product data ──
 var hwCatalog = {
@@ -4098,6 +4285,45 @@ document.querySelectorAll('.hw-cat').forEach(function(el) {
   });
 });
 
+// ── Per-category Quick Shop pages ──
+var qsGridMap = { lifts: 'qsLiftsGrid', structure: 'qsStructureGrid', docking: 'qsDockingGrid', access: 'qsAccessGrid' };
+var qsTitleMap = { lifts: 'qsLiftsTitle', structure: 'qsStructureTitle', docking: 'qsDockingTitle', access: 'qsAccessTitle' };
+
+function renderQsPage(page, cat) {
+  var data = hwCatalog[cat];
+  if (!data) return;
+  var grid = document.getElementById(qsGridMap[page]);
+  var titleEl = document.getElementById(qsTitleMap[page]);
+  if (titleEl) titleEl.innerHTML = data.title;
+  document.querySelectorAll('.qs-cat[data-qspage="' + page + '"]').forEach(function(el) {
+    var isActive = el.getAttribute('data-qscat') === cat;
+    el.style.borderLeftColor = isActive ? '#3E6AE1' : 'transparent';
+    el.style.background = isActive ? '#fff' : 'transparent';
+    el.style.color = isActive ? '#171A20' : '#5C5E62';
+    el.style.fontWeight = isActive ? '500' : '400';
+  });
+  if (!grid) return;
+  var html = '<div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:14px 20px; background:#F8F9FA; font-size:12px; font-weight:600; color:#878A8F; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid #E8E8E8;"><span>Image</span><span>Description</span><span>Part #</span><span>Price</span><span></span></div>';
+  data.items.forEach(function(item, i) {
+    var isLast = i === data.items.length - 1;
+    html += '<div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:20px;' + (isLast ? '' : ' border-bottom:1px solid #F0F0F0;') + '">'
+      + '<div style="width:72px; height:72px; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center;">' + item.img + '</div>'
+      + '<div><div style="font-size:15px; font-weight:500; color:#171A20;">' + item.name + '</div><div style="font-size:13px; color:#878A8F; margin-top:4px;">' + item.desc + '</div></div>'
+      + '<div style="font-size:13px; color:#5C5E62; font-family:monospace;">' + item.part + '</div>'
+      + '<div style="font-size:16px; font-weight:600; color:#171A20;">' + item.price + '</div>'
+      + '<div style="display:flex; align-items:center; gap:8px;"><input type="number" value="1" min="1" max="99" style="width:52px; padding:7px 4px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; text-align:center; outline:none; font-variant-numeric:tabular-nums;"><button style="padding:9px 18px; background:#171A20; color:#fff; border:none; border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap;">Add to Cart</button></div>'
+      + '</div>';
+  });
+  grid.innerHTML = html;
+}
+
+document.querySelectorAll('.qs-cat').forEach(function(el) {
+  el.addEventListener('click', function(e) {
+    e.preventDefault();
+    renderQsPage(el.getAttribute('data-qspage'), el.getAttribute('data-qscat'));
+  });
+});
+
 renderMotor();
 
 // ── Hover-based mega dropdowns (desktop) ──
@@ -4205,24 +4431,24 @@ Object.values(panelMap).forEach(function(panel) {
       { href: '#boatlift', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><path d="M4 20h16" stroke-dasharray="2 2"/></svg>', title: 'Elevate Jet Ski Lift' },
       { href: '#config', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="9" r="2"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="17" x2="15" y2="17"/></svg>', title: 'Elevate Lift Remotes' },
       { href: '#motors', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>', title: 'Elevate Lift Motors' },
-      { href: '#hardware', quickShop: 'cables', section: 'Lift Systems', isQuickShop: true, title: 'Quick Shop' },
+      { href: '#qs-lifts', isQuickShop: true, title: 'Quick Shop' },
     ],
     structure: [
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="M2 8h20M6 4v16M10 4v16M14 4v16M18 4v16"/></svg>', title: 'Wear-deck Decking' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20h16"/><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>', title: 'Structural Wood' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="22"/><line x1="16" y1="2" x2="16" y2="22"/><path d="M4 18h16" stroke-dasharray="3 2"/></svg>', title: 'Wood Pylons' },
-      { href: '#hardware', quickShop: 'decking', section: 'Structure', isQuickShop: true, title: 'Quick Shop' },
+      { href: '#qs-structure', isQuickShop: true, title: 'Quick Shop' },
     ],
     docking: [
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 10h20"/><path d="M2 16h20"/></svg>', title: 'Foam Dock Bumper' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v16"/><path d="M4 4h4c0 4-4 4-4 8h4c0 4-4 4-4 8"/></svg>', title: 'Vinyl Dock Edge' },
-      { href: '#hardware', quickShop: 'bumpers', section: 'Docking', isQuickShop: true, title: 'Quick Shop' },
+      { href: '#qs-docking', isQuickShop: true, title: 'Quick Shop' },
     ],
     wateraccess: [
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20h16"/><path d="M6 20v-4h3v4"/><path d="M11 20v-8h3v8"/><path d="M16 20v-12h3v12"/></svg>', title: 'Steps' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 22h20"/><path d="M4 22v-6h4v6"/><path d="M8 16v-4h4v4"/><path d="M12 12v-4h4v4"/><path d="M16 8V4h4v4"/></svg>', title: 'Walk In Stairs' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v18M16 3v18"/><path d="M8 8h8M8 13h8M8 18h8"/></svg>', title: 'Ladders' },
-      { href: '#hardware', quickShop: 'steps', section: 'Water Access', isQuickShop: true, title: 'Quick Shop' },
+      { href: '#qs-access', isQuickShop: true, title: 'Quick Shop' },
     ],
   };
 
@@ -4233,7 +4459,7 @@ Object.values(panelMap).forEach(function(panel) {
     if (!container) return;
     container.innerHTML = cards.map(function(c) {
       if (c.isQuickShop) {
-        return '<a href="' + c.href + '" class="mega-product-card" style="flex:1;" data-qs-cat="' + c.quickShop + '" data-qs-section="' + c.section + '">'
+        return '<a href="' + c.href + '" class="mega-product-card" style="flex:1;">'
           + '<div class="mega-card-icon" style="background:#3E6AE1;"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>'
           + '<div class="mega-card-title" style="color:#3E6AE1; font-weight:600;">' + c.title + '</div></a>';
       }
