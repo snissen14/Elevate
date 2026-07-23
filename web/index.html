@@ -2781,6 +2781,10 @@ body {
           <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
           <div class="mega-card-title">Elevate Lift Motors</div>
         </a>
+        <a href="#hardware" class="mega-product-card" style="flex:1;" data-qs-cat="cables" data-qs-section="Lift Systems">
+          <div class="mega-card-icon" style="background:#3E6AE1;"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <div class="mega-card-title" style="color:#3E6AE1; font-weight:600;">Quick Shop</div>
+        </a>
       </div>
     </div>
   </div>
@@ -3061,6 +3065,11 @@ function showPage(page) {
   if (page === 'config') render();
   if (page === 'boatlift') renderLift();
   if (page === 'motors') renderMotor();
+  if (page === 'hardware' && pendingHwCat) {
+    renderHwCategory(pendingHwCat, pendingHwSection);
+    pendingHwCat = null;
+    pendingHwSection = null;
+  }
 }
 
 window.addEventListener('hashchange', function() {
@@ -3404,7 +3413,18 @@ function renderMotor() {
 
 // ── Events ──
 
+var pendingHwCat = null;
+var pendingHwSection = null;
 document.addEventListener('click', e => {
+  // Quick Shop card in mega menu — navigate to hardware with pre-selected category
+  var qsCard = e.target.closest('[data-qs-cat]');
+  if (qsCard) {
+    e.preventDefault();
+    pendingHwCat = qsCard.getAttribute('data-qs-cat');
+    pendingHwSection = qsCard.getAttribute('data-qs-section');
+    location.hash = '#hardware';
+    return;
+  }
   // Close mega panel on backdrop click
   // Close on backdrop click
   if (e.target.id === 'megaBackdrop' || e.target.id === 'megaBackdropLiving' || e.target.id === 'megaBackdropProtection' || e.target.id === 'megaBackdropResources') {
@@ -4185,20 +4205,24 @@ Object.values(panelMap).forEach(function(panel) {
       { href: '#boatlift', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><path d="M4 20h16" stroke-dasharray="2 2"/></svg>', title: 'Elevate Jet Ski Lift' },
       { href: '#config', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="9" r="2"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="17" x2="15" y2="17"/></svg>', title: 'Elevate Lift Remotes' },
       { href: '#motors', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>', title: 'Elevate Lift Motors' },
+      { href: '#hardware', quickShop: 'cables', section: 'Lift Systems', isQuickShop: true, title: 'Quick Shop' },
     ],
     structure: [
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="M2 8h20M6 4v16M10 4v16M14 4v16M18 4v16"/></svg>', title: 'Wear-deck Decking' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20h16"/><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>', title: 'Structural Wood' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="22"/><line x1="16" y1="2" x2="16" y2="22"/><path d="M4 18h16" stroke-dasharray="3 2"/></svg>', title: 'Wood Pylons' },
+      { href: '#hardware', quickShop: 'decking', section: 'Structure', isQuickShop: true, title: 'Quick Shop' },
     ],
     docking: [
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 10h20"/><path d="M2 16h20"/></svg>', title: 'Foam Dock Bumper' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v16"/><path d="M4 4h4c0 4-4 4-4 8h4c0 4-4 4-4 8"/></svg>', title: 'Vinyl Dock Edge' },
+      { href: '#hardware', quickShop: 'bumpers', section: 'Docking', isQuickShop: true, title: 'Quick Shop' },
     ],
     wateraccess: [
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20h16"/><path d="M6 20v-4h3v4"/><path d="M11 20v-8h3v8"/><path d="M16 20v-12h3v12"/></svg>', title: 'Steps' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 22h20"/><path d="M4 22v-6h4v6"/><path d="M8 16v-4h4v4"/><path d="M12 12v-4h4v4"/><path d="M16 8V4h4v4"/></svg>', title: 'Walk In Stairs' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v18M16 3v18"/><path d="M8 8h8M8 13h8M8 18h8"/></svg>', title: 'Ladders' },
+      { href: '#hardware', quickShop: 'steps', section: 'Water Access', isQuickShop: true, title: 'Quick Shop' },
     ],
   };
 
@@ -4208,6 +4232,11 @@ Object.values(panelMap).forEach(function(panel) {
     var container = document.getElementById('shopCatCards');
     if (!container) return;
     container.innerHTML = cards.map(function(c) {
+      if (c.isQuickShop) {
+        return '<a href="' + c.href + '" class="mega-product-card" style="flex:1;" data-qs-cat="' + c.quickShop + '" data-qs-section="' + c.section + '">'
+          + '<div class="mega-card-icon" style="background:#3E6AE1;"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>'
+          + '<div class="mega-card-title" style="color:#3E6AE1; font-weight:600;">' + c.title + '</div></a>';
+      }
       var iconHtml = c.isImg
         ? '<div class="mega-card-icon" style="padding:0;"><img src="' + c.img + '" alt="' + c.title + '" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></div>'
         : '<div class="mega-card-icon">' + c.icon + '</div>';
