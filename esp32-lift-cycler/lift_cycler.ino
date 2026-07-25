@@ -40,13 +40,16 @@ const int PIN_LED  = 2;    // onboard LED: ON while the motor is being driven
 const bool ACTIVE_LOW = false;
 
 // ---- Keypad behavior ----
-// true  = HOLD-TO-RUN: motor runs only while the button is held (most lift
-//         remotes with limit switches). The ESP holds the line for the whole
-//         3-minute run. <-- default.
-// false = LATCHING: one short press starts, another stops. The ESP sends a
-//         ~350 ms pulse to start and another to stop.
-const bool HOLD_TO_RUN = true;
-const unsigned long PULSE_MS = 350UL;   // used only when HOLD_TO_RUN == false
+// HOLD_TO_RUN    : motor runs only while the button is held. ESP holds the line
+//                  for the whole RUN_MS (dead-man style remotes).
+// PULSE_TOGGLE   : one tap starts, another tap stops. ESP taps to start, then
+//                  taps the same button again after RUN_MS to stop.
+// PULSE_AUTOSTOP : one tap starts; the GEM's LIMIT SWITCH stops the motor at the
+//                  end of travel. ESP only taps start, then waits out RUN_MS
+//                  (the travel window) before the rest period.  <-- your setup
+enum KeypadMode { HOLD_TO_RUN, PULSE_TOGGLE, PULSE_AUTOSTOP };
+const KeypadMode KEYPAD_MODE = PULSE_AUTOSTOP;
+const unsigned long PULSE_MS = 350UL;   // tap length for the two PULSE modes
 
 // ---- Timing (milliseconds) ----
 const unsigned long RUN_MS        = 3UL  * 60UL * 1000UL;   // 3 minutes running
@@ -78,23 +81,27 @@ void setDirection(bool up, bool down) {
 
 void allStop() { setDirection(false, false); }
 
-// Start moving in a direction. For HOLD_TO_RUN we leave the line asserted for
-// the whole run; for latching boards we send one short start pulse.
+// Start moving in a direction.
+//  HOLD_TO_RUN            -> assert the line for the whole run.
+//  PULSE_TOGGLE/AUTOSTOP  -> a single short tap to start.
 void startMove(bool up) {
   allStop();
   delay(DEAD_TIME_MS);                 // guarantee a gap between directions
   setDirection(up, !up);               // assert exactly one direction
-  if (!HOLD_TO_RUN) {                  // latching board: pulse to start, then release
+  if (KEYPAD_MODE != HOLD_TO_RUN) {    // pulse modes: tap to start, then release
     delay(PULSE_MS);
     allStop();
-    digitalWrite(PIN_LED, HIGH);       // keep indicator on: commanded running
+    digitalWrite(PIN_LED, HIGH);       // indicator stays on: commanded running
   }
 }
 
-// Stop moving. For latching boards this means pressing the same button again.
+// End of a run.
+//  HOLD_TO_RUN     -> release the held line (allStop below).
+//  PULSE_TOGGLE    -> tap the same button again to stop.
+//  PULSE_AUTOSTOP  -> nothing to send; the limit switch already stopped it.
 void stopMove(bool up) {
-  if (!HOLD_TO_RUN) {                  // latching: pulse the same button to stop
-    setDirection(up, !up);
+  if (KEYPAD_MODE == PULSE_TOGGLE) {
+    setDirection(up, !up);             // tap same button to stop
     delay(PULSE_MS);
   }
   allStop();
