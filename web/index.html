@@ -949,6 +949,7 @@ body {
   cursor: pointer; border: 1px solid #E8E8E8; border-radius: 8px;
 }
 .shop-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1; }
+.hw-product-card:hover div:first-child { background: #ECECEC !important; }
 
 .shop-card-badge {
   font-size: 11px; font-weight: 600; text-transform: uppercase;
@@ -2346,17 +2347,11 @@ body {
       <a href="#" class="qs-cat" data-qscat="electrical" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Electrical Components</a>
     </div>
     <div style="flex:1; padding:32px 40px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
-        <div>
-          <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Lift Systems / Shop More Items</div>
-          <h1 style="font-size:28px; font-weight:600; color:#171A20; margin-top:4px;" id="qsLiftsTitle">Cables &amp; Cable Hardware</h1>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <input type="text" placeholder="Search parts..." style="padding:8px 16px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; width:220px; outline:none;">
-          <select style="padding:8px 12px; border:1px solid #D0D1D2; border-radius:6px; font-size:13px; color:#171A20; background:#fff;"><option>Sort by: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Part Number</option></select>
-        </div>
+      <div style="margin-bottom:28px;">
+        <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Lift Systems</div>
+        <h1 style="font-size:32px; font-weight:600; color:#171A20; margin-top:4px;" id="qsLiftsTitle">Cables &amp; Cable Hardware</h1>
       </div>
-      <div style="display:grid; grid-template-columns:1fr; gap:0; border:1px solid #E8E8E8; border-radius:8px; overflow:hidden;" id="qsLiftsGrid"></div>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;" id="qsLiftsGrid"></div>
     </div>
   </div>
 </div>
@@ -2391,17 +2386,11 @@ body {
       <a href="#" class="qs-cat" data-qscat="composite" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Composite Lumber</a>
     </div>
     <div style="flex:1; padding:32px 40px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
-        <div>
-          <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Structure / Shop More Items</div>
-          <h1 style="font-size:28px; font-weight:600; color:#171A20; margin-top:4px;" id="qsStructureTitle">Decking Boards</h1>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <input type="text" placeholder="Search parts..." style="padding:8px 16px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; width:220px; outline:none;">
-          <select style="padding:8px 12px; border:1px solid #D0D1D2; border-radius:6px; font-size:13px; color:#171A20; background:#fff;"><option>Sort by: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Part Number</option></select>
-        </div>
+      <div style="margin-bottom:28px;">
+        <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Structure</div>
+        <h1 style="font-size:32px; font-weight:600; color:#171A20; margin-top:4px;" id="qsStructureTitle">Decking Boards</h1>
       </div>
-      <div style="display:grid; grid-template-columns:1fr; gap:0; border:1px solid #E8E8E8; border-radius:8px; overflow:hidden;" id="qsStructureGrid"></div>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;" id="qsStructureGrid"></div>
     </div>
   </div>
 </div>
@@ -2435,17 +2424,11 @@ body {
       <a href="#" class="qs-cat" data-qscat="dockboxes" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Boxes &amp; Storage</a>
     </div>
     <div style="flex:1; padding:32px 40px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
-        <div>
-          <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Docking / Shop More Items</div>
-          <h1 style="font-size:28px; font-weight:600; color:#171A20; margin-top:4px;" id="qsDockingTitle">Bumpers &amp; Fenders</h1>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <input type="text" placeholder="Search parts..." style="padding:8px 16px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; width:220px; outline:none;">
-          <select style="padding:8px 12px; border:1px solid #D0D1D2; border-radius:6px; font-size:13px; color:#171A20; background:#fff;"><option>Sort by: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Part Number</option></select>
-        </div>
+      <div style="margin-bottom:28px;">
+        <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Docking</div>
+        <h1 style="font-size:32px; font-weight:600; color:#171A20; margin-top:4px;" id="qsDockingTitle">Bumpers &amp; Fenders</h1>
       </div>
-      <div style="display:grid; grid-template-columns:1fr; gap:0; border:1px solid #E8E8E8; border-radius:8px; overflow:hidden;" id="qsDockingGrid"></div>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;" id="qsDockingGrid"></div>
     </div>
   </div>
 </div>
@@ -2479,17 +2462,11 @@ body {
       <a href="#" class="qs-cat" data-qscat="handrails" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Handrails &amp; Grab Bars</a>
     </div>
     <div style="flex:1; padding:32px 40px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
-        <div>
-          <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Water Access / Shop More Items</div>
-          <h1 style="font-size:28px; font-weight:600; color:#171A20; margin-top:4px;" id="qsAccessTitle">Dock Steps</h1>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <input type="text" placeholder="Search parts..." style="padding:8px 16px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; width:220px; outline:none;">
-          <select style="padding:8px 12px; border:1px solid #D0D1D2; border-radius:6px; font-size:13px; color:#171A20; background:#fff;"><option>Sort by: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Part Number</option></select>
-        </div>
+      <div style="margin-bottom:28px;">
+        <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Water Access</div>
+        <h1 style="font-size:32px; font-weight:600; color:#171A20; margin-top:4px;" id="qsAccessTitle">Dock Steps</h1>
       </div>
-      <div style="display:grid; grid-template-columns:1fr; gap:0; border:1px solid #E8E8E8; border-radius:8px; overflow:hidden;" id="qsAccessGrid"></div>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;" id="qsAccessGrid"></div>
     </div>
   </div>
 </div>
@@ -2549,78 +2526,11 @@ body {
 
     <!-- Right content -->
     <div style="flex:1; padding:32px 40px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
-        <div>
-          <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;" id="hwSectionTitle">Lift Systems / Shop More Items</div>
-          <h1 style="font-size:28px; font-weight:600; color:#171A20; margin-top:4px;" id="hwCatTitle">Cables &amp; Cable Hardware</h1>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <input type="text" placeholder="Search parts..." style="padding:8px 16px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; width:220px; outline:none;">
-          <select style="padding:8px 12px; border:1px solid #D0D1D2; border-radius:6px; font-size:13px; color:#171A20; background:#fff;">
-            <option>Sort by: Featured</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
-            <option>Part Number</option>
-          </select>
-        </div>
+      <div style="margin-bottom:28px;">
+        <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;" id="hwSectionTitle">Lift Systems</div>
+        <h1 style="font-size:32px; font-weight:600; color:#171A20; margin-top:4px;" id="hwCatTitle">Cables &amp; Cable Hardware</h1>
       </div>
-
-      <!-- Parts grid -->
-      <div style="display:grid; grid-template-columns:1fr; gap:0; border:1px solid #E8E8E8; border-radius:8px; overflow:hidden;" id="hwPartsGrid">
-
-        <div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:14px 20px; background:#F8F9FA; font-size:12px; font-weight:600; color:#878A8F; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid #E8E8E8;">
-          <span>Image</span><span>Description</span><span>Part #</span><span>Price</span><span></span>
-        </div>
-
-        <div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:20px; border-bottom:1px solid #F0F0F0;">
-          <div style="width:72px; height:72px; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><line x1="4" y1="4" x2="20" y2="20"/></svg></div>
-          <div><div style="font-size:15px; font-weight:500; color:#171A20;">Stainless Steel Lift Cable — 3/16"</div><div style="font-size:13px; color:#878A8F; margin-top:4px;">7x19 construction, 316 SS, per foot</div></div>
-          <div style="font-size:13px; color:#5C5E62; font-family:monospace;">DS-CAB-316</div>
-          <div style="font-size:16px; font-weight:600; color:#171A20;">$2.45/ft</div>
-          <div style="display:flex; align-items:center; gap:8px;"><input type="number" value="1" min="1" max="99" style="width:52px; padding:7px 4px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; text-align:center; outline:none; font-variant-numeric:tabular-nums;"><button style="padding:9px 18px; background:#171A20; color:#fff; border:none; border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap;">Add to Cart</button></div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:20px; border-bottom:1px solid #F0F0F0;">
-          <div style="width:72px; height:72px; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-          <div><div style="font-size:15px; font-weight:500; color:#171A20;">Cable Thimble — 3/16" SS</div><div style="font-size:13px; color:#878A8F; margin-top:4px;">316 stainless, prevents cable wear at loops</div></div>
-          <div style="font-size:13px; color:#5C5E62; font-family:monospace;">DS-THM-316</div>
-          <div style="font-size:16px; font-weight:600; color:#171A20;">$3.25</div>
-          <div style="display:flex; align-items:center; gap:8px;"><input type="number" value="1" min="1" max="99" style="width:52px; padding:7px 4px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; text-align:center; outline:none; font-variant-numeric:tabular-nums;"><button style="padding:9px 18px; background:#171A20; color:#fff; border:none; border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap;">Add to Cart</button></div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:20px; border-bottom:1px solid #F0F0F0;">
-          <div style="width:72px; height:72px; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="6" y="6" width="12" height="12" rx="2"/></svg></div>
-          <div><div style="font-size:15px; font-weight:500; color:#171A20;">Copper Sleeve Crimp — 3/16"</div><div style="font-size:13px; color:#878A8F; margin-top:4px;">Oval compression sleeve, marine grade</div></div>
-          <div style="font-size:13px; color:#5C5E62; font-family:monospace;">DS-CMP-316</div>
-          <div style="font-size:16px; font-weight:600; color:#171A20;">$1.85</div>
-          <div style="display:flex; align-items:center; gap:8px;"><input type="number" value="1" min="1" max="99" style="width:52px; padding:7px 4px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; text-align:center; outline:none; font-variant-numeric:tabular-nums;"><button style="padding:9px 18px; background:#171A20; color:#fff; border:none; border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap;">Add to Cart</button></div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:20px; border-bottom:1px solid #F0F0F0;">
-          <div style="width:72px; height:72px; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M12 2v20M2 12h20"/></svg></div>
-          <div><div style="font-size:15px; font-weight:500; color:#171A20;">Turnbuckle — 1/4" Jaw &amp; Eye</div><div style="font-size:13px; color:#878A8F; margin-top:4px;">316 SS, 1,200 lb WLL, for cable tensioning</div></div>
-          <div style="font-size:13px; color:#5C5E62; font-family:monospace;">DS-TBK-014</div>
-          <div style="font-size:16px; font-weight:600; color:#171A20;">$18.50</div>
-          <div style="display:flex; align-items:center; gap:8px;"><input type="number" value="1" min="1" max="99" style="width:52px; padding:7px 4px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; text-align:center; outline:none; font-variant-numeric:tabular-nums;"><button style="padding:9px 18px; background:#171A20; color:#fff; border:none; border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap;">Add to Cart</button></div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:20px; border-bottom:1px solid #F0F0F0;">
-          <div style="width:72px; height:72px; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="4"/></svg></div>
-          <div><div style="font-size:15px; font-weight:500; color:#171A20;">Wire Rope Clip — 3/16" SS</div><div style="font-size:13px; color:#878A8F; margin-top:4px;">U-bolt style, 316 stainless, saddle type</div></div>
-          <div style="font-size:13px; color:#5C5E62; font-family:monospace;">DS-WRC-316</div>
-          <div style="font-size:16px; font-weight:600; color:#171A20;">$4.75</div>
-          <div style="display:flex; align-items:center; gap:8px;"><input type="number" value="1" min="1" max="99" style="width:52px; padding:7px 4px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; text-align:center; outline:none; font-variant-numeric:tabular-nums;"><button style="padding:9px 18px; background:#171A20; color:#fff; border:none; border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap;">Add to Cart</button></div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:20px;">
-          <div style="width:72px; height:72px; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></div>
-          <div><div style="font-size:15px; font-weight:500; color:#171A20;">Cable Stop — 1/4" Aluminum</div><div style="font-size:13px; color:#878A8F; margin-top:4px;">Swage stop, prevents cable slippage</div></div>
-          <div style="font-size:13px; color:#5C5E62; font-family:monospace;">DS-STP-014</div>
-          <div style="font-size:16px; font-weight:600; color:#171A20;">$2.10</div>
-          <div style="display:flex; align-items:center; gap:8px;"><input type="number" value="1" min="1" max="99" style="width:52px; padding:7px 4px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; text-align:center; outline:none; font-variant-numeric:tabular-nums;"><button style="padding:9px 18px; background:#171A20; color:#fff; border:none; border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap;">Add to Cart</button></div>
-        </div>
-
-      </div>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;" id="hwPartsGrid"></div>
     </div>
   </div>
 </div>
@@ -4182,6 +4092,15 @@ document.addEventListener('click', e => {
     return;
   }
 
+  // Hardware product card click → product detail
+  var hwCard = e.target.closest('.hw-product-card');
+  if (hwCard) {
+    e.preventDefault();
+    var partNum = hwCard.getAttribute('data-hw-product');
+    showHwProduct(partNum);
+    return;
+  }
+
   // Remote configurator
   const mc = e.target.closest('[data-model]');
   if (mc) { state.model = state.model === mc.dataset.model ? null : mc.dataset.model; render(); return; }
@@ -4648,11 +4567,44 @@ var hwCatalog = {
   }
 };
 
+function showHwProduct(partNum) {
+  var product = null;
+  var catKeys = Object.keys(hwCatalog);
+  for (var k = 0; k < catKeys.length; k++) {
+    var items = hwCatalog[catKeys[k]].items;
+    for (var j = 0; j < items.length; j++) {
+      if (items[j].part === partNum) { product = items[j]; break; }
+    }
+    if (product) break;
+  }
+  if (!product) return;
+  document.getElementById('pdpTitle').textContent = product.name;
+  document.getElementById('pdpPrice').textContent = product.price;
+  document.getElementById('pdpDesc').textContent = product.desc;
+  var imgEl = document.getElementById('pdpImage');
+  if (imgEl) imgEl.innerHTML = '<div style="width:100%; height:100%; background:#F5F5F5; display:flex; align-items:center; justify-content:center;">' + product.img.replace('width="32" height="32"', 'width="120" height="120"') + '</div>';
+  var featEl = document.getElementById('pdpFeatures');
+  if (featEl) featEl.innerHTML = '<li>Part Number: ' + product.part + '</li><li>Marine grade, corrosion resistant</li><li>316 stainless steel construction</li>';
+  showPage('pdp');
+}
+
+function renderProductGrid(gridId, data) {
+  var grid = document.getElementById(gridId);
+  if (!grid || !data) return;
+  grid.innerHTML = data.items.map(function(item) {
+    return '<a href="#" class="hw-product-card" data-hw-product="' + item.part + '" style="display:flex; flex-direction:column; text-decoration:none; color:inherit; cursor:pointer;">'
+      + '<div style="aspect-ratio:1; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; transition:background 0.2s;">' + item.img.replace('width="32" height="32"', 'width="56" height="56"') + '</div>'
+      + '<div style="font-size:14px; font-weight:500; color:#171A20; line-height:1.4;">' + item.name + '</div>'
+      + '<div style="font-size:15px; font-weight:600; color:#171A20; margin-top:6px;">' + item.price + '</div>'
+      + '</a>';
+  }).join('');
+}
+
 function renderHwCategory(cat, section) {
   var data = hwCatalog[cat];
   if (!data) return;
   document.getElementById('hwCatTitle').innerHTML = data.title;
-  if (section) document.getElementById('hwSectionTitle').textContent = section + ' / Shop More Items';
+  if (section) document.getElementById('hwSectionTitle').textContent = section;
   document.querySelectorAll('.hw-cat').forEach(function(el) {
     var isActive = el.getAttribute('data-hwcat') === cat;
     el.classList.toggle('active', isActive);
@@ -4661,19 +4613,7 @@ function renderHwCategory(cat, section) {
     el.style.color = isActive ? '#171A20' : '#5C5E62';
     el.style.fontWeight = isActive ? '500' : '400';
   });
-  var grid = document.getElementById('hwPartsGrid');
-  var html = '<div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:14px 20px; background:#F8F9FA; font-size:12px; font-weight:600; color:#878A8F; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid #E8E8E8;"><span>Image</span><span>Description</span><span>Part #</span><span>Price</span><span></span></div>';
-  data.items.forEach(function(item, i) {
-    var isLast = i === data.items.length - 1;
-    html += '<div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:20px;' + (isLast ? '' : ' border-bottom:1px solid #F0F0F0;') + '">'
-      + '<div style="width:72px; height:72px; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center;">' + item.img + '</div>'
-      + '<div><div style="font-size:15px; font-weight:500; color:#171A20;">' + item.name + '</div><div style="font-size:13px; color:#878A8F; margin-top:4px;">' + item.desc + '</div></div>'
-      + '<div style="font-size:13px; color:#5C5E62; font-family:monospace;">' + item.part + '</div>'
-      + '<div style="font-size:16px; font-weight:600; color:#171A20;">' + item.price + '</div>'
-      + '<div style="display:flex; align-items:center; gap:8px;"><input type="number" value="1" min="1" max="99" style="width:52px; padding:7px 4px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; text-align:center; outline:none; font-variant-numeric:tabular-nums;"><button style="padding:9px 18px; background:#171A20; color:#fff; border:none; border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap;">Add to Cart</button></div>'
-      + '</div>';
-  });
-  grid.innerHTML = html;
+  renderProductGrid('hwPartsGrid', data);
 }
 
 document.querySelectorAll('.hw-cat').forEach(function(el) {
@@ -4690,7 +4630,6 @@ var qsTitleMap = { lifts: 'qsLiftsTitle', structure: 'qsStructureTitle', docking
 function renderQsPage(page, cat) {
   var data = hwCatalog[cat];
   if (!data) return;
-  var grid = document.getElementById(qsGridMap[page]);
   var titleEl = document.getElementById(qsTitleMap[page]);
   if (titleEl) titleEl.innerHTML = data.title;
   document.querySelectorAll('.qs-cat[data-qspage="' + page + '"]').forEach(function(el) {
@@ -4700,19 +4639,7 @@ function renderQsPage(page, cat) {
     el.style.color = isActive ? '#171A20' : '#5C5E62';
     el.style.fontWeight = isActive ? '500' : '400';
   });
-  if (!grid) return;
-  var html = '<div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:14px 20px; background:#F8F9FA; font-size:12px; font-weight:600; color:#878A8F; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid #E8E8E8;"><span>Image</span><span>Description</span><span>Part #</span><span>Price</span><span></span></div>';
-  data.items.forEach(function(item, i) {
-    var isLast = i === data.items.length - 1;
-    html += '<div style="display:grid; grid-template-columns:100px 1fr 110px 110px 200px; align-items:center; padding:20px;' + (isLast ? '' : ' border-bottom:1px solid #F0F0F0;') + '">'
-      + '<div style="width:72px; height:72px; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center;">' + item.img + '</div>'
-      + '<div><div style="font-size:15px; font-weight:500; color:#171A20;">' + item.name + '</div><div style="font-size:13px; color:#878A8F; margin-top:4px;">' + item.desc + '</div></div>'
-      + '<div style="font-size:13px; color:#5C5E62; font-family:monospace;">' + item.part + '</div>'
-      + '<div style="font-size:16px; font-weight:600; color:#171A20;">' + item.price + '</div>'
-      + '<div style="display:flex; align-items:center; gap:8px;"><input type="number" value="1" min="1" max="99" style="width:52px; padding:7px 4px; border:1px solid #D0D1D2; border-radius:6px; font-size:14px; text-align:center; outline:none; font-variant-numeric:tabular-nums;"><button style="padding:9px 18px; background:#171A20; color:#fff; border:none; border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap;">Add to Cart</button></div>'
-      + '</div>';
-  });
-  grid.innerHTML = html;
+  renderProductGrid(qsGridMap[page], data);
 }
 
 document.querySelectorAll('.qs-cat').forEach(function(el) {
