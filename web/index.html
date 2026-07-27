@@ -790,116 +790,31 @@ body {
    ═══════════════════════════════════ */
 
 #page-pdp { background: #fff; color: #171A20; }
-
-.pdp-layout {
-  display: grid; grid-template-columns: 1fr 380px;
-}
-
-/* Left: scrolling 2-col image grid */
-.pdp-gallery {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
-}
-.pdp-gallery-img {
-  width: 100%; aspect-ratio: 1; background: #F5F5F5;
-  display: flex; align-items: center; justify-content: center;
-}
-.pdp-gallery-img svg { width: 35%; height: 35%; color: #878A8F; }
-.pdp-gallery-img.wide { grid-column: span 2; aspect-ratio: 2/1; }
-
-/* Right: sticky info panel */
-.pdp-info {
-  position: sticky; top: 80px; align-self: start;
-  height: calc(100vh - 80px); overflow-y: auto;
-  padding: 32px 40px 40px;
-}
-.pdp-breadcrumb {
-  font-size: 12px; color: #878A8F; margin-bottom: 12px;
-}
-.pdp-breadcrumb a { color: #878A8F; text-decoration: none; }
-.pdp-breadcrumb a:hover { color: #171A20; text-decoration: underline; }
-
-.pdp-title { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 8px; }
-.pdp-price { font-size: 22px; font-weight: 600; margin-bottom: 20px; }
-
-.pdp-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
-.pdp-stars { display: flex; gap: 2px; }
-.pdp-stars svg { width: 16px; height: 16px; fill: #171A20; }
-.pdp-review-count { font-size: 13px; color: #5C5E62; }
-
-.pdp-desc {
-  font-size: 15px; color: #5C5E62; line-height: 1.7; margin-bottom: 24px;
-  border-bottom: 1px solid #E8E8E8; padding-bottom: 24px;
-}
-
-.pdp-add-btn {
-  display: block; width: 100%; padding: 16px; border: none; border-radius: 6px;
-  font-size: 16px; font-weight: 600; background: #171A20; color: #fff;
-  cursor: pointer; transition: background 0.15s; margin-bottom: 16px;
-}
-.pdp-add-btn:hover { background: #000; }
-
-.pdp-secondary-btn {
-  display: block; width: 100%; padding: 14px; border: 2px solid #171A20; border-radius: 6px;
-  font-size: 14px; font-weight: 500; background: transparent; color: #171A20;
-  cursor: pointer; transition: background 0.15s; margin-bottom: 32px; text-align: center;
-  text-decoration: none;
-}
-.pdp-secondary-btn:hover { background: #F5F5F5; }
-
-.pdp-features {
-  border-top: 1px solid #E8E8E8; padding-top: 24px;
-}
-.pdp-features-title {
-  font-size: 14px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 1px; color: #171A20; margin-bottom: 16px;
-}
-.pdp-feature-list { list-style: none; padding: 0; }
-.pdp-feature-list li {
-  font-size: 14px; color: #5C5E62; padding: 8px 0;
-  border-bottom: 1px solid #F0F0F0;
-  display: flex; align-items: center; gap: 10px;
-}
-.pdp-feature-list li svg { width: 16px; height: 16px; color: #171A20; flex-shrink: 0; }
-
-/* Full-width sections below */
-.pdp-full-sections {
-  max-width: 1200px; margin: 0 auto; padding: 0 40px 60px;
-}
-
-.pdp-section-banner {
-  margin-top: 48px; padding: 48px; background: #F5F5F5; border-radius: 12px;
-  display: flex; gap: 40px; align-items: center;
-}
-.pdp-section-banner-icon {
-  width: 120px; height: 120px; background: #E8E8E8; border-radius: 12px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-}
-.pdp-section-banner-icon svg { width: 48px; height: 48px; color: #5C5E62; }
-.pdp-section-banner h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
-.pdp-section-banner p { font-size: 14px; color: #5C5E62; line-height: 1.6; }
-
-.pdp-specs-grid {
-  margin-top: 48px;
-}
-.pdp-specs-title {
-  font-size: 20px; font-weight: 600; margin-bottom: 20px;
-}
-.pdp-specs-table {
-  width: 100%; border-collapse: collapse;
-}
-.pdp-specs-table tr { border-bottom: 1px solid #E8E8E8; }
-.pdp-specs-table td {
-  padding: 12px 0; font-size: 14px;
-}
-.pdp-specs-table td:first-child { font-weight: 500; color: #171A20; width: 40%; }
-.pdp-specs-table td:last-child { color: #5C5E62; }
-
-@media (max-width: 768px) {
-  .pdp-layout { grid-template-columns: 1fr; }
-  .pdp-gallery { grid-template-columns: 1fr; }
-  .pdp-info { position: relative; top: 0; height: auto; overflow: visible; padding: 24px 20px; }
-  .pdp-title { font-size: 24px; }
-}
+.pdp-layout { display: grid; grid-template-columns: 1fr 420px; min-height: calc(100vh - 80px); }
+.pdp-gallery { background: #F5F5F5; display:flex; align-items:center; justify-content:center; min-height:100%; }
+.pdp-gallery svg { width:30%; max-width:280px; height:auto; color:#878A8F; }
+.pdp-info { padding:40px 48px 60px; overflow-y:auto; }
+.pdp-title { font-size:28px; font-weight:500; color:#171A20; margin:0 0 8px; line-height:1.3; }
+.pdp-price { font-size:16px; font-weight:400; color:#171A20; margin-bottom:28px; }
+.pdp-qty-section { margin-bottom:20px; }
+.pdp-qty-label { font-size:14px; font-weight:500; color:#171A20; margin-bottom:10px; }
+.pdp-qty-row { display:flex; align-items:center; gap:0; border:1px solid #D0D1D2; border-radius:4px; width:fit-content; }
+.pdp-qty-btn { width:40px; height:40px; background:none; border:none; font-size:18px; color:#878A8F; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.pdp-qty-btn:hover { color:#171A20; }
+.pdp-qty-val { width:48px; height:40px; text-align:center; font-size:16px; font-weight:500; color:#171A20; border:none; border-left:1px solid #D0D1D2; border-right:1px solid #D0D1D2; background:none; font-variant-numeric:tabular-nums; }
+.pdp-add-btn { display:block; width:100%; padding:16px; border:none; border-radius:4px; font-size:14px; font-weight:500; background:#3E6AE1; color:#fff; cursor:pointer; transition:background 0.15s; margin-bottom:24px; letter-spacing:0.3px; }
+.pdp-add-btn:hover { background:#3460C1; }
+.pdp-desc-section { margin-bottom:24px; }
+.pdp-desc-heading { font-size:14px; font-weight:500; color:#171A20; margin-bottom:10px; }
+.pdp-desc { font-size:14px; color:#5C5E62; line-height:1.7; margin:0; border:none; padding:0; }
+.pdp-includes { margin-top:20px; }
+.pdp-includes-heading { font-size:14px; font-weight:500; color:#171A20; margin-bottom:10px; }
+.pdp-feature-list { list-style:none; padding:0; margin:0; }
+.pdp-feature-list li { font-size:14px; color:#5C5E62; padding:4px 0; padding-left:18px; position:relative; }
+.pdp-feature-list li::before { content:'•'; position:absolute; left:4px; color:#5C5E62; }
+.pdp-note { font-size:13px; color:#878A8F; font-style:italic; margin-top:20px; line-height:1.5; }
+@media (max-width:900px) { .pdp-layout { grid-template-columns:1fr; } .pdp-gallery { min-height:50vh; } .pdp-info { padding:28px 24px 48px; } }
+@media (max-width:600px) { .pdp-title { font-size:22px; } }
 
 
 /* ═══════════════════════════════════
@@ -1843,30 +1758,27 @@ body {
 
   <div class="pdp-layout">
     <div class="pdp-gallery" id="pdpGallery"></div>
-
     <div class="pdp-info">
-      <div class="pdp-breadcrumb">
-        <a href="#shop">Accessories</a> / <span id="pdpBreadcrumb">Product</span>
-      </div>
       <h1 class="pdp-title" id="pdpTitle">Product Name</h1>
       <div class="pdp-price" id="pdpPrice">$0</div>
-      <div class="pdp-rating">
-        <div class="pdp-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z" fill-opacity="0.3"/></svg>
+      <div class="pdp-qty-section">
+        <div class="pdp-qty-label">Quantity</div>
+        <div class="pdp-qty-row">
+          <button class="pdp-qty-btn" id="pdpQtyMinus">&minus;</button>
+          <input type="text" class="pdp-qty-val" id="pdpQtyVal" value="1" readonly>
+          <button class="pdp-qty-btn" id="pdpQtyPlus">+</button>
         </div>
-        <span class="pdp-review-count" id="pdpReviews">24 Reviews</span>
       </div>
-      <div class="pdp-desc" id="pdpDesc">Product description goes here.</div>
       <button class="pdp-add-btn">Add to Cart</button>
-      <a class="pdp-secondary-btn" href="#boatlift">Add to Lift Build</a>
-      <div class="pdp-features">
-        <div class="pdp-features-title">Features</div>
+      <div class="pdp-desc-section">
+        <div class="pdp-desc-heading">Description</div>
+        <div class="pdp-desc" id="pdpDesc">Product description goes here.</div>
+      </div>
+      <div class="pdp-includes">
+        <div class="pdp-includes-heading">Includes:</div>
         <ul class="pdp-feature-list" id="pdpFeatures"></ul>
       </div>
+      <div class="pdp-note" id="pdpNote"></div>
     </div>
   </div>
 
@@ -4316,7 +4228,8 @@ document.addEventListener('click', e => {
   if (e.target.closest('.pdp-add-btn')) {
     var name = document.getElementById('pdpTitle').textContent;
     var price = parsePrice(document.getElementById('pdpPrice').textContent);
-    addToCart(name, price);
+    var qty = parseInt(document.getElementById('pdpQtyVal').value) || 1;
+    for (var q = 0; q < qty; q++) addToCart(name, price);
     showPage('cart');
     return;
   }
@@ -4423,18 +4336,14 @@ function showProduct(name) {
   var p = productCatalog[name];
   if (!p) return;
   document.getElementById('pdpTitle').textContent = name;
-  document.getElementById('pdpBreadcrumb').textContent = name;
   document.getElementById('pdpPrice').textContent = p.price;
   document.getElementById('pdpDesc').textContent = p.desc;
-  document.getElementById('pdpReviews').textContent = p.reviews + ' Reviews';
   document.getElementById('pdpFeatures').innerHTML = p.features.map(function(f) {
-    return '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>' + f + '</li>';
+    return '<li>' + f + '</li>';
   }).join('');
-  // Build scrolling 2-col image grid (6 panels)
-  var bg = ['#F5F5F5','#EBEDF0','#F5F5F5','#EBEDF0','#F5F5F5','#EBEDF0'];
-  document.getElementById('pdpGallery').innerHTML = bg.map(function(c, i) {
-    return '<div class="pdp-gallery-img" style="background:' + c + '">' + p.icon + '</div>';
-  }).join('');
+  document.getElementById('pdpGallery').innerHTML = p.icon;
+  document.getElementById('pdpQtyVal').value = '1';
+  document.getElementById('pdpNote').textContent = '';
   showPage('pdp');
 }
 
@@ -4822,10 +4731,10 @@ function showHwProduct(partNum) {
   document.getElementById('pdpTitle').textContent = product.name;
   document.getElementById('pdpPrice').textContent = product.price;
   document.getElementById('pdpDesc').textContent = product.desc;
-  var imgEl = document.getElementById('pdpImage');
-  if (imgEl) imgEl.innerHTML = '<div style="width:100%; height:100%; background:#F5F5F5; display:flex; align-items:center; justify-content:center;">' + product.img.replace('width="32" height="32"', 'width="120" height="120"') + '</div>';
-  var featEl = document.getElementById('pdpFeatures');
-  if (featEl) featEl.innerHTML = '<li>Part Number: ' + product.part + '</li><li>Marine grade, corrosion resistant</li><li>316 stainless steel construction</li>';
+  document.getElementById('pdpGallery').innerHTML = product.img.replace('width="32" height="32"', 'width="120" height="120"');
+  document.getElementById('pdpFeatures').innerHTML = '<li>Part Number: ' + product.part + '</li><li>Marine grade, corrosion resistant</li>';
+  document.getElementById('pdpQtyVal').value = '1';
+  document.getElementById('pdpNote').textContent = 'Part #' + product.part;
   showPage('pdp');
 }
 
@@ -5037,6 +4946,16 @@ Object.values(panelMap).forEach(function(panel) {
   animateCounter('counterWhyUs', 15000, 2200);
   animateCounter('counterHero', 15000, 2000);
 })();
+
+// ── PDP quantity buttons ──
+document.getElementById('pdpQtyPlus').addEventListener('click', function() {
+  var el = document.getElementById('pdpQtyVal');
+  el.value = Math.min(99, parseInt(el.value) + 1);
+});
+document.getElementById('pdpQtyMinus').addEventListener('click', function() {
+  var el = document.getElementById('pdpQtyVal');
+  el.value = Math.max(1, parseInt(el.value) - 1);
+});
 
 // ── Story video pause/play ──
 (function() {
