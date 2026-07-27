@@ -5066,7 +5066,7 @@ var megaTimer = null;
 var panelMap = { 'shop-mega': document.getElementById('megaPanelShop'), resources: document.getElementById('megaPanelResources'), liftsystems: document.getElementById('megaPanel'), wateraccess: document.getElementById('megaPanelLiving'), docking: document.getElementById('megaPanelProtection'), dealers: document.getElementById('megaPanelDealers'), structure: document.getElementById('megaPanelStructure') };
 
 function closeAllPanels() {
-  Object.values(panelMap).forEach(function(p) { p.classList.remove('open'); });
+  Object.values(panelMap).forEach(function(p) { if(p) p.classList.remove('open'); });
 }
 
 document.querySelectorAll('[data-toggle-dropdown]').forEach(function(trigger) {
@@ -5087,6 +5087,7 @@ document.querySelectorAll('[data-toggle-dropdown]').forEach(function(trigger) {
 });
 
 Object.values(panelMap).forEach(function(panel) {
+  if (!panel) return;
   panel.addEventListener('mouseenter', function() { clearTimeout(megaTimer); });
   panel.addEventListener('mouseleave', function() {
     megaTimer = setTimeout(function() { panel.classList.remove('open'); }, 200);
