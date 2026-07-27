@@ -2003,86 +2003,57 @@ body {
         <p style="font-size:16px; color:#878A8F; margin-top:14px; max-width:520px; margin-left:auto; margin-right:auto;">From basic lift control to full smart home integration — choose the plan that fits your waterfront.</p>
       </div>
 
-      <!-- Toggle -->
-      <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:48px;">
-        <span id="appPlanMonthlyLabel" style="font-size:15px; font-weight:600; color:#171A20;">Monthly</span>
-        <button id="appPlanToggle" style="width:52px; height:28px; border-radius:14px; border:none; background:#3E6AE1; cursor:pointer; position:relative; transition:background 0.2s; padding:0;">
-          <div id="appPlanDot" style="width:22px; height:22px; background:#fff; border-radius:50%; position:absolute; top:3px; left:3px; transition:left 0.2s; box-shadow:0 1px 3px rgba(0,0,0,0.15);"></div>
-        </button>
-        <span id="appPlanAnnualLabel" style="font-size:15px; font-weight:500; color:#878A8F;">Annually</span>
-        <span style="padding:4px 12px; border:1.5px solid #171A20; border-radius:4px; font-size:12px; font-weight:700; color:#171A20; letter-spacing:0.5px;">SAVE 20%</span>
-      </div>
-
       <!-- Plans Grid -->
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
-        <!-- Basic Plan -->
+      <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; max-width:780px; margin:0 auto;">
+        <!-- 1 Year Plan -->
         <div style="border:1px solid #E8E8E8; border-radius:14px; padding:36px 28px; display:flex; flex-direction:column;">
           <div style="width:48px; height:48px; background:#F0F4FF; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <div style="font-size:20px; font-weight:600; color:#171A20; margin-bottom:6px;">Basic</div>
-          <div style="font-size:14px; color:#878A8F; line-height:1.6; margin-bottom:24px;">Simple lift control for homeowners who want reliable up/down operation.</div>
-          <div style="margin-bottom:24px;"><span class="app-plan-price" style="font-size:36px; font-weight:700; color:#171A20;" data-monthly="Free" data-annual="Free">Free</span><span class="app-plan-period" style="font-size:15px; color:#878A8F;"></span></div>
+          <div style="font-size:20px; font-weight:600; color:#171A20; margin-bottom:6px;">1 Year Membership</div>
+          <div style="font-size:14px; color:#878A8F; line-height:1.6; margin-bottom:24px;">Full app access with smart lift control, diagnostics, and monitoring. Renews annually.</div>
+          <div style="margin-bottom:6px;"><span style="font-size:36px; font-weight:700; color:#171A20;">$129.99</span><span style="font-size:15px; color:#878A8F;"> /year</span></div>
+          <div style="font-size:13px; color:#878A8F; margin-bottom:24px;">Renews every year</div>
           <a href="#config" style="display:block; text-align:center; padding:14px; border:1.5px solid #D0D1D2; border-radius:8px; font-size:14px; font-weight:600; color:#171A20; text-decoration:none; margin-bottom:28px; transition:background 0.15s;" onmouseenter="this.style.background='#F5F5F5'" onmouseleave="this.style.background='transparent'">Get Started</a>
           <div style="border-top:1px solid #E8E8E8; padding-top:20px;">
-            <div style="font-size:13px; font-weight:600; color:#171A20; margin-bottom:12px;">Features:</div>
+            <div style="font-size:13px; font-weight:600; color:#171A20; margin-bottom:12px;">Includes:</div>
             <div style="font-size:13px; color:#5C5E62; line-height:2.2;">
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Up/down lift control</div>
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Single lift connection</div>
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Basic status monitoring</div>
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 6 months free with remote</div>
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Email support</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pro Plan (Most Popular) -->
-        <div style="border:2px solid #3E6AE1; border-radius:14px; padding:36px 28px; display:flex; flex-direction:column; position:relative;">
-          <div style="position:absolute; top:-12px; left:28px; padding:4px 14px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">Most Popular</div>
-          <div style="width:48px; height:48px; background:#F0F4FF; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <div style="font-size:20px; font-weight:600; color:#171A20; margin-bottom:6px;">Pro</div>
-          <div style="font-size:14px; color:#878A8F; line-height:1.6; margin-bottom:24px;">Full smart control with diagnostics, scheduling, and multi-lift management.</div>
-          <div style="margin-bottom:24px;"><span class="app-plan-price" style="font-size:36px; font-weight:700; color:#171A20;" data-monthly="$10.99" data-annual="$8.79">$10.99</span><span class="app-plan-period" style="font-size:15px; color:#878A8F;"> /month</span></div>
-          <a href="#config" style="display:block; text-align:center; padding:14px; background:#3E6AE1; border:none; border-radius:8px; font-size:14px; font-weight:600; color:#fff; text-decoration:none; margin-bottom:28px; transition:background 0.15s;" onmouseenter="this.style.background='#3460C1'" onmouseleave="this.style.background='#3E6AE1'">Get Started</a>
-          <div style="border-top:1px solid #E8E8E8; padding-top:20px;">
-            <div style="font-size:13px; font-weight:600; color:#171A20; margin-bottom:12px;">Features:</div>
-            <div style="font-size:13px; color:#5C5E62; line-height:2.2;">
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Everything in Basic</div>
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Multi-lift management</div>
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Scheduled lift operations</div>
+              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Full lift control via app</div>
               <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Real-time diagnostics</div>
+              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Status monitoring</div>
+              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Multi-lift management</div>
               <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Priority support</div>
             </div>
           </div>
         </div>
 
-        <!-- Business Plan -->
-        <div style="border:1px solid #E8E8E8; border-radius:14px; padding:36px 28px; display:flex; flex-direction:column;">
+        <!-- 3 Year Plan (Best Value) -->
+        <div style="border:2px solid #3E6AE1; border-radius:14px; padding:36px 28px; display:flex; flex-direction:column; position:relative;">
+          <div style="position:absolute; top:-12px; left:28px; padding:4px 14px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">Best Value</div>
           <div style="width:48px; height:48px; background:#F0F4FF; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
-          <div style="font-size:20px; font-weight:600; color:#171A20; margin-bottom:6px;">Marina / Dealer</div>
-          <div style="font-size:14px; color:#878A8F; line-height:1.6; margin-bottom:24px;">Fleet management for marinas and dealers with multiple installations.</div>
-          <div style="margin-bottom:24px;"><span class="app-plan-price" style="font-size:36px; font-weight:700; color:#171A20;" data-monthly="$49" data-annual="$39">$49</span><span class="app-plan-period" style="font-size:15px; color:#878A8F;"> /month</span></div>
-          <a href="#build" style="display:block; text-align:center; padding:14px; border:1.5px solid #D0D1D2; border-radius:8px; font-size:14px; font-weight:600; color:#171A20; text-decoration:none; margin-bottom:28px; transition:background 0.15s;" onmouseenter="this.style.background='#F5F5F5'" onmouseleave="this.style.background='transparent'">Contact Sales</a>
+          <div style="font-size:20px; font-weight:600; color:#171A20; margin-bottom:6px;">3 Year Membership</div>
+          <div style="font-size:14px; color:#878A8F; line-height:1.6; margin-bottom:24px;">Everything in the 1 Year plan — lock in your rate and save over $59 compared to annual renewal.</div>
+          <div style="margin-bottom:6px;"><span style="font-size:36px; font-weight:700; color:#171A20;">$329.99</span><span style="font-size:15px; color:#878A8F;"> /3 years</span></div>
+          <div style="font-size:13px; color:#878A8F; margin-bottom:24px;">Renews every 3 years</div>
+          <a href="#config" style="display:block; text-align:center; padding:14px; background:#3E6AE1; border:none; border-radius:8px; font-size:14px; font-weight:600; color:#fff; text-decoration:none; margin-bottom:28px; transition:background 0.15s;" onmouseenter="this.style.background='#3460C1'" onmouseleave="this.style.background='#3E6AE1'">Get Started</a>
           <div style="border-top:1px solid #E8E8E8; padding-top:20px;">
-            <div style="font-size:13px; font-weight:600; color:#171A20; margin-bottom:12px;">Features:</div>
+            <div style="font-size:13px; font-weight:600; color:#171A20; margin-bottom:12px;">Includes:</div>
             <div style="font-size:13px; color:#5C5E62; line-height:2.2;">
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Everything in Pro</div>
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Unlimited lift connections</div>
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Fleet dashboard &amp; analytics</div>
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Customer management tools</div>
-              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Dedicated account manager</div>
+              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Everything in 1 Year plan</div>
+              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Save $59+ vs. annual</div>
+              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Locked-in pricing</div>
+              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Extended warranty support</div>
+              <div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Priority support</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- FAQ under plans -->
+      <!-- Note under plans -->
       <div style="max-width:720px; margin:72px auto 0; text-align:center;">
-        <div style="font-size:13px; color:#878A8F; line-height:1.7;">All plans include the Elevate app for iOS and Android. First 6 months are free with any Elevate Remote purchase. Cancel or change plans anytime — no contracts.</div>
+        <div style="font-size:13px; color:#878A8F; line-height:1.7;">All plans include the Elevate app for iOS and Android. First 6 months are free with any Elevate Remote purchase. Plans auto-renew at the end of the billing period.</div>
       </div>
     </div>
   </div>
@@ -4926,31 +4897,6 @@ Object.values(panelMap).forEach(function(panel) {
   animateCounter('counterYears', 24, 1800);
   animateCounter('counterWhyUs', 15000, 2200);
   animateCounter('counterHero', 15000, 2000);
-})();
-
-// ── App plans toggle ──
-(function() {
-  var toggle = document.getElementById('appPlanToggle');
-  var dot = document.getElementById('appPlanDot');
-  var mLabel = document.getElementById('appPlanMonthlyLabel');
-  var aLabel = document.getElementById('appPlanAnnualLabel');
-  var isAnnual = false;
-  if (!toggle) return;
-  toggle.addEventListener('click', function() {
-    isAnnual = !isAnnual;
-    dot.style.left = isAnnual ? '27px' : '3px';
-    mLabel.style.color = isAnnual ? '#878A8F' : '#171A20';
-    mLabel.style.fontWeight = isAnnual ? '500' : '600';
-    aLabel.style.color = isAnnual ? '#171A20' : '#878A8F';
-    aLabel.style.fontWeight = isAnnual ? '600' : '500';
-    document.querySelectorAll('.app-plan-price').forEach(function(el) {
-      el.textContent = isAnnual ? el.getAttribute('data-annual') : el.getAttribute('data-monthly');
-    });
-    document.querySelectorAll('.app-plan-period').forEach(function(el) {
-      var price = el.previousElementSibling;
-      el.textContent = (price && price.textContent === 'Free') ? '' : ' /month';
-    });
-  });
 })();
 
 // ── Story video pause/play ──
