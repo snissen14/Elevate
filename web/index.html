@@ -2998,9 +2998,10 @@ body {
 .ugc-head { margin:0 0 40px; }
 .ugc-head h2 { font-size:clamp(36px,5vw,64px); font-weight:700; letter-spacing:-1.5px; line-height:1.05; color:#171A20; margin:0; }
 .ugc-head p { margin:16px 0 0; font-size:18px; line-height:1.5; color:#5C5E62; max-width:540px; }
-.ugc-grid { columns:4 258px; column-gap:16px; position:relative; }
-@media (max-width:680px){ .ugc-grid{ columns:2 150px; } }
-.ugc-card { break-inside:avoid; margin:0 0 16px; }
+.ugc-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+.ugc-grid .ugc-wide { grid-column:1/-1; }
+@media (max-width:680px){ .ugc-grid{ grid-template-columns:1fr; } }
+.ugc-card { }
 .ugc-media { position:relative; border-radius:16px; overflow:hidden; display:flex; align-items:flex-end; padding:18px; }
 .ugc-media::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.62) 0%, rgba(0,0,0,0) 55%); }
 .ugc-media-label { position:relative; z-index:2; }
@@ -3214,9 +3215,9 @@ body {
         <h2>Trusted on Waterfronts Everywhere</h2>
         <p>From first-time dock owners to lakefront estates, Elevate builds custom lifts people are proud to show off.</p>
       </div>
-      <div class="ugc-grid" style="position:relative;">
+      <div class="ugc-grid">
 
-        <div class="ugc-card"><div class="ugc-media" style="height:340px;background:linear-gradient(135deg,#1e3a5f,#2c5f8a)">
+        <div class="ugc-card" style="grid-row:span 2;"><div class="ugc-media" style="height:100%;min-height:420px;background:linear-gradient(135deg,#1e3a5f,#2c5f8a)">
           <div class="ugc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           <div class="ugc-media-label"><div class="ugc-media-name">The Hansen Dock</div><div class="ugc-media-role">24,000 lb Custom Lift · Lake Wylie</div></div>
         </div></div>
@@ -3227,17 +3228,22 @@ body {
         </div></div>
 
         <div class="ugc-card"><div class="ugc-quote">
-          <div class="ugc-quote-text">"The best from Ownership to Client Service Representatives. They looked out for us from day one!!"</div>
-          <div class="ugc-quote-author"><div class="ugc-quote-name">Jason Nagle</div><div class="ugc-quote-role">Customer</div></div>
+          <div class="ugc-quote-text">"Dock Solutions took care of me ASAP when the other company wouldn't follow-up. Friendly, prompt, reliable, and at a fair price."</div>
+          <div class="ugc-quote-author"><div class="ugc-quote-name">Seth Eastman</div><div class="ugc-quote-role">Repeat Customer</div></div>
         </div></div>
 
-        <div class="ugc-card"><div class="ugc-media" style="height:340px;background:linear-gradient(135deg,#155e75,#0e7490)">
+        <div class="ugc-card"><div class="ugc-media" style="height:100%;min-height:200px;background:linear-gradient(135deg,#155e75,#0e7490)">
           <div class="ugc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           <div class="ugc-media-label"><div class="ugc-media-name">The Coleman Dock</div><div class="ugc-media-role">16,000 lb Lift · Smith Mountain Lake</div></div>
         </div></div>
 
-        <div class="ugc-card" style="grid-column:1/-1;"><div class="ugc-quote" style="display:flex; align-items:center; justify-content:space-between; gap:40px; padding:28px 32px;">
-          <div class="ugc-quote-text" style="flex:1; font-size:16px;">"Dock Solutions took care of me ASAP when the other company wouldn't follow-up. Friendly, prompt, reliable, and at a fair price. I have used them for two different lifts now and can't recommend them enough."</div>
+        <div class="ugc-card"><div class="ugc-quote">
+          <div class="ugc-quote-text">"The best from Ownership to Client Service Representatives. They looked out for us from day one!!"</div>
+          <div class="ugc-quote-author"><div class="ugc-quote-name">Jason Nagle</div><div class="ugc-quote-role">Customer</div></div>
+        </div></div>
+
+        <div class="ugc-card ugc-wide"><div class="ugc-quote" style="display:flex; align-items:center; justify-content:space-between; gap:40px; padding:28px 32px;">
+          <div class="ugc-quote-text" style="flex:1;">"I have used them for two different lifts now and can't recommend them enough. They are friendly, prompt, reliable, and at a fair price."</div>
           <div class="ugc-quote-author" style="text-align:right; flex-shrink:0;"><div class="ugc-quote-name">Seth Eastman</div><div class="ugc-quote-role">Repeat Customer</div></div>
         </div></div>
 
