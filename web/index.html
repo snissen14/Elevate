@@ -3363,6 +3363,7 @@ body {
         <a href="#" class="shop-cat-link" data-cat="structure" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s;">Structure <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
         <a href="#" class="shop-cat-link" data-cat="docking" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s;">Docking <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
         <a href="#" class="shop-cat-link" data-cat="wateraccess" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s;">Water Access <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
+        <a href="#" class="shop-cat-link" data-cat="bestsellers" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s; border-top:1px solid #E8E8E8; margin-top:8px;">Best Sellers <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
         <a href="#hardware" style="display:inline-block; margin:20px 28px 0; padding:10px 24px; background:#3E6AE1; color:#fff; border-radius:6px; font-size:13px; font-weight:600; text-decoration:none; text-transform:uppercase; letter-spacing:0.5px;">Shop All Items</a>
       </div>
       <div style="flex:1; padding:32px 40px; display:flex; gap:20px;" id="shopCatCards">
@@ -5008,6 +5009,12 @@ document.getElementById('pdpQtyMinus').addEventListener('click', function() {
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 22h20"/><path d="M4 22v-6h4v6"/><path d="M8 16v-4h4v4"/><path d="M12 12v-4h4v4"/><path d="M16 8V4h4v4"/></svg>', title: 'Walk In Stairs', configHref: '#', learnHref: '#' },
       { href: '#', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v18M16 3v18"/><path d="M8 8h8M8 13h8M8 18h8"/></svg>', title: 'Ladders', configHref: '#', learnHref: '#' },
       { href: '#qs-access', isQuickShop: true, title: 'Shop More Items' },
+    ],
+    bestsellers: [
+      { href: '#config', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="9" r="2"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="17" x2="15" y2="17"/></svg>', title: 'Elevate Lift Remotes', configHref: '#config', learnHref: '#learn' },
+      { href: '#boatlift', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><path d="M4 20h16" stroke-dasharray="2 2"/></svg>', title: 'Elevate Jet Ski Lift', configHref: '#boatlift', learnHref: '#learn-lifts' },
+      { href: '#motors', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>', title: 'Elevate Lift Motors', configHref: '#motors', learnHref: '#learn-lifts' },
+      { href: '#build', img: 'boat%20on%20lift.png', title: 'Custom Boat Lift', isImg: true, configHref: '#build', learnHref: '#learn-lifts' },
     ],
   };
 
