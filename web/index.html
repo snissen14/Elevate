@@ -3357,39 +3357,27 @@ body {
 <div class="mega-panel" id="megaPanelShop">
   <div class="mega-backdrop" id="megaBackdropShop"></div>
   <div class="mega-dropdown">
-    <div style="display:flex; max-width:1200px; margin:0 auto; padding:0; min-height:380px;">
-      <div style="width:260px; border-right:1px solid #E8E8E8; padding:32px 0; flex-shrink:0;">
-        <a href="#" class="shop-cat-link" data-cat="lifts" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s; background:#F5F5F5;">Lift Systems <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
-        <a href="#" class="shop-cat-link" data-cat="structure" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s;">Structure <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
-        <a href="#" class="shop-cat-link" data-cat="docking" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s;">Docking <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
-        <a href="#" class="shop-cat-link" data-cat="wateraccess" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s;">Water Access <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
-        <a href="#" class="shop-cat-link" data-cat="bestsellers" style="display:flex; align-items:center; justify-content:space-between; padding:12px 28px; font-size:15px; font-weight:500; color:#171A20; text-decoration:none; transition:background 0.1s; border-top:1px solid #E8E8E8; margin-top:8px;">Best Sellers <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
-        <a href="#hardware" style="display:inline-block; margin:20px 28px 0; padding:10px 24px; background:#3E6AE1; color:#fff; border-radius:6px; font-size:13px; font-weight:600; text-decoration:none; text-transform:uppercase; letter-spacing:0.5px;">Shop All Items</a>
-      </div>
-      <div style="flex:1; padding:32px 40px; display:flex; gap:20px;" id="shopCatCards">
-        <div class="mega-product-card" style="flex:1;">
-          <a href="#build" class="mega-card-icon" style="padding:0;"><img src="boat%20on%20lift.png" alt="Custom Boat Lift" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></a>
-          <div class="mega-card-title">Custom Boat Lift</div>
-          <div class="mega-card-links"><a href="#build">Order</a><a href="#learn-lifts">Learn</a></div>
-        </div>
-        <div class="mega-product-card" style="flex:1;">
-          <a href="#boatlift" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><path d="M4 20h16" stroke-dasharray="2 2"/></svg></a>
-          <div class="mega-card-title">Elevate Jet Ski Lift</div>
-          <div class="mega-card-links"><a href="#boatlift">Order</a><a href="#learn-lifts">Learn</a></div>
-        </div>
-        <div class="mega-product-card" style="flex:1;">
-          <a href="#config" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="9" r="2"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="17" x2="15" y2="17"/></svg></a>
-          <div class="mega-card-title">Elevate Lift Remotes</div>
-          <div class="mega-card-links"><a href="#config">Order</a><a href="#learn">Learn</a></div>
-        </div>
-        <div class="mega-product-card" style="flex:1;">
-          <a href="#motors" class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></a>
-          <div class="mega-card-title">Elevate Lift Motors</div>
-          <div class="mega-card-links"><a href="#motors">Order</a><a href="#learn-lifts">Learn</a></div>
-        </div>
-        <a href="#qs-lifts" class="mega-product-card" style="flex:1;">
+    <div style="max-width:1100px; margin:0 auto; padding:36px 40px;">
+      <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:20px;">
+        <a href="#qs-lifts" class="mega-product-card" style="text-align:center;">
+          <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16M17 4v16M4 8h16"/><path d="M4 20h16" stroke-dasharray="2 2"/></svg></div>
+          <div class="mega-card-title">Lift Systems</div>
+        </a>
+        <a href="#qs-structure" class="mega-product-card" style="text-align:center;">
+          <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="M2 8h20M6 4v16M10 4v16M14 4v16M18 4v16"/></svg></div>
+          <div class="mega-card-title">Structure</div>
+        </a>
+        <a href="#qs-docking" class="mega-product-card" style="text-align:center;">
+          <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 10h20"/><path d="M2 16h20"/></svg></div>
+          <div class="mega-card-title">Docking</div>
+        </a>
+        <a href="#qs-access" class="mega-product-card" style="text-align:center;">
+          <div class="mega-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v18M16 3v18"/><path d="M8 8h8M8 13h8M8 18h8"/></svg></div>
+          <div class="mega-card-title">Water Access</div>
+        </a>
+        <a href="#hardware" class="mega-product-card" style="text-align:center;">
           <div class="mega-card-icon" style="background:#3E6AE1;"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-          <div class="mega-card-title" style="color:#3E6AE1; font-weight:600;">Shop More Items</div>
+          <div class="mega-card-title" style="color:#3E6AE1; font-weight:600;">Shop All</div>
         </a>
       </div>
     </div>
