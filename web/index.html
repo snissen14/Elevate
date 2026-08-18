@@ -2089,58 +2089,139 @@ body {
     </div>
   </div>
 
-  <div style="background:#fff; padding:64px 40px 100px;">
+  <style>
+    .pr-toggle { display:inline-flex; background:#F3F4F6; border-radius:999px; padding:4px; }
+    .pr-toggle button { border:none; background:transparent; padding:9px 24px; border-radius:999px; font-size:14px; font-weight:500; color:#6B7280; cursor:pointer; font-family:inherit; transition:all 0.18s; }
+    .pr-toggle button.on { background:#fff; color:#0A0A0A; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+    .pr-card { border:1px solid #E5E7EB; border-radius:10px; background:#fff; padding:26px 24px; display:flex; flex-direction:column; }
+    .pr-card.feat { border-color:#3E6AE1; box-shadow:0 0 0 3px rgba(62,106,225,0.10); }
+    .pr-name { font-size:19px; font-weight:500; color:#0A0A0A; margin-bottom:18px; }
+    .pr-price { font-size:42px; font-weight:600; color:#0A0A0A; letter-spacing:-1.5px; line-height:1; }
+    .pr-badge { display:inline-block; padding:3px 9px; background:#EFF4FE; color:#3E6AE1; border-radius:6px; font-size:12px; font-weight:500; letter-spacing:0; vertical-align:middle; margin-left:8px; }
+    .pr-cap { font-size:12.5px; color:#6B7280; margin-top:10px; }
+    .pr-desc { font-size:14px; font-weight:600; color:#171A20; line-height:1.5; margin:22px 0 16px; }
+    .pr-feat { display:flex; align-items:center; gap:10px; font-size:14px; color:#4B5563; padding:5px 0; }
+    .pr-btn { display:block; text-align:center; padding:11px; border:1px solid #E5E7EB; border-radius:8px; background:#fff; font-size:14px; font-weight:500; color:#0A0A0A; text-decoration:none; margin-top:auto; transition:background 0.15s; }
+    .pr-btn:hover { background:#F9FAFB; }
+    .pr-btn.dark { background:#0A0A0A; border-color:#0A0A0A; color:#fff; }
+    .pr-btn.dark:hover { background:#2A2D33; }
+    .pr-sec { font-size:20px; font-weight:500; color:#0A0A0A; margin:64px 0 4px; }
+    .pr-row { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; align-items:center; border-bottom:1px solid #F0F1F3; }
+    .pr-row > div { padding:16px 12px; font-size:14px; color:#4B5563; text-align:center; }
+    .pr-row > div:first-child { text-align:left; color:#171A20; padding-left:0; }
+    .pr-row .hl { background:#FAFAFB; }
+    .pr-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; max-width:940px; margin:0 auto; }
+    .pr-head { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; align-items:end; padding-bottom:22px; }
+    .pr-head > div { padding:0 12px; text-align:center; }
+    .pr-head > div:first-child { text-align:left; padding-left:0; }
+    @media (max-width:900px) {
+      .pr-grid { grid-template-columns:1fr; max-width:420px; }
+      .pr-tablewrap { overflow-x:auto; }
+      .pr-row, .pr-head { min-width:760px; }
+    }
+  </style>
+
+  <div style="background:#fff; padding:72px 40px 100px;">
     <div style="max-width:1080px; margin:0 auto;">
       <!-- Plans Header -->
-      <div style="text-align:center; margin-bottom:48px;">
-        <div style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:#3E6AE1; margin-bottom:12px;">Membership Plans</div>
-        <h2 style="font-size:32px; font-weight:600; color:#171A20; margin:0;">Choose Your Plan</h2>
+      <div style="text-align:center; margin-bottom:34px;">
+        <h2 style="font-size:clamp(38px, 4.4vw, 54px); font-weight:600; color:#0A0A0A; letter-spacing:-1.6px; line-height:1.08; margin:0 0 18px;">From first launch to full season.</h2>
+        <p style="font-size:17px; color:#6B7280; line-height:1.5; margin:0;">Built for every lift on your dock.<br>Start free with any Elevate Remote.</p>
       </div>
 
-      <!-- Plans Grid -->
-      <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; max-width:800px; margin:0 auto;">
-        <!-- 1 Year Plan -->
-        <div style="background:#0A0A0A; border-radius:16px; padding:44px 34px 34px; display:flex; flex-direction:column;">
-          <div style="text-align:center; margin-bottom:34px;">
-            <div style="font-size:26px; font-weight:400; letter-spacing:9px; color:#fff; text-transform:uppercase;">1 Year</div>
-            <div style="font-size:14px; color:rgba(255,255,255,0.6); margin-top:10px;">Available at $129.99/yr</div>
-            <div style="font-size:13px; color:rgba(255,255,255,0.35); margin-top:4px;">Renews every year</div>
-          </div>
-          <div style="height:1px; background:rgba(255,255,255,0.12); margin-bottom:26px;"></div>
-          <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px; flex:1;">
-            <div style="display:flex; align-items:center; gap:11px; font-size:14px; color:rgba(255,255,255,0.88);"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;"><circle cx="12" cy="12" r="12"/><polyline points="17 8.5 10.5 15.5 7 12" fill="none" stroke="#0A0A0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Full lift control via app</div>
-            <div style="display:flex; align-items:center; gap:11px; font-size:14px; color:rgba(255,255,255,0.88);"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;"><circle cx="12" cy="12" r="12"/><polyline points="17 8.5 10.5 15.5 7 12" fill="none" stroke="#0A0A0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Real-time diagnostics</div>
-            <div style="display:flex; align-items:center; gap:11px; font-size:14px; color:rgba(255,255,255,0.88);"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;"><circle cx="12" cy="12" r="12"/><polyline points="17 8.5 10.5 15.5 7 12" fill="none" stroke="#0A0A0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Status monitoring</div>
-            <div style="display:flex; align-items:center; gap:11px; font-size:14px; color:rgba(255,255,255,0.88);"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;"><circle cx="12" cy="12" r="12"/><polyline points="17 8.5 10.5 15.5 7 12" fill="none" stroke="#0A0A0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Multi-lift management</div>
-            <div style="display:flex; align-items:center; gap:11px; font-size:14px; color:rgba(255,255,255,0.88);"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;"><circle cx="12" cy="12" r="12"/><polyline points="17 8.5 10.5 15.5 7 12" fill="none" stroke="#0A0A0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority support</div>
-          </div>
-          <a href="#config" style="display:block; text-align:center; padding:16px; background:#fff; border-radius:8px; font-size:13px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#0A0A0A; text-decoration:none; margin-bottom:12px; transition:opacity 0.15s;" onmouseenter="this.style.opacity='0.85'" onmouseleave="this.style.opacity='1'">Start with 1 Year</a>
-          <a href="#learn" style="display:block; text-align:center; padding:16px; background:transparent; border:1px solid rgba(255,255,255,0.35); border-radius:8px; font-size:13px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#fff; text-decoration:none; transition:background 0.15s;" onmouseenter="this.style.background='rgba(255,255,255,0.08)'" onmouseleave="this.style.background='transparent'">Learn More</a>
+      <!-- Billing toggle -->
+      <div style="display:flex; justify-content:center; margin-bottom:44px;">
+        <div class="pr-toggle">
+          <button class="pr-term on" data-term="1">1 Year</button>
+          <button class="pr-term" data-term="3">3 Year</button>
         </div>
+      </div>
 
-        <!-- 3 Year Plan (Best Value) -->
-        <div style="background:#0A0A0A; border-radius:16px; padding:44px 34px 34px; display:flex; flex-direction:column; position:relative;">
-          <div style="position:absolute; top:18px; right:18px; padding:5px 12px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); border-radius:20px; font-size:10px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#fff;">Best Value</div>
-          <div style="text-align:center; margin-bottom:34px;">
-            <div style="font-size:26px; font-weight:400; letter-spacing:9px; color:#fff; text-transform:uppercase;">3 Year</div>
-            <div style="font-size:14px; color:rgba(255,255,255,0.6); margin-top:10px;">Available at <span style="color:#fff; font-weight:600;">$110/yr</span> <span style="color:rgba(255,255,255,0.4); text-decoration:line-through; margin-left:4px;">$129.99</span></div>
-            <div style="font-size:13px; color:rgba(255,255,255,0.35); margin-top:4px;">$329.99 billed every 3 years</div>
-            <div style="display:inline-flex; align-items:center; gap:6px; margin-top:14px; padding:6px 14px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.35); border-radius:20px;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="3"><polyline points="19 12 12 19 5 12"/><line x1="12" y1="5" x2="12" y2="19"/></svg>
-              <span style="font-size:12px; font-weight:700; letter-spacing:0.5px; color:#F87171;">Save $59.98</span>
+      <!-- Tier cards -->
+      <div style="border-top:1px solid #F0F1F3; border-bottom:1px solid #F0F1F3; padding:34px 0; margin-bottom:8px;">
+        <div class="pr-grid">
+          <div class="pr-card">
+            <div class="pr-name">Included</div>
+            <div><span class="pr-price">$0</span></div>
+            <div class="pr-cap">First 6 months, with any Elevate Remote</div>
+            <div class="pr-desc">For owners setting up their first Elevate&nbsp;Remote.</div>
+            <div class="pr-feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2.5" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg> Full lift control via app</div>
+            <div class="pr-feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2.5" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg> Status monitoring</div>
+            <div class="pr-feat" style="margin-bottom:22px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2.5" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg> One lift connection</div>
+            <a href="#config" class="pr-btn">Get a Remote</a>
+          </div>
+
+          <div class="pr-card feat">
+            <div class="pr-name">Elevate App <span class="pr-badge" style="background:#EFF4FE;">Most popular</span></div>
+            <div><span class="pr-price pr-amt">$129.99</span><span class="pr-badge pr-save" style="display:none;">Save 15%</span></div>
+            <div class="pr-cap pr-note">Per year, billed annually</div>
+            <div class="pr-desc">For owners who want full control and diagnostics year&#8209;round.</div>
+            <div class="pr-feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2.5" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg> Real-time diagnostics</div>
+            <div class="pr-feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2.5" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg> Multi-lift management</div>
+            <div class="pr-feat" style="margin-bottom:22px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="2.5" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg> Priority support</div>
+            <a href="#config" class="pr-btn dark">Continue with Elevate</a>
+          </div>
+
+          <div class="pr-card">
+            <div class="pr-name">Dealer &amp; Marina</div>
+            <div><span class="pr-price">Custom</span></div>
+            <div class="pr-cap">Billed annually</div>
+            <div class="pr-desc">For dealers and marinas managing lifts across many slips.</div>
+            <div class="pr-feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2.5" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg> Unlimited lift connections</div>
+            <div class="pr-feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2.5" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg> Fleet dashboard</div>
+            <div class="pr-feat" style="margin-bottom:22px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2.5" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg> Dedicated account manager</div>
+            <a href="#contact" class="pr-btn">Talk to sales</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison table -->
+      <div class="pr-tablewrap" style="margin-top:76px;">
+        <div class="pr-head">
+          <div>
+            <div style="font-size:14px; color:#6B7280; line-height:1.4; margin-bottom:14px;">Select preferred<br>billing cycle</div>
+            <div class="pr-toggle">
+              <button class="pr-term on" data-term="1">1 Year</button>
+              <button class="pr-term" data-term="3">3 Year</button>
             </div>
           </div>
-          <div style="height:1px; background:rgba(255,255,255,0.12); margin-bottom:26px;"></div>
-          <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px; flex:1;">
-            <div style="font-size:14px; color:rgba(255,255,255,0.6); margin-bottom:-2px;">Everything on 1 Year, plus</div>
-            <div style="display:flex; align-items:center; gap:11px; font-size:14px; color:rgba(255,255,255,0.88);"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;"><circle cx="12" cy="12" r="12"/><polyline points="17 8.5 10.5 15.5 7 12" fill="none" stroke="#0A0A0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Save $59.98 vs. paying yearly</div>
-            <div style="display:flex; align-items:center; gap:11px; font-size:14px; color:rgba(255,255,255,0.88);"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;"><circle cx="12" cy="12" r="12"/><polyline points="17 8.5 10.5 15.5 7 12" fill="none" stroke="#0A0A0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Locked-in pricing</div>
-            <div style="display:flex; align-items:center; gap:11px; font-size:14px; color:rgba(255,255,255,0.88);"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;"><circle cx="12" cy="12" r="12"/><polyline points="17 8.5 10.5 15.5 7 12" fill="none" stroke="#0A0A0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Extended warranty support</div>
-            <div style="display:flex; align-items:center; gap:11px; font-size:14px; color:rgba(255,255,255,0.88);"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;"><circle cx="12" cy="12" r="12"/><polyline points="17 8.5 10.5 15.5 7 12" fill="none" stroke="#0A0A0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority support</div>
+          <div>
+            <div style="font-size:26px; font-weight:500; color:#0A0A0A; margin-bottom:10px;">Included</div>
+            <div style="font-size:13px; color:#6B7280; line-height:1.45; margin-bottom:16px;">$0 for 6 months,<br>with any Elevate Remote</div>
+            <a href="#config" class="pr-btn" style="margin-top:0;">Get a Remote</a>
           </div>
-          <a href="#config" style="display:block; text-align:center; padding:16px; background:#fff; border-radius:8px; font-size:13px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#0A0A0A; text-decoration:none; margin-bottom:12px; transition:opacity 0.15s;" onmouseenter="this.style.opacity='0.85'" onmouseleave="this.style.opacity='1'">Start with 3 Year</a>
-          <a href="#learn" style="display:block; text-align:center; padding:16px; background:transparent; border:1px solid rgba(255,255,255,0.35); border-radius:8px; font-size:13px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#fff; text-decoration:none; transition:background 0.15s;" onmouseenter="this.style.background='rgba(255,255,255,0.08)'" onmouseleave="this.style.background='transparent'">Learn More</a>
+          <div class="hl">
+            <div style="font-size:26px; font-weight:500; color:#0A0A0A; margin-bottom:10px;">Elevate App <span class="pr-badge">Popular</span></div>
+            <div style="font-size:13px; color:#6B7280; line-height:1.45; margin-bottom:16px;"><span class="pr-amt">$129.99</span> per year,<br><span class="pr-note2">billed annually</span></div>
+            <a href="#config" class="pr-btn dark" style="margin-top:0;">Continue with Elevate</a>
+          </div>
+          <div>
+            <div style="font-size:26px; font-weight:500; color:#0A0A0A; margin-bottom:10px;">Dealer</div>
+            <div style="font-size:13px; color:#6B7280; line-height:1.45; margin-bottom:16px;">Get a custom quote,<br>billed annually</div>
+            <a href="#contact" class="pr-btn" style="margin-top:0;">Talk to sales</a>
+          </div>
         </div>
+
+        <div class="pr-sec">Lift control</div>
+        <div class="pr-row"><div>Remote raise, lower &amp; stop</div><div>&#10003;</div><div class="hl">&#10003;</div><div>&#10003;</div></div>
+        <div class="pr-row"><div>Lift connections</div><div>1</div><div class="hl">Up to 4</div><div>Unlimited</div></div>
+        <div class="pr-row"><div>Multi-lift management</div><div style="color:#C4C7CC;">&times;</div><div class="hl">&#10003;</div><div>&#10003;</div></div>
+        <div class="pr-row"><div>Scheduled operations</div><div style="color:#C4C7CC;">&times;</div><div class="hl">&#10003;</div><div>&#10003;</div></div>
+        <div class="pr-row"><div>Shared household access</div><div>1 user</div><div class="hl">Up to 5 users</div><div>Unlimited</div></div>
+
+        <div class="pr-sec">Monitoring &amp; diagnostics</div>
+        <div class="pr-row"><div>Real-time lift status</div><div>&#10003;</div><div class="hl">&#10003;</div><div>&#10003;</div></div>
+        <div class="pr-row"><div>Motor &amp; cable diagnostics</div><div style="color:#C4C7CC;">&times;</div><div class="hl">&#10003;</div><div>&#10003;</div></div>
+        <div class="pr-row"><div>Fault &amp; maintenance alerts</div><div style="color:#C4C7CC;">&times;</div><div class="hl">&#10003;</div><div>&#10003;</div></div>
+        <div class="pr-row"><div>Usage history</div><div>30 days</div><div class="hl">2 years</div><div>Unlimited</div></div>
+        <div class="pr-row"><div>Fleet dashboard &amp; reporting</div><div style="color:#C4C7CC;">&times;</div><div class="hl" style="color:#C4C7CC;">&times;</div><div>&#10003;</div></div>
+
+        <div class="pr-sec">Support &amp; warranty</div>
+        <div class="pr-row"><div>Email support</div><div>&#10003;</div><div class="hl">&#10003;</div><div>&#10003;</div></div>
+        <div class="pr-row"><div>Priority phone support</div><div style="color:#C4C7CC;">&times;</div><div class="hl">&#10003;</div><div>&#10003;</div></div>
+        <div class="pr-row"><div>Extended warranty support</div><div style="color:#C4C7CC;">&times;</div><div class="hl"><span class="pr-warr">&times;</span></div><div>&#10003;</div></div>
+        <div class="pr-row"><div>Dedicated account manager</div><div style="color:#C4C7CC;">&times;</div><div class="hl" style="color:#C4C7CC;">&times;</div><div>&#10003;</div></div>
+        <div class="pr-row"><div>Locked-in pricing</div><div style="color:#C4C7CC;">&times;</div><div class="hl"><span class="pr-lock">&times;</span></div><div>&#10003;</div></div>
       </div>
 
       <!-- Note under plans -->
@@ -4966,6 +5047,27 @@ document.getElementById('pdpQtyMinus').addEventListener('click', function() {
   var el = document.getElementById('pdpQtyVal');
   el.value = Math.max(1, parseInt(el.value) - 1);
 });
+
+// ── Pricing term toggle (app plans) ──
+(function() {
+  var btns = document.querySelectorAll('.pr-term');
+  if (!btns.length) return;
+  function setTerm(term) {
+    btns.forEach(function(b) { b.classList.toggle('on', b.getAttribute('data-term') === term); });
+    var three = term === '3';
+    document.querySelectorAll('.pr-amt').forEach(function(el) { el.textContent = three ? '$110' : '$129.99'; });
+    document.querySelectorAll('.pr-note').forEach(function(el) { el.textContent = three ? 'Per year, billed $329.99 every 3 years' : 'Per year, billed annually'; });
+    document.querySelectorAll('.pr-note2').forEach(function(el) { el.textContent = three ? 'billed $329.99 every 3 years' : 'billed annually'; });
+    document.querySelectorAll('.pr-save').forEach(function(el) { el.style.display = three ? 'inline-block' : 'none'; });
+    document.querySelectorAll('.pr-warr, .pr-lock').forEach(function(el) {
+      el.textContent = three ? '✓' : '×';
+      el.parentElement.style.color = three ? '#4B5563' : '#C4C7CC';
+    });
+  }
+  btns.forEach(function(b) {
+    b.addEventListener('click', function() { setTerm(b.getAttribute('data-term')); });
+  });
+})();
 
 // ── Story video pause/play ──
 (function() {
