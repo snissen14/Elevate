@@ -955,6 +955,20 @@ body {
 .learn-cta-secondary { background: rgba(0,0,0,0.07); color: #171A20; }
 .learn-cta-secondary:hover { background: rgba(0,0,0,0.12); }
 
+/* Rounded-rectangle hero CTA — shared by the home banner and Build My Boat Lift */
+.hero-cta-pill,
+.learn-hero-ctas .hero-cta-pill {
+  display: inline-block; padding: 22px 54px; background: #fff; color: #171A20;
+  border-radius: 48px; font-size: 17px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; text-decoration: none; transition: background 0.15s;
+}
+.hero-cta-pill:hover,
+.learn-hero-ctas .hero-cta-pill:hover { background: #F0F0F0; }
+@media (max-width: 600px) {
+  .hero-cta-pill,
+  .learn-hero-ctas .hero-cta-pill { padding: 18px 36px; font-size: 15px; }
+}
+
 .learn-hero-stats {
   position: absolute; bottom: 40px; left: 0; right: 0; z-index: 2;
   display: flex; justify-content: center; gap: 80px;
@@ -1176,7 +1190,7 @@ body {
               <span style="font-size:16px; font-weight:600; color:#fff; letter-spacing:0.3px;">Rated 4.9 &middot; 15,000+ Customers Helped</span>
             </div>
           </div>
-          <a href="#build" style="position:absolute; bottom:96px; left:50%; transform:translateX(-50%); padding:22px 54px; background:#fff; color:#171A20; border-radius:48px; font-size:17px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none;">I'm Ready To Build</a>
+          <a class="hero-cta-pill" href="#build" style="position:absolute; bottom:96px; left:50%; transform:translateX(-50%);">I'm Ready To Build</a>
         </div>
       </div>
 
@@ -3216,7 +3230,7 @@ body {
       <h1 class="learn-hero-title" style="font-size:clamp(60px, 8vw, 94px); line-height:1.05; margin-bottom:22px;">Ready to build the perfect<br>boat lift for your waterfront?</h1>
       <p class="learn-hero-sub" style="font-size:26px; margin-bottom:44px;">A lift built for the wrong boat destroys hulls, burns out motors, and costs you thousands.<br>Ours is built for one boat. Yours.</p>
       <div class="learn-hero-ctas">
-        <a href="#build" style="display:inline-block; padding:22px 80px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:20px; font-weight:500; text-decoration:none; transition:background 0.15s;">I'm Ready To Build</a>
+        <a class="hero-cta-pill" href="#build">I'm Ready To Build</a>
       </div>
     </div>
     <div class="learn-hero-stats">
