@@ -761,7 +761,7 @@ body {
 .cart-empty a { display: inline-block; padding: 12px 32px; background: #171A20; color: #fff; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500; }
 .cart-items { border-top: 1px solid #E8E8E8; }
 .cart-item { display: flex; align-items: center; gap: 20px; padding: 20px 0; border-bottom: 1px solid #E8E8E8; }
-.cart-item-img { width: 80px; height: 80px; background: #F5F5F5; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.cart-item-img { width: 80px; height: 80px; background: #FFFFFF; border: 1px solid #E8E8E8; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 .cart-item-img svg { width: 40px; height: 40px; color: #878A8F; }
 .cart-item-img img { width: 100%; height: 100%; object-fit: contain; padding: 8px; box-sizing: border-box; }
 .cart-item-details { flex: 1; }
@@ -792,9 +792,9 @@ body {
 
 #page-pdp { background: #fff; color: #171A20; }
 .pdp-layout { display: grid; grid-template-columns: 1fr 420px; min-height: calc(100vh - 80px); }
-.pdp-gallery { background: #F5F5F5; display:flex; align-items:center; justify-content:center; min-height:100%; }
+.pdp-gallery { background: #FFFFFF; display:flex; align-items:center; justify-content:center; min-height:100%; padding:40px; }
 .pdp-gallery svg { width:30%; max-width:280px; height:auto; color:#878A8F; }
-.pdp-gallery img { width:80%; max-width:520px; height:auto; object-fit:contain; padding:24px 0; }
+.pdp-gallery img { width:100%; max-width:560px; max-height:calc(100vh - 200px); height:auto; object-fit:contain; }
 .pdp-info { padding:40px 48px 60px; overflow-y:auto; }
 .pdp-title { font-size:28px; font-weight:500; color:#171A20; margin:0 0 8px; line-height:1.3; }
 .pdp-price { font-size:16px; font-weight:400; color:#171A20; margin-bottom:28px; }
@@ -815,7 +815,7 @@ body {
 .pdp-feature-list li { font-size:14px; color:#5C5E62; padding:4px 0; padding-left:18px; position:relative; }
 .pdp-feature-list li::before { content:'•'; position:absolute; left:4px; color:#5C5E62; }
 .pdp-note { font-size:13px; color:#878A8F; font-style:italic; margin-top:20px; line-height:1.5; }
-@media (max-width:900px) { .pdp-layout { grid-template-columns:1fr; } .pdp-gallery { min-height:50vh; } .pdp-info { padding:28px 24px 48px; } }
+@media (max-width:900px) { .pdp-layout { grid-template-columns:1fr; } .pdp-gallery { min-height:50vh; padding:24px; } .pdp-gallery img { max-width:420px; max-height:52vh; } .pdp-info { padding:28px 24px 48px; } }
 @media (max-width:600px) { .pdp-title { font-size:22px; } }
 
 
@@ -866,7 +866,7 @@ body {
   cursor: pointer; border: 1px solid #E8E8E8; border-radius: 8px;
 }
 .shop-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1; }
-.hw-product-card:hover div:first-child { background: #ECECEC !important; }
+.hw-product-card:hover div:first-child { border-color: #D0D1D2 !important; }
 
 .shop-card-badge {
   font-size: 11px; font-weight: 600; text-transform: uppercase;
@@ -878,7 +878,7 @@ body {
 .shop-card-badge.sale { background: #C0392B; }
 
 .shop-card-image {
-  width: 100%; aspect-ratio: 1; background: #F5F5F5; border-radius: 8px 8px 0 0;
+  width: 100%; aspect-ratio: 1; background: #FFFFFF; border-radius: 8px 8px 0 0;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 20px; overflow: hidden;
 }
@@ -2867,7 +2867,7 @@ body {
 
     <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/gemwebpic1.png?v=1693575658" alt="Gem Remotes GR1: Wireless Boat Lift Remote" loading="lazy">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/gemwebpic1.png?v=1693575658&width=700" alt="Gem Remotes GR1: Wireless Boat Lift Remote" loading="lazy">
       </div>
       <div class="shop-card-title">Gem Remotes GR1: Wireless Boat Lift Remote</div>
       <div class="shop-card-desc">The Gem Remote — GR1 is designed to deliver seamless wireless control to your boat lift system.</div>
@@ -2879,7 +2879,7 @@ body {
 
     <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Guidepole_Galvanized_main_pic.png?v=1751889800" alt="Galvanized Boat Lift Guide Posts" loading="lazy">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Guidepole_Galvanized_main_pic.png?v=1751889800&width=700" alt="Galvanized Boat Lift Guide Posts" loading="lazy">
       </div>
       <div class="shop-card-title">Galvanized Boat Lift Guide Posts</div>
       <div class="shop-card-desc">Protect your boat and simplify every docking experience with our heavy-duty galvanized guide poles. Fits I-beam cradles with a flange width between 2.5"–4" — 4", 5", 6" and some 8" cradles.</div>
@@ -2891,7 +2891,7 @@ body {
 
     <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Cablepic1.png?v=1754483550" alt="1/4&quot; Marine Grade Boat Lift Cable/PWC Lift Cable" loading="lazy">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Cablepic1.png?v=1754483550&width=700" alt="1/4&quot; Marine Grade Boat Lift Cable/PWC Lift Cable" loading="lazy">
       </div>
       <div class="shop-card-title">1/4" Marine Grade Boat Lift Cable/PWC Lift Cable</div>
       <div class="shop-card-desc">Ensure the smooth and safe operation of your dock lift with our premium Dock Lift Cables, available in both galvanized…</div>
@@ -2903,7 +2903,7 @@ body {
 
     <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Marinegradecarpet.png?v=1720467234" alt="Dock Solutions Marine Grade Carpet" loading="lazy">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Marinegradecarpet.png?v=1720467234&width=700" alt="Dock Solutions Marine Grade Carpet" loading="lazy">
       </div>
       <div class="shop-card-title">Dock Solutions Marine Grade Carpet</div>
       <div class="shop-card-desc">Protect your boat with our Marine Grade Carpet, specifically designed for cradle boards.</div>
@@ -2915,7 +2915,7 @@ body {
 
     <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/CradleBoards.png?v=1720181706" alt="Cradle Boards" loading="lazy">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/CradleBoards.png?v=1720181706&width=700" alt="Cradle Boards" loading="lazy">
       </div>
       <div class="shop-card-title">Cradle Boards</div>
       <div class="shop-card-desc">Elevate your boat’s safety and comfort with our Boat Lift Cradle Boards featuring premium marine carpet.</div>
@@ -2927,7 +2927,7 @@ body {
 
     <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Bigger_cleat_cover_photo.png?v=1743702484" alt="Large Nylon Folding Dock Cleat — 9&quot; Flip-Up Safety Cleat" loading="lazy">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Bigger_cleat_cover_photo.png?v=1743702484&width=700" alt="Large Nylon Folding Dock Cleat — 9&quot; Flip-Up Safety Cleat" loading="lazy">
       </div>
       <div class="shop-card-title">Large Nylon Folding Dock Cleat — 9" Flip-Up Safety Cleat</div>
       <div class="shop-card-desc">B9001 – Large Black Nylon Fold-Down Safety Cleat A sleek, fold-down cleat designed for safety, durability, and modern…</div>
@@ -2939,7 +2939,7 @@ body {
 
     <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/29_belt.png?v=1718910906" alt="Marine Motor Belts" loading="lazy">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/29_belt.png?v=1718910906&width=700" alt="Marine Motor Belts" loading="lazy">
       </div>
       <div class="shop-card-title">Marine Motor Belts</div>
       <div class="shop-card-desc">Ensure the smooth operation of your dock lift with our high-quality motor belts, specifically designed for durability…</div>
@@ -2951,7 +2951,7 @@ body {
 
     <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/12x12_drip_pan_1.3.png?v=1757083904" alt="Drip Pan" loading="lazy">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/12x12_drip_pan_1.3.png?v=1757083904&width=700" alt="Drip Pan" loading="lazy">
       </div>
       <div class="shop-card-title">Drip Pan</div>
       <div class="shop-card-desc">Drip pans help save you boat from dripping grease released from boat lifts.</div>
@@ -4379,54 +4379,54 @@ renderLift();
 var productCatalog = {
   'Gem Remotes GR1: Wireless Boat Lift Remote': {
     price: '$579.99', desc: 'The Gem Remote — GR1 is designed to deliver seamless wireless control to your boat lift system, allowing you to operate your lift from a distance—enhancing every docking experience with precision, comfort, and confidence. Eliminate the hassle of docking—no more jumping on and off the boat.',
-    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/gemwebpic1.png?v=1693575658" alt="Gem Remotes GR1: Wireless Boat Lift Remote" loading="lazy">',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/gemwebpic1.png?v=1693575658&width=1200" alt="Gem Remotes GR1: Wireless Boat Lift Remote" loading="lazy">',
     features: ['( Includes 1x ) 3-button handheld transmitter', 'Manual or wireless operation', 'Compatible with any lift electric motor', 'Instant response signal transmission', 'Marine-rated control box construction', 'Engineered for long-term durability in harsh environments'],
     specs: [['Brand', 'GEM REMOTES'], ['SKU', 'DS861'], ['Weight', '8.1 lb'], ['Options', '1']],
     reviews: 4
   },
   'Galvanized Boat Lift Guide Posts': {
     price: 'From $65.95', desc: 'Protect your boat and simplify every docking experience with our heavy-duty galvanized guide poles. Fits I-beam cradles with a flange width between 2.5"–4" — 4", 5", 6" and some 8" cradles.',
-    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Guidepole_Galvanized_main_pic.png?v=1751889800" alt="Galvanized Boat Lift Guide Posts" loading="lazy">',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Guidepole_Galvanized_main_pic.png?v=1751889800&width=1200" alt="Galvanized Boat Lift Guide Posts" loading="lazy">',
     features: ['1 Piece', '4 Piece: Full Set'],
     specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS005'], ['Weight', '8 lb'], ['Options', '2']],
     reviews: 2
   },
   '1/4" Marine Grade Boat Lift Cable/PWC Lift Cable': {
     price: 'From $9.90', desc: 'Ensure the smooth and safe operation of your dock lift with our premium Dock Lift Cables, available in both galvanized and stainless steel options.',
-    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Cablepic1.png?v=1754483550" alt="1/4&quot; Marine Grade Boat Lift Cable/PWC Lift Cable" loading="lazy">',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Cablepic1.png?v=1754483550&width=1200" alt="1/4&quot; Marine Grade Boat Lift Cable/PWC Lift Cable" loading="lazy">',
     features: ['Galvanized (Common for freshwater): 15 ft', 'Galvanized (Common for freshwater): 31 ft', 'Galvanized (Common for freshwater): 40 ft', 'Galvanized (Common for freshwater): 45 ft', 'Galvanized (Common for freshwater): 62 ft', 'Galvanized (Common for freshwater): 70 ft'],
     specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS715'], ['Options', '14']],
     reviews: 1
   },
   'Dock Solutions Marine Grade Carpet': {
     price: 'From $2.95', desc: 'Protect your boat with our Marine Grade Carpet, specifically designed for cradle boards. This durable carpeting provides a reliable, non-slip surface that keeps your boat secure during storage and transport.',
-    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Marinegradecarpet.png?v=1720467234" alt="Dock Solutions Marine Grade Carpet" loading="lazy">',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Marinegradecarpet.png?v=1720467234&width=1200" alt="Dock Solutions Marine Grade Carpet" loading="lazy">',
     features: ['1PC: Pre-Cut 16 FT x 12IN', 'Full Roll 150\'', 'Per FT-12" Width'],
     specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS668'], ['Options', '3']]
   },
   'Cradle Boards': {
     price: 'From $158.45', desc: 'Elevate your boat’s safety and comfort with our Boat Lift Cradle Boards featuring premium marine carpet. Designed for superior cushioning and protection, these cradle boards ensure a secure, non-slip surface while lifting your boat, reducing the risk of damage to your vessel.',
-    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/CradleBoards.png?v=1720181706" alt="Cradle Boards" loading="lazy">',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/CradleBoards.png?v=1720181706&width=1200" alt="Cradle Boards" loading="lazy">',
     features: ['Cradle Board Set- 14\': V-Hull: Left & Right 2 PCS', 'Cradle Board Set- 14\': Pontoon: Upright: 2 PCS', 'Cradle Board Set- 14\': Pontoon Flat: 4 PCS', 'Cradle Board Set- 5\': PWC: Electric Lift: 2 PC', 'Cradle Board Set - 10\' Double PWC: 4 PCS', 'Cradle Board Set- 16\': Pontoon: Upright: 2PCS'],
     specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS176'], ['Options', '6']]
   },
   'Large Nylon Folding Dock Cleat — 9" Flip-Up Safety Cleat': {
     price: '$34.50', desc: 'B9001 – Large Black Nylon Fold-Down Safety Cleat A sleek, fold-down cleat designed for safety, durability, and modern dock aesthetics.',
-    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Bigger_cleat_cover_photo.png?v=1743702484" alt="Large Nylon Folding Dock Cleat — 9&quot; Flip-Up Safety Cleat" loading="lazy">',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Bigger_cleat_cover_photo.png?v=1743702484&width=1200" alt="Large Nylon Folding Dock Cleat — 9&quot; Flip-Up Safety Cleat" loading="lazy">',
     features: ['Size: 9"', 'Base Height: 1.5"', 'Mounting Pattern: 11" x 4.75"', 'Overall: 12.875" x 6.625" x 1.25"'],
     specs: [['Brand', 'Cleat Seat'], ['SKU', 'DS842'], ['Options', '2']],
     reviews: 8
   },
   'Marine Motor Belts': {
     price: 'From $15.35', desc: 'Ensure the smooth operation of your dock lift with our high-quality motor belts, specifically designed for durability and reliability. These belts are essential for maintaining the efficiency of your lifting system, providing optimal performance for your dock.',
-    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/29_belt.png?v=1718910906" alt="Marine Motor Belts" loading="lazy">',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/29_belt.png?v=1718910906&width=1200" alt="Marine Motor Belts" loading="lazy">',
     features: ['AX 26', 'AX 28', 'AX 30', 'AX 34', 'AX 35', 'AX 36'],
     specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS233'], ['Weight', '1 lb'], ['Options', '7']],
     reviews: 1
   },
   'Drip Pan': {
     price: 'From $115.99', desc: 'Drip pans help save you boat from dripping grease released from boat lifts. Saves you from having to wipe grease off your boat or boat cover.',
-    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/12x12_drip_pan_1.3.png?v=1757083904" alt="Drip Pan" loading="lazy">',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/12x12_drip_pan_1.3.png?v=1757083904&width=1200" alt="Drip Pan" loading="lazy">',
     features: ['12X24 Horizontal Drip Pan', '12X12 Vertical Drip Pan'],
     specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS908'], ['Options', '2']]
   }
@@ -4832,7 +4832,7 @@ function showHwProduct(partNum) {
   document.getElementById('pdpTitle').textContent = product.name;
   document.getElementById('pdpPrice').textContent = product.price;
   document.getElementById('pdpDesc').textContent = product.desc;
-  document.getElementById('pdpGallery').innerHTML = hwMedia(product, 120);
+  document.getElementById('pdpGallery').innerHTML = hwMedia(product, 120, 1200);
   var feats = (product.feats || []).slice();
   if (product.opts && product.opts.length) {
     feats = feats.concat(product.opts.map(function(o) { return 'Option: ' + o; }));
@@ -4845,9 +4845,14 @@ function showHwProduct(partNum) {
 }
 
 // Product photo from the Shopify catalog, with the line-art icon as fallback
-function hwMedia(item, svgSize) {
+function sizedImage(url, width) {
+  if (!url) return url;
+  return url + (url.indexOf('?') !== -1 ? '&' : '?') + 'width=' + width;
+}
+
+function hwMedia(item, svgSize, imgWidth) {
   if (item.image) {
-    return '<img src="' + item.image + '" alt="' + item.name.replace(/"/g, '&quot;') + '" loading="lazy">';
+    return '<img src="' + sizedImage(item.image, imgWidth || 600) + '" alt="' + item.name.replace(/"/g, '&quot;') + '" loading="lazy">';
   }
   return item.img.replace('width="32" height="32"', 'width="' + svgSize + '" height="' + svgSize + '"');
 }
@@ -4857,7 +4862,7 @@ function renderProductGrid(gridId, data) {
   if (!grid || !data) return;
   grid.innerHTML = data.items.map(function(item) {
     return '<a href="#" class="hw-product-card" data-hw-product="' + item.part + '" style="display:flex; flex-direction:column; text-decoration:none; color:inherit; cursor:pointer;">'
-      + '<div class="hw-product-thumb" style="aspect-ratio:1; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; transition:background 0.2s; overflow:hidden;">' + hwMedia(item, 56) + '</div>'
+      + '<div class="hw-product-thumb" style="aspect-ratio:1; background:#FFFFFF; border:1px solid #E8E8E8; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; transition:background 0.2s; overflow:hidden;">' + hwMedia(item, 56, 600) + '</div>'
       + '<div style="font-size:14px; font-weight:500; color:#171A20; line-height:1.4;">' + item.name + '</div>'
       + '<div style="font-size:15px; font-weight:600; color:#171A20; margin-top:6px;">' + item.price + '</div>'
       + '</a>';
