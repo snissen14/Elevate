@@ -1129,7 +1129,7 @@ body {
 <div id="page-home">
 
   <!-- Promo Banner -->
-  <div id="promoBanner" style="background:#3E6AE1; padding:10px 24px; text-align:center; font-size:14px; color:#fff; font-weight:500; letter-spacing:0.3px; margin-top:80px;">6 Months Free of Elevate App now included with all Elevate Remote Purchases. <a href="#app-plans" style="color:#fff; font-weight:700; text-decoration:underline; margin-left:6px;">Learn more</a></div>
+  <div id="promoBanner" style="position:relative; background:#F7F7F7; border-bottom:1px solid #E8E8E8; padding:13px 56px; text-align:center; font-size:14px; line-height:1.4; color:#171A20; margin-top:80px;">6 Months Free of Elevate App now included with all Elevate Remote Purchases.<a href="#app-plans" style="display:inline-flex; align-items:center; gap:4px; color:#3E6AE1; font-weight:500; text-decoration:none; margin-left:10px; white-space:nowrap;">Learn more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px;"><polyline points="9 18 15 12 9 6"/></svg></a><button type="button" data-promo-close aria-label="Close" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); display:flex; align-items:center; justify-content:center; width:24px; height:24px; padding:0; background:none; border:none; color:#5C5E62; cursor:pointer;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width:16px; height:16px;"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
 
   <!-- Nav -->
   <nav class="home-nav">
@@ -4327,6 +4327,13 @@ document.addEventListener('click', e => {
     var qty = parseInt(document.getElementById('pdpQtyVal').value) || 1;
     for (var q = 0; q < qty; q++) addToCart(name, price);
     showPage('cart');
+    return;
+  }
+
+  // Promo banner dismiss
+  if (e.target.closest('[data-promo-close]')) {
+    var promo = document.getElementById('promoBanner');
+    if (promo) promo.style.display = 'none';
     return;
   }
 
