@@ -1143,7 +1143,7 @@ body {
 <div id="page-home">
 
   <!-- Promo Banner -->
-  <div id="promoBanner" style="position:relative; background:#F7F7F7; border-bottom:1px solid #E8E8E8; padding:13px 56px; text-align:center; font-size:14px; line-height:1.4; color:#171A20; margin-top:80px;">6 Months Free of Elevate App now included with all Elevate Remote Purchases.<a href="#app-plans" style="display:inline-flex; align-items:center; gap:4px; color:#3E6AE1; font-weight:500; text-decoration:none; margin-left:10px; white-space:nowrap;">Learn more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px;"><polyline points="9 18 15 12 9 6"/></svg></a><button type="button" data-promo-close aria-label="Close" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); display:flex; align-items:center; justify-content:center; width:24px; height:24px; padding:0; background:none; border:none; color:#5C5E62; cursor:pointer;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width:16px; height:16px;"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <div id="promoBanner" style="position:fixed; top:0; left:0; right:0; z-index:110; background:#F7F7F7; border-bottom:1px solid #E8E8E8; padding:13px 56px; text-align:center; font-size:14px; line-height:1.4; color:#171A20;">6 Months Free of Elevate App now included with all Elevate Remote Purchases.<a href="#app-plans" style="display:inline-flex; align-items:center; gap:4px; color:#3E6AE1; font-weight:500; text-decoration:none; margin-left:10px; white-space:nowrap;">Learn more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px;"><polyline points="9 18 15 12 9 6"/></svg></a><button type="button" data-promo-close aria-label="Close" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); display:flex; align-items:center; justify-content:center; width:24px; height:24px; padding:0; background:none; border:none; color:#5C5E62; cursor:pointer;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width:16px; height:16px;"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
 
   <!-- Nav -->
   <nav class="home-nav">
@@ -4348,6 +4348,7 @@ document.addEventListener('click', e => {
   if (e.target.closest('[data-promo-close]')) {
     var promo = document.getElementById('promoBanner');
     if (promo) promo.style.display = 'none';
+    layoutPromoBanner();
     return;
   }
 
@@ -4931,6 +4932,19 @@ document.querySelectorAll('.qs-cat').forEach(function(el) {
     renderQsPage(el.getAttribute('data-qspage'), el.getAttribute('data-qscat'));
   });
 });
+
+// ── Promo banner sits above the nav: offset the nav and page content by its height ──
+function layoutPromoBanner() {
+  var promo = document.getElementById('promoBanner');
+  var nav = document.querySelector('#page-home .home-nav');
+  var carousel = document.getElementById('carousel');
+  var h = (promo && promo.style.display !== 'none') ? promo.offsetHeight : 0;
+  if (nav) nav.style.top = h + 'px';
+  if (carousel) carousel.style.marginTop = (h + 80) + 'px';
+}
+layoutPromoBanner();
+window.addEventListener('resize', layoutPromoBanner);
+window.addEventListener('load', layoutPromoBanner);
 
 // Open the page named in the URL hash (runs after the catalogs above are defined)
 if (location.hash === '#cart') showPage('cart');
