@@ -763,6 +763,7 @@ body {
 .cart-item { display: flex; align-items: center; gap: 20px; padding: 20px 0; border-bottom: 1px solid #E8E8E8; }
 .cart-item-img { width: 80px; height: 80px; background: #F5F5F5; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 .cart-item-img svg { width: 40px; height: 40px; color: #878A8F; }
+.cart-item-img img { width: 100%; height: 100%; object-fit: contain; padding: 8px; box-sizing: border-box; }
 .cart-item-details { flex: 1; }
 .cart-item-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
 .cart-item-meta { font-size: 13px; color: #878A8F; }
@@ -793,6 +794,7 @@ body {
 .pdp-layout { display: grid; grid-template-columns: 1fr 420px; min-height: calc(100vh - 80px); }
 .pdp-gallery { background: #F5F5F5; display:flex; align-items:center; justify-content:center; min-height:100%; }
 .pdp-gallery svg { width:30%; max-width:280px; height:auto; color:#878A8F; }
+.pdp-gallery img { width:80%; max-width:520px; height:auto; object-fit:contain; padding:24px 0; }
 .pdp-info { padding:40px 48px 60px; overflow-y:auto; }
 .pdp-title { font-size:28px; font-weight:500; color:#171A20; margin:0 0 8px; line-height:1.3; }
 .pdp-price { font-size:16px; font-weight:400; color:#171A20; margin-bottom:28px; }
@@ -884,7 +886,13 @@ body {
   width: 30%; height: 30%; color: #878A8F;
   transition: transform 0.3s ease;
 }
-.shop-card:hover .shop-card-image svg { transform: scale(1.08); }
+.shop-card-image img {
+  width: 100%; height: 100%; object-fit: contain; padding: 10%;
+  box-sizing: border-box; transition: transform 0.3s ease;
+}
+.shop-card:hover .shop-card-image svg,
+.shop-card:hover .shop-card-image img { transform: scale(1.08); }
+.hw-product-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 10%; box-sizing: border-box; }
 
 .shop-card-title {
   font-size: 14px; font-weight: 700; margin-bottom: 6px;
@@ -2693,7 +2701,7 @@ body {
       <a href="#" class="qs-cat" data-qscat="bumpers" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Bumpers &amp; Fenders</a>
       <a href="#" class="qs-cat" data-qscat="dockedge" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Edge Profiles</a>
       <a href="#" class="qs-cat" data-qscat="cleats" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Cleats &amp; Ties</a>
-      <a href="#" class="qs-cat" data-qscat="dockboxes" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Boxes &amp; Storage</a>
+      <a href="#" class="qs-cat" data-qscat="dockboxes" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Drip Pans &amp; Storage</a>
     </div>
     <div style="flex:1; padding:32px 40px;">
       <div style="margin-bottom:28px;">
@@ -2731,7 +2739,7 @@ body {
       <a href="#" class="qs-cat" data-qscat="steps" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Dock Steps</a>
       <a href="#" class="qs-cat" data-qscat="ladders" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Ladders</a>
       <a href="#" class="qs-cat" data-qscat="platforms" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Swim Platforms</a>
-      <a href="#" class="qs-cat" data-qscat="handrails" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Handrails &amp; Grab Bars</a>
+      <a href="#" class="qs-cat" data-qscat="handrails" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Safety &amp; Signage</a>
     </div>
     <div style="flex:1; padding:32px 40px;">
       <div style="margin-bottom:28px;">
@@ -2794,13 +2802,13 @@ body {
       <a href="#" class="hw-cat" data-hwcat="bumpers" data-hwsection="Docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Bumpers &amp; Fenders</a>
       <a href="#" class="hw-cat" data-hwcat="dockedge" data-hwsection="Docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Edge Profiles</a>
       <a href="#" class="hw-cat" data-hwcat="cleats" data-hwsection="Docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Cleats &amp; Ties</a>
-      <a href="#" class="hw-cat" data-hwcat="dockboxes" data-hwsection="Docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Boxes &amp; Storage</a>
+      <a href="#" class="hw-cat" data-hwcat="dockboxes" data-hwsection="Docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Drip Pans &amp; Storage</a>
 
       <div style="padding:16px 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1; border-top:1px solid #E8E8E8; margin-top:12px;">Water Access</div>
       <a href="#" class="hw-cat" data-hwcat="steps" data-hwsection="Water Access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Steps</a>
       <a href="#" class="hw-cat" data-hwcat="ladders" data-hwsection="Water Access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Ladders</a>
       <a href="#" class="hw-cat" data-hwcat="platforms" data-hwsection="Water Access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Swim Platforms</a>
-      <a href="#" class="hw-cat" data-hwcat="handrails" data-hwsection="Water Access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Handrails &amp; Grab Bars</a>
+      <a href="#" class="hw-cat" data-hwcat="handrails" data-hwsection="Water Access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Safety &amp; Signage</a>
     </div>
 
     <!-- Right content -->
@@ -2857,102 +2865,99 @@ body {
 
   <div class="shop-grid">
 
-    <a class="shop-card" href="#config">
-      <span class="shop-card-badge new">New</span>
+    <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="6" width="8" height="12" rx="2"/><rect x="13" y="6" width="8" height="12" rx="2"/></svg>
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/gemwebpic1.png?v=1693575658" alt="Gem Remotes GR1: Wireless Boat Lift Remote" loading="lazy">
       </div>
-      <div class="shop-card-title">Carpeted Bunk Boards</div>
-      <div class="shop-card-desc">Marine-grade carpet, adjustable width. Protects your hull during lift and launch.</div>
+      <div class="shop-card-title">Gem Remotes GR1: Wireless Boat Lift Remote</div>
+      <div class="shop-card-desc">The Gem Remote — GR1 is designed to deliver seamless wireless control to your boat lift system.</div>
       <div class="shop-card-bottom">
-        <span class="shop-card-price">$320</span>
-        <span class="shop-card-btn">Add to Build</span>
-      </div>
-    </a>
-
-    <a class="shop-card" href="#config">
-      <div class="shop-card-image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="8" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="16" y2="21"/><circle cx="8" cy="4" r="2" fill="currentColor"/><circle cx="16" cy="4" r="2" fill="currentColor"/></svg>
-      </div>
-      <div class="shop-card-title">Guide Poles</div>
-      <div class="shop-card-desc">60″ PVC with LED-illuminated caps. Guide your boat onto the lift every time.</div>
-      <div class="shop-card-bottom">
-        <span class="shop-card-price">$280</span>
-        <span class="shop-card-btn">Add to Build</span>
-      </div>
-    </a>
-
-    <a class="shop-card" href="#config">
-      <span class="shop-card-badge">Best Seller</span>
-      <div class="shop-card-image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 10a10 10 0 0 1 20 0"/><path d="M6 10a6 6 0 0 1 12 0"/><circle cx="12" cy="14" r="3"/></svg>
-      </div>
-      <div class="shop-card-title">Wireless Remote Control</div>
-      <div class="shop-card-desc">Keyfob + wall-mount transmitter. 300 ft range, encrypted signal.</div>
-      <div class="shop-card-bottom">
-        <span class="shop-card-price">$195</span>
-        <span class="shop-card-btn">Add to Build</span>
-      </div>
-    </a>
-
-    <a class="shop-card" href="#config">
-      <div class="shop-card-image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-      </div>
-      <div class="shop-card-title">Solar Charging Kit</div>
-      <div class="shop-card-desc">30W panel with charge controller. Keep your lift battery topped off year-round.</div>
-      <div class="shop-card-bottom">
-        <span class="shop-card-price">$385</span>
-        <span class="shop-card-btn">Add to Build</span>
-      </div>
-    </a>
-
-    <a class="shop-card" href="#config">
-      <span class="shop-card-badge new">New</span>
-      <div class="shop-card-image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 4 12.7V17H8v-2.3A7 7 0 0 1 12 2z"/></svg>
-      </div>
-      <div class="shop-card-title">Underwater LED Kit</div>
-      <div class="shop-card-desc">RGBW multi-color, app-controlled. Light up your slip and attract fish.</div>
-      <div class="shop-card-bottom">
-        <span class="shop-card-price">$475</span>
-        <span class="shop-card-btn">Add to Build</span>
+        <span class="shop-card-price">$579.99</span>
+        <span class="shop-card-btn">View Product</span>
       </div>
     </a>
 
     <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Guidepole_Galvanized_main_pic.png?v=1751889800" alt="Galvanized Boat Lift Guide Posts" loading="lazy">
       </div>
-      <div class="shop-card-title">Cathodic Protection</div>
-      <div class="shop-card-desc">Zinc anode system for corrosion defense. Extends the life of your lift and dock hardware.</div>
+      <div class="shop-card-title">Galvanized Boat Lift Guide Posts</div>
+      <div class="shop-card-desc">Protect your boat and simplify every docking experience with our heavy-duty galvanized guide poles. Fits I-beam cradles with a flange width between 2.5"–4" — 4", 5", 6" and some 8" cradles.</div>
       <div class="shop-card-bottom">
-        <span class="shop-card-price">$145</span>
-        <span class="shop-card-btn">Add to Build</span>
+        <span class="shop-card-price">From $65.95</span>
+        <span class="shop-card-btn">View Product</span>
       </div>
     </a>
 
     <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Cablepic1.png?v=1754483550" alt="1/4&quot; Marine Grade Boat Lift Cable/PWC Lift Cable" loading="lazy">
       </div>
-      <div class="shop-card-title">Boat Canopy Frame</div>
-      <div class="shop-card-desc">Aluminum frame, cover sold separately. Protect your boat from sun and weather damage.</div>
+      <div class="shop-card-title">1/4" Marine Grade Boat Lift Cable/PWC Lift Cable</div>
+      <div class="shop-card-desc">Ensure the smooth and safe operation of your dock lift with our premium Dock Lift Cables, available in both galvanized…</div>
       <div class="shop-card-bottom">
-        <span class="shop-card-price">$1,850</span>
-        <span class="shop-card-btn">Add to Build</span>
+        <span class="shop-card-price">From $9.90</span>
+        <span class="shop-card-btn">View Product</span>
       </div>
     </a>
 
-    <a class="shop-card" href="#config">
+    <a class="shop-card" href="#">
       <div class="shop-card-image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><ellipse cx="12" cy="8" rx="4" ry="6"/><path d="M8 14v4a4 4 0 0 0 8 0v-4"/></svg>
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Marinegradecarpet.png?v=1720467234" alt="Dock Solutions Marine Grade Carpet" loading="lazy">
       </div>
-      <div class="shop-card-title">Remote Cover</div>
-      <div class="shop-card-desc">Silicone cover to protect keypad. Keeps dirt, water, and UV damage out.</div>
+      <div class="shop-card-title">Dock Solutions Marine Grade Carpet</div>
+      <div class="shop-card-desc">Protect your boat with our Marine Grade Carpet, specifically designed for cradle boards.</div>
       <div class="shop-card-bottom">
-        <span class="shop-card-price">$45.99</span>
-        <span class="shop-card-btn">Add to Build</span>
+        <span class="shop-card-price">From $2.95</span>
+        <span class="shop-card-btn">View Product</span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="#">
+      <div class="shop-card-image">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/CradleBoards.png?v=1720181706" alt="Cradle Boards" loading="lazy">
+      </div>
+      <div class="shop-card-title">Cradle Boards</div>
+      <div class="shop-card-desc">Elevate your boat’s safety and comfort with our Boat Lift Cradle Boards featuring premium marine carpet.</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">From $158.45</span>
+        <span class="shop-card-btn">View Product</span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="#">
+      <div class="shop-card-image">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Bigger_cleat_cover_photo.png?v=1743702484" alt="Large Nylon Folding Dock Cleat — 9&quot; Flip-Up Safety Cleat" loading="lazy">
+      </div>
+      <div class="shop-card-title">Large Nylon Folding Dock Cleat — 9" Flip-Up Safety Cleat</div>
+      <div class="shop-card-desc">B9001 – Large Black Nylon Fold-Down Safety Cleat A sleek, fold-down cleat designed for safety, durability, and modern…</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">$34.50</span>
+        <span class="shop-card-btn">View Product</span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="#">
+      <div class="shop-card-image">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/29_belt.png?v=1718910906" alt="Marine Motor Belts" loading="lazy">
+      </div>
+      <div class="shop-card-title">Marine Motor Belts</div>
+      <div class="shop-card-desc">Ensure the smooth operation of your dock lift with our high-quality motor belts, specifically designed for durability…</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">From $15.35</span>
+        <span class="shop-card-btn">View Product</span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="#">
+      <div class="shop-card-image">
+        <img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/12x12_drip_pan_1.3.png?v=1757083904" alt="Drip Pan" loading="lazy">
+      </div>
+      <div class="shop-card-title">Drip Pan</div>
+      <div class="shop-card-desc">Drip pans help save you boat from dripping grease released from boat lifts.</div>
+      <div class="shop-card-bottom">
+        <span class="shop-card-price">From $115.99</span>
+        <span class="shop-card-btn">View Product</span>
       </div>
     </a>
 
@@ -3800,8 +3805,8 @@ function showPage(page) {
   if (page === 'config') render();
   if (page === 'boatlift') renderLift();
   if (page === 'motors') renderMotor();
-  if (page === 'hardware' && pendingHwCat) {
-    renderHwCategory(pendingHwCat, pendingHwSection);
+  if (page === 'hardware') {
+    renderHwCategory(pendingHwCat || 'cables', pendingHwSection || 'Lift Systems');
     pendingHwCat = null;
     pendingHwSection = null;
   }
@@ -4365,61 +4370,58 @@ renderLift();
 // ── Product Detail Catalog ──
 
 var productCatalog = {
-  'Carpeted Bunk Boards': {
-    price: '$320', desc: 'Marine-grade carpeted bunk boards designed to protect your hull during every lift and launch cycle. Adjustable width fits most boat configurations. UV-resistant carpet resists fading and wear.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="6" width="8" height="12" rx="2"/><rect x="13" y="6" width="8" height="12" rx="2"/></svg>',
-    features: ['Marine-grade outdoor carpet', 'Adjustable width brackets', 'Pressure-treated lumber core', 'Stainless steel hardware', 'UV and mildew resistant'],
-    specs: [['Material', 'Pressure-treated wood + marine carpet'], ['Width', 'Adjustable 14″–22″'], ['Length', '72″ standard'], ['Hardware', '316 stainless steel'], ['Weight', '18 lbs per pair']],
-    reviews: 47
+  'Gem Remotes GR1: Wireless Boat Lift Remote': {
+    price: '$579.99', desc: 'The Gem Remote — GR1 is designed to deliver seamless wireless control to your boat lift system, allowing you to operate your lift from a distance—enhancing every docking experience with precision, comfort, and confidence. Eliminate the hassle of docking—no more jumping on and off the boat.',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/gemwebpic1.png?v=1693575658" alt="Gem Remotes GR1: Wireless Boat Lift Remote" loading="lazy">',
+    features: ['( Includes 1x ) 3-button handheld transmitter', 'Manual or wireless operation', 'Compatible with any lift electric motor', 'Instant response signal transmission', 'Marine-rated control box construction', 'Engineered for long-term durability in harsh environments'],
+    specs: [['Brand', 'GEM REMOTES'], ['SKU', 'DS861'], ['Weight', '8.1 lb'], ['Options', '1']],
+    reviews: 4
   },
-  'Guide Poles': {
-    price: '$280', desc: 'Heavy-duty 60″ PVC guide poles with LED-illuminated caps help you center your boat on the lift every time — even in low light. Simple clamp-on installation, no drilling required.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="8" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="16" y2="21"/><circle cx="8" cy="4" r="2" fill="currentColor"/><circle cx="16" cy="4" r="2" fill="currentColor"/></svg>',
-    features: ['60″ heavy-wall PVC construction', 'Solar-powered LED caps', 'Clamp-on installation', 'Adjustable height', 'Fits 2″–3″ cross members'],
-    specs: [['Material', 'Schedule 40 PVC'], ['Height', '60″'], ['LED', 'Solar-powered, auto on/off'], ['Mount', 'Universal clamp-on'], ['Weight', '6 lbs per pair']],
-    reviews: 32
+  'Galvanized Boat Lift Guide Posts': {
+    price: 'From $65.95', desc: 'Protect your boat and simplify every docking experience with our heavy-duty galvanized guide poles. Fits I-beam cradles with a flange width between 2.5"–4" — 4", 5", 6" and some 8" cradles.',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Guidepole_Galvanized_main_pic.png?v=1751889800" alt="Galvanized Boat Lift Guide Posts" loading="lazy">',
+    features: ['1 Piece', '4 Piece: Full Set'],
+    specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS005'], ['Weight', '8 lb'], ['Options', '2']],
+    reviews: 2
   },
-  'Wireless Remote Control': {
-    price: '$195', desc: 'Encrypted wireless keyfob transmitter with 300 ft range. Raise, lower, and stop your boat lift with one touch. Includes wall-mount transmitter for dock-side operation.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 10a10 10 0 0 1 20 0"/><path d="M6 10a6 6 0 0 1 12 0"/><circle cx="12" cy="14" r="3"/></svg>',
-    features: ['300 ft wireless range', 'AES encrypted signal', 'Keyfob + wall-mount included', 'IP67 waterproof', '2-year battery life'],
-    specs: [['Range', '300 ft line of sight'], ['Encryption', 'AES 128-bit'], ['Battery', 'CR2032 (2 yr life)'], ['Rating', 'IP67 waterproof'], ['Frequency', '433 MHz']],
-    reviews: 89
+  '1/4" Marine Grade Boat Lift Cable/PWC Lift Cable': {
+    price: 'From $9.90', desc: 'Ensure the smooth and safe operation of your dock lift with our premium Dock Lift Cables, available in both galvanized and stainless steel options.',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Cablepic1.png?v=1754483550" alt="1/4&quot; Marine Grade Boat Lift Cable/PWC Lift Cable" loading="lazy">',
+    features: ['Galvanized (Common for freshwater): 15 ft', 'Galvanized (Common for freshwater): 31 ft', 'Galvanized (Common for freshwater): 40 ft', 'Galvanized (Common for freshwater): 45 ft', 'Galvanized (Common for freshwater): 62 ft', 'Galvanized (Common for freshwater): 70 ft'],
+    specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS715'], ['Options', '14']],
+    reviews: 1
   },
-  'Solar Charging Kit': {
-    price: '$385', desc: 'Keep your lift battery topped off year-round with this 30W solar panel and intelligent charge controller. Mounts to any piling or canopy frame. Set it and forget it.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>',
-    features: ['30W monocrystalline panel', 'MPPT charge controller', 'Universal piling mount', 'Weatherproof connections', 'Overcharge protection'],
-    specs: [['Panel', '30W monocrystalline'], ['Controller', 'MPPT with LCD'], ['Output', '12V / 2.5A max'], ['Mount', 'Adjustable piling bracket'], ['Cable', '15 ft with MC4 connectors']],
-    reviews: 28
+  'Dock Solutions Marine Grade Carpet': {
+    price: 'From $2.95', desc: 'Protect your boat with our Marine Grade Carpet, specifically designed for cradle boards. This durable carpeting provides a reliable, non-slip surface that keeps your boat secure during storage and transport.',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Marinegradecarpet.png?v=1720467234" alt="Dock Solutions Marine Grade Carpet" loading="lazy">',
+    features: ['1PC: Pre-Cut 16 FT x 12IN', 'Full Roll 150\'', 'Per FT-12" Width'],
+    specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS668'], ['Options', '3']]
   },
-  'Underwater LED Kit': {
-    price: '$475', desc: 'Transform your slip with app-controlled RGBW underwater lights. Attract fish, light up your dock at night, and set the mood with millions of color options.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 4 12.7V17H8v-2.3A7 7 0 0 1 12 2z"/></svg>',
-    features: ['RGBW multi-color LEDs', 'Bluetooth app control', 'Submersible to 30 ft', '50,000 hr LED lifespan', 'Timer and schedule modes'],
-    specs: [['LEDs', '4x 10W RGBW pods'], ['Control', 'Bluetooth 5.0 app'], ['Depth', 'Rated to 30 ft'], ['Power', '12V DC, 40W total'], ['Lifespan', '50,000 hours']],
-    reviews: 63
+  'Cradle Boards': {
+    price: 'From $158.45', desc: 'Elevate your boat’s safety and comfort with our Boat Lift Cradle Boards featuring premium marine carpet. Designed for superior cushioning and protection, these cradle boards ensure a secure, non-slip surface while lifting your boat, reducing the risk of damage to your vessel.',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/CradleBoards.png?v=1720181706" alt="Cradle Boards" loading="lazy">',
+    features: ['Cradle Board Set- 14\': V-Hull: Left & Right 2 PCS', 'Cradle Board Set- 14\': Pontoon: Upright: 2 PCS', 'Cradle Board Set- 14\': Pontoon Flat: 4 PCS', 'Cradle Board Set- 5\': PWC: Electric Lift: 2 PC', 'Cradle Board Set - 10\' Double PWC: 4 PCS', 'Cradle Board Set- 16\': Pontoon: Upright: 2PCS'],
+    specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS176'], ['Options', '6']]
   },
-  'Cathodic Protection': {
-    price: '$145', desc: 'Zinc anode cathodic protection system prevents galvanic corrosion on your lift, dock hardware, and underwater metals. Simple bolt-on installation extends equipment life by years.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
-    features: ['Military-grade zinc anodes', 'Bolt-on installation', 'Protects all underwater metals', '12–18 month service life', 'Visual wear indicator'],
-    specs: [['Material', 'MIL-spec zinc alloy'], ['Protection', 'Up to 20 ft radius'], ['Service Life', '12–18 months'], ['Install', 'Bolt-on, no welding'], ['Weight', '2.5 lbs per anode']],
-    reviews: 19
+  'Large Nylon Folding Dock Cleat — 9" Flip-Up Safety Cleat': {
+    price: '$34.50', desc: 'B9001 – Large Black Nylon Fold-Down Safety Cleat A sleek, fold-down cleat designed for safety, durability, and modern dock aesthetics.',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Bigger_cleat_cover_photo.png?v=1743702484" alt="Large Nylon Folding Dock Cleat — 9&quot; Flip-Up Safety Cleat" loading="lazy">',
+    features: ['Size: 9"', 'Base Height: 1.5"', 'Mounting Pattern: 11" x 4.75"', 'Overall: 12.875" x 6.625" x 1.25"'],
+    specs: [['Brand', 'Cleat Seat'], ['SKU', 'DS842'], ['Options', '2']],
+    reviews: 8
   },
-  'Boat Canopy Frame': {
-    price: '$1,850', desc: 'Heavy-duty aluminum canopy frame protects your boat from sun, rain, and debris. Cover sold separately for easy replacement. Fits most standard lift configurations.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
-    features: ['6061-T6 aluminum frame', 'Powder-coated finish', 'Universal lift fitment', 'Cover sold separately', 'Wind-rated to 50 mph'],
-    specs: [['Material', '6061-T6 aluminum'], ['Finish', 'Powder-coated'], ['Wind Rating', '50 mph'], ['Fitment', 'Universal, adjustable'], ['Weight', '85 lbs']],
-    reviews: 14
+  'Marine Motor Belts': {
+    price: 'From $15.35', desc: 'Ensure the smooth operation of your dock lift with our high-quality motor belts, specifically designed for durability and reliability. These belts are essential for maintaining the efficiency of your lifting system, providing optimal performance for your dock.',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/29_belt.png?v=1718910906" alt="Marine Motor Belts" loading="lazy">',
+    features: ['AX 26', 'AX 28', 'AX 30', 'AX 34', 'AX 35', 'AX 36'],
+    specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS233'], ['Weight', '1 lb'], ['Options', '7']],
+    reviews: 1
   },
-  'Remote Cover': {
-    price: '$45.99', desc: 'Protective silicone cover keeps your keypad safe from dirt, water, and UV damage. Snug fit, tactile button feel preserved. Available in multiple colors.',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><ellipse cx="12" cy="8" rx="4" ry="6"/><path d="M8 14v4a4 4 0 0 0 8 0v-4"/></svg>',
-    features: ['Medical-grade silicone', 'UV and salt resistant', 'Preserves button feel', 'Snug precision fit', 'Multiple colors available'],
-    specs: [['Material', 'Medical-grade silicone'], ['Compatibility', 'Elevate Remote series'], ['Protection', 'IP68 when sealed'], ['Colors', '5 options'], ['Weight', '0.3 oz']],
-    reviews: 41
+  'Drip Pan': {
+    price: 'From $115.99', desc: 'Drip pans help save you boat from dripping grease released from boat lifts. Saves you from having to wipe grease off your boat or boat cover.',
+    icon: '<img src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/12x12_drip_pan_1.3.png?v=1757083904" alt="Drip Pan" loading="lazy">',
+    features: ['12X24 Horizontal Drip Pan', '12X12 Vertical Drip Pan'],
+    specs: [['Brand', 'Dock Solutions, Inc.'], ['SKU', 'DS908'], ['Options', '2']]
   }
 };
 
@@ -4525,17 +4527,17 @@ var searchIndex = [
   { name: 'Elevate Remote Duo S', meta: 'Two motor with auto stop · $645', href: '#config', tags: 'remote control wireless duo dual auto stop limit switch' },
   { name: 'Elevate Jet Ski Lift', meta: 'PWC lift system · Starting at $3,399', href: '#boatlift', tags: 'jet ski pwc personal watercraft lift boat' },
   { name: 'Elevate Lift Motors', meta: 'Standard to dual motor kits · From $1,450', href: '#motors', tags: 'motor engine power hp horsepower drive belt chain' },
-  { name: 'Carpeted Bunk Boards', meta: 'Marine-grade carpet · $320', href: '#shop', tags: 'bunk board carpet hull protection' },
-  { name: 'Guide Poles', meta: '60″ PVC with LED caps · $280', href: '#shop', tags: 'guide pole led light dock alignment' },
-  { name: 'Wireless Remote Control', meta: 'Keyfob transmitter · $195', href: '#shop', tags: 'remote wireless keyfob transmitter 300ft' },
-  { name: 'Solar Charging Kit', meta: '30W panel · $385', href: '#shop', tags: 'solar panel charger battery sun power' },
-  { name: 'Underwater LED Kit', meta: 'RGBW app-controlled · $475', href: '#shop', tags: 'led light underwater rgb color fish night' },
-  { name: 'Cathodic Protection', meta: 'Zinc anode system · $145', href: '#shop', tags: 'cathodic protection zinc anode corrosion rust' },
-  { name: 'Boat Canopy Frame', meta: 'Aluminum frame · $1,850', href: '#shop', tags: 'canopy cover frame aluminum shade sun protection' },
-  { name: 'Remote Cover', meta: 'Silicone keypad cover · $45.99', href: '#shop', tags: 'cover silicone case protection keypad remote' },
+  { name: 'Gem Remotes GR1: Wireless Boat Lift Remote', meta: 'Single motor wireless lift remote · $579.99', href: '#shop', tags: 'gem remote wireless boat lift control single motor gr1' },
+  { name: 'Galvanized Boat Lift Guide Posts', meta: 'Galvanized guide posts, 1 pc or full set · From $65.95', href: '#shop', tags: 'guide post pole galvanized docking alignment cradle' },
+  { name: '1/4" Marine Grade Boat Lift Cable', meta: 'Galvanized or stainless, 15–75 ft · From $9.90', href: '#shop', tags: 'cable wire rope galvanized stainless lift pwc' },
+  { name: 'Dock Solutions Marine Grade Carpet', meta: 'Cradle board carpet, pre-cut or by the foot · From $2.95', href: '#shop', tags: 'carpet marine grade cradle board bunk' },
+  { name: 'Cradle Boards', meta: 'Carpeted cradle sets for V-hull, pontoon and PWC · From $158.45', href: '#shop', tags: 'cradle board bunk v-hull pontoon pwc' },
+  { name: 'Large Nylon Folding Dock Cleat', meta: '9″ fold-down marine grade safety cleat · $34.50', href: '#shop', tags: 'cleat dock tie safety folding nylon' },
+  { name: 'Marine Motor Belts', meta: 'AX26 through AX37 lift motor belts · From $15.35', href: '#shop', tags: 'belt motor ax drive lift' },
+  { name: 'Drip Pan', meta: 'Catches lift motor grease, 12x12 or 12x24 · From $115.99', href: '#shop', tags: 'drip pan grease motor protection' },
   { name: 'App Membership', meta: 'Monitor and control from your phone', href: '#config', tags: 'app membership subscription phone bluetooth monitor' },
-  { name: 'Foam Dock Bumper', meta: 'Dock protection', href: '#home', tags: 'foam bumper dock protection cushion impact' },
-  { name: 'Vinyl Dock Edge', meta: 'Edge protection', href: '#home', tags: 'vinyl edge dock protection trim profile' },
+  { name: 'Black Urethane Dock Face Bumper', meta: '3 ft heavy duty urethane dock bumper · $142.89', href: '#hardware', tags: 'foam urethane bumper dock protection cushion impact' },
+  { name: 'Marine Vinyl Dock Rubrail: P-Style', meta: 'P-style dock edge trim, black or white · From $51.71', href: '#hardware', tags: 'vinyl edge dock protection trim profile rubrail p-style' },
   { name: 'Build Your Dock', meta: 'Free consultation with our experts', href: '#build', tags: 'build consultation expert help design custom project' },
   { name: 'Wiring Diagrams', meta: 'Installation resources', href: '#home', tags: 'wiring diagram install installation electric schematic' },
   { name: 'Contact Us', meta: 'Get in touch with our team', href: '#build', tags: 'contact us phone email support help' },
@@ -4580,230 +4582,231 @@ document.getElementById('searchInput').addEventListener('input', function() {
 
 renderSearchResults(defaultResults, 'Popular Right Now');
 
-if (location.hash === '#cart') showPage('cart');
-if (location.hash === '#build') showPage('build');
-if (location.hash === '#config') showPage('config');
-if (location.hash === '#boatlift') showPage('boatlift');
-if (location.hash === '#learn') showPage('learn');
-if (location.hash === '#learn-lifts') showPage('learn-lifts');
-if (location.hash === '#shop') showPage('shop');
-if (location.hash === '#motors') showPage('motors');
-if (location.hash === '#hardware') showPage('hardware');
-if (location.hash === '#qs-lifts') showPage('qs-lifts');
-if (location.hash === '#qs-structure') showPage('qs-structure');
-if (location.hash === '#qs-docking') showPage('qs-docking');
-if (location.hash === '#qs-access') showPage('qs-access');
-if (location.hash === '#account') showPage('account');
-if (location.hash === '#our-story') showPage('our-story');
-if (location.hash === '#app-plans') showPage('app-plans');
-if (location.hash === '#contact') showPage('contact');
-
 // ── Hardware page: category sidebar + product data ──
 var hwCatalog = {
   cables: {
     title: 'Cables &amp; Cable Hardware',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><line x1="4" y1="4" x2="20" y2="20"/></svg>', name: '¼" 75ft Galvanized Boat Lift Cable', desc: 'Galvanized steel, 7x19 construction', part: 'DS-CAB-G75', price: '$32.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><line x1="4" y1="4" x2="20" y2="20"/></svg>', name: '¼" Galvanized Boat Lift Cable — Custom Length', desc: 'Galvanized steel, cut to your spec, per foot', part: 'DS-CAB-GCL', price: '$0.55/ft' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><line x1="4" y1="4" x2="20" y2="20"/></svg>', name: '¼" 75ft Stainless Boat Lift Cable', desc: '316 stainless steel, 7x19 construction', part: 'DS-CAB-S75', price: '$58.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><line x1="4" y1="4" x2="20" y2="20"/></svg>', name: '¼" 75ft Stainless Boat Lift Cable — Custom Length', desc: '316 stainless steel, cut to your spec, per foot', part: 'DS-CAB-SCL', price: '$0.95/ft' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="4"/></svg>', name: '3/16" Galvanized Cable Clamp', desc: 'U-bolt style, galvanized steel', part: 'DS-CLC-316', price: '$2.25' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="4"/></svg>', name: '¼" Galvanized Cable Clamp', desc: 'U-bolt style, galvanized steel', part: 'DS-CLC-014', price: '$2.75' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Cablepic1.png?v=1754483550', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: '1/4" Marine Grade Boat Lift Cable/PWC Lift Cable', desc: 'Ensure the smooth and safe operation of your dock lift with our premium Dock Lift Cables, available in both galvanized and stainless steel options.', part: 'DS715', price: 'From $9.90', opts: ['Galvanized (Common for freshwater): 15 ft', 'Galvanized (Common for freshwater): 31 ft', 'Galvanized (Common for freshwater): 40 ft', 'Galvanized (Common for freshwater): 45 ft', 'Galvanized (Common for freshwater): 62 ft', 'Galvanized (Common for freshwater): 70 ft'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/22.png?v=1718901804', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Galvanized Cable Clamp Options', desc: 'Secure your cables with confidence using our Galvanized Cable Clamp in a durable 1/4" size. Designed for strength and reliability, this clamp is the perfect solution for various applications, from marine setups to outdoor projects.', part: 'DS424', price: 'From $1.35', opts: ['3/8" Cable Clamp', '1/4" Cable Clamp'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Threadedrod.png?v=1719951422', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'All Threaded Rod Options', desc: 'Available options: 3/4"x10\': Threaded, 5/8"x10\': Threaded', part: 'DS758', price: 'From $61.25', opts: ['3/4"x10\': Threaded', '5/8"x10\': Threaded'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Shackle.png?v=1718983941', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Shackle- 7/16": Galvanized', desc: 'Enhance your rigging and lifting applications with our 7/16" Galvanized Shackle. Designed for strength and durability, this shackle is perfect for marine environments and heavy-duty use.', part: 'DS963', price: '$4.25', opts: ['Cable Clamp 7/16"', 'Cable Clamp 1/4"'], feats: [] }
     ]
   },
   chain: {
     title: 'Chain',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="6" r="4"/><circle cx="12" cy="18" r="4"/><line x1="12" y1="10" x2="12" y2="14"/></svg>', name: '3/8" Chain — 8ft', desc: 'Grade 30, proof coil, galvanized', part: 'DS-CHN-388', price: '$24.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="6" r="4"/><circle cx="12" cy="18" r="4"/><line x1="12" y1="10" x2="12" y2="14"/></svg>', name: '3/8" Chain — 6ft', desc: 'Grade 30, proof coil, galvanized', part: 'DS-CHN-386', price: '$18.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="6" r="4"/><circle cx="12" cy="18" r="4"/><line x1="12" y1="10" x2="12" y2="14"/></svg>', name: '3/8" Chain — Custom Length', desc: 'Grade 30, galvanized, cut to spec, per foot', part: 'DS-CHN-38C', price: '$3.25/ft' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Chain.png?v=1719920760', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Galvanized Chain — 5 ft: 3/8": Grade G43', desc: 'Elevate your boat lift’s performance with our Heavy-Duty Galvanized Chain. Engineered for superior strength and durability, this chain is coated with a robust galvanized finish to resist rust and corrosion even in harsh marine environments.', part: 'DS446', price: '$25.55', opts: ['5FT Chain: Galvanized: 3/8: Grade G43'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Chain.png?v=1719920760', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Galvanized Chain — 6 ft: 3/8": Grade G43', desc: 'Elevate your boat lift’s performance with our Heavy-Duty Galvanized Chain. Engineered for superior strength and durability, this chain is coated with a robust galvanized finish to resist rust and corrosion even in harsh marine environments.', part: 'DS688', price: '$29.45', opts: ['6FT Chain: Galvanized: 3/8: Grade G43'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/PVC.png?v=1720183749', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'All PVC Guidepole Options', desc: 'Protect your boat our PVC chain cover, designed to enhance both safety and durability. This high-quality PVC pipe fits snugly over your chains, shielding them from wear, corrosion, and environmental damage while reducing noise during operation.', part: 'DS620', price: 'From $17.25', opts: ['PVC Pole- 5\': 2 Inch Schedule 40', 'PVC Pole- 6\': 2 Inch Schedule 40'], feats: [] }
     ]
   },
   pulleys: {
     title: 'Pulleys',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>', name: '4" Snatch Block Pulley', desc: 'Heavy-duty snatch block, galvanized', part: 'DS-PUL-4SB', price: '$28.50' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>', name: 'Tall Overhead Pulley', desc: 'Extended bracket, galvanized sheave', part: 'DS-PUL-TOH', price: '$22.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>', name: 'Short Overhead Pulley', desc: 'Compact bracket, galvanized sheave', part: 'DS-PUL-SOH', price: '$18.50' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/21.png?v=1718901587', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Galvanized 4" Snatch Block Pulley 3 ton', desc: 'Introducing our Heavy-Duty Galvanized Boat Lift Pulley, engineered for superior performance and reliability. This pulley is designed to facilitate smooth and efficient lifting of your boat, making your docking experience seamless and hassle-free.', part: 'DS772', price: '$55.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/CeilingPulley4.jpg?v=1720557032', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Ceiling Pulley- Tall', desc: 'Designed specifically for boat lift systems, this Tall Overhead Ceiling Pulley mounts securely to wood joists in dock roofs or boat houses, providing reliable support and smooth cable movement for your lift setup.', part: 'DS091', price: '$253.99', opts: [], feats: ['Purpose-Built for Boat Lifts – Ideal for routing lift cables in overhead installations', 'Joist-Mount Design – Easily attaches to standard wood joists on dock structures', 'Heavy-Duty Construction – Withstands the weight and stress of daily boat lifting', 'Corrosion-Resistant Finish – Made to last in harsh marine environments', 'Smooth Cable Flow – Reduces friction and wear on lift cables'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/CeilingPulley5.jpg?v=1720557051', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Ceiling Pulley- Short', desc: 'Designed specifically for boat lift systems, this Short Overhead Ceiling Pulley mounts securely to wood joists in dock roofs or boat houses, providing reliable support and smooth cable movement for your lift setup.', part: 'DS977', price: '$253.99', opts: [], feats: ['Purpose-Built for Boat Lifts – Ideal for routing lift cables in overhead installations', 'Joist-Mount Design – Easily attaches to standard wood joists on dock structures', 'Heavy-Duty Construction – Withstands the weight and stress of daily boat lifting', 'Corrosion-Resistant Finish – Made to last in harsh marine environments', 'Smooth Cable Flow – Reduces friction and wear on lift cables'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Weld-onpulley.png?v=1718984049', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Weld on Pulley', desc: 'Built tough for metal beam applications, our Weld-On Ceiling Pulley is designed to support boat lift cable systems with smooth, reliable performance.', part: 'DS756', price: '$115.99', opts: [], feats: ['Weld-On Base – Designed specifically for secure attachment to metal beams', 'Compact & Low-Profile – Great for tight spaces or overhead installations', 'Smooth Sheave Operation – Ensures consistent cable movement with minimal friction', 'Heavy-Duty Construction – Built to handle the stress of daily boat lift use', 'Marine-Ready Durability – Withstands moisture, corrosion, and outdoor exposure'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/14620-58.JPG_1.jpg?v=1777558763', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Motor Pulley Wheel', desc: 'Available options: Single Belt Pulley, Dual Belt Pulley', part: 'DS-MOTORPUL', price: 'From $15.99', opts: ['Single Belt Pulley', 'Dual Belt Pulley'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/CeilingBracket2hole.png?v=1718983210', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'All Ceiling Bracket Options', desc: '1 and 2 hole ceiling bracket options for boat lift.', part: 'DS753', price: 'From $25.99', opts: ['2-Hole Ceiling Bracket', '1-Hole Ceiling Bracket'], feats: [] }
     ]
   },
   pipehangers: {
     title: 'Pipe &amp; Pipe Hangers',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>', name: 'Pillow Block Hanger', desc: 'Cast iron, bolt-on, for pipe shaft support', part: 'DS-PHG-PBK', price: '$24.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M4 12h4M16 12h4"/></svg>', name: 'Rabbit Ear Hanger', desc: 'Split-ring style, galvanized, adjustable', part: 'DS-PHG-RBT', price: '$18.50' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="10" width="16" height="4" rx="1"/><line x1="8" y1="14" x2="8" y2="20"/><line x1="16" y1="14" x2="16" y2="20"/></svg>', name: 'Flat Plate Hanger', desc: 'Flat mount, galvanized steel, bolt-on', part: 'DS-PHG-FLT', price: '$14.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Untitled.png?v=1719253907', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'All Pipe Hanger Options', desc: 'Enhance the stability and functionality of your dock lift with our Rabbit Ear and Flat Pipe Hanger. Designed for reliable support, this pipe hanger is essential for maintaining a secure and efficient lifting system.', part: 'DS663', price: 'From $83.85', opts: ['Flat Pipe Hanger', 'Rabbit Ear Pipe Hanger'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/block.png?v=1718907642', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Pillow Block', desc: 'Ensure smooth and efficient operation of your dock lift with our Pillow Block Bearing, designed specifically for ceiling applications. This robust bearing provides reliable support and stability, enhancing the performance of your lift system.', part: 'DS196', price: 'From $99.99', opts: ['Block With Bracket', 'Block Without Bracket'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Pipe.png?v=1719848978', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'All Galvanized Pole Options', desc: 'Enhance your dock or marine structure with our Galvanized Pole Option, perfect for floater pipes and ceiling pipes.', part: 'DS687', price: 'From $249.99', opts: ['2-1/2" Galvanized: Floater Pole', '2" Galvanized: Motor Pole: With Holes: 21 FT', '2" Galvanized: Motor Pole: With Holes: 24 Ft'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Guidepole_Galvanized_main_pic.png?v=1751889800', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Galvanized Boat Lift Guide Posts', desc: 'Protect your boat and simplify every docking experience with our heavy-duty galvanized guide poles. Fits I-beam cradles with a flange width between 2.5"–4" — 4", 5", 6" and some 8" cradles.', part: 'DS005', price: 'From $65.95', opts: ['1 Piece', '4 Piece: Full Set'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/26.png?v=1718902647', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Domed Pole Caps', desc: '- Galvanized - Large - Fits 2 1/2" nominal (2 7/8" outside diameter) - For Floater Poles - Small - Fits 2" nominal (2 3/8" outside diameter) - For Motor Poles', part: 'DS864', price: '$13.50', opts: ['Small', 'Large'], feats: [] }
     ]
   },
   bunkmounts: {
     title: 'Bunk Mounts',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="14" width="20" height="4" rx="1"/><rect x="4" y="10" width="16" height="4" rx="1"/></svg>', name: '4" Tall Pontoon Bunk Mount', desc: 'Galvanized, fits standard pontoon lifts', part: 'DS-BNK-4TP', price: '$32.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="14" width="20" height="4" rx="1"/><rect x="4" y="10" width="16" height="4" rx="1"/></svg>', name: '6" Tall Pontoon Bunk Mount', desc: 'Galvanized, extra height for deeper hulls', part: 'DS-BNK-6TP', price: '$36.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 18l8-8 8 8"/><rect x="4" y="18" width="16" height="2"/></svg>', name: '4" V-Hull Bunk Mount', desc: 'Angled cradle for V-hull boats', part: 'DS-BNK-4VH', price: '$34.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 18l8-8 8 8"/><rect x="4" y="18" width="16" height="2"/></svg>', name: '6" V-Hull Bunk Mount', desc: 'Angled cradle, extra height for deeper V-hulls', part: 'DS-BNK-6VH', price: '$38.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M6 4h12v16H6z"/><path d="M6 12h12"/></svg>', name: 'Pontoon M-Bracket Mount', desc: 'M-shaped bracket for pontoon tube support', part: 'DS-BNK-MBK', price: '$42.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="12" width="16" height="6" rx="2"/></svg>', name: 'Sea-Doo Switch Bunk Mount', desc: 'Designed for Sea-Doo Switch platform', part: 'DS-BNK-SDS', price: '$45.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Pontoonboardmounttall.png?v=1718983806', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Pontoon Board Mount- Tall: 4" and 6" Menu Option', desc: 'Elevate your pontoon setup with our Tall Pontoon Board Mount, available in 4" and 6" options. This durable and versatile mount is designed to securely attach your boards, ensuring stability and ease of use while enjoying your time on the water.', part: 'DS008', price: 'From $107.64', opts: ['Pontoon Board Mount 4"', 'Pontoon Board Mount 6"'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Boardmount4_pontoon.png?v=1718983140', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'V-Hull Board Mount', desc: 'Ensure your V-hull boat is securely supported with our Galvanized Adjustable Board Mount.', part: 'DS439', price: 'From $99.95', opts: ['Board Mount- 4" V-Hull', 'Board Mount- 6" V-Hull'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/M-Bracket-picture2.png?v=1718983675', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'M-Bracket: Pontoon Lift', desc: 'Secure your boat with confidence using the M-Bracket designed specifically for Pontoon boats. This robust bracket provides a reliable and stable mounting solution, ensuring your vessel remains secure while docked or stored.', part: 'DS952', price: '$129.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Marinegradecarpet.png?v=1720467234', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Dock Solutions Marine Grade Carpet', desc: 'Protect your boat with our Marine Grade Carpet, specifically designed for cradle boards. This durable carpeting provides a reliable, non-slip surface that keeps your boat secure during storage and transport.', part: 'DS668', price: 'From $2.95', opts: ['1PC: Pre-Cut 16 FT x 12IN', 'Full Roll 150\'', 'Per FT-12" Width'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/CradleBoards.png?v=1720181706', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Cradle Boards', desc: 'Elevate your boat’s safety and comfort with our Boat Lift Cradle Boards featuring premium marine carpet.', part: 'DS176', price: 'From $158.45', opts: ['Cradle Board Set- 14\': V-Hull: Left & Right 2 PCS', 'Cradle Board Set- 14\': Pontoon: Upright: 2 PCS', 'Cradle Board Set- 14\': Pontoon Flat: 4 PCS', 'Cradle Board Set- 5\': PWC: Electric Lift: 2 PC', 'Cradle Board Set - 10\' Double PWC: 4 PCS', 'Cradle Board Set- 16\': Pontoon: Upright: 2PCS'], feats: [] }
     ]
   },
   switches: {
     title: 'Switches &amp; Controls',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="8" width="16" height="8" rx="2"/><circle cx="16" cy="12" r="2" fill="#878A8F"/></svg>', name: 'Gem Remote GR1', desc: 'Single motor, wired remote control', part: 'DS-GEM-GR1', price: '$89.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="8" width="16" height="8" rx="2"/><circle cx="16" cy="12" r="2" fill="#878A8F"/></svg>', name: 'Gem Remote GR1L', desc: 'Single motor, lighted, wired remote', part: 'DS-GEM-G1L', price: '$99.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="8" width="16" height="8" rx="2"/><circle cx="16" cy="12" r="2" fill="#878A8F"/></svg>', name: 'Gem Remote GRP1', desc: 'Single motor, pendant style', part: 'DS-GEM-GP1', price: '$95.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="8" width="16" height="8" rx="2"/><rect x="6" y="10" width="6" height="4" fill="#878A8F"/></svg>', name: 'Gem Remote GR2', desc: 'Dual motor, wired remote control', part: 'DS-GEM-GR2', price: '$125.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="8" width="16" height="8" rx="2"/><rect x="6" y="10" width="6" height="4" fill="#878A8F"/></svg>', name: 'Gem Remote GR2A', desc: 'Dual motor, wireless remote control', part: 'DS-GEM-G2A', price: '$145.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>', name: 'Gem Remote GR4', desc: 'Four motor, wired remote control', part: 'DS-GEM-GR4', price: '$185.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>', name: 'Gem Remote GR4A', desc: 'Four motor, wireless remote control', part: 'DS-GEM-G4A', price: '$215.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="9" y1="12" x2="15" y2="12"/></svg>', name: 'Aqua Marine Supply Maintained Switch', desc: 'DPDT, maintained position, waterproof', part: 'DS-AMS-MNT', price: '$28.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="9" y1="12" x2="15" y2="12"/></svg>', name: 'Aqua Marine Supply Spring Switch', desc: 'DPDT, spring return, waterproof', part: 'DS-AMS-SPR', price: '$32.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/gemwebpic1.png?v=1693575658', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remotes GR1: Wireless Boat Lift Remote', desc: 'The Gem Remote — GR1 is designed to deliver seamless wireless control to your boat lift system, allowing you to operate your lift from a distance—enhancing every docking experience with precision, comfort, and confidence.', part: 'DS861', price: '$579.99', opts: [], feats: ['( Includes 1x ) 3-button handheld transmitter', 'Manual or wireless operation', 'Compatible with any lift electric motor', 'Instant response signal transmission', 'Marine-rated control box construction'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Gem_A_Models.png?v=1729348164', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remotes GR1A: Wireless Boat Lift Remote: Auto-Stop', desc: 'The Gem Remote — GR1A is designed to deliver seamless wireless control to your boat lift system, allowing you to operate your lift from a distance—enhancing every docking experience with precision, comfort, and confidence.', part: 'DS905', price: '$584.99', opts: [], feats: ['( Includes 1x ) 3-button handheld transmitter', 'Manual or wireless operation', 'Compatible with any lift electric motor', 'Instant response signal transmission', 'Marine-rated control box construction'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/gemwebpic1_cad7c4c5-7938-435d-9741-35986d12cba9.png?v=1693575674', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remote GR2: Wireless Boat Lift Remote', desc: 'The Gem Remote — GR2 is designed to deliver seamless wireless control to your boat lift system, allowing you to operate your lift from a distance—enhancing every docking experience with precision, comfort, and confidence.', part: 'DS732', price: '$579.99', opts: [], feats: ['( Includes 1x ) 3-button handheld transmitter', 'Manual or wireless operation', 'Compatible with any lift electric motor', 'Instant response signal transmission', 'Marine-rated control box construction'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Gem_A_Models.png?v=1729348164', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remote GR2A: Wireless Boat Lift Remote: Auto-Stop', desc: 'The Gem Remote — GR2A is designed to deliver seamless wireless control to your boat lift system, allowing you to operate your lift from a distance—enhancing every docking experience with precision, comfort, and confidence.', part: 'DS648', price: '$589.99', opts: [], feats: ['( Includes 1x ) 3-button handheld transmitter', 'Manual or wireless operation', 'Compatible with any lift electric motor', 'Instant response signal transmission', 'Marine-rated control box construction'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/gem_grp1.jpg?v=1726685663', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remotes GRP1', desc: 'Enhance your personal watercraft experience with the GEM GRP1 PWC Remote, designed for single motor operation. This remote offers reliable control for effortless maneuvering.', part: 'DS984', price: '$549.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Gr4dssticker.png?v=1693575696', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remotes GR4: Wireless Boat Lift Remote', desc: 'Optimize your boat lifting system with the GEM Four Motor Boat Lift Remote , designed specifically for lifts with four motors on a single boat slip. This remote provides reliable control without the auto stop feature.', part: 'DS412', price: '$899.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Gr4dssticker_01223ce0-8721-47fb-8c23-56f76a659dde.png?v=1693575704', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'GEM GR4A: Wireless Boat Lift Remote', desc: 'The GEM GR4A is a versatile remote control designed for lifts operating with four motors, featuring convenient manual up/down functionality.', part: 'DS442', price: '$949.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Gem_A_Models.png?v=1729348164', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remote GR2F1: Wireless Boat Lift Remote', desc: 'Streamline your lifting operations with the GEM Remote GR2F1, designed to run two single motor lifts from a single controller.', part: 'DS3547', price: '$599.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Gem_A_Models.png?v=1729348164', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remotes GR1 (12V DC) : Wireless Boat Lift Remote', desc: 'Elevate your boat lifting experience with the GEM Single Motor Boat Lift Remote, designed for effortless operation. For auto-stop and GR1A unit would be required. This remote is perfect for users who value simplicity and reliability.', part: 'DS-GEMREMOT', price: '$695.95', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Gem_A_Models.png?v=1729348164', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remotes GR2 (12V DC) : Wireless Boat Lift Remote', desc: '(Requires DC power ex: Solar Panels) No More Jumping On and Off Your Boat – Stay dry and in control with wireless operation from up to 500 feet away. No More need to have someone jump on and off the boat to properly align the boat or lift the boat manually.', part: 'DS-GEMREMOT-2', price: '$899.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/switch_with_wire.jpg?v=1746639906', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'AMS Boat Lift Switch: With GFCI &amp; 21 ft Cable', desc: '𝗠𝗜𝗡𝗜𝗠𝗜𝗭𝗘 𝗦𝗪𝗜𝗧𝗖𝗛 𝗥𝗘𝗣𝗟𝗔𝗖𝗘𝗠𝗘𝗡𝗧: It features stainless steel terminals that help prevent corrosion, ensuring long-lasting performance even in coastal and saltwater environments.', part: 'DS-AMSBOATL', price: '$159.99', opts: ['Maintained Switch: With GCFI & 21 Ft Cable)', 'Spring Switch: With GCFI & 21 Ft Cable)'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Boat_lift_switch.png?v=1777491746', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Aqua Marine Supply Rotary Up & Down Boat Lift Switch', desc: 'Designed for dependable lift control, Aqua Marine Supply switches provide smooth, reliable up & down operation for your boat lift with a simple turn of the switch.', part: 'DS-BOATLIFT', price: 'From $21.95', opts: ['Full Enclosure (Spring Return)', 'Full Enclosure (Maintained)', 'Replacement Handle'], feats: ['Marine-grade construction with Aqua Seal protection', 'Helps prevent water intrusion in harsh conditions', 'Stainless steel relays reduce corrosion over time', 'Smooth, consistent up & down operation', 'Designed for 3/4 HP to 1.5 HP lift motors'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/rotarylimitswitch1.png?v=1687182787', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remotes Rotary Limit Switch', desc: 'Enhance the functionality of your GR1A and GR2A auto stop models with the GEM Remotes Limit Switch, designed to attach directly to the motor pole. This essential component ensures precise stopping points for safer and more efficient operation.', part: 'DS909', price: '$269.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Gemflatlimitswitch1.png?v=1687186692', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remotes Flat Plate Limit Switch', desc: 'Ensure precise control and safety with the GEM Remote Flat Plate Limit Switch, designed specifically for GR1A and GR2A auto stop models. This essential component enhances your lift system\'s functionality by providing accurate stopping points.', part: 'DS485', price: '$289.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Kels_Limit_switch_1.png?v=1759840732', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remotes KELS limit switch', desc: 'Ensure precise control and safety in your lifting system with the GEM Remotes Limit Switch for Gear Drive. This essential component is designed to provide accurate stopping points, enhancing the functionality of your gear-driven setup.', part: 'DS768', price: '$299.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Trans_front.jpg?v=1743614729', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remotes SP-7240 Transmitter', desc: 'The Gem Remote Transmitter is designed to deliver wireless control and effortless operation to your Gem Remote boat lift system.', part: 'DS533', price: '$75.99', opts: [], feats: ['3-button control system', 'Wireless operation', 'Compatible with all Gem control systems 2007+', 'Instant response signal transmission', 'Waterproof construction'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/2buttongemremotefront.png?v=1687182273', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remotes SP-6230 Transmitter', desc: 'Upgrade your lifting experience with this 2-Button Remote, specifically designed for systems manufactured between 2000 and 2007. This remote provides simple and effective control for your lift, ensuring smooth operation every time.', part: 'DS541', price: '$89.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Gem_Circuit_board_2026.png?v=1769713515', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'GEM Remote Circuit Control Board', desc: 'Gem Remote Control Board is compatible with all Gem model newer than 2007.', part: 'DS192', price: 'From $145.99', opts: ['Auto Stop (SP-7004A)', 'Non-Auto Stop (SP-7004)', 'Non-Auto Stop (12V DC)'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Grp1_face_baord_edfb75ec-3298-497a-8447-d37af31b269d.png?v=1733839107', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Universal Gem Remote Membrane Keypad', desc: 'Gem Remote Faceplate keypad in replaceable on all units 2007+ Requires you to peel off the the old keypad and insert the now one in its place Has an adhesive backing and connects to gem circuit board SP-7004, and SP-7004A', part: 'DS-UNIVERSA', price: '$29.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/On_and_off_switch_54df508b-b0b3-4f51-a7fa-4706a4366d93.jpg?v=1733843839', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remote Replacement Switches', desc: 'Available options: Power Switch For All Models - SKU:15, Level Switch For GR2 Models- SKU:16', part: 'DS-GEMREMOT-3', price: 'From $19.99', opts: ['Power Switch For All Models - SKU:15', 'Level Switch For GR2 Models- SKU:16'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Gem_Transformer.jpg?v=1733844733', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remote Replacement Transformers', desc: 'Available options: Transformer 20VA - SKU:13, Transformer 40VA - SKU:14', part: 'DS-GEMREMOT-4', price: 'From $34.99', opts: ['Transformer 20VA - SKU:13', 'Transformer 40VA - SKU:14'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Contactor_d6b58455-ef7b-499e-a7ca-58a25cfd6756.png?v=1733839194', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Contactor 30 Amp (1 pc)', desc: 'Contactor (1pc) 30amp - SKU:12', part: 'DS-CONTACTO', price: '$63.95', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/GemRemote2007Upgradekit.jpg?v=1741105736', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Gem Remote Upgrade Kit For Older Units', desc: 'Revive your Gem Remote system with the Gem Upgrade Kit — designed for units built before 2007 . This kit gives your existing box a fresh start without the cost of a full replacement.', part: 'DS-GEMREMOT-5', price: '$281.99', opts: ['Auto-Stop', 'Non Auto-Stop'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/autostopconversionkit.png?v=1687262138', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'GEM Remote KAWIRE Auto Stop Kit', desc: 'The GEM Remote Auto Stop Conversion kit includes the KAWIRE Wire Harness which will upgrade a manual remote system to an auto-stop capacity system. The wiring harness is designed for systems manufactured after March of 2007.', part: 'DS789', price: '$35.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/k-lightupgrade.png?v=1687283844', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'K - Light Upgrade', desc: 'Allows up to 750 Watts of lighting to be switched on using the remote. For Gem systems manufactured after March 2007. Install instructions here. Please note, all parts are non-returnable. SKU# 19', part: 'DS223', price: '$49.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/k_Wire.jpg?v=1722439801', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: '14-5 Marine Wire — Per Foot', desc: '14 gauge - 5 wire PRICE IS PER FOOT Change quantity to show how many feet you need for accurate order and pricing.', part: 'DS681', price: '$3.15', opts: ['Per Ft'], feats: [] }
     ]
   },
   liftcradles: {
     title: 'Lift Cradles',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 16c4-4 12-4 16 0"/><line x1="4" y1="16" x2="4" y2="20"/><line x1="20" y1="16" x2="20" y2="20"/></svg>', name: 'Standard V-Hull Cradle', desc: 'Adjustable width, fits most V-hull boats', part: 'DS-CRD-VHL', price: '$285.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M2 16h20"/><line x1="2" y1="16" x2="2" y2="20"/><line x1="22" y1="16" x2="22" y2="20"/></svg>', name: 'Pontoon Cradle Set', desc: 'Pair of pontoon tube cradles, galvanized', part: 'DS-CRD-PON', price: '$345.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/9ft_galvanized_cradle.png?v=1770915110', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Galvanized Steel Straight Boat Lift Cradle', desc: '4 Inch Cradle-', part: 'DS384', price: 'From $382.85', opts: ['4" Height: 9\'0" Length', '4" Height: 9\'6" Length', '4" Height: 10\' Length', '6": Height: 9\'0" Length', '6" Height: 9\'6" Length', '6" Height: 10\' Length'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/DropCradle2.png?v=1719329571', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Drop Cradle- 6 or 4 Inch', desc: 'Available options: 4": Drop: 9\'0", 4": Drop: 9\'6", 6": Drop: 9\'0", 6": Drop: 9\'6"…', part: 'DS917', price: 'From $425.75', opts: ['4": Drop: 9\'0"', '4": Drop: 9\'6"', '6": Drop: 9\'0"', '6": Drop: 9\'6"', '6" Drop: 10\''], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/DropCradle.png?v=1719329605', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Boat Lift Drop Cradle- 10 Inch', desc: 'Upgrade your boat docking experience with our 10 Inch Galvanized Drop Cradle, designed for durability and convenience.', part: 'DS797', price: 'From $1,226.79', opts: ['Drop Cradle 6":10" Drop: 9\'0"', 'Drop Cradle 6":10" Drop: 9\'6"'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Seadoo_Switch_kit_png.png?v=1719248999', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Seadoo Switch- Cradle Kit', desc: 'Optimize your watercraft storage and maintenance with the Seadoo Switch Cradle Kit. This essential kit provides a secure and stable platform for your Seadoo, ensuring easy access and protection while on the dock or during transport.', part: 'DS736', price: 'From $1,430.99', opts: ['Seadoo Switch 4 Tall: 4 Short: 2 Carpeted Boards 2"x6"x12\': 2 Carpeted Boards2"x6"x13\'', 'Seadoo Switch 4 Tall: 4 Short: No Carpeted Boards'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/CradleBoards.png?v=1720181706', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Cradle Boards', desc: 'Elevate your boat’s safety and comfort with our Boat Lift Cradle Boards featuring premium marine carpet.', part: 'DS176', price: 'From $158.45', opts: ['Cradle Board Set- 14\': V-Hull: Left & Right 2 PCS', 'Cradle Board Set- 14\': Pontoon: Upright: 2 PCS', 'Cradle Board Set- 14\': Pontoon Flat: 4 PCS', 'Cradle Board Set- 5\': PWC: Electric Lift: 2 PC', 'Cradle Board Set - 10\' Double PWC: 4 PCS', 'Cradle Board Set- 16\': Pontoon: Upright: 2PCS'], feats: [] }
     ]
   },
   catwalks: {
     title: 'Catwalks',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="10" width="20" height="4" rx="1"/><line x1="6" y1="14" x2="6" y2="20"/><line x1="18" y1="14" x2="18" y2="20"/></svg>', name: 'Aluminum Catwalk — 4ft', desc: 'Non-slip surface, bolt-on mounting', part: 'DS-CWK-400', price: '$165.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="10" width="20" height="4" rx="1"/><line x1="4" y1="14" x2="4" y2="20"/><line x1="12" y1="14" x2="12" y2="20"/><line x1="20" y1="14" x2="20" y2="20"/></svg>', name: 'Aluminum Catwalk — 8ft', desc: 'Non-slip surface, bolt-on mounting', part: 'DS-CWK-800', price: '$295.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Catwalk_options.png?v=1719940271', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Catwalk — 10\' x 10": With Connector Kit', desc: 'Enhance your boating experience with our Premium Metal Catwalk, the ultimate solution for safe and convenient access between your boat lift and dock.', part: 'DS809', price: '$525.95', opts: ['Catwalk-10\'x10": With Connector Kit'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Catwalk_options.png?v=1719940271', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Catwalk — 10\' x 20": With Connector Kit', desc: 'Enhance your boating experience with our Premium Metal Catwalk, the ultimate solution for safe and convenient access between your boat lift and dock.', part: 'DS503', price: '$669.99', opts: ['Catwalk-10\'x20": With Connector Kit'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Catwalk_options.png?v=1719940271', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Catwalk — 12\' x 10": With Connector Kit', desc: 'Enhance your boating experience with our Premium Metal Catwalk, the ultimate solution for safe and convenient access between your boat lift and dock.', part: 'DS822', price: '$569.85', opts: ['Catwalk-12\'x10": With Connector Kit'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Catwalk_options.png?v=1719940271', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Catwalk — 12\' x 20": With Connector Kit', desc: 'Enhance your boating experience with our Premium Metal Catwalk, the ultimate solution for safe and convenient access between your boat lift and dock.', part: 'DS574', price: '$695.85', opts: ['Catwalk-12\'x20": With Connector Kit'], feats: [] }
     ]
   },
   lifthardware: {
     title: 'Hardware',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><line x1="12" y1="2" x2="12" y2="22"/><path d="M8 2h8"/></svg>', name: 'Hex Bolt — 3/8" x 2" Galvanized', desc: 'Grade 5, fully threaded', part: 'DS-HW-BLT3', price: '$0.85' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>', name: 'Flat Washer — 3/8" Galvanized', desc: 'SAE standard, zinc plated', part: 'DS-HW-WSH3', price: '$0.25' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M6 6h12v12H6z"/></svg>', name: 'Hex Nut — 3/8" Galvanized', desc: 'Grade 5, zinc plated', part: 'DS-HW-NUT3', price: '$0.35' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M12 2v20"/><path d="M6 6h12"/></svg>', name: 'Lag Bolt — 3/8" x 4" Galvanized', desc: 'Hex head, zinc plated', part: 'DS-HW-LAG3', price: '$1.85' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>', name: 'Cotter Pin Assortment — Galvanized', desc: 'Mixed sizes, zinc plated, 50-piece', part: 'DS-HW-CPK5', price: '$8.50' }
+      { image: '', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><line x1="12" y1="2" x2="12" y2="22"/><path d="M8 2h8"/></svg>', name: 'Galvanized Carriage Bolts', desc: 'Available options: ½": 2": Full Thread, ½": 3": Full Thread, ½": 4": Full Thread, ½": 5": Full Thread…', part: 'DS-GALVANIZ', price: 'From $1.45', opts: ['½": 2": Full Thread', '½": 3": Full Thread', '½": 4": Full Thread', '½": 5": Full Thread', '½": 6": Full Thread', '½": 14": Full Thread'], feats: [] },
+      { image: '', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><line x1="12" y1="2" x2="12" y2="22"/><path d="M8 2h8"/></svg>', name: 'Galvanized Lag Bolts', desc: 'Available options: ½": 3: Full Thread, ½": 5: Full Thread, ⅜": 3: Full Thread, ⅜": 4: Full Thread…', part: 'DS-GALVANIZ-2', price: 'From $1.49', opts: ['½": 3: Full Thread', '½": 5: Full Thread', '⅜": 3: Full Thread', '⅜": 4: Full Thread', '⅜": 6: Full Thread'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/15.png?v=1718898576', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'All Nut Options', desc: 'Ensure secure and corrosion-resistant connections with our Galvanized Nuts, designed for robust performance in demanding environments.', part: 'DS837', price: 'From $0.31', opts: ['3/8": Galvanized Nut', '5/8": Galvanized Nut', '1/2": Galvanized Nut', '3/4": Galvanized Nut', '3/4":Zinc Lock Nut'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Washercover.png?v=1719841432', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'All Washer Options', desc: 'Available options: Galvanized Lock Washer- 5/8", Galvanized Lock Washer- 1/2", Galvanized Lock Washer- 3/8", Galvanized Flat Washer- 1/2"…', part: 'DS496', price: 'From $0.35', opts: ['Galvanized Lock Washer- 5/8"', 'Galvanized Lock Washer- 1/2"', 'Galvanized Lock Washer- 3/8"', 'Galvanized Flat Washer- 1/2"', 'Galvanized Lock Washer- 3/4"', 'Galvanized Flat Washer- 5/8"'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/HardwareBag.png?v=1720188729', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'HardWare Bag- For Lift Install', desc: 'Includes 13- Cable Clamps 12- Shackles 9- 4"x 1/2" Carriage Bolts 9- 3"x 1/2" Carriage Bolts 18- 1/2" Lock Washers 18- 1/2" Nuts', part: 'DS955', price: '$175.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/29_belt.png?v=1718910906', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Marine Motor Belts', desc: 'Ensure the smooth operation of your dock lift with our high-quality motor belts, specifically designed for durability and reliability. These belts are essential for maintaining the efficiency of your lifting system, providing optimal performance for your dock.', part: 'DS233', price: 'From $15.35', opts: ['AX 26', 'AX 28', 'AX 30', 'AX 34', 'AX 35', 'AX 36'], feats: [] }
     ]
   },
   decking: {
     title: 'Decking Boards',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="M2 8h20M2 12h20M2 16h20"/></svg>', name: 'Composite Deck Board — 1x6 x 16ft', desc: 'Capped composite, fade/stain resistant, gray', part: 'DS-DKB-166', price: '$42.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="1"/><line x1="6" y1="6" x2="6" y2="18"/><line x1="10" y1="6" x2="10" y2="18"/><line x1="14" y1="6" x2="14" y2="18"/><line x1="18" y1="6" x2="18" y2="18"/></svg>', name: 'Pressure-Treated Deck Board — 2x6 x 12ft', desc: 'Ground contact rated, kiln-dried', part: 'DS-DKB-262', price: '$18.75' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 9h18M3 13h18M3 17h18"/></svg>', name: 'PVC Dock Board — 1x6 x 16ft', desc: 'Cellular PVC, zero water absorption', part: 'DS-DKB-PVC', price: '$58.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="4" width="20" height="4" rx="1"/><rect x="2" y="10" width="20" height="4" rx="1"/><rect x="2" y="16" width="20" height="4" rx="1"/></svg>', name: 'Wear-Deck Plank — 2x6 x 8ft', desc: 'Fiberglass reinforced, anti-slip surface', part: 'DS-WDK-268', price: '$64.50' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="8" width="16" height="8" rx="1"/><path d="M4 12h16"/></svg>', name: 'Hidden Deck Fastener Clip — SS', desc: '316 stainless, works with grooved boards', part: 'DS-DFC-001', price: '$0.85' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/wood.png?v=1719844453', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Treated Wood', desc: 'Our Treated Lumber is the perfect choice for all your home projects and dock renovations. Known for its exceptional durability and versatility, this high-quality lumber can elevate your construction and renovation efforts.', part: 'DS097', price: 'From $7.59', opts: ['Lumber- 1x6x10', 'Lumber- 1x6x12', 'Lumber- 2x4x12', 'Lumber - #1 Prime 2x6x8', 'Lumber - #1 Prime 2x6x10', 'Lumber- #1 Prime 2x6x12'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/3inchscrewcontainer.png?v=1689614970', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Simpson Strong-Tie S10300WPB #10 x 3" Deck-Drive Wood Screw', desc: 'The Simpson Strong-Tie S10300WPB is a pack of high-quality #10 x 3" wood screws designed specifically for decking applications.', part: 'DS260', price: '$405.95', opts: ['1750 Qty'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/6inchtimberscrew.png?v=1719923223', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'All Timber Screw Options: Simpson Strong-Tie', desc: 'Available options: Timber Screw- 3": T-40 Simpson Strong Tie, Timber Screw- 4": T-40 Simpson Strong Tie, Timber Screw- 6": T-40 Simpson Strong Tie, Timber Screw- 8": T-40 Simpson Strong Tie', part: 'DS808', price: 'From $1.23', opts: ['Timber Screw- 3": T-40 Simpson Strong Tie', 'Timber Screw- 4": T-40 Simpson Strong Tie', 'Timber Screw- 6": T-40 Simpson Strong Tie', 'Timber Screw- 8": T-40 Simpson Strong Tie'], feats: [] }
     ]
   },
   framing: {
     title: 'Dock Framing',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="2" width="4" height="20"/><rect x="16" y="2" width="4" height="20"/><rect x="4" y="10" width="16" height="4"/></svg>', name: 'Dock Frame Stringer — 2x8 x 16ft PT', desc: 'Pressure-treated, ground contact rated', part: 'DS-FRM-282', price: '$28.50' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 12h16M12 4v16"/></svg>', name: 'Cross Brace — 2x6 x 8ft PT', desc: 'Pressure-treated, structural grade', part: 'DS-FRM-268', price: '$14.25' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M2 20h20M6 20V8h4v12M14 20V4h4v16"/></svg>', name: 'Dock Joist — 2x8 x 10ft PT', desc: 'CCA treated, marine-grade for substructure', part: 'DS-FRM-280', price: '$22.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="6" y="2" width="12" height="20" rx="1"/><line x1="6" y1="7" x2="18" y2="7"/><line x1="6" y1="17" x2="18" y2="17"/></svg>', name: 'Joist Hanger — 2x8 Galvanized', desc: 'G185 galvanized, 18-gauge, structural', part: 'DS-JHG-280', price: '$3.45' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/OverheadBeam.jpg?v=1723560108', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Steel Overhead Beam', desc: 'Engineered for strength and stability, our Overhead Support Beam provides the critical support needed when lifting larger boats.', part: 'DS530', price: '$198.00', opts: ['13\' x 4" Beam'], feats: ['Built for Heavy Lifts – Ideal for supporting pulley systems on larger boats', 'Heavy-Duty Construction – Handles the stress of deadweight and constant lifting cycles', 'Supports Multiple Mounting Points – Perfect for overhead pulleys, motors, and brackets', 'Corrosion-Resistant Finish – Withstands harsh marine environments', 'Custom Fit Options – Available in various lengths and sizes to match your setup'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Soffit.png?v=1719851971', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'All Soffit Options', desc: 'Enhance the functionality and appearance of your dock area with our top-of-the-line vinyl ceiling soffit.', part: 'DS227', price: 'From $17.29', opts: ['Soffit- 12\'-6" x 8": Beaded: Non Vented', 'Soffit- 12\'-6" x 8": Beaded: Vented'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/WhiteJChannel.png?v=1719851617', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'White J-Channel: 3/8": 12\'6" Pc', desc: 'White J-Channel: 3/8": 12\'6" Pc', part: 'DS519', price: '$9.69', opts: [], feats: [] }
     ]
   },
   pilings: {
     title: 'Pilings &amp; Posts',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="22"/><line x1="16" y1="2" x2="16" y2="22"/><path d="M4 18h16" stroke-dasharray="3 2"/></svg>', name: 'Wood Piling — 8" x 16ft CCA', desc: 'CCA pressure-treated southern yellow pine', part: 'DS-PIL-816', price: '$145.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="9" y="2" width="6" height="20" rx="1"/></svg>', name: 'Dock Post — 4x4 x 8ft PT', desc: 'Pressure-treated, notched top available', part: 'DS-PST-448', price: '$18.50' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8"/></svg>', name: 'Piling Cap — 8" Round Galv.', desc: 'Galvanized steel, prevents water intrusion', part: 'DS-PCP-800', price: '$12.75' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="8" y="4" width="8" height="16"/><path d="M4 14h4M16 14h4"/></svg>', name: 'Piling Wrap — 4ft x 50ft Roll', desc: 'PVC wrap, UV-stabilized, marine borer barrier', part: 'DS-PWR-450', price: '$85.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Piling.png?v=1719845753', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Heavy-Duty: Marine Utility Pylons', desc: 'Treated Pilings with 8" End Built to withstand the harshest marine environments, our Marine Treated Pilings offer unmatched durability and strength for all your construction needs.', part: 'DS490', price: 'From $259.59', opts: ['Piling- 25\'', 'Piling- 30\'', 'Piling - 35\''], feats: ['✔ Marine Construction', '✔ Power Line Poles', '✔ Retaining Walls', '✔ Foundations for Waterfront Structures', '✔ Other Building Purposes'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Foam_Dimensions_000fa155-643d-4b03-bbd2-d92d43e2efdf.png?v=1762196344', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Extruded Polystyrene Foam Billet', desc: 'Premium Extruded Polystyrene Built for Buoyancy. Made to Last.', part: 'DS982', price: 'From $85.79', opts: ['(Half Piece): 48" Length x 20" Width x 7" Thickness', '(Full Size) 96" Length x 20" Width x 7" Thickness', '(4pc Bundle): 96" Length x 20" Width x 7" Thickness', '(6pc Bundle): 96" Length x 20" Width x 7" Thickness'], feats: ['Water Resistant: Closed-cell XPS prevents absorption for long-lasting performance.', 'Superior Buoyancy: Keeps docks and platforms stable even under heavy loads.', 'Lightweight Design: Easy to handle and install—reduces time and labor.', 'High Strength: Withstands compression, impact, and harsh marine conditions.'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Pipe.png?v=1719848978', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'All Galvanized Pole Options', desc: 'Enhance your dock or marine structure with our Galvanized Pole Option, perfect for floater pipes and ceiling pipes.', part: 'DS687', price: 'From $249.99', opts: ['2-1/2" Galvanized: Floater Pole', '2" Galvanized: Motor Pole: With Holes: 21 FT', '2" Galvanized: Motor Pole: With Holes: 24 Ft'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/26.png?v=1718902647', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Domed Pole Caps', desc: '- Galvanized - Large - Fits 2 1/2" nominal (2 7/8" outside diameter) - For Floater Poles - Small - Fits 2" nominal (2 3/8" outside diameter) - For Motor Poles', part: 'DS864', price: '$13.50', opts: ['Small', 'Large'], feats: [] }
     ]
   },
   brackets: {
     title: 'Hardware &amp; Brackets',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 4v16h16"/><path d="M4 4h6v6"/></svg>', name: 'Corner Bracket — 90° Galvanized', desc: 'Heavy-duty, 3" x 3", structural grade', part: 'DS-BKT-903', price: '$4.25' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 20V4h16v16"/><circle cx="8" cy="8" r="1.5" fill="#878A8F"/><circle cx="16" cy="16" r="1.5" fill="#878A8F"/></svg>', name: 'Tie Plate — 5" x 3" Galv.', desc: 'Galvanized steel, multi-hole pattern', part: 'DS-TPL-530', price: '$2.85' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="8" cy="8" r="1.5"/><circle cx="16" cy="8" r="1.5"/><circle cx="8" cy="16" r="1.5"/><circle cx="16" cy="16" r="1.5"/></svg>', name: 'Post Base — 4x4 Adjustable SS', desc: '316 stainless, adjustable height, bolt-down', part: 'DS-PBS-440', price: '$28.50' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M12 2v20"/><path d="M4 8h16"/><circle cx="6" cy="8" r="1.5" fill="#878A8F"/><circle cx="18" cy="8" r="1.5" fill="#878A8F"/></svg>', name: 'Through-Bolt Kit — 1/2" x 10" SS', desc: '316 SS, includes nut and washer', part: 'DS-TBK-510', price: '$8.75' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M6 4h12v4H6z"/><path d="M8 8v12"/><path d="M16 8v12"/></svg>', name: 'Pile Guide Bracket — Galvanized', desc: 'Holds dock to piling, allows vertical float', part: 'DS-PGB-001', price: '$42.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/uprightfixed2.png?v=1718990364', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Stand up Bracket w/ u-bolt', desc: 'When dock pilings aren’t in the ideal spot, our Stand-Up Bracket with U-Bolt offers a reliable solution. Designed to securely hold floater poles in place, this bracket allows you to mount a floating dock even when traditional piling locations aren’t an option.', part: 'DS891', price: '$281.75', opts: [], feats: ['Mounts Floater Poles Anywhere – Perfect for situations without nearby pilings', 'Heavy-Duty Bracket with U-Bolt – Locks pole securely in place for stable dock connection', 'Versatile Installation – Can be mounted to seawalls, fixed docks, or concrete pads', 'Durable Marine-Grade Construction – Built to handle water, weather, and constant motion', 'Essential for Custom Dock Setups – Enables flexible floating dock placement'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Uprightfixed.png?v=1718990387', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Stand Up Bracket / All Thread', desc: 'Mount your floating dock with confidence—even when pilings aren’t perfectly placed.', part: 'DS205', price: '$224.25', opts: [], feats: ['Supports Floater Poles – Ideal for mounting docks when pilings aren’t in position', 'Open Bracket Design – Allows for flexible hardware options to secure the pole', 'Heavy-Duty Steel Construction – Built tough for waterfront environments', 'Rust-Resistant Finish – Withstands moisture, movement, and outdoor exposure', 'Great for Custom Installs – Attach to seawalls, fixed docks, or bulkheads'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Backsidefloatbracketw_ring.png?v=1718983110', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Float Bracket Options', desc: 'Enhance your floating dock system with our versatile Float Bracket Options, specifically designed to connect seamlessly to floating docks while allowing for smooth vertical movement along floater poles.', part: 'DS202', price: 'From $95.99', opts: ['Float Bracket-With Ring', 'Float Bracket-No Ring', 'Float Bracket Square-With Ring'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Hinge_Set.png?v=1719246178', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Hinges', desc: 'Available options: 1 Male Hinge, 1 Female Hinge, Male and Female Set', part: 'DS944', price: 'From $63.95', opts: ['1 Male Hinge', '1 Female Hinge', 'Male and Female Set'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Hingeplatebent.png?v=1718983601', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Hinge Plate Bent', desc: 'Secure and flexible, our Bent Hinge Plate is engineered to connect floating dock sections while allowing for natural movement with changing water levels.', part: 'DS989', price: '$39.95', opts: [], feats: ['Heavy-Duty Steel Construction – Built to handle constant motion and water exposure', 'Angled for Flexibility – Allows smooth pivoting between dock sections', 'Pre-Drilled for Easy Installation – Compatible with standard dock hardware', 'Perfect for Floating Docks – Ideal for ramps, fingers, and hinged connections'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Plate1_4_x7x16.png?v=1718983773', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Galvanized Plate — 1\'4"', desc: 'Available options: 1/4"x5"x16", 1/4"x7"x16"', part: 'DS195', price: 'From $29.99', opts: ['1/4"x5"x16"', '1/4"x7"x16"'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Motorarmbent.png?v=1718983715', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Motor Arm Bent', desc: 'Keep your boat lift motor secure and properly aligned with our Bent Motor Arm , designed to provide crucial support and stabilization.', part: 'DS537', price: '$35.95', opts: [], feats: ['Engineered for Stability – Prevents motor shifting during lift operation', 'Bent Design for Proper Positioning – Optimized angle keeps motor aligned with drive pipe', 'Durable Steel Construction – Built to handle constant torque and outdoor exposure', 'Corrosion-Resistant Finish – Ideal for harsh waterfront environments', 'Easy to Install – Compatible with most boat lift motor setups'] }
     ]
   },
   composite: {
     title: 'Composite Lumber',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="8" width="20" height="8" rx="1"/></svg>', name: 'Composite 2x4 — 8ft Gray', desc: 'Structural composite, rot-proof, UV-stable', part: 'DS-CMP-248', price: '$24.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="1"/></svg>', name: 'Composite 2x6 — 12ft Gray', desc: 'Structural, marine-grade, fade-resistant', part: 'DS-CMP-262', price: '$38.50' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="1"/><line x1="2" y1="12" x2="22" y2="12"/></svg>', name: 'Composite 2x8 — 16ft Gray', desc: 'Heavy structural, zero maintenance', part: 'DS-CMP-286', price: '$52.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg>', name: 'Composite Fascia — 1x8 x 12ft', desc: 'Finishing trim, capped, color-matched', part: 'DS-CFA-182', price: '$28.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/BF_Sand_Shopify.png?v=1778264269', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Weardeck Composite Decking', desc: 'Discover the perfect blend of durability and design with Weardeck Decking, crafted with Barefoot ® technology . Designed to deflect heat with its glass filled HDPE composite construction, ensuring stunning looks and lasting performance.', part: 'DS-WEARDECK', price: 'From $71.88', opts: ['12 ft Board - 5/4" x 6": gray-stratus', '12 ft Board - 5/4" x 6": weatherwood-gobi', '12 ft Board - 5/4" x 6": sand-mink', '12 ft Board - 5/4" x 6": barefoot-sand-sanddollar', '12 ft Board - 5/4" x 6": white-moonstone', '12 ft Board - 5/4" x 6": barefoot-gray-shale'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/WEARDECK_Barefoot_Gray_5000x_e2b3eaad-a520-4175-a370-bc719fa970f4.jpg?v=1719324863', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Owens Corning Weardeck- Heat Resistant: Barefoot Grey Composite Decking: 5/4" x 6"', desc: 'Barefoot-Friendly Decking Boards Engineered to withstand intense sunlight, our heat-resistant decking keeps cool even in full sun, making it ideal for family-friendly, barefoot enjoyment.', part: 'DS543', price: 'From $71.88', opts: ['12 ft Board - 5/4" x 6"', '16 ft Board - 5/4" x 6"', '20 ft Board - 5/4" x 6"'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Facia_Board.png?v=1737659332', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Weardeck Fascia Board — 1/2" x 10" x 12\'', desc: '1/2"x10"x12\'Facia/Trim Board', part: 'DS517', price: '$105.99', opts: ['barefoot-gray', 'beige'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/23_4.png?v=1689614499', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Simpson Strong-Tie DCU #10 x 2-3/4" Composite Deck Screw', desc: 'The Simpson Strong-Tie DCU234MB305 is a premium-quality 2-3/4" stainless steel composite deck screw, designed for exceptional durability and performance.', part: 'DS295', price: '$556.52', opts: ['1750 Qty'], feats: [] }
     ]
   },
   bumpers: {
     title: 'Bumpers &amp; Fenders',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="8"/></svg>', name: 'Foam Dock Bumper — 24" White', desc: 'Closed-cell foam, UV-resistant, bolt-on', part: 'DS-BMP-240', price: '$18.50' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><line x1="12" y1="4" x2="12" y2="2"/></svg>', name: 'Round Fender — 6" x 24" Blue', desc: 'Ribbed vinyl, reinforced eyelets', part: 'DS-FND-624', price: '$24.95' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="2" width="4" height="20" rx="2"/><rect x="16" y="2" width="4" height="20" rx="2"/></svg>', name: 'Post Bumper — 4" x 36" Rubber', desc: 'Ribbed rubber, wraps around piling', part: 'DS-PBM-436', price: '$32.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 8h16M4 12h16M4 16h16"/></svg>', name: 'Dock Cushion — 12" x 36" Foam', desc: 'High-density EVA, adhesive backing', part: 'DS-DCU-236', price: '$28.75' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M2 12h20"/><path d="M4 8c4 0 4 8 8 8s4-8 8-8"/></svg>', name: 'Fender Line — 3/8" x 6ft Nylon', desc: 'Double-braided nylon, spliced eye', part: 'DS-FLN-386', price: '$8.50' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/3ftblackbumpers.png?v=1774883850', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Black Urethane 3ft Boat  Dock Face Board Bumper', desc: 'Elevate your docking experience with our top-tier Heavy Duty Dock Bumper, proudly made in the USA. Engineered for exceptional performance, this bumper is crafted from high-quality materials that offer outstanding resilience and durability.', part: 'DS321', price: '$142.89', opts: ['7"w x 3.75"D x 3\'L (Medium)'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Urethane_corner_bumper.jpg?v=1776951159', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Black Corner Urethane Bumper', desc: 'Black Corner Urethane Bumper', part: 'DS-BLACKCOR', price: '$166.00', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/FoamcornerBumper1.jpg?v=1776884721', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Black Urethane Foam Boat Dock Edge Corner Bumper: P-Style Overlap Style', desc: 'Black Urethane Foam Boat Dock Edge Corner Bumper: P-Style Overlap Style', part: 'DS-FOAMURET', price: '$53.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Corner_black_bumper_1.jpg?v=1776874757', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Black Marine Vinyl Boat Dock Edge Corner Bumper: P-Style Overlap Style', desc: 'Overlap Style Corner Bumper Designed to work seamlessly with any P-style dock edge trim, our marine grade vinyl corner bumper slides directly over your existing trim for a fast, clean install — no precise cuts, no alignment headaches.', part: 'DS806', price: '$29.95', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/white_corner_bumper_1.jpg?v=1776874072', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'White Marine Vinyl Boat Dock Edge Corner Bumper: P-Style Overlap Style', desc: '\'- 6"x6"', part: 'DS190', price: '$29.95', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Dockcornerbumperoldstyle1.jpg?v=1776876868', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Black Marine Vinyl Rub Rail Corner Bumper: P-Style Edge Match Style', desc: 'Safeguard your dock and boat with our Corner Dock Bumper, expertly designed for superior performance and durability.', part: 'DS367', price: '$29.95', opts: [], feats: [] }
     ]
   },
   dockedge: {
     title: 'Dock Edge Profiles',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 4v16"/><path d="M4 4c0 4 8 4 8 8s-8 4-8 8"/></svg>', name: 'PVC P-Profile — 24ft White', desc: 'Flexible PVC, standard P shape, screw-on', part: 'DS-DEP-P24', price: '$45.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 4v16h4V4"/></svg>', name: 'PVC D-Profile — 16ft White', desc: 'Heavy-duty D shape, UV-stabilized', part: 'DS-DEP-D16', price: '$38.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 4v16"/><path d="M4 12h8l4-4v8l-4-4"/></svg>', name: 'Corner Dock Edge — 90° White', desc: 'Pre-formed corner piece, matches P-profile', part: 'DS-DEC-900', price: '$12.50' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="8" width="16" height="8" rx="4"/></svg>', name: 'Dock Edge Screw — #8 x 1" SS (50pk)', desc: '316 SS, Phillips flat head, for PVC edge', part: 'DS-DES-810', price: '$14.95' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/P-style_bumper_shopify.jpg?v=1776888830', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Black Marine Vinyl Dock Rubrail Trim Bumper: P-style', desc: 'Discover the perfect blend of durability and affordability with Dock Solutions P-Style Rubrail, crafted with marine grade vinyl. Designed to protect your dock and boat, ensuring stunning looks and lasting performance.', part: 'DS477', price: 'From $51.71', opts: ['16ft Coverage (4 × 4ft Sections)', '24ft Coverage (6 × 4ft Sections)', '10ft Coverage (1 × 10ft Section)', '9ft Coverage (3 × 3ft Sections)', '18ft Coverage (6 × 3ft Sections)'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/WhiteP-styleshopify.jpg?v=1776889291', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'White Marine Vinyl Dock Rubrail Trim Bumper P-style', desc: 'Protect what matters most—your boat, your dock, and your time on the water. Built for real-world conditions, this P-style dock edge bumper delivers dependable impact protection with a clean, low-profile look that blends seamlessly into any dock setup.', part: 'DS-WHITEPST', price: 'From $51.71', opts: ['16ft Bundle (4 × 4ft Sections)', '24ft Bundle (6 × 4ft Sections)', '10ft Bundle (1 × 10ft Section)', '9ft Bundle (3 × 3ft Sections)', '18ft Bundle (6 × 3ft Sections)'], feats: ['Dock edges prone to frequent contact', 'High-traffic boat slips', 'Pontoon boats, wake boats, and fishing boats', 'Both residential and marina applications'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/D-Shapedbumper.png?v=1719840881', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Black Marine Vinyl Dock Edge Bumper: D-style', desc: 'Upgrade your boat\'s protection with our 10 FT D-Style Bumper/Rub Rail, the perfect blend of durability and functionality.', part: 'DS285', price: '$51.95', opts: ['white', 'black'], feats: [] }
     ]
   },
   cleats: {
     title: 'Cleats &amp; Ties',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 12h16M7 8h10M7 16h10"/></svg>', name: 'Dock Cleat — 8" Cast Aluminum', desc: 'Open-base, anodized finish, bolt-on', part: 'DS-CLT-800', price: '$14.50' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M6 12h12M8 8h8M8 16h8"/></svg>', name: 'Dock Cleat — 6" 316 Stainless', desc: 'Polished 316 SS, flat mount', part: 'DS-CLT-600', price: '$22.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>', name: 'Mooring Ring — 6" Galvanized', desc: 'Welded ring, flush mount plate', part: 'DS-MRG-600', price: '$18.75' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 4c4 8 12 8 16 0"/><path d="M4 20c4-8 12-8 16 0"/></svg>', name: 'Dock Line — 3/8" x 15ft Nylon', desc: 'Double-braided, pre-spliced loop, white', part: 'DS-DLN-385', price: '$16.50' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M8 4v16M16 4v16M4 10h16M4 14h16"/></svg>', name: 'Spring Line — 1/2" x 20ft Nylon', desc: 'Double-braided, chafe guard, black', part: 'DS-SLN-520', price: '$24.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Bigger_cleat_cover_photo.png?v=1743702484', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Large Nylon Folding Dock Cleat — 9" Flip-Up Safety Cleat', desc: 'B9001 – Large Black Nylon Fold-Down Safety Cleat A sleek, fold-down cleat designed for safety, durability, and modern dock aesthetics.', part: 'DS842', price: '$34.50', opts: ['Black', 'White'], feats: ['Size: 9"', 'Base Height: 1.5"', 'Mounting Pattern: 11" x 4.75"', 'Overall: 12.875" x 6.625" x 1.25"'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Splitring1.jpg?v=1720548934', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Dock Solutions Dock Ring Options', desc: 'Easily replace your floating dock rings with our split rings. Easily remove dock rings, saving time without taking out floater poles.', part: 'DS495', price: 'From $37.99', opts: ['Solid Dock Ring', 'Split Dock Ring'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/screwcover.png?v=1719843493', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'All Screw Options', desc: 'Secure your marine accessories with confidence using our Bumper and Cleat Stainless Screws. Engineered from premium stainless steel, these screws offer exceptional resistance to rust and corrosion, making them ideal for harsh marine environments.', part: 'DS425', price: 'From $0.35', opts: ['Cleat Screw- #14x 1-1/2": Stainless', 'Bumper Screw- #10x1\''], feats: [] }
     ]
   },
   dockboxes: {
-    title: 'Dock Boxes &amp; Storage',
+    title: 'Drip Pans &amp; Storage',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 6l3-3h12l3 3"/></svg>', name: 'Dock Box — 24" x 54" White', desc: 'Fiberglass, lockable, UV-resistant', part: 'DS-DBX-254', price: '$285.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M4 8l2-4h12l2 4"/></svg>', name: 'Dock Box — 18" x 36" Gray', desc: 'Polyethylene, seat-top, low profile', part: 'DS-DBX-183', price: '$165.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="6" y="4" width="12" height="16" rx="1"/><line x1="10" y1="10" x2="14" y2="10"/></svg>', name: 'Fish Cleaning Station — SS', desc: '316 SS, faucet ready, drain, 38" x 21"', part: 'DS-FCS-001', price: '$425.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/></svg>', name: 'Utility Cabinet — 24" x 24" White', desc: 'Marine-grade, lockable, shelf included', part: 'DS-UCB-244', price: '$195.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/12x12_drip_pan_1.3.png?v=1757083904', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Drip Pan — 12" x 24" Horizontal', desc: 'Drip pans help save you boat from dripping grease released from boat lifts. Saves you from having to wipe grease off your boat or boat cover.', part: 'DS908', price: '$125.99', opts: ['12X24 Horizontal Drip Pan'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/12x12_drip_pan_1.3.png?v=1757083904', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Drip Pan — 12" x 12" Vertical', desc: 'Drip pans help save you boat from dripping grease released from boat lifts. Saves you from having to wipe grease off your boat or boat cover.', part: 'DS-SMALLDRI', price: '$115.99', opts: ['12X12 Vertical Drip Pan'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/HardwareBag.png?v=1720188729', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'HardWare Bag- For Lift Install', desc: 'Includes 13- Cable Clamps 12- Shackles 9- 4"x 1/2" Carriage Bolts 9- 3"x 1/2" Carriage Bolts 18- 1/2" Lock Washers 18- 1/2" Nuts', part: 'DS955', price: '$175.99', opts: [], feats: [] }
     ]
   },
   steps: {
     title: 'Dock Steps',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 20h6v-6h6v-6h4"/></svg>', name: '2-Step Dock Step — Aluminum', desc: 'Non-slip treads, adjustable height, bolt-on', part: 'DS-STP-200', price: '$145.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M2 22h5v-5h5v-5h5v-5h5"/></svg>', name: '3-Step Dock Step — Aluminum', desc: 'Wide treads, handrail mounts, marine grade', part: 'DS-STP-300', price: '$195.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 20h4v-4h4v-4h4v-4h4v-4"/></svg>', name: '4-Step Dock Step — Aluminum', desc: 'Heavy-duty, 500 lb capacity, fold-up option', part: 'DS-STP-400', price: '$265.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="16" width="16" height="4" rx="1"/><path d="M6 16v-2h12v2"/></svg>', name: 'Replacement Tread — 24" Non-Slip', desc: 'Aluminum, rubber-grip surface, bolt-on', part: 'DS-TRD-240', price: '$32.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/5_step_with_railing.png?v=1718985553', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Floater Step — 3 Step: 24": No Rail', desc: 'Easily transition between your standing dock and floating dock with our Heavy-Duty Marine Grade Steps, designed for ultimate stability and durability.', part: 'DS440', price: '$915.93', opts: ['Floater Step- 3 Step: 24": No Rail: No Composite'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/5_step_with_railing.png?v=1718985553', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Floater Step — 3 Step: 24": With Rail', desc: 'Easily transition between your standing dock and floating dock with our Heavy-Duty Marine Grade Steps, designed for ultimate stability and durability.', part: 'DS-ALLSTEPO', price: '$1,165.44', opts: ['Floater Step- 3 Step: 24": With Rail: No Composite'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/5_step_with_railing.png?v=1718985553', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Floater Step — 4 Step: 24": No Rail', desc: 'Easily transition between your standing dock and floating dock with our Heavy-Duty Marine Grade Steps, designed for ultimate stability and durability.', part: 'DS265', price: '$1,404.93', opts: ['Floater Step- 4 Step 24": No Rail: No Composite'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/5_step_with_railing.png?v=1718985553', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Floater Step — 4 Step: 24": With Rail &amp; Composite', desc: 'Easily transition between your standing dock and floating dock with our Heavy-Duty Marine Grade Steps, designed for ultimate stability and durability.', part: 'DS899', price: '$1,636.99', opts: ['Floater Step- 4 Step 24": With Rail: With Composite'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/5_step_with_railing.png?v=1718985553', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Floater Step — 5 Step: 24": With Rail', desc: 'Easily transition between your standing dock and floating dock with our Heavy-Duty Marine Grade Steps, designed for ultimate stability and durability.', part: 'DS175', price: '$1,700.54', opts: ['Floater Step- 5 Step: 24": With Rail: No Composite'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/5_step_with_railing.png?v=1718985553', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Walk Into Water Steps — 6 Step: 36": 2 Railings', desc: 'Easily transition between your standing dock and floating dock with our Heavy-Duty Marine Grade Steps, designed for ultimate stability and durability.', part: 'DS637', price: '$2,512.95', opts: ['Walk Into Water Steps- 6 Step: 36": With 2 Railings: No Composite'], feats: [] }
     ]
   },
   ladders: {
     title: 'Dock Ladders',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M8 2v20M16 2v20M8 6h8M8 10h8M8 14h8M8 18h8"/></svg>', name: '4-Step Dock Ladder — Aluminum', desc: 'Slide-up mounting, anti-slip rungs', part: 'DS-LDR-400', price: '$165.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M8 2v20M16 2v20M8 7h8M8 12h8M8 17h8"/></svg>', name: '3-Step Dock Ladder — Stainless', desc: '316 SS, flip-up, rubber-gripped rungs', part: 'DS-LDR-300', price: '$225.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M8 2v20M16 2v20M8 5h8M8 9h8M8 13h8M8 17h8"/></svg>', name: '5-Step Dock Ladder — Galvanized', desc: 'Hot-dipped galvanized, fixed mount', part: 'DS-LDR-500', price: '$135.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="6" y="2" width="12" height="6" rx="1"/><path d="M8 8v14M16 8v14M8 12h8M8 16h8M8 20h8"/></svg>', name: 'Ladder Mounting Plate — SS', desc: '316 SS, surface mount, hardware included', part: 'DS-LMP-001', price: '$28.50' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/5steplatterpic2.png?v=1687797171', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Dock Solutions Flip Up Swim Ladder - 5 or 7 Step', desc: 'MADE IN AMERICA. Premium 5 and 7 step thick aluminum swim ladder. Made in house at our metal fabrication shop. The ladder flips upwards, while being held in place by a secure fastening pin when not in use.', part: 'DS368', price: 'From $475.99', opts: ['5 Step', '7 Step'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/5Step.webp?v=1773333452', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'NautiSteps Spring Assisted Dock Ladder', desc: '[SPRING-ASSISTED LIFT] Reduces effort when raising or lowering the ladder, making transitions smooth and manageable. [SLOW-FALL SAFETY DESIGN] Allows the ladder to lower gradually, preventing sudden drops for safer operation.', part: 'DS-NAUTISTE', price: 'From $1,495.00', opts: ['5 Step (Textured Aluminum Frame w/ Gray Steps)', '7 Step (Iron Gray Frame w/ Gray Steps)'], feats: [] }
     ]
   },
   platforms: {
     title: 'Swim Platforms',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="10" width="20" height="4" rx="1"/><path d="M6 14v6M18 14v6"/></svg>', name: 'Swim Platform — 6ft x 4ft Aluminum', desc: 'Non-slip deck, fold-down ladder mount', part: 'DS-SPL-640', price: '$485.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="2" y="10" width="20" height="4" rx="1"/><path d="M4 14v4M12 14v6M20 14v4"/></svg>', name: 'Swim Platform — 8ft x 4ft Aluminum', desc: 'Heavy-duty, 800 lb capacity, marine-grade', part: 'DS-SPL-840', price: '$685.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="8" width="16" height="8" rx="2"/></svg>', name: 'Floating Swim Platform — 6x8 PE', desc: 'Polyethylene, modular, UV-resistant', part: 'DS-FSP-680', price: '$1,250.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="4" y="12" width="16" height="4" rx="1"/><path d="M4 12c2-2 4 0 6-2s4 0 6-2 4 0 4 0"/></svg>', name: 'Platform Bracket Set — Aluminum', desc: 'Mounts platform to dock face, adjustable', part: 'DS-PBR-001', price: '$64.00' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/connect-a-port.jpg?v=1719861651', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Connect-A-Port- XL5/ XL6: PWC Drive On Dock Port', desc: 'Upgrade your docking setup with the Connect-A-Port PWC Port XL5 or XL6 and experience the ultimate PWC parking and launching convenience, durability, and safety.', part: 'DS132', price: 'From $2,870.00', opts: ['Beige XL5 – 5\' Wide: Floating Dock Connection Kit', 'Beige XL6 – 6\' Wide: Floating Dock Connection Kit'], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Sidebysideconnectaport.png?v=1720011085', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Connect-A-Port: PWC Side By side Connector Kit', desc: 'Enhance your docking experience with the Connect-A-Port PWC Side-by-Side Connector Kit, designed for seamless integration and maximum efficiency.', part: 'DS229', price: '$269.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Foam_Dimensions_000fa155-643d-4b03-bbd2-d92d43e2efdf.png?v=1762196344', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Extruded Polystyrene Foam Billet', desc: 'Premium Extruded Polystyrene Built for Buoyancy. Made to Last.', part: 'DS982', price: 'From $85.79', opts: ['(Half Piece): 48" Length x 20" Width x 7" Thickness', '(Full Size) 96" Length x 20" Width x 7" Thickness', '(4pc Bundle): 96" Length x 20" Width x 7" Thickness', '(6pc Bundle): 96" Length x 20" Width x 7" Thickness'], feats: ['Water Resistant: Closed-cell XPS prevents absorption for long-lasting performance.', 'Superior Buoyancy: Keeps docks and platforms stable even under heavy loads.', 'Lightweight Design: Easy to handle and install—reduces time and labor.', 'High Strength: Withstands compression, impact, and harsh marine conditions.'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Backsidefloatbracketw_ring.png?v=1718983110', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Float Bracket Options', desc: 'Enhance your floating dock system with our versatile Float Bracket Options, specifically designed to connect seamlessly to floating docks while allowing for smooth vertical movement along floater poles.', part: 'DS202', price: 'From $95.99', opts: ['Float Bracket-With Ring', 'Float Bracket-No Ring', 'Float Bracket Square-With Ring'], feats: [] }
     ]
   },
   handrails: {
-    title: 'Handrails &amp; Grab Bars',
+    title: 'Safety &amp; Signage',
     items: [
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 4v16"/><path d="M4 4h4"/><path d="M4 8h2"/></svg>', name: 'Dock Handrail — 4ft Aluminum', desc: 'Anodized, removable post mount', part: 'DS-HRL-400', price: '$95.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 4v16M20 4v16M4 4h16"/></svg>', name: 'Dock Handrail — 6ft Aluminum', desc: 'Two-post system, powder-coated white', part: 'DS-HRL-600', price: '$145.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 12h16" stroke-width="3"/><circle cx="4" cy="12" r="2"/><circle cx="20" cy="12" r="2"/></svg>', name: 'Grab Bar — 18" Stainless', desc: '316 SS, polished, concealed screw mount', part: 'DS-GRB-180', price: '$42.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><path d="M4 12h16" stroke-width="3"/><circle cx="4" cy="12" r="2"/><circle cx="20" cy="12" r="2"/></svg>', name: 'Grab Bar — 24" Stainless', desc: '316 SS, knurled grip, ADA-compliant', part: 'DS-GRB-240', price: '$52.00' },
-      { img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="8" y="4" width="8" height="8" rx="1"/><path d="M10 12v8M14 12v8"/></svg>', name: 'Handrail Base Plate — Aluminum', desc: 'Surface mount, for 1.5" OD rail tube', part: 'DS-HBP-150', price: '$18.50' }
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/ShockHazardsignsreal.jpg?v=1756997378', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Water Shock Hazzard Sign', desc: '⚠️ Shock Hazard Warning This sign is required for all new dock construction within Franklin County, Bedford County, and Pennsylvania County. It has been approved by Franklin County officials and is in compliance with the requirements of the above counties.', part: 'DS-WATERSHO', price: '$17.99', opts: [], feats: [] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/dockreflector.png?v=1719847941', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'White Round Dock Reflector', desc: 'Enhance visibility and protect your dock with our Dock Reflectors , designed to make your waterfront setup easy to spot day or night.', part: 'DS363', price: '$3.89', opts: [], feats: ['High-Visibility Design – Reflective surface catches headlights and boat lights with ease', 'Durable and Weather-Resistant – Built to handle sun, rain, and constant outdoor exposure', 'Easy to Install – Mounts easily to dock posts, frames, or bumpers'] },
+      { image: 'https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Bigger_cleat_cover_photo.png?v=1743702484', img: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#878A8F" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>', name: 'Large Nylon Folding Dock Cleat — 9" Flip-Up Safety Cleat', desc: 'B9001 – Large Black Nylon Fold-Down Safety Cleat A sleek, fold-down cleat designed for safety, durability, and modern dock aesthetics.', part: 'DS842', price: '$34.50', opts: ['Black', 'White'], feats: ['Size: 9"', 'Base Height: 1.5"', 'Mounting Pattern: 11" x 4.75"', 'Overall: 12.875" x 6.625" x 1.25"'] }
     ]
   }
 };
@@ -4822,11 +4825,24 @@ function showHwProduct(partNum) {
   document.getElementById('pdpTitle').textContent = product.name;
   document.getElementById('pdpPrice').textContent = product.price;
   document.getElementById('pdpDesc').textContent = product.desc;
-  document.getElementById('pdpGallery').innerHTML = product.img.replace('width="32" height="32"', 'width="120" height="120"');
-  document.getElementById('pdpFeatures').innerHTML = '<li>Part Number: ' + product.part + '</li><li>Marine grade, corrosion resistant</li>';
+  document.getElementById('pdpGallery').innerHTML = hwMedia(product, 120);
+  var feats = (product.feats || []).slice();
+  if (product.opts && product.opts.length) {
+    feats = feats.concat(product.opts.map(function(o) { return 'Option: ' + o; }));
+  }
+  feats.push('Part Number: ' + product.part);
+  document.getElementById('pdpFeatures').innerHTML = feats.map(function(f) { return '<li>' + f + '</li>'; }).join('');
   document.getElementById('pdpQtyVal').value = '1';
   document.getElementById('pdpNote').textContent = 'Part #' + product.part;
   showPage('pdp');
+}
+
+// Product photo from the Shopify catalog, with the line-art icon as fallback
+function hwMedia(item, svgSize) {
+  if (item.image) {
+    return '<img src="' + item.image + '" alt="' + item.name.replace(/"/g, '&quot;') + '" loading="lazy">';
+  }
+  return item.img.replace('width="32" height="32"', 'width="' + svgSize + '" height="' + svgSize + '"');
 }
 
 function renderProductGrid(gridId, data) {
@@ -4834,7 +4850,7 @@ function renderProductGrid(gridId, data) {
   if (!grid || !data) return;
   grid.innerHTML = data.items.map(function(item) {
     return '<a href="#" class="hw-product-card" data-hw-product="' + item.part + '" style="display:flex; flex-direction:column; text-decoration:none; color:inherit; cursor:pointer;">'
-      + '<div style="aspect-ratio:1; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; transition:background 0.2s;">' + item.img.replace('width="32" height="32"', 'width="56" height="56"') + '</div>'
+      + '<div class="hw-product-thumb" style="aspect-ratio:1; background:#F5F5F5; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; transition:background 0.2s; overflow:hidden;">' + hwMedia(item, 56) + '</div>'
       + '<div style="font-size:14px; font-weight:500; color:#171A20; line-height:1.4;">' + item.name + '</div>'
       + '<div style="font-size:15px; font-weight:600; color:#171A20; margin-top:6px;">' + item.price + '</div>'
       + '</a>';
@@ -4889,6 +4905,25 @@ document.querySelectorAll('.qs-cat').forEach(function(el) {
     renderQsPage(el.getAttribute('data-qspage'), el.getAttribute('data-qscat'));
   });
 });
+
+// Open the page named in the URL hash (runs after the catalogs above are defined)
+if (location.hash === '#cart') showPage('cart');
+if (location.hash === '#build') showPage('build');
+if (location.hash === '#config') showPage('config');
+if (location.hash === '#boatlift') showPage('boatlift');
+if (location.hash === '#learn') showPage('learn');
+if (location.hash === '#learn-lifts') showPage('learn-lifts');
+if (location.hash === '#shop') showPage('shop');
+if (location.hash === '#motors') showPage('motors');
+if (location.hash === '#hardware') showPage('hardware');
+if (location.hash === '#qs-lifts') showPage('qs-lifts');
+if (location.hash === '#qs-structure') showPage('qs-structure');
+if (location.hash === '#qs-docking') showPage('qs-docking');
+if (location.hash === '#qs-access') showPage('qs-access');
+if (location.hash === '#account') showPage('account');
+if (location.hash === '#our-story') showPage('our-story');
+if (location.hash === '#app-plans') showPage('app-plans');
+if (location.hash === '#contact') showPage('contact');
 
 renderMotor();
 
