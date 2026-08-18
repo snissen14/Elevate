@@ -1397,7 +1397,7 @@ body {
         <div class="footer-col">
           <div class="footer-col-title">Support</div>
           <a href="#">Help Center</a>
-          <a href="#">Installation Guides</a>
+          <a href="#install">Installation Guides</a>
           <a href="#">Warranty Info</a>
           <a href="#">Returns &amp; Exchanges</a>
         </div>
@@ -1938,7 +1938,7 @@ body {
 
         <div style="font-size:17px; font-weight:700; color:#171A20; margin-bottom:12px;">Looking for installation help?</div>
         <p style="font-size:16px; color:#4B5563; line-height:1.65; margin:0 0 20px; max-width:460px;">Browse our installation videos and wiring diagrams, or reach out and we'll walk you through it.</p>
-        <a href="#" class="sup-link" style="font-size:16px; font-weight:500;">Get installation help</a>
+        <a href="#install" class="sup-link" style="font-size:16px; font-weight:500;">Get installation help</a>
 
         <div style="border-top:1px solid #D8DEE9; margin-top:44px; padding-top:28px; display:flex; flex-direction:column; gap:14px;">
           <div style="display:flex; align-items:center; gap:12px;">
@@ -2020,7 +2020,7 @@ body {
           </div>
 
           <p style="font-size:13px; color:#4B5563; margin:10px 0 0;">By clicking "Submit" you agree to our <a href="#" class="sup-link">Terms</a> and <a href="#" class="sup-link">Privacy Policy</a>.</p>
-          <p style="font-size:13px; color:#4B5563; margin:0 0 8px;">Looking for installation or technical help? <a href="#" class="sup-link">Click here</a>.</p>
+          <p style="font-size:13px; color:#4B5563; margin:0 0 8px;">Looking for installation or technical help? <a href="#install" class="sup-link">Click here</a>.</p>
 
           <button type="submit" style="width:100%; padding:17px; background:#0A0A0A; color:#fff; border:none; border-radius:6px; font-size:15px; font-weight:500; cursor:pointer; transition:background 0.15s;" onmouseenter="this.style.background='#2A2D33'" onmouseleave="this.style.background='#0A0A0A'">Submit</button>
         </form>
@@ -2036,8 +2036,8 @@ body {
       <a href="#account" class="sup-res-link">Return for Refund Request</a>
       <a href="#account" class="sup-res-link">Cancel or Update My Order</a>
       <a href="#app-plans" class="sup-res-link">App &amp; Firmware Updates</a>
-      <a href="#" class="sup-res-link">Manuals &amp; Wiring Diagrams</a>
-      <a href="#" class="sup-res-link">How-To Videos</a>
+      <a href="#install" class="sup-res-link">Manuals &amp; Wiring Diagrams</a>
+      <a href="#install" class="sup-res-link">How-To Videos</a>
       <a href="#" class="sup-res-link">Warranty Policy</a>
       <a href="#" class="sup-res-link">Find a Dealer</a>
       <a href="#build" class="sup-res-link">Request a Quote</a>
@@ -3484,6 +3484,167 @@ body {
 </div>
 
 
+<!-- ════════════════════════════════════════
+     PAGE: INSTALLATION (DJI Product Support layout)
+     ════════════════════════════════════════ -->
+<style>
+  /* ── Dark sub-nav bar ── */
+  .inst-bar { background:#0A0A0A; }
+  .inst-bar-inner { max-width:1560px; margin:0 auto; padding:0 40px; height:52px; display:flex; align-items:center; justify-content:space-between; }
+  .inst-bar-title { font-size:20px; font-weight:700; color:#fff; text-decoration:none; letter-spacing:-0.2px; }
+  .inst-bar-links { display:flex; align-items:center; gap:28px; }
+  .inst-bar-links a { font-size:13.5px; color:#E4E6EA; text-decoration:none; white-space:nowrap; transition:color 0.15s; }
+  .inst-bar-links a:hover { color:#fff; }
+
+  /* ── Hero ── */
+  .inst-hero { text-align:center; padding:56px 40px 34px; background:#fff; }
+  .inst-hero h1 { font-size:clamp(34px, 4vw, 46px); font-weight:600; color:#171A20; letter-spacing:-0.8px; margin:0 0 12px; }
+  .inst-hero p { font-size:17px; color:#5C5E62; margin:0; }
+
+  /* ── Category pills ── */
+  .inst-tabs { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; padding:0 40px 40px; background:#fff; }
+  .inst-tab { border:none; background:#F2F3F5; color:#171A20; font-family:inherit; font-size:13.5px; font-weight:500;
+              padding:9px 20px; border-radius:999px; cursor:pointer; transition:background 0.15s, color 0.15s; white-space:nowrap; }
+  .inst-tab:hover { background:#E6E8EB; }
+  .inst-tab.active { background:#171A20; color:#fff; }
+
+  /* ── Sidebar + card grid ── */
+  .inst-body { max-width:1400px; margin:0 auto; padding:0 40px 96px; display:grid; grid-template-columns:250px 1fr; gap:32px; align-items:start; }
+  .inst-side { border-left:1px solid #E8E8E8; }
+  .inst-side-item { display:block; width:100%; text-align:left; background:none; border:none; font-family:inherit;
+                    font-size:14px; color:#5C5E62; padding:12px 0 12px 22px; margin-left:-1px; cursor:pointer;
+                    border-left:2px solid transparent; transition:color 0.15s, border-color 0.15s; }
+  .inst-side-item:hover { color:#171A20; }
+  .inst-side-item.active { color:#171A20; font-weight:600; border-left-color:#171A20; }
+
+  .inst-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
+  .inst-card { background:#F5F6F7; border-radius:10px; padding:26px 20px 22px; text-decoration:none;
+               display:flex; flex-direction:column; align-items:center; gap:12px; min-height:170px;
+               transition:background 0.18s, transform 0.18s; }
+  .inst-card:hover { background:#EDEEF0; transform:translateY(-2px); }
+  .inst-card-title { font-size:15.5px; font-weight:600; color:#171A20; text-align:center; line-height:1.35; }
+  .inst-card-art { flex:1; display:flex; align-items:center; justify-content:center; width:100%; }
+  .inst-card-art svg { width:112px; height:74px; color:#4A4E54; }
+
+  /* ── Service request section ── */
+  .inst-service { background:#fff; padding:24px 40px 104px; }
+  .inst-service-head { text-align:center; margin-bottom:44px; }
+  .inst-service-head h2 { font-size:clamp(30px, 3.4vw, 42px); font-weight:600; color:#171A20; letter-spacing:-0.7px; margin:0 0 12px; }
+  .inst-service-head p { font-size:17px; color:#5C5E62; margin:0; }
+  .inst-service-grid { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; }
+  .inst-svc-card { background:#F5F6F7; border-radius:10px; padding:30px 26px 28px; text-decoration:none;
+                   display:flex; flex-direction:column; gap:12px; min-height:210px; transition:background 0.18s, transform 0.18s; }
+  .inst-svc-card:hover { background:#EDEEF0; transform:translateY(-2px); }
+  .inst-svc-card svg.inst-svc-icon { width:30px; height:30px; color:#171A20; }
+  .inst-svc-title { font-size:17px; font-weight:600; color:#171A20; }
+  .inst-svc-desc { font-size:14px; color:#5C5E62; line-height:1.6; flex:1; }
+  .inst-svc-go { font-size:13.5px; font-weight:600; color:#171A20; display:flex; align-items:center; gap:6px; }
+
+  @media (max-width:1100px) {
+    .inst-grid { grid-template-columns:repeat(2, 1fr); }
+    .inst-service-grid { grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (max-width:820px) {
+    .inst-bar-inner { padding:0 20px; gap:16px; }
+    .inst-bar-links { gap:16px; }
+    .inst-bar-links a { font-size:12.5px; }
+    .inst-bar-long { display:none; }
+    .inst-body { grid-template-columns:1fr; gap:24px; padding:0 20px 64px; }
+    .inst-side { border-left:none; border-bottom:1px solid #E8E8E8; display:flex; overflow-x:auto; gap:4px; padding-bottom:2px; }
+    .inst-side-item { width:auto; white-space:nowrap; padding:10px 14px; border-left:none; border-bottom:2px solid transparent; margin-left:0; }
+    .inst-side-item.active { border-left-color:transparent; border-bottom-color:#171A20; }
+    .inst-hero { padding:40px 20px 26px; }
+    .inst-tabs { padding:0 20px 30px; }
+    .inst-service { padding:16px 20px 72px; }
+  }
+  @media (max-width:560px) {
+    .inst-grid { grid-template-columns:1fr; }
+    .inst-service-grid { grid-template-columns:1fr; }
+    .inst-bar-title { font-size:17px; }
+    .inst-bar-links { gap:14px; }
+    .inst-bar-links a { font-size:11.5px; }
+  }
+</style>
+
+<div id="page-install" class="page-hidden">
+  <nav class="home-nav" style="position:sticky; top:0;">
+    <div class="home-nav-inner">
+      <a class="home-nav-logo" href="#home"></a>
+      <div class="home-nav-center">
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="shop-mega">Shop</button>
+        <a href="#learn-lifts" style="color:#171A20; text-decoration:none; border-bottom:2px solid #4B5EA1; padding-bottom:4px;">Build My Boat Lift</a>
+        <button class="nav-dropdown-trigger" data-toggle-dropdown="resources">Resources</button>
+      </div>
+      <div class="home-nav-right">
+        <div class="nav-search-bar" data-search-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span>Search</span></div>
+        <a href="#account" aria-label="Account" style="color:inherit;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+        <button class="cart-icon-btn" aria-label="Cart" data-cart-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dark section bar -->
+  <div class="inst-bar">
+    <div class="inst-bar-inner">
+      <a class="inst-bar-title" href="#install">Installation</a>
+      <div class="inst-bar-links">
+        <a href="#install" data-inst-scroll="instServiceSection"><span class="inst-bar-long">Installation </span>Request and Inquiry</a>
+        <a href="#app-plans">Service Plans</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="inst-hero">
+    <h1>Product Installation</h1>
+    <p>How-to guides and technical help</p>
+  </div>
+
+  <!-- Category pills -->
+  <div class="inst-tabs" id="instTabs"></div>
+
+  <!-- Sidebar + product grid -->
+  <div class="inst-body">
+    <div class="inst-side" id="instSide"></div>
+    <div class="inst-grid" id="instGrid"></div>
+  </div>
+
+  <!-- Installation Request and Inquiry -->
+  <div class="inst-service" id="instServiceSection">
+    <div class="inst-service-head">
+      <h2>Installation Request and Inquiry</h2>
+      <p>Start your installation journey</p>
+    </div>
+    <div class="inst-service-grid">
+      <a href="#contact" class="inst-svc-card">
+        <svg class="inst-svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+        <div class="inst-svc-title">Request an Installation</div>
+        <div class="inst-svc-desc">Tell us about your dock, water depth, and boat. We'll scope the install and send a quote.</div>
+        <div class="inst-svc-go">Start a request <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+      <a href="#contact" class="inst-svc-card">
+        <svg class="inst-svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="inst-svc-title">Find a Certified Installer</div>
+        <div class="inst-svc-desc">Search our dealer network for a factory-trained crew that installs Elevate systems near you.</div>
+        <div class="inst-svc-go">Search by location <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+      <a href="#account" class="inst-svc-card">
+        <svg class="inst-svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="inst-svc-title">Check Install Status</div>
+        <div class="inst-svc-desc">Track scheduling, shipping, and on-site progress for an install already in the queue.</div>
+        <div class="inst-svc-go">View my installs <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+      <a href="#contact" class="inst-svc-card">
+        <svg class="inst-svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        <div class="inst-svc-title">Warranty &amp; Service</div>
+        <div class="inst-svc-desc">Register a completed install, review coverage, or book a service visit for an existing lift.</div>
+        <div class="inst-svc-go">Get service help <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
 <!-- Shared Mega Dropdown Panel: Shop (Bloom-style) -->
 <div class="mega-panel" id="megaPanelShop">
   <div class="mega-backdrop" id="megaBackdropShop"></div>
@@ -3692,7 +3853,7 @@ body {
   <div class="mega-dropdown">
     <div style="max-width:900px; margin:0 auto; padding:36px 40px;">
       <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
-        <a href="#" style="text-decoration:none; text-align:center; display:flex; flex-direction:column; gap:12px;">
+        <a href="#install" style="text-decoration:none; text-align:center; display:flex; flex-direction:column; gap:12px;">
           <div style="height:240px; border-radius:18px; overflow:hidden; transition:transform 0.2s;" onmouseenter="this.style.transform='scale(1.03)'" onmouseleave="this.style.transform='scale(1)'">
             <img src="icon_installation_help.png" alt="Installation Help" style="width:100%; height:100%; object-fit:cover;">
           </div>
@@ -3788,6 +3949,7 @@ function showPage(page) {
   document.getElementById('page-our-story').classList.toggle('page-hidden', page !== 'our-story');
   document.getElementById('page-app-plans').classList.toggle('page-hidden', page !== 'app-plans');
   document.getElementById('page-contact').classList.toggle('page-hidden', page !== 'contact');
+  document.getElementById('page-install').classList.toggle('page-hidden', page !== 'install');
   if (page === 'cart') renderCart();
   document.body.style.background = page === 'home' ? '#000' : '#fff';
   document.getElementById('megaPanel').classList.remove('open');
@@ -3809,11 +3971,303 @@ function showPage(page) {
   if (page === 'qs-structure') renderQsPage('structure', 'decking');
   if (page === 'qs-docking') renderQsPage('docking', 'bumpers');
   if (page === 'qs-access') renderQsPage('access', 'steps');
+  if (page === 'install') renderInstall();
 }
 
 window.addEventListener('hashchange', function() {
   var h = location.hash.replace('#', '') || 'home';
   showPage(h);
+});
+
+
+// ── Installation page (DJI Product Support layout) ──
+
+const INST_ICONS = {
+  lift: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 6v32M56 6v32"/><path d="M4 6h56"/><path d="M14 16h36"/><path d="M18 16v8a6 6 0 0 0 6 6h16a6 6 0 0 0 6-6v-8"/><path d="M2 38h60"/></svg>',
+  hydraulic: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="10" y="6" width="14" height="10" rx="2"/><path d="M24 11h10a4 4 0 0 1 4 4v6"/><path d="M38 21h14"/><path d="M45 21v10"/><path d="M32 31h26"/><path d="M6 38h52"/><path d="M12 16v22"/></svg>',
+  cradle: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 14h52"/><path d="M12 14v18M52 14v18"/><path d="M20 22h24"/><path d="M24 22v10M40 22v10"/><path d="M4 34h56"/></svg>',
+  pulley: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="22" cy="18" r="10"/><circle cx="22" cy="18" r="3"/><circle cx="46" cy="28" r="7"/><circle cx="46" cy="28" r="2"/><path d="M22 8h24"/><path d="M12 18v18"/></svg>',
+  cable: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 22c6-10 12 10 18 0s12 10 18 0 12 10 16 0"/><rect x="4" y="17" width="6" height="10" rx="2"/><rect x="54" y="17" width="6" height="10" rx="2"/></svg>',
+  piling: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="26" y="4" width="12" height="36" rx="2"/><path d="M14 16h12M38 16h12"/><path d="M14 12v8M50 12v8"/><path d="M4 34h56" stroke-dasharray="3 3"/></svg>',
+  guidepole: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 40V10M44 40V10"/><circle cx="20" cy="6" r="4"/><circle cx="44" cy="6" r="4"/><rect x="14" y="26" width="12" height="6" rx="2"/><rect x="38" y="26" width="12" height="6" rx="2"/><path d="M6 40h52"/></svg>',
+  catwalk: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 26h52"/><path d="M6 32h52"/><path d="M14 26V10M50 26V10"/><path d="M14 14h36M14 20h36"/><path d="M12 32v8M52 32v8"/></svg>',
+  jetski: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 30c8 6 40 6 50-2l-6-8H22z"/><path d="M26 20l6-8h10l4 8"/><path d="M34 12V6"/><path d="M4 38c8 4 48 4 56 0"/></svg>',
+  motor: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="12" y="12" width="30" height="20" rx="3"/><path d="M42 18h8v8h-8"/><path d="M50 22h8"/><path d="M18 12V8M26 12V8M34 12V8"/><path d="M14 36h26"/></svg>',
+  gear: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="26" cy="22" r="9"/><circle cx="26" cy="22" r="3"/><path d="M26 6v5M26 33v5M10 22h5M37 22h5M15 11l4 4M37 29l4 4M15 33l4-4M37 15l4-4"/><path d="M44 22h14"/></svg>',
+  mount: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 8v28h32"/><rect x="18" y="14" width="18" height="14" rx="2"/><circle cx="20" cy="12" r="1.6"/><circle cx="20" cy="32" r="1.6"/><circle cx="42" cy="32" r="1.6"/></svg>',
+  remote: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="22" y="4" width="20" height="36" rx="4"/><circle cx="32" cy="16" r="4"/><rect x="27" y="26" width="10" height="4" rx="2"/><path d="M48 12a10 10 0 0 1 0 14M53 8a16 16 0 0 1 0 22"/></svg>',
+  switch: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="18" y="6" width="28" height="32" rx="3"/><path d="M32 14v10"/><circle cx="32" cy="28" r="4"/></svg>',
+  sensor: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="24" y="8" width="16" height="16" rx="3"/><circle cx="32" cy="16" r="3"/><path d="M32 24v8"/><path d="M8 36c6-4 10 4 16 0s10 4 16 0 10 4 16 0"/></svg>',
+  app: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="22" y="4" width="20" height="36" rx="4"/><path d="M28 34h8"/><path d="M27 14h10M27 20h10M27 26h6"/></svg>',
+  wire: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 14h16a8 8 0 0 1 8 8v0a8 8 0 0 0 8 8h16"/><rect x="2" y="10" width="6" height="8" rx="2"/><rect x="56" y="26" width="6" height="8" rx="2"/><path d="M18 32h12"/></svg>',
+  breaker: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="16" y="4" width="32" height="36" rx="3"/><path d="M24 12h6M24 20h6M24 28h6"/><rect x="34" y="9" width="8" height="6" rx="1"/><rect x="34" y="17" width="8" height="6" rx="1"/><rect x="34" y="25" width="8" height="6" rx="1"/></svg>',
+  solar: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 8h36l6 20H8z"/><path d="M20 8l-4 20M44 8l4 20M11 18h42"/><path d="M32 28v10"/><path d="M24 40h16"/></svg>',
+  deck: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="6" y="10" width="52" height="24" rx="2"/><path d="M6 16h52M6 22h52M6 28h52"/><path d="M20 10v24M44 10v24"/></svg>',
+  frame: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="8" y="10" width="48" height="24"/><path d="M8 22h48"/><path d="M24 10v24M40 10v24"/></svg>',
+  pylon: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="16" y="4" width="8" height="36" rx="1"/><rect x="40" y="4" width="8" height="36" rx="1"/><path d="M6 30h52" stroke-dasharray="4 3"/><path d="M12 14h40"/></svg>',
+  bumper: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 10h30a12 12 0 0 1 0 24H10z"/><path d="M10 4v36"/><path d="M22 16v12M32 16v12"/></svg>',
+  cleat: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 18c-4 0-6 3-6 5s2 5 6 5h36c4 0 6-3 6-5s-2-5-6-5"/><rect x="22" y="20" width="20" height="6" rx="2"/><path d="M20 34v4M44 34v4"/></svg>',
+  box: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 16h44v20a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2z"/><path d="M8 16l6-8h36l6 8"/><rect x="28" y="22" width="8" height="4" rx="1"/></svg>',
+  ladder: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M22 4v32a6 6 0 0 0 6 6M42 4v32"/><path d="M22 12h20M22 20h20M22 28h20"/><path d="M6 40h52" stroke-dasharray="3 3"/></svg>',
+  platform: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="8" y="14" width="48" height="8" rx="2"/><path d="M14 22v10M50 22v10"/><path d="M4 36c6-4 10 4 16 0s10 4 16 0 10 4 16 0"/><path d="M8 18h48"/></svg>',
+  rail: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 38V14a6 6 0 0 1 6-6h24a6 6 0 0 1 6 6v24"/><path d="M22 38V18M42 38V18"/><path d="M6 38h52"/></svg>',
+  anode: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="18" y="12" width="28" height="16" rx="3"/><path d="M14 20h4M46 20h4"/><path d="M30 16l-3 6h6l-3 6"/><path d="M8 36c6-4 10 4 16 0s10 4 16 0 10 4 16 0"/></svg>',
+  light: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M24 10h16l6 12H18z"/><path d="M26 22v6h12v-6"/><path d="M32 28v10"/><path d="M12 14l-6-4M52 14l6-4M32 8V2"/></svg>',
+  tool: '<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M40 6a8 8 0 0 0-8 12L14 36l4 4 18-18a8 8 0 0 0 12-8l-6 6-6-2-2-6z"/><path d="M12 8l10 10"/></svg>'
+};
+
+const INST_CATS = [
+  { id:'boat-lifts', label:'Boat Lifts', series:[
+    { name:'Cable Lift Systems', items:[
+      { name:'Elevate 10K Cable Lift', icon:'lift', href:'#learn-lifts' },
+      { name:'Elevate 16K Cable Lift', icon:'lift', href:'#learn-lifts' },
+      { name:'Elevate 24K Cable Lift', icon:'lift', href:'#learn-lifts' },
+      { name:'Cable Winder Drums', icon:'pulley', href:'#hardware' },
+      { name:'Lift Cables & Terminals', icon:'cable', href:'#hardware' },
+      { name:'Stainless Cable Kits', icon:'cable', href:'#hardware' }
+    ]},
+    { name:'Hydraulic Lifts', items:[
+      { name:'Elevate Hydraulic 12K', icon:'hydraulic', href:'#learn-lifts' },
+      { name:'Elevate Hydraulic 20K', icon:'hydraulic', href:'#learn-lifts' },
+      { name:'Hydraulic Power Unit', icon:'motor' },
+      { name:'Hydraulic Hose Kits', icon:'cable' }
+    ]},
+    { name:'Cradles & Bunks', items:[
+      { name:'Aluminum Lift Cradle', icon:'cradle', href:'#hardware' },
+      { name:'Bunk Mount Brackets', icon:'mount', href:'#hardware' },
+      { name:'Carpeted Bunk Boards', icon:'deck' },
+      { name:'Adjustable Bunk Rails', icon:'frame' }
+    ]},
+    { name:'Pulleys & Sheaves', items:[
+      { name:'Nylon Sheave Blocks', icon:'pulley', href:'#hardware' },
+      { name:'Stainless Pulley Sets', icon:'pulley', href:'#hardware' },
+      { name:'Cable Keepers', icon:'cable' },
+      { name:'Sheave Pin Kits', icon:'tool' }
+    ]},
+    { name:'Piling & Beam Mounts', items:[
+      { name:'Wood Piling Brackets', icon:'piling' },
+      { name:'Concrete Piling Mounts', icon:'piling' },
+      { name:'Adjustable Beam Mounts', icon:'mount' }
+    ]},
+    { name:'Guide Poles', items:[
+      { name:'60″ LED Guide Poles', icon:'guidepole', href:'#shop' },
+      { name:'72″ PVC Guide Poles', icon:'guidepole', href:'#shop' },
+      { name:'Clamp-On Guide Bases', icon:'mount' }
+    ]},
+    { name:'Catwalks & Walkways', items:[
+      { name:'Aluminum Catwalks', icon:'catwalk', href:'#hardware' },
+      { name:'Catwalk Rail Kits', icon:'rail' },
+      { name:'Catwalk Mount Brackets', icon:'mount' }
+    ]}
+  ]},
+
+  { id:'pwc-lifts', label:'Jet Ski Lifts', series:[
+    { name:'Elevate PWC Lifts', items:[
+      { name:'Elevate PWC 1500', icon:'jetski', href:'#boatlift' },
+      { name:'Elevate PWC Drive-On', icon:'jetski', href:'#boatlift' },
+      { name:'Floating PWC Lift', icon:'platform', href:'#boatlift' }
+    ]},
+    { name:'Bunks & Rollers', items:[
+      { name:'PWC Bunk Kit', icon:'cradle' },
+      { name:'Keel Rollers', icon:'pulley' },
+      { name:'Side Guide Bunks', icon:'frame' }
+    ]},
+    { name:'Mounting Hardware', items:[
+      { name:'Dock Edge Mounts', icon:'mount' },
+      { name:'Piling Mount Kit', icon:'piling' },
+      { name:'Freestanding Legs', icon:'frame' }
+    ]},
+    { name:'PWC Accessories', items:[
+      { name:'PWC Lift Cover', icon:'box', href:'#shop' },
+      { name:'Bow Stop Assembly', icon:'bumper' },
+      { name:'Lift Level Indicator', icon:'sensor' }
+    ]}
+  ]},
+
+  { id:'motors', label:'Motors & Drives', series:[
+    { name:'Direct Drive Motors', items:[
+      { name:'Elevate 1HP Direct Drive', icon:'motor', href:'#motors' },
+      { name:'Elevate 2HP Direct Drive', icon:'motor', href:'#motors' },
+      { name:'Elevate 3HP Direct Drive', icon:'motor', href:'#motors' }
+    ]},
+    { name:'Gear Drives', items:[
+      { name:'Worm Gear Drive', icon:'gear', href:'#motors' },
+      { name:'Planetary Gear Drive', icon:'gear', href:'#motors' },
+      { name:'Drive Shaft Couplers', icon:'tool' }
+    ]},
+    { name:'Motor Mounts', items:[
+      { name:'Universal Motor Mount', icon:'mount' },
+      { name:'Stainless Motor Plate', icon:'mount' },
+      { name:'Vibration Isolators', icon:'bumper' }
+    ]},
+    { name:'Motor Enclosures', items:[
+      { name:'Aluminum Motor Box', icon:'box' },
+      { name:'Marine Vinyl Cover', icon:'box' },
+      { name:'Vented Motor Housing', icon:'breaker' }
+    ]}
+  ]},
+
+  { id:'controls', label:'Remotes & Controls', series:[
+    { name:'Elevate Remote', items:[
+      { name:'Elevate Lift Remote', icon:'remote', href:'#config' },
+      { name:'Remote Receiver Module', icon:'sensor', href:'#config' },
+      { name:'Remote Wall Mount', icon:'mount' }
+    ]},
+    { name:'Switches & Boxes', items:[
+      { name:'Weatherproof Toggle Switch', icon:'switch', href:'#hardware' },
+      { name:'Rocker Switch Panel', icon:'switch' },
+      { name:'NEMA Control Box', icon:'breaker' }
+    ]},
+    { name:'Limit Switches & Sensors', items:[
+      { name:'Upper Limit Switch', icon:'sensor' },
+      { name:'Lower Limit Switch', icon:'sensor' },
+      { name:'Water Level Sensor', icon:'sensor' }
+    ]},
+    { name:'Elevate App', items:[
+      { name:'App Pairing & Setup', icon:'app', href:'#app-plans' },
+      { name:'Wi-Fi Bridge', icon:'app', href:'#app-plans' },
+      { name:'Firmware Updates', icon:'app', href:'#app-plans' }
+    ]}
+  ]},
+
+  { id:'electrical', label:'Electrical', series:[
+    { name:'Wiring & Conduit', items:[
+      { name:'Marine Wire Kits', icon:'wire' },
+      { name:'PVC Conduit Runs', icon:'wire' },
+      { name:'Watertight Junction Boxes', icon:'breaker' }
+    ]},
+    { name:'Power & Protection', items:[
+      { name:'GFCI Breaker Panel', icon:'breaker' },
+      { name:'Surge Protector', icon:'breaker' },
+      { name:'Disconnect Switch', icon:'switch' }
+    ]},
+    { name:'Solar Power', items:[
+      { name:'Solar Panel Kit', icon:'solar', href:'#shop' },
+      { name:'Charge Controller', icon:'breaker' },
+      { name:'Deep-Cycle Battery Box', icon:'box' }
+    ]},
+    { name:'Grounding & Bonding', items:[
+      { name:'Bonding Wire Kit', icon:'wire' },
+      { name:'Ground Rod Assembly', icon:'piling' },
+      { name:'Galvanic Isolator', icon:'anode' }
+    ]}
+  ]},
+
+  { id:'structure', label:'Dock Structure', series:[
+    { name:'Decking', items:[
+      { name:'Wear-Deck Decking', icon:'deck', href:'#qs-structure' },
+      { name:'Composite Decking', icon:'deck', href:'#qs-structure' },
+      { name:'Structural Wood', icon:'deck', href:'#qs-structure' }
+    ]},
+    { name:'Framing', items:[
+      { name:'Aluminum Dock Frames', icon:'frame' },
+      { name:'Stringer Brackets', icon:'mount' },
+      { name:'Joist Hangers', icon:'mount' }
+    ]},
+    { name:'Pilings & Posts', items:[
+      { name:'Wood Pylons', icon:'pylon', href:'#qs-structure' },
+      { name:'Piling Caps', icon:'piling' },
+      { name:'Piling Wraps', icon:'pylon' }
+    ]}
+  ]},
+
+  { id:'docking', label:'Docking', series:[
+    { name:'Bumpers & Fenders', items:[
+      { name:'Dock Edge Bumpers', icon:'bumper', href:'#qs-docking' },
+      { name:'Corner Bumpers', icon:'bumper', href:'#qs-docking' },
+      { name:'Piling Fenders', icon:'bumper' }
+    ]},
+    { name:'Cleats & Ties', items:[
+      { name:'Stainless Cleats', icon:'cleat', href:'#qs-docking' },
+      { name:'Flip-Up Cleats', icon:'cleat' },
+      { name:'Mooring Whips', icon:'rail' }
+    ]},
+    { name:'Storage', items:[
+      { name:'Dock Boxes', icon:'box', href:'#qs-docking' },
+      { name:'Rod Holders', icon:'rail' }
+    ]}
+  ]},
+
+  { id:'access', label:'Water Access', series:[
+    { name:'Steps & Ladders', items:[
+      { name:'Dock Steps', icon:'ladder', href:'#qs-access' },
+      { name:'Retractable Ladder', icon:'ladder', href:'#qs-access' },
+      { name:'Pontoon Ladder', icon:'ladder' }
+    ]},
+    { name:'Platforms', items:[
+      { name:'Swim Platforms', icon:'platform', href:'#qs-access' },
+      { name:'Kayak Launch', icon:'platform' }
+    ]},
+    { name:'Rails & Grab Bars', items:[
+      { name:'Handrails', icon:'rail', href:'#qs-access' },
+      { name:'Grab Bars', icon:'rail' }
+    ]}
+  ]},
+
+  { id:'others', label:'Others', series:[
+    { name:'Corrosion Protection', items:[
+      { name:'Zinc Anode Kit', icon:'anode', href:'#shop' },
+      { name:'Sacrificial Hull Anodes', icon:'anode' }
+    ]},
+    { name:'Lighting', items:[
+      { name:'Dock Lighting', icon:'light', href:'#shop' },
+      { name:'Under-Deck LEDs', icon:'light' },
+      { name:'Piling Lights', icon:'light' }
+    ]},
+    { name:'Tools & Fasteners', items:[
+      { name:'Install Tool Kit', icon:'tool' },
+      { name:'Stainless Fastener Set', icon:'tool' }
+    ]}
+  ]}
+];
+
+let instCatIdx = 0;
+let instSeriesIdx = 0;
+
+function renderInstall() {
+  const tabs = document.getElementById('instTabs');
+  const side = document.getElementById('instSide');
+  const grid = document.getElementById('instGrid');
+  if (!tabs || !side || !grid) return;
+
+  tabs.innerHTML = INST_CATS.map(function(c, i) {
+    return '<button class="inst-tab' + (i === instCatIdx ? ' active' : '') + '" data-inst-cat="' + i + '">' + c.label + '</button>';
+  }).join('');
+
+  const cat = INST_CATS[instCatIdx];
+  side.innerHTML = cat.series.map(function(s, i) {
+    return '<button class="inst-side-item' + (i === instSeriesIdx ? ' active' : '') + '" data-inst-series="' + i + '">' + s.name + '</button>';
+  }).join('');
+
+  const items = cat.series[instSeriesIdx].items;
+  grid.innerHTML = items.map(function(it) {
+    return '<a class="inst-card" href="' + (it.href || '#contact') + '">' +
+             '<div class="inst-card-title">' + it.name + '</div>' +
+             '<div class="inst-card-art">' + (INST_ICONS[it.icon] || INST_ICONS.tool) + '</div>' +
+           '</a>';
+  }).join('');
+}
+
+document.addEventListener('click', function(e) {
+  const tab = e.target.closest('[data-inst-cat]');
+  if (tab) {
+    instCatIdx = parseInt(tab.getAttribute('data-inst-cat'), 10);
+    instSeriesIdx = 0;
+    renderInstall();
+    return;
+  }
+  const ser = e.target.closest('[data-inst-series]');
+  if (ser) {
+    instSeriesIdx = parseInt(ser.getAttribute('data-inst-series'), 10);
+    renderInstall();
+    return;
+  }
+  const scroller = e.target.closest('[data-inst-scroll]');
+  if (scroller) {
+    e.preventDefault();
+    const target = document.getElementById(scroller.getAttribute('data-inst-scroll'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 });
 
 // ── Carousel ──
@@ -4537,7 +4991,8 @@ var searchIndex = [
   { name: 'Foam Dock Bumper', meta: 'Dock protection', href: '#home', tags: 'foam bumper dock protection cushion impact' },
   { name: 'Vinyl Dock Edge', meta: 'Edge protection', href: '#home', tags: 'vinyl edge dock protection trim profile' },
   { name: 'Build Your Dock', meta: 'Free consultation with our experts', href: '#build', tags: 'build consultation expert help design custom project' },
-  { name: 'Wiring Diagrams', meta: 'Installation resources', href: '#home', tags: 'wiring diagram install installation electric schematic' },
+  { name: 'Product Installation', meta: 'How-to guides and technical help', href: '#install', tags: 'installation install guides how-to setup mounting technical help support' },
+  { name: 'Wiring Diagrams', meta: 'Installation resources', href: '#install', tags: 'wiring diagram install installation electric schematic' },
   { name: 'Contact Us', meta: 'Get in touch with our team', href: '#build', tags: 'contact us phone email support help' },
 ];
 
@@ -4597,6 +5052,7 @@ if (location.hash === '#account') showPage('account');
 if (location.hash === '#our-story') showPage('our-story');
 if (location.hash === '#app-plans') showPage('app-plans');
 if (location.hash === '#contact') showPage('contact');
+if (location.hash === '#install') showPage('install');
 
 // ── Hardware page: category sidebar + product data ──
 var hwCatalog = {
