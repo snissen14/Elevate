@@ -1135,6 +1135,50 @@ body {
 .page-hidden { display: none !important; }
 
 /* ═══════════════════════════════════
+   PAGE LOADER (white buffer screen)
+   ═══════════════════════════════════ */
+.site-loader {
+  position: fixed; inset: 0; z-index: 9500;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+.site-loader.is-active {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  /* cover instantly so the page swap underneath is never glimpsed */
+  transition: none;
+}
+
+.site-loader-mark {
+  position: relative;
+  width: 168px; height: 168px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-loader-logo {
+  width: 108px; height: auto; display: block;
+  animation: loaderPulse 1.8s ease-in-out infinite;
+}
+.site-loader-ring {
+  position: absolute; inset: 0;
+  width: 168px; height: 168px;
+  animation: loaderSpin 1.1s linear infinite;
+}
+.site-loader-ring-track { stroke: #EAECEF; }
+.site-loader-ring-arc   { stroke: #4B5EA1; stroke-linecap: round; }
+
+@keyframes loaderSpin { to { transform: rotate(360deg); } }
+@keyframes loaderPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader-ring { animation-duration: 2.4s; }
+  .site-loader-logo { animation: none; }
+}
+
+/* ═══════════════════════════════════
    COOKIE CONSENT BANNER
    ═══════════════════════════════════ */
 .cookie-banner {
@@ -1244,6 +1288,22 @@ body {
 </style>
 </head>
 <body>
+
+<!-- ════════════════════════════════════════
+     PAGE LOADER — white buffer shown on first
+     load and between page transitions
+     ════════════════════════════════════════ -->
+<div class="site-loader is-active" id="siteLoader" role="status" aria-live="polite" aria-label="Loading">
+  <div class="site-loader-mark">
+    <svg class="site-loader-ring" viewBox="0 0 100 100" aria-hidden="true">
+      <circle class="site-loader-ring-track" cx="50" cy="50" r="45" fill="none" stroke-width="3"/>
+      <circle class="site-loader-ring-arc" cx="50" cy="50" r="45" fill="none" stroke-width="3"
+              stroke-dasharray="70 213" stroke-dashoffset="0"/>
+    </svg>
+    <img class="site-loader-logo" src="logo_crisp.png" alt="Dock Solutions">
+  </div>
+</div>
+<noscript><style>.site-loader { display: none !important; }</style></noscript>
 
 <!-- ════════════════════════════════════════
      PAGE: HOME
@@ -5446,6 +5506,98 @@ document.getElementById('pdpQtyMinus').addEventListener('click', function() {
 
   if (prev) prev.addEventListener('click', function() { offset = Math.max(0, offset - 1); renderBoats(); });
   if (next) next.addEventListener('click', function() { offset = Math.min(allBoats.length - 3, offset + 1); renderBoats(); });
+})();
+</script>
+
+<script>
+(function() {
+  var loader = document.getElementById('siteLoader');
+  if (!loader) return;
+
+  var MIN_VISIBLE  = 450;   // never flash — keep the buffer up at least this long
+  var FIRST_LOAD_MAX = 6000; // failsafe if load never fires (big hero video, slow link)
+  var NAV_MAX      = 1500;  // cap the wait for a clicked page's images
+  var shownAt = Date.now();
+  var hideTimer = null;
+  var token = 0;
+
+  function show() {
+    if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+    if (!loader.classList.contains('is-active')) {
+      loader.classList.add('is-active');
+      shownAt = Date.now();
+    }
+  }
+
+  function hide() {
+    var waited = Date.now() - shownAt;
+    var delay = Math.max(0, MIN_VISIBLE - waited);
+    if (hideTimer) clearTimeout(hideTimer);
+    hideTimer = setTimeout(function() {
+      loader.classList.remove('is-active');
+      hideTimer = null;
+    }, delay);
+  }
+
+  // Wait for the images the visitor is about to see (above the fold) in the
+  // page that was just switched in, then drop the buffer.
+  function whenPageReady(pageId, done) {
+    var container = document.getElementById('page-' + pageId);
+    var finished = false;
+    function finish() {
+      if (finished) return;
+      finished = true;
+      done();
+    }
+    var cap = setTimeout(finish, NAV_MAX);
+
+    requestAnimationFrame(function() {
+      if (!container) { clearTimeout(cap); finish(); return; }
+      var pending = [];
+      var imgs = container.querySelectorAll('img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        if (img.complete) continue;
+        var box = img.getBoundingClientRect();
+        // Skip lazy/below-the-fold images — they'd hold the buffer up forever.
+        if (box.top > window.innerHeight * 1.2) continue;
+        pending.push(img);
+      }
+      if (!pending.length) { clearTimeout(cap); finish(); return; }
+
+      var left = pending.length;
+      function settle() {
+        left--;
+        if (left <= 0) { clearTimeout(cap); finish(); }
+      }
+      pending.forEach(function(img) {
+        img.addEventListener('load', settle, { once: true });
+        img.addEventListener('error', settle, { once: true });
+      });
+    });
+  }
+
+  // ── First load: the buffer is already painted (is-active is in the markup).
+  if (document.readyState === 'complete') {
+    hide();
+  } else {
+    window.addEventListener('load', hide);
+    setTimeout(hide, FIRST_LOAD_MAX);
+  }
+
+  // ── Page transitions: wrap the SPA page switcher.
+  var originalShowPage = window.showPage;
+  if (typeof originalShowPage === 'function') {
+    window.showPage = function(page) {
+      var mine = ++token;
+      show();
+      var result = originalShowPage.apply(this, arguments);
+      whenPageReady(page, function() {
+        if (mine === token) hide();
+      });
+      return result;
+    };
+  }
 })();
 </script>
 
