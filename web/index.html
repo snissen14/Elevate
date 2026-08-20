@@ -1152,46 +1152,19 @@ body {
   border-radius: 28px;
   max-width: 1740px;
   margin: 0 auto;
-  padding: 72px 64px;
-  display: grid;
-  grid-template-columns: 1fr minmax(320px, 640px) 1fr;
-  align-items: center;
-  gap: 32px;
+  padding: 40px 48px;
 }
-.product-band-col { text-align: center; padding: 0 8px; }
-.product-band-col h3 {
-  font-size: 40px; font-weight: 600; line-height: 1.15;
-  letter-spacing: -1px; margin-bottom: 18px;
-}
-.product-band-col p {
-  font-size: 17px; line-height: 1.55; max-width: 380px;
-  margin: 0 auto;
-}
-/* left panel reads as the one you've moved past, right as the current one */
-.product-band-col.is-muted h3 { color: #9AA0A6; }
-.product-band-col.is-muted p  { color: #A9AEB4; }
-.product-band-col.is-active h3 { color: #171A20; }
-.product-band-col.is-active p  { color: #5C5E62; }
-
-.product-band-media { display: flex; align-items: center; justify-content: center; }
-.product-band-media img {
-  width: 100%; max-width: 640px; height: auto; display: block;
+.product-band-card img {
+  width: 100%; max-width: 1400px; height: auto;
+  display: block; margin: 0 auto;
 }
 
 @media (max-width: 1180px) {
-  .product-band-card {
-    grid-template-columns: 1fr;
-    padding: 56px 32px;
-    gap: 40px;
-  }
-  .product-band-col h3 { font-size: 32px; letter-spacing: -0.6px; }
-  .product-band-media { order: -1; }
+  .product-band-card { padding: 32px 28px; }
 }
 @media (max-width: 560px) {
   .product-band { padding: 32px 16px 48px; }
-  .product-band-card { padding: 40px 22px; border-radius: 20px; }
-  .product-band-col h3 { font-size: 27px; }
-  .product-band-col p { font-size: 15.5px; }
+  .product-band-card { padding: 22px 16px; border-radius: 20px; }
 }
 
 /* ═══════════════════════════════════
@@ -1483,17 +1456,7 @@ body {
   <!-- Product Band -->
   <section class="product-band">
     <div class="product-band-card">
-      <div class="product-band-col is-muted">
-        <h3>Engineered for your waterfront</h3>
-        <p>Every Elevate lift is matched to your hull, its weight, and the water you keep it in.</p>
-      </div>
-      <div class="product-band-media">
-        <img src="boat%20on%20lift.png" alt="Boat resting on an Elevate lift" loading="lazy">
-      </div>
-      <div class="product-band-col is-active">
-        <h3>Control it from anywhere</h3>
-        <p>Raise, lower, and check on your lift from your phone — with alerts the moment conditions change.</p>
-      </div>
+      <img src="Elevate%20app%20banner%201.jpg" alt="Always know your boat is secure — monitor and control your boat lift 24/7 with the Elevate Remote app" loading="lazy">
     </div>
   </section>
 
