@@ -1,0 +1,11 @@
+{
+  "name": "Elevate – Boat Lift Control Systems",
+  "short_name": "Elevate",
+  "icons": [
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "theme_color": "#3E4A87",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
