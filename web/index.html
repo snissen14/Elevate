@@ -1141,30 +1141,123 @@ body {
 .page-hidden { display: none !important; }
 
 /* ═══════════════════════════════════
-   HOME: PRODUCT BAND (white card on black)
+   HOME: PRODUCT BAND (WHOOP-style: white card + two media tiles)
    ═══════════════════════════════════ */
 .product-band {
   background: #000;
-  padding: 56px 48px 72px;
+  padding: 64px 24px 88px;
 }
-.product-band-card {
-  background: #fff;
-  border-radius: 28px;
-  max-width: 1740px;
-  margin: 0 auto;
-  padding: 40px 48px;
+.product-band-inner { max-width: 1200px; margin: 0 auto; }
+
+/* centered white pill CTA, straddling the band edges */
+.pb-cta {
+  display: block; width: max-content; margin: 0 auto;
+  background: #fff; color: #171A20;
+  padding: 17px 36px; border-radius: 8px;
+  font-size: 14px; font-weight: 700; letter-spacing: 1.6px;
+  text-transform: uppercase; text-decoration: none;
+  transition: background 0.2s;
 }
-.product-band-card img {
-  width: 100%; max-width: 1400px; height: auto;
-  display: block; margin: 0 auto;
+.pb-cta:hover { background: #E4E4E4; }
+.pb-cta-top { margin-bottom: 46px; }
+.pb-cta-float {
+  position: absolute; left: 50%; bottom: 56px;
+  transform: translateX(-50%); z-index: 5;
 }
 
-@media (max-width: 1180px) {
-  .product-band-card { padding: 32px 28px; }
+/* white card: text column / device / text column */
+.product-band-card {
+  position: relative; overflow: hidden;
+  background: #fff; border-radius: 18px;
+  min-height: 496px;
+  padding: 60px 56px;
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 440px) 1fr;
+  align-items: center; gap: 28px;
+}
+.pb-col { text-align: center; }
+/* the media is absolutely positioned, so the columns claim their tracks explicitly */
+.pb-col.is-muted  { grid-column: 1; }
+.pb-col.is-active { grid-column: 3; }
+.pb-col h3 {
+  font-size: 34px; font-weight: 700; line-height: 1.12;
+  letter-spacing: -0.6px; margin: 0 auto 14px; max-width: 340px;
+}
+.pb-col p { font-size: 16px; line-height: 1.5; max-width: 340px; margin: 0 auto; }
+/* left column reads as the one you've moved past, right as the current one */
+.pb-col.is-muted h3 { color: #9AA0A6; }
+.pb-col.is-muted p  { color: #A9AEB4; }
+.pb-col.is-active h3 { color: #171A20; }
+.pb-col.is-active p  { color: #5C5E62; }
+
+/* device sits on the card's bottom edge, lift render overlapping to the right */
+.pb-media {
+  position: absolute; left: calc(50% - 96px); bottom: 0;
+  transform: translateX(-50%); width: 230px; z-index: 1;
+}
+.pb-phone { position: relative; z-index: 2; width: 100%; aspect-ratio: 241 / 468; overflow: hidden; background: #fff; }
+/* crops the phone out of the app banner: scale 1000/241, bottom-aligned */
+.pb-phone img { position: absolute; bottom: 0; left: -117.43%; width: 414.94%; max-width: none; }
+/* the lift render tucks in behind the phone, on the card's white ground */
+.pb-lift { position: absolute; left: 92%; bottom: 17%; width: 210px; z-index: 1; }
+
+/* two media tiles below the card */
+.pb-tiles {
+  position: relative;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-top: 24px;
+}
+.pb-tile {
+  position: relative; overflow: hidden; border-radius: 18px; aspect-ratio: 6 / 7;
+  background: linear-gradient(160deg, #2A343D 0%, #10171D 100%);
+}
+.pb-tile video, .pb-tile img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.pb-tile::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.22) 42%, rgba(0,0,0,0) 68%);
+}
+.pb-tile-text { position: relative; z-index: 2; padding: 38px 32px 0; text-align: center; }
+.pb-tile-text h3 {
+  font-size: 32px; font-weight: 700; color: #fff;
+  line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 10px;
+}
+.pb-tile-text p {
+  font-size: 16px; color: rgba(255,255,255,0.9); line-height: 1.5;
+  max-width: 420px; margin: 0 auto;
+}
+
+@media (max-width: 1080px) {
+  .product-band { padding: 48px 20px 72px; }
+  .product-band-card {
+    grid-template-columns: 1fr; min-height: 0;
+    padding: 48px 28px 0; gap: 34px;
+  }
+  .pb-col.is-muted, .pb-col.is-active { grid-column: 1; }
+  .pb-col h3 { font-size: 28px; letter-spacing: -0.4px; }
+  /* stacked: device drops to the bottom edge of the card, nudged left so the
+     phone + lift composition stays optically centred */
+  .pb-media {
+    order: 3; position: relative; left: -86px; bottom: auto;
+    transform: none; margin: 0 auto; width: 210px;
+  }
+  .pb-lift { width: 190px; }
+  .pb-tiles { grid-template-columns: 1fr; }
+  .pb-tile { aspect-ratio: 4 / 3; }
+  .pb-cta-float { position: static; transform: none; margin-top: 28px; }
 }
 @media (max-width: 560px) {
-  .product-band { padding: 32px 16px 48px; }
-  .product-band-card { padding: 22px 16px; border-radius: 20px; }
+  .product-band { padding: 32px 16px 56px; }
+  .product-band-card { padding: 36px 20px 0; border-radius: 14px; }
+  .pb-col h3 { font-size: 25px; }
+  .pb-col p { font-size: 15px; }
+  .pb-media { width: 170px; left: -68px; }
+  .pb-lift { width: 150px; bottom: 18%; }
+  .pb-tile { border-radius: 14px; }
+  .pb-tile-text { padding: 28px 20px 0; }
+  .pb-tile-text h3 { font-size: 24px; }
+  .pb-tile-text p { font-size: 15px; }
 }
 
 /* ═══════════════════════════════════
@@ -1455,8 +1548,49 @@ body {
 
   <!-- Product Band -->
   <section class="product-band">
-    <div class="product-band-card">
-      <img src="Elevate%20app%20banner%201.jpg" alt="Always know your boat is secure — monitor and control your boat lift 24/7 with the Elevate Remote app" loading="lazy">
+    <div class="product-band-inner">
+
+      <a class="pb-cta pb-cta-top" href="#app-plans">Get the App</a>
+
+      <div class="product-band-card">
+        <div class="pb-col is-muted">
+          <h3>Get 24/7 lift monitoring</h3>
+          <p>See position, status, and battery for your boat lift at any time, from anywhere.</p>
+        </div>
+        <div class="pb-media">
+          <div class="pb-phone">
+            <img src="Elevate%20app%20banner%201.jpg" alt="The Elevate app showing lift status with raise, lower, and stop controls" loading="lazy">
+          </div>
+          <img class="pb-lift" src="boat%20on%20lift.png" alt="Boat resting on an Elevate lift" loading="lazy">
+        </div>
+        <div class="pb-col is-active">
+          <h3>Always know it's secure</h3>
+          <p>Raise, lower, and lock from your phone — and get an alert the moment anything changes.</p>
+        </div>
+      </div>
+
+      <div class="pb-tiles">
+        <div class="pb-tile">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="istockphoto-2186739185-640_adpp_is.mp4" type="video/mp4">
+          </video>
+          <div class="pb-tile-text">
+            <h3>Know your lift with confidence</h3>
+            <p>Marine-grade hardware, sized and installed by the team that has built 15,000+ waterfronts.</p>
+          </div>
+        </div>
+        <div class="pb-tile">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="istockphoto-2155755408-640_adpp_is.mp4" type="video/mp4">
+          </video>
+          <div class="pb-tile-text">
+            <h3>The most customizable lift</h3>
+            <p>Configured to your hull, your water depth, and the way you use your dock.</p>
+          </div>
+        </div>
+        <a class="pb-cta pb-cta-float" href="#build">Build My Lift</a>
+      </div>
+
     </div>
   </section>
 
