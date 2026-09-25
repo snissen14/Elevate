@@ -297,49 +297,6 @@ body {
   margin-top: 8px;
 }
 
-.slide-buttons {
-  display: flex; gap: 16px; margin-top: 28px;
-}
-
-.btn-order {
-  padding: 10px 56px; border-radius: 4px; font-size: 14px; font-weight: 500;
-  background: #3E6AE1; color: #fff; border: none; cursor: pointer;
-  transition: background 0.15s;
-}
-.btn-order:hover { background: #3560CC; }
-
-.btn-learnmore {
-  padding: 10px 56px; border-radius: 4px; font-size: 14px; font-weight: 500;
-  background: rgba(255,255,255,0.85); color: #171A20; border: none; cursor: pointer;
-  transition: background 0.15s;
-}
-.btn-learnmore:hover { background: rgba(255,255,255,1); }
-
-/* Arrows */
-.arrow {
-  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
-  width: 40px; height: 40px; border-radius: 50%;
-  background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
-  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s;
-}
-.arrow:hover { background: rgba(255,255,255,0.3); }
-.arrow svg { width: 18px; height: 18px; color: #fff; }
-.arrow-left { left: 20px; }
-.arrow-right { right: 20px; }
-
-/* Dots */
-.carousel-dots {
-  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 10;
-  display: flex; gap: 8px;
-}
-.dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: rgba(255,255,255,0.4); border: none; cursor: pointer;
-  transition: background 0.2s;
-}
-.dot.active { background: #fff; }
-
 /* App showcase section */
 .app-showcase {
   background: #fff; padding: 80px 48px; overflow: hidden;
@@ -482,8 +439,6 @@ body {
   .home-nav-center { display: none; }
   .slide-title { font-size: 28px; }
   .slide-content { padding-top: 100px; }
-  .slide-buttons { flex-direction: column; gap: 10px; }
-  .btn-order, .btn-learnmore { padding: 12px 40px; }
   .product-scroll-card { min-width: 85%; height: 340px; }
   .product-scroll-card-name { font-size: 22px; }
   .product-scroll-header { padding: 0 20px; }
@@ -1316,61 +1271,6 @@ body {
         </div>
       </div>
 
-      <!-- Slide 1 -->
-      <div class="slide">
-        <div class="slide-bg" style="background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);"></div>
-        <div class="slide-content">
-          <div class="slide-title" style="display:flex; align-items:center; justify-content:center; gap:12px;"><img src="elevate_logo_white_crop.png" alt="Elevate" style="height:42px;"> Remotes</div>
-          <div class="slide-subtitle">Smart Control, Boat Lift Remote</div>
-          <div class="slide-buttons">
-            <a class="btn-order" href="#config">Order Now</a>
-            <button class="btn-learnmore">Learn More</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="slide">
-        <div class="slide-bg" style="background: linear-gradient(180deg, #0c1821 0%, #1b2838 50%, #324a5f 100%);"></div>
-        <div class="slide-content">
-          <div class="slide-title">Dock &amp; Boat Protection</div>
-          <div class="slide-subtitle">Built To Absorb Every Impact</div>
-          <div class="slide-buttons">
-            <a class="btn-order" href="#config">Order Now</a>
-            <button class="btn-learnmore">Learn More</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="slide">
-        <div class="slide-bg" style="background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%);"></div>
-        <div class="slide-content">
-          <div class="slide-title">Water Access</div>
-          <div class="slide-subtitle">Safe, Comfortable Water Access</div>
-          <div class="slide-buttons">
-            <a class="btn-order" href="#config">Subscribe Now</a>
-            <button class="btn-learnmore">Learn More</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Arrows -->
-    <button class="arrow arrow-left" data-slide="-1">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <button class="arrow arrow-right" data-slide="1">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-    </button>
-
-    <!-- Dots -->
-    <div class="carousel-dots" id="carouselDots">
-      <button class="dot active" data-dot="0"></button>
-      <button class="dot" data-dot="1"></button>
-      <button class="dot" data-dot="2"></button>
-      <button class="dot" data-dot="3"></button>
     </div>
   </div>
 
@@ -3958,28 +3858,6 @@ window.addEventListener('hashchange', function() {
   showPage(h);
 });
 
-// ── Carousel ──
-
-let currentSlide = 0;
-const slideCount = 4;
-
-function slideCarousel(dir) {
-  currentSlide = (currentSlide + dir + slideCount) % slideCount;
-  updateCarousel();
-}
-
-function goToSlide(i) {
-  currentSlide = i;
-  updateCarousel();
-}
-
-function updateCarousel() {
-  document.getElementById('carouselTrack').style.transform = `translateX(-${currentSlide * 100}%)`;
-  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-}
-
-setInterval(() => slideCarousel(1), 6000);
-
 // ── Configurator Data ──
 
 const models = [
@@ -4347,14 +4225,6 @@ document.addEventListener('click', e => {
     track.scrollBy({ left: dir * 400, behavior: 'smooth' });
     return;
   }
-
-  // Carousel arrows
-  var arrow = e.target.closest('[data-slide]');
-  if (arrow) { slideCarousel(parseInt(arrow.getAttribute('data-slide'))); return; }
-
-  // Carousel dots
-  var dot = e.target.closest('[data-dot]');
-  if (dot) { goToSlide(parseInt(dot.getAttribute('data-dot'))); return; }
 
   // Motor configurator
   var mt = e.target.closest('[data-motortype]');
