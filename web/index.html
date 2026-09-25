@@ -357,6 +357,26 @@ body {
   .bene-card-title { padding: 26px 24px 0; font-size: 21px; }
 }
 
+/* ═══════════════════════════════════
+   ACCOUNT: sign-in form
+   ═══════════════════════════════════ */
+.acct-field {
+  width: 100%; padding: 15px 16px;
+  background: #F4F5F7; border: 1px solid transparent; border-radius: 10px;
+  font-size: 14px; color: #171A20; outline: none;
+  font-family: inherit; transition: border-color 0.15s, background 0.15s;
+}
+.acct-field::placeholder { color: #9AA0A6; }
+.acct-field:focus { background: #fff; border-color: #171A20; }
+.acct-social {
+  width: 100%; padding: 14px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #fff; border: 1px solid #E3E5E8; border-radius: 10px;
+  font-size: 14px; font-weight: 500; color: #171A20;
+  font-family: inherit; cursor: pointer; transition: background 0.15s, border-color 0.15s;
+}
+.acct-social:hover { background: #F8F9FA; border-color: #D0D1D2; }
+
 /* App showcase section */
 .app-showcase {
   background: #fff; padding: 80px 48px; overflow: hidden;
@@ -2520,51 +2540,62 @@ body {
   </nav>
 
   <!-- Login View -->
-  <div id="acctLoginView" style="max-width:480px; margin:80px auto; padding:0 24px;">
-    <div style="text-align:center; margin-bottom:40px;">
-      <div style="width:64px; height:64px; background:#F0F4FF; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3E6AE1" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      </div>
-      <h1 style="font-size:28px; font-weight:600; color:#171A20; margin:0;">Sign In</h1>
-      <p style="font-size:15px; color:#878A8F; margin-top:8px;">Access your account, orders, and resources.</p>
+  <div id="acctLoginView" style="max-width:420px; margin:96px auto 120px; padding:0 24px;">
+
+    <h1 style="font-size:28px; font-weight:700; color:#171A20; letter-spacing:-0.4px; margin:0;">Let&rsquo;s Sign you in</h1>
+    <p style="font-size:13px; color:#878A8F; margin:8px 0 26px;">Sign in your account</p>
+
+    <div style="display:flex; margin-bottom:22px; border:1px solid #E3E5E8; border-radius:10px; overflow:hidden;" id="acctRoleTabs">
+      <button data-acct-role="customer" style="flex:1; padding:11px; font-size:13px; font-weight:600; border:none; cursor:pointer; background:#171A20; color:#fff; transition:background 0.15s;">Customer</button>
+      <button data-acct-role="dealer" style="flex:1; padding:11px; font-size:13px; font-weight:600; border:none; cursor:pointer; background:#fff; color:#5C5E62; transition:background 0.15s;">Dealer</button>
     </div>
 
-    <div style="display:flex; gap:0; margin-bottom:28px; border:1px solid #D0D1D2; border-radius:8px; overflow:hidden;" id="acctRoleTabs">
-      <button data-acct-role="customer" style="flex:1; padding:12px; font-size:14px; font-weight:600; border:none; cursor:pointer; background:#171A20; color:#fff; transition:all 0.15s;">Customer</button>
-      <button data-acct-role="dealer" style="flex:1; padding:12px; font-size:14px; font-weight:600; border:none; cursor:pointer; background:#fff; color:#5C5E62; transition:all 0.15s; border-left:1px solid #D0D1D2;">Dealer</button>
-    </div>
-
-    <form id="acctLoginForm" autocomplete="on" style="display:flex; flex-direction:column; gap:16px;">
+    <form id="acctLoginForm" autocomplete="on" style="display:flex; flex-direction:column; gap:18px;">
       <div>
-        <label style="display:block; font-size:13px; font-weight:500; color:#171A20; margin-bottom:6px;">Email Address</label>
-        <input type="email" id="acctEmail" required placeholder="you@example.com" autocomplete="email" style="width:100%; padding:12px 14px; border:1px solid #D0D1D2; border-radius:8px; font-size:15px; outline:none; box-sizing:border-box; transition:border 0.15s;" onfocus="this.style.borderColor='#3E6AE1'" onblur="this.style.borderColor='#D0D1D2'">
+        <label for="acctEmail" style="display:block; font-size:13px; font-weight:600; color:#171A20; margin-bottom:8px;">Email</label>
+        <input type="email" id="acctEmail" required placeholder="Enter Your Email Address" autocomplete="email" class="acct-field">
       </div>
+
       <div>
-        <label style="display:block; font-size:13px; font-weight:500; color:#171A20; margin-bottom:6px;">Password</label>
+        <label for="acctPass" style="display:block; font-size:13px; font-weight:600; color:#171A20; margin-bottom:8px;">Password</label>
         <div style="position:relative;">
-          <input type="password" id="acctPass" required placeholder="Enter your password" autocomplete="current-password" style="width:100%; padding:12px 14px; border:1px solid #D0D1D2; border-radius:8px; font-size:15px; outline:none; box-sizing:border-box; transition:border 0.15s; padding-right:44px;" onfocus="this.style.borderColor='#3E6AE1'" onblur="this.style.borderColor='#D0D1D2'">
-          <button type="button" data-toggle-pass style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; padding:0; color:#878A8F;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <input type="password" id="acctPass" required placeholder="Enter Your Password" autocomplete="current-password" class="acct-field" style="padding-right:46px;">
+          <button type="button" data-toggle-pass aria-label="Show password" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; padding:0; display:flex; color:#878A8F;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          </button>
         </div>
       </div>
 
       <div id="acctDealerCode" style="display:none;">
-        <label style="display:block; font-size:13px; font-weight:500; color:#171A20; margin-bottom:6px;">Dealer Code</label>
-        <input type="text" placeholder="Enter your dealer code" style="width:100%; padding:12px 14px; border:1px solid #D0D1D2; border-radius:8px; font-size:15px; outline:none; box-sizing:border-box; transition:border 0.15s;" onfocus="this.style.borderColor='#3E6AE1'" onblur="this.style.borderColor='#D0D1D2'">
+        <label for="acctDealerCodeInput" style="display:block; font-size:13px; font-weight:600; color:#171A20; margin-bottom:8px;">Dealer Code</label>
+        <input type="text" id="acctDealerCodeInput" placeholder="Enter Your Dealer Code" class="acct-field">
       </div>
 
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-top:4px;">
-        <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#5C5E62; cursor:pointer;">
-          <input type="checkbox" style="accent-color:#3E6AE1;"> Remember me
-        </label>
-        <a href="#" style="font-size:13px; color:#3E6AE1; text-decoration:none; font-weight:500;">Forgot password?</a>
+      <button type="button" data-acct-social class="acct-social">
+        <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24s.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        Continue With Google
+      </button>
+
+      <button type="button" data-acct-social class="acct-social" style="margin-top:-6px;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#171A20" aria-hidden="true"><path d="M17.05 12.54c-.02-2.3 1.88-3.4 1.96-3.45-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.83-.81-3.01-.79-1.55.02-2.98.9-3.78 2.28-1.61 2.8-.41 6.94 1.16 9.21.77 1.11 1.68 2.36 2.88 2.31 1.16-.05 1.6-.75 3-.75 1.39 0 1.79.75 3.01.72 1.24-.02 2.03-1.13 2.79-2.25.88-1.29 1.24-2.54 1.26-2.6-.03-.01-2.42-.93-2.44-3.69M14.79 5.4c.64-.77 1.07-1.85.95-2.92-.92.04-2.03.61-2.69 1.38-.59.68-1.11 1.77-.97 2.82 1.03.08 2.07-.52 2.71-1.28"/></svg>
+        Continue With Apple
+      </button>
+
+      <div style="text-align:right; margin-top:-6px;">
+        <a href="#" style="font-size:13px; font-weight:500; color:#3E6AE1; text-decoration:none;">Forgot Password?</a>
       </div>
 
-      <button type="submit" style="width:100%; padding:14px; background:#171A20; color:#fff; border:none; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin-top:8px; transition:background 0.15s;" onmouseenter="this.style.background='#2A2D33'" onmouseleave="this.style.background='#171A20'">Sign In</button>
-
-      <div style="text-align:center; margin-top:12px;">
-        <span style="font-size:14px; color:#878A8F;">Don't have an account? </span>
-        <a href="#" data-acct-show="register" style="font-size:14px; color:#3E6AE1; text-decoration:none; font-weight:500;">Create one</a>
+      <div style="display:flex; align-items:center; gap:14px; margin:4px 0;">
+        <span style="font-size:12px; color:#878A8F; white-space:nowrap;">Or Sign With</span>
+        <span style="flex:1; height:1px; background:#E3E5E8;"></span>
       </div>
+
+      <div style="text-align:center;">
+        <span style="font-size:13px; color:#878A8F;">Don&rsquo;t have an account? </span>
+        <a href="#" data-acct-show="register" style="font-size:13px; color:#3E6AE1; text-decoration:none; font-weight:600;">Sign up</a>
+      </div>
+
+      <button type="submit" style="width:100%; padding:16px; background:#171A20; color:#fff; border:none; border-radius:10px; font-size:15px; font-weight:600; cursor:pointer; transition:background 0.15s;" onmouseenter="this.style.background='#000'" onmouseleave="this.style.background='#171A20'">Sign In</button>
     </form>
   </div>
 
@@ -5082,8 +5113,7 @@ renderMotor();
     });
   });
 
-  document.getElementById('acctLoginForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+  function signIn() {
     loginView.style.display = 'none';
     if (selectedRole === 'dealer') {
       dealerDash.style.display = 'block';
@@ -5092,6 +5122,16 @@ renderMotor();
       custDash.style.display = 'block';
       dealerDash.style.display = 'none';
     }
+  }
+
+  document.getElementById('acctLoginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    signIn();
+  });
+
+  // Google / Apple take the same demo route as the form
+  document.querySelectorAll('[data-acct-social]').forEach(function(btn) {
+    btn.addEventListener('click', signIn);
   });
 
   document.querySelectorAll('[data-acct-logout]').forEach(function(btn) {
