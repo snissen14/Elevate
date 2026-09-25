@@ -306,6 +306,12 @@ body {
   max-width: 2200px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: center;
 }
+.app-badge {
+  display: inline-flex; align-items: center;
+  background: #3E6AE1; color: #fff; border-radius: 999px;
+  padding: 11px 26px; margin-bottom: 18px;
+  font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+}
 .app-showcase-text h2 {
   font-size: clamp(38px, 2.15vw, 48px); font-weight: 600; letter-spacing: -1px;
   color: #171A20; line-height: 1.12; margin-bottom: 14px;
@@ -364,6 +370,7 @@ body {
   .app-showcase { padding: 64px 24px; }
 }
 @media (max-width: 768px) {
+  .app-badge { padding: 9px 20px; font-size: 12.5px; margin-bottom: 14px; }
   .app-showcase-text h2 { font-size: 28px; }
   .app-showcase-text .app-sub { font-size: 16px; margin-bottom: 24px; }
   .app-showcase { padding: 48px 20px; }
@@ -1278,6 +1285,7 @@ body {
   <section class="app-showcase">
     <div class="app-showcase-inner">
       <div class="app-showcase-text">
+        <span class="app-badge">New</span>
         <h2>Take Control, Be the Captain On and Off the Boat</h2>
         <p class="app-sub">Manage your boat lift from anywhere with the Elevate app. Monitor status, control your lift, and get maintenance alerts — all from your phone.</p>
         <div class="app-showcase-stats">
