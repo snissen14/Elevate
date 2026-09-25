@@ -342,27 +342,29 @@ body {
 
 /* App showcase section */
 .app-showcase {
-  background: #fff; padding: 80px 40px; overflow: hidden;
+  background: #fff; padding: 80px 48px; overflow: hidden;
 }
 .app-showcase-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  /* near full-bleed, with the media taking ~60% of the row */
+  max-width: 2200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: center;
 }
 .app-showcase-text h2 {
-  font-size: 36px; font-weight: 600; letter-spacing: -0.5px; color: #171A20;
-  line-height: 1.15; margin-bottom: 12px;
+  font-size: clamp(38px, 2.15vw, 48px); font-weight: 600; letter-spacing: -1px;
+  color: #171A20; line-height: 1.12; margin-bottom: 14px;
 }
 .app-showcase-text .app-sub {
-  font-size: 15px; color: #5C5E62; margin-bottom: 24px;
+  font-size: 18px; line-height: 1.5; color: #5C5E62; margin-bottom: 32px;
 }
 .app-showcase-stats {
-  display: flex; gap: 40px; margin-bottom: 28px;
+  display: flex; gap: 56px; margin-bottom: 34px;
 }
 .app-stat-value {
-  font-size: 36px; font-weight: 700; color: #171A20; letter-spacing: -0.5px;
+  font-size: clamp(36px, 1.9vw, 42px); font-weight: 700; color: #171A20;
+  letter-spacing: -1px; line-height: 1.1;
 }
 .app-stat-label {
-  font-size: 13px; color: #878A8F; margin-top: 2px;
+  font-size: 15px; color: #878A8F; margin-top: 4px;
 }
 .app-showcase-btns {
   display: flex; gap: 12px;
@@ -384,7 +386,7 @@ body {
   display: flex; align-items: stretch;
 }
 .app-video-block {
-  width: 100%; min-height: 420px; background: #1a1a1a; border-radius: 12px;
+  width: 100%; aspect-ratio: 16 / 9; background: #1a1a1a; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden; cursor: pointer;
 }
@@ -400,12 +402,17 @@ body {
   text-align: center; font-size: 14px; font-weight: 500; color: #171A20;
 }
 
+@media (max-width: 1080px) {
+  .app-showcase-inner { grid-template-columns: 1fr; gap: 36px; }
+  .app-showcase { padding: 64px 24px; }
+}
 @media (max-width: 768px) {
-  .app-showcase-inner { grid-template-columns: 1fr; gap: 32px; }
   .app-showcase-text h2 { font-size: 28px; }
+  .app-showcase-text .app-sub { font-size: 16px; margin-bottom: 24px; }
   .app-showcase { padding: 48px 20px; }
-  .app-showcase-stats { gap: 24px; }
+  .app-showcase-stats { gap: 24px; margin-bottom: 26px; }
   .app-stat-value { font-size: 28px; }
+  .app-stat-label { font-size: 13px; }
 }
 
 /* Product scroll section */
