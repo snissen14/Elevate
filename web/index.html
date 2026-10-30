@@ -72,27 +72,32 @@ body {
 
 .mega-panel {
   position: fixed; top: 80px; left: 0; right: 0; bottom: 0; z-index: 300;
-  pointer-events: none; opacity: 0; visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
+  pointer-events: none; visibility: hidden;
+  transition: visibility 0s linear 0.22s;
 }
 .mega-panel.open {
-  pointer-events: auto; opacity: 1; visibility: visible;
+  pointer-events: auto; visibility: visible;
+  transition: visibility 0s;
 }
 
 .mega-backdrop {
   position: absolute; inset: 0; background: rgba(0,0,0,0.25);
+  opacity: 0; transition: opacity 0.22s ease;
 }
+.mega-panel.open .mega-backdrop { opacity: 1; }
 
 .mega-dropdown {
   position: relative; z-index: 1;
   background: #fff; box-shadow: 0 12px 40px rgba(0,0,0,0.08);
   padding: 48px 0 52px;
-  transform: translateY(-8px);
-  transition: transform 0.25s ease;
+  opacity: 0; transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .mega-panel.open .mega-dropdown {
-  transform: translateY(0);
+  opacity: 1; transform: translateY(0);
 }
+/* Switching straight from one menu to another swaps without re-animating */
+.mega-panel.mega-swap, .mega-panel.mega-swap .mega-backdrop, .mega-panel.mega-swap .mega-dropdown { transition: none; }
 
 .mega-inner {
   max-width: 1200px; margin: 0 auto; padding: 0 56px;
@@ -4345,13 +4350,8 @@ var pendingHwSection = null;
 document.addEventListener('click', e => {
   // Close mega panel on backdrop click
   // Close on backdrop click
-  if (e.target.id === 'megaBackdrop' || e.target.id === 'megaBackdropLiving' || e.target.id === 'megaBackdropProtection' || e.target.id === 'megaBackdropResources') {
-    document.getElementById('megaPanel').classList.remove('open');
-    document.getElementById('megaPanelLiving').classList.remove('open');
-    document.getElementById('megaPanelProtection').classList.remove('open');
-  if(document.getElementById('megaPanelShop')) document.getElementById('megaPanelShop').classList.remove('open');
-    document.getElementById('megaPanelResources').classList.remove('open');
-  document.getElementById('megaPanelStructure').classList.remove('open');
+  if (e.target.classList.contains('mega-backdrop')) {
+    closeAllPanels();
     return;
   }
   // Toggle correct panel on click (mobile fallback)
@@ -5315,32 +5315,48 @@ var megaTimer = null;
 var panelMap = { 'shop-mega': document.getElementById('megaPanelShop'), resources: document.getElementById('megaPanelResources'), liftsystems: document.getElementById('megaPanel'), wateraccess: document.getElementById('megaPanelLiving'), docking: document.getElementById('megaPanelProtection'), dealers: document.getElementById('megaPanelDealers'), structure: document.getElementById('megaPanelStructure') };
 
 function closeAllPanels() {
-  Object.values(panelMap).forEach(function(p) { p.classList.remove('open'); });
+  clearTimeout(megaTimer);
+  Object.values(panelMap).forEach(function(p) { if (p) p.classList.remove('open'); });
+}
+
+// The menu stays open while the pointer is on its trigger or on the white
+// dropdown. Moving anywhere else (including down onto the dimmed backdrop)
+// closes it after a short grace period, so diagonal moves don't flicker.
+function openPanel(panel) {
+  clearTimeout(megaTimer);
+  if (panel.classList.contains('open')) return;
+  var swapping = Object.values(panelMap).some(function(p) { return p.classList.contains('open'); });
+  closeAllPanels();
+  panel.classList.toggle('mega-swap', swapping);
+  panel.classList.add('open');
+  if (swapping) requestAnimationFrame(function() { requestAnimationFrame(function() { panel.classList.remove('mega-swap'); }); });
+}
+
+function scheduleClose(delay) {
+  clearTimeout(megaTimer);
+  megaTimer = setTimeout(closeAllPanels, delay);
 }
 
 document.querySelectorAll('[data-toggle-dropdown]').forEach(function(trigger) {
-  var which = trigger.getAttribute('data-toggle-dropdown');
-  var panel = panelMap[which];
+  var panel = panelMap[trigger.getAttribute('data-toggle-dropdown')];
   if (!panel) return;
-
-  trigger.addEventListener('mouseenter', function() {
-    clearTimeout(megaTimer);
-    closeAllPanels();
-    panel.classList.add('open');
-  });
-  trigger.addEventListener('mouseleave', function() {
-    megaTimer = setTimeout(function() {
-      if (!panel.matches(':hover')) panel.classList.remove('open');
-    }, 150);
-  });
+  trigger.addEventListener('mouseenter', function() { openPanel(panel); });
+  trigger.addEventListener('mouseleave', function() { scheduleClose(200); });
 });
 
 Object.values(panelMap).forEach(function(panel) {
-  panel.addEventListener('mouseenter', function() { clearTimeout(megaTimer); });
-  panel.addEventListener('mouseleave', function() {
-    megaTimer = setTimeout(function() { panel.classList.remove('open'); }, 200);
-  });
+  if (!panel) return;
+  var dropdown = panel.querySelector('.mega-dropdown');
+  var backdrop = panel.querySelector('.mega-backdrop');
+  dropdown.addEventListener('mouseenter', function() { clearTimeout(megaTimer); });
+  dropdown.addEventListener('mouseleave', function() { scheduleClose(140); });
+  backdrop.addEventListener('mouseenter', function() { scheduleClose(60); });
 });
+
+// Scrolling the page closes an open menu
+window.addEventListener('scroll', function() {
+  if (Object.values(panelMap).some(function(p) { return p && p.classList.contains('open') && !p.querySelector('.mega-dropdown').matches(':hover'); })) closeAllPanels();
+}, { passive: true });
 
 // ── Pin Overlay + Counter Animation ──
 (function() {
