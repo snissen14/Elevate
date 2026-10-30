@@ -952,41 +952,83 @@ body {
 }
 .shop-card:hover .shop-card-image svg,
 .shop-card:hover .shop-card-image img { transform: scale(1.08); }
-.hw-feed-wrap { flex: 1; min-width: 0; padding: 32px 40px 80px; background: #EDECE8; }
-.hw-feed-section + .hw-feed-section { margin-top: 64px; }
+.hw-feed-sidebar {
+  width: 210px; flex-shrink: 0; position: sticky; top: 80px; align-self: flex-start;
+  max-height: calc(100vh - 80px); overflow-y: auto; padding: 28px 8px 40px 32px; box-sizing: content-box;
+  scrollbar-width: thin;
+}
+.sf-head { font-size: 13px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: #171A20; padding-bottom: 14px; }
+.sf-back { color: #171A20; text-decoration: none; text-transform: none; letter-spacing: 0; font-weight: 600; }
+.sf-back:hover { text-decoration: underline; text-underline-offset: 3px; }
+.sf-group { border-top: 1px solid #E4E4E4; }
+.sf-group:last-child { border-bottom: 1px solid #E4E4E4; }
+.sf-group summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 0; font-size: 13px; font-weight: 700; color: #171A20;
+}
+.sf-group summary::-webkit-details-marker { display: none; }
+.sf-group summary::after { content: '+'; font-size: 17px; font-weight: 400; line-height: 1; color: #5C5E62; }
+.sf-group[open] summary::after { content: '\2212'; }
+.sf-group[open] { padding-bottom: 10px; }
+.sf-link {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+  padding: 5px 0; font-size: 13px; line-height: 1.35; color: #5C5E62; text-decoration: none;
+}
+.sf-link:hover { color: #171A20; }
+.sf-link.active { color: #171A20; font-weight: 600; }
+.sf-link.active::before { content: ''; flex: 0 0 auto; width: 4px; height: 4px; border-radius: 50%; background: #171A20; margin-right: -2px; align-self: center; }
+.sf-link.active { justify-content: flex-start; }
+.sf-link.active .sf-count, .sf-link.active .sf-tag { margin-left: auto; }
+.sf-count, .sf-tag { font-size: 12px; font-weight: 400; color: #878A8F; }
+.sf-tag { font-size: 11px; font-weight: 600; color: #3E6AE1; }
+
+.hw-feed-wrap { flex: 1; min-width: 0; padding: 28px 40px 80px 32px; background: #fff; }
+.hw-feed-section + .hw-feed-section { margin-top: 72px; }
 .hw-feed-head { margin-bottom: 20px; }
 .hw-feed-eyebrow { font-size: 12px; color: #878A8F; text-transform: uppercase; letter-spacing: 1px; }
-.hw-feed-title { font-size: 32px; font-weight: 600; color: #171A20; margin: 4px 0 0; }
-.hw-feed-complete .hw-feed-section:last-of-type { min-height: calc(100vh - 220px); }
+.hw-feed-title { font-size: 28px; font-weight: 700; color: #171A20; margin: 4px 0 0; }
 .hw-feed-end { text-align: center; font-size: 13px; color: #878A8F; padding: 56px 0 0; }
-.hw-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-.hw-product-card {
-  position: relative; display: flex; flex-direction: column; background: #fff;
-  border-radius: 12px; overflow: hidden; text-decoration: none; color: #171A20;
-  cursor: pointer; transition: box-shadow 0.2s ease;
+.hw-feed-complete .hw-feed-section:last-of-type { min-height: calc(100vh - 220px); }
+.hw-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 16px; }
+.hw-product-card { display: flex; flex-direction: column; text-decoration: none; color: #171A20; cursor: pointer; }
+.hw-product-thumb {
+  position: relative; aspect-ratio: 1 / 1; background: #F4F4F4; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
 }
-.hw-product-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
+.hw-product-thumb img {
+  width: 100%; height: 100%; object-fit: contain; padding: 10%; box-sizing: border-box;
+  mix-blend-mode: multiply; transition: transform 0.35s ease;
+}
+.hw-product-card:hover .hw-product-thumb img { transform: scale(1.05); }
 .hw-product-badge {
-  position: absolute; top: 18px; left: 18px; z-index: 1; padding: 4px 8px; border-radius: 6px;
-  background: #E8E3D9; font-size: 11px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase;
+  position: absolute; top: 12px; left: 12px; z-index: 1; padding: 4px 8px; background: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: #171A20;
 }
-.hw-product-thumb { aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.hw-product-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 8%; box-sizing: border-box; transition: transform 0.3s ease; }
-.hw-product-card:hover .hw-product-thumb img { transform: scale(1.04); }
-.hw-product-info { display: flex; flex-direction: column; flex: 1; padding: 6px 14px 14px; }
-.hw-product-name { font-size: 13px; font-weight: 700; line-height: 1.35; letter-spacing: 0.4px; text-transform: uppercase; }
-.hw-product-sub { font-size: 13px; color: #5C5E62; margin-top: 4px; }
-.hw-product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 6px; }
-.hw-product-price { font-size: 12px; font-weight: 700; }
 .hw-quick-add {
-  display: inline-flex; align-items: center; gap: 5px; padding: 4px 0; background: none; border: none;
-  font: inherit; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-  color: #171A20; cursor: pointer; white-space: nowrap;
+  position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 1;
+  display: flex; align-items: center; justify-content: center; gap: 6px; padding: 11px 12px;
+  background: #fff; border: none; border-radius: 0; cursor: pointer;
+  font: inherit; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: #171A20;
+  opacity: 0; transform: translateY(6px); transition: opacity 0.2s ease, transform 0.2s ease, background 0.15s ease, color 0.15s ease;
 }
-.hw-quick-add svg { width: 12px; height: 12px; }
-.hw-quick-add:hover { text-decoration: underline; text-underline-offset: 3px; }
+.hw-quick-add svg { width: 13px; height: 13px; }
+.hw-product-card:hover .hw-quick-add, .hw-quick-add:focus-visible { opacity: 1; transform: translateY(0); }
+.hw-quick-add:hover { background: #171A20; color: #fff; }
+@media (hover: none) { .hw-quick-add { opacity: 1; transform: none; } }
+.hw-product-info { padding-top: 14px; }
+.hw-product-name {
+  font-size: 15px; font-weight: 700; line-height: 1.3; color: #171A20;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.hw-product-price { font-size: 14px; color: #171A20; margin-top: 6px; }
+.hw-product-opts { display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; margin-top: 10px; overflow: hidden; }
+.hw-opt-chip {
+  flex: 0 1 auto; min-width: 0; padding: 3px 8px; border: 1px solid #D0D1D2; font-size: 11px; color: #5C5E62;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.hw-opt-more { flex: 0 0 auto; font-size: 12px; color: #5C5E62; }
 @media (max-width: 1200px) { .hw-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 900px) { .hw-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hw-feed-wrap { padding: 24px 16px 64px; } .hw-feed-sidebar { display: none !important; } .hw-feed-title { font-size: 26px; } }
+@media (max-width: 900px) { .hw-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 12px; } .hw-feed-wrap { padding: 24px 16px 64px; } .hw-feed-sidebar { display: none !important; } .hw-feed-title { font-size: 24px; } }
 
 .shop-card-title {
   font-size: 14px; font-weight: 700; margin-bottom: 6px;
@@ -2839,25 +2881,28 @@ body {
     </div>
   </nav>
   <div style="display:flex; min-height:calc(100vh - 80px);">
-    <div class="hw-feed-sidebar" style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
-      <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
-      <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Lift Systems</div>
-      <a href="#build" style="display:flex; align-items:center; justify-content:space-between; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none;">Custom Boat Lift <span style="padding:3px 10px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:600;">Inquire</span></a>
-      <a href="#boatlift" style="display:flex; align-items:center; justify-content:space-between; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none;">Elevate Jetski Lift <span style="padding:3px 10px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:600;">Order</span></a>
-      <a href="#config" style="display:flex; align-items:center; justify-content:space-between; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none;">Elevate Lift Remote <span style="padding:3px 10px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:600;">Order</span></a>
-      <a href="#motors" style="display:flex; align-items:center; justify-content:space-between; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none;">Elevate Lift Motors <span style="padding:3px 10px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:600;">Order</span></a>
-      <div style="height:1px; background:#E8E8E8; margin:10px 20px;"></div>
-      <a href="#" class="qs-cat" data-qscat="cables" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Cables &amp; Cable Hardware</a>
-      <a href="#" class="qs-cat" data-qscat="chain" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Chain</a>
-      <a href="#" class="qs-cat" data-qscat="pulleys" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Pulleys</a>
-      <a href="#" class="qs-cat" data-qscat="pipehangers" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Pipe &amp; Pipe Hangers</a>
-      <div style="padding:14px 20px 10px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#878A8F;">Bunks &amp; Hardware</div>
-      <a href="#" class="qs-cat" data-qscat="bunkmounts" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Bunk Mounts</a>
-      <a href="#" class="qs-cat" data-qscat="switches" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Switches &amp; Controls</a>
-      <a href="#" class="qs-cat" data-qscat="liftcradles" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Lift Cradles</a>
-      <a href="#" class="qs-cat" data-qscat="catwalks" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Catwalks</a>
-      <a href="#" class="qs-cat" data-qscat="lifthardware" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Hardware</a>
-    </div>
+    <aside class="hw-feed-sidebar">
+      <div class="sf-head"><a href="#hardware" class="sf-back">&larr; All Products</a></div>
+      <details class="sf-group" open>
+        <summary>Lift Systems</summary>
+        <a href="#" class="qs-cat sf-link" data-qscat="cables" data-qspage="lifts">Cables &amp; Cable Hardware<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="chain" data-qspage="lifts">Chain<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="pulleys" data-qspage="lifts">Pulleys<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="pipehangers" data-qspage="lifts">Pipe &amp; Pipe Hangers<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="bunkmounts" data-qspage="lifts">Bunk Mounts<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="switches" data-qspage="lifts">Switches &amp; Controls<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="liftcradles" data-qspage="lifts">Lift Cradles<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="catwalks" data-qspage="lifts">Catwalks<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="lifthardware" data-qspage="lifts">Hardware<span class="sf-count"></span></a>
+      </details>
+      <details class="sf-group">
+        <summary>Elevate Products</summary>
+        <a href="#build" class="sf-link">Custom Boat Lift<span class="sf-tag">Inquire</span></a>
+        <a href="#boatlift" class="sf-link">Elevate Jetski Lift<span class="sf-tag">Order</span></a>
+        <a href="#config" class="sf-link">Elevate Lift Remote<span class="sf-tag">Order</span></a>
+        <a href="#motors" class="sf-link">Elevate Lift Motors<span class="sf-tag">Order</span></a>
+      </details>
+    </aside>
     <div class="hw-feed-wrap">
       <div id="qsLiftsGrid"></div>
     </div>
@@ -2884,15 +2929,17 @@ body {
     </div>
   </nav>
   <div style="display:flex; min-height:calc(100vh - 80px);">
-    <div class="hw-feed-sidebar" style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
-      <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
-      <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Structure</div>
-      <a href="#" class="qs-cat" data-qscat="decking" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Decking Boards</a>
-      <a href="#" class="qs-cat" data-qscat="framing" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Framing</a>
-      <a href="#" class="qs-cat" data-qscat="pilings" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Pilings &amp; Posts</a>
-      <a href="#" class="qs-cat" data-qscat="brackets" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Hardware &amp; Brackets</a>
-      <a href="#" class="qs-cat" data-qscat="composite" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Composite Lumber</a>
-    </div>
+    <aside class="hw-feed-sidebar">
+      <div class="sf-head"><a href="#hardware" class="sf-back">&larr; All Products</a></div>
+      <details class="sf-group" open>
+        <summary>Structure</summary>
+        <a href="#" class="qs-cat sf-link" data-qscat="decking" data-qspage="structure">Decking Boards<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="framing" data-qspage="structure">Dock Framing<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="pilings" data-qspage="structure">Pilings &amp; Posts<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="brackets" data-qspage="structure">Hardware &amp; Brackets<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="composite" data-qspage="structure">Composite Lumber<span class="sf-count"></span></a>
+      </details>
+    </aside>
     <div class="hw-feed-wrap">
       <div id="qsStructureGrid"></div>
     </div>
@@ -2919,14 +2966,16 @@ body {
     </div>
   </nav>
   <div style="display:flex; min-height:calc(100vh - 80px);">
-    <div class="hw-feed-sidebar" style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
-      <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
-      <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Docking</div>
-      <a href="#" class="qs-cat" data-qscat="bumpers" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Bumpers &amp; Fenders</a>
-      <a href="#" class="qs-cat" data-qscat="dockedge" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Edge Profiles</a>
-      <a href="#" class="qs-cat" data-qscat="cleats" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Cleats &amp; Ties</a>
-      <a href="#" class="qs-cat" data-qscat="dockboxes" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Drip Pans &amp; Storage</a>
-    </div>
+    <aside class="hw-feed-sidebar">
+      <div class="sf-head"><a href="#hardware" class="sf-back">&larr; All Products</a></div>
+      <details class="sf-group" open>
+        <summary>Docking</summary>
+        <a href="#" class="qs-cat sf-link" data-qscat="bumpers" data-qspage="docking">Bumpers &amp; Fenders<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="dockedge" data-qspage="docking">Dock Edge Profiles<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="cleats" data-qspage="docking">Cleats &amp; Ties<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="dockboxes" data-qspage="docking">Drip Pans &amp; Storage<span class="sf-count"></span></a>
+      </details>
+    </aside>
     <div class="hw-feed-wrap">
       <div id="qsDockingGrid"></div>
     </div>
@@ -2953,14 +3002,16 @@ body {
     </div>
   </nav>
   <div style="display:flex; min-height:calc(100vh - 80px);">
-    <div class="hw-feed-sidebar" style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
-      <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
-      <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Water Access</div>
-      <a href="#" class="qs-cat" data-qscat="steps" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Dock Steps</a>
-      <a href="#" class="qs-cat" data-qscat="ladders" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Ladders</a>
-      <a href="#" class="qs-cat" data-qscat="platforms" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Swim Platforms</a>
-      <a href="#" class="qs-cat" data-qscat="handrails" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Safety &amp; Signage</a>
-    </div>
+    <aside class="hw-feed-sidebar">
+      <div class="sf-head"><a href="#hardware" class="sf-back">&larr; All Products</a></div>
+      <details class="sf-group" open>
+        <summary>Water Access</summary>
+        <a href="#" class="qs-cat sf-link" data-qscat="steps" data-qspage="access">Dock Steps<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="ladders" data-qspage="access">Dock Ladders<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="platforms" data-qspage="access">Swim Platforms<span class="sf-count"></span></a>
+        <a href="#" class="qs-cat sf-link" data-qscat="handrails" data-qspage="access">Safety &amp; Signage<span class="sf-count"></span></a>
+      </details>
+    </aside>
     <div class="hw-feed-wrap">
       <div id="qsAccessGrid"></div>
     </div>
@@ -2989,45 +3040,50 @@ body {
 
   <div style="display:flex; min-height:calc(100vh - 80px);">
     <!-- Left sidebar -->
-    <div class="hw-feed-sidebar" style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
-      <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Lift Systems</div>
-      <a href="#build" style="display:flex; align-items:center; justify-content:space-between; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none;">Custom Boat Lift <span style="padding:3px 10px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:600;">Inquire</span></a>
-      <a href="#boatlift" style="display:flex; align-items:center; justify-content:space-between; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none;">Elevate Jetski Lift <span style="padding:3px 10px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:600;">Order</span></a>
-      <a href="#config" style="display:flex; align-items:center; justify-content:space-between; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none;">Elevate Lift Remote <span style="padding:3px 10px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:600;">Order</span></a>
-      <a href="#motors" style="display:flex; align-items:center; justify-content:space-between; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none;">Elevate Lift Motors <span style="padding:3px 10px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:600;">Order</span></a>
-      <div style="height:1px; background:#E8E8E8; margin:10px 20px;"></div>
-      <a href="#" class="hw-cat active" data-hwcat="cables" data-hwsection="Lift Systems" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Cables &amp; Cable Hardware</a>
-      <a href="#" class="hw-cat" data-hwcat="chain" data-hwsection="Lift Systems" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Chain</a>
-      <a href="#" class="hw-cat" data-hwcat="pulleys" data-hwsection="Lift Systems" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Pulleys</a>
-      <a href="#" class="hw-cat" data-hwcat="pipehangers" data-hwsection="Lift Systems" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Pipe &amp; Pipe Hangers</a>
-      <div style="padding:14px 20px 10px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1; border-top:1px solid #E8E8E8; margin-top:8px;">Bunks &amp; Hardware</div>
-      <a href="#" class="hw-cat" data-hwcat="bunkmounts" data-hwsection="Lift Systems" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Bunk Mounts</a>
-      <a href="#" class="hw-cat" data-hwcat="switches" data-hwsection="Lift Systems" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Switches &amp; Controls</a>
-      <a href="#" class="hw-cat" data-hwcat="liftcradles" data-hwsection="Lift Systems" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Lift Cradles</a>
-      <a href="#" class="hw-cat" data-hwcat="catwalks" data-hwsection="Lift Systems" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Catwalks</a>
-      <a href="#" class="hw-cat" data-hwcat="lifthardware" data-hwsection="Lift Systems" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Hardware</a>
-
-      <div style="padding:16px 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1; border-top:1px solid #E8E8E8; margin-top:12px;">Structure</div>
-      <a href="#" class="hw-cat" data-hwcat="decking" data-hwsection="Structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Decking Boards</a>
-      <a href="#" class="hw-cat" data-hwcat="framing" data-hwsection="Structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Framing</a>
-      <a href="#" class="hw-cat" data-hwcat="pilings" data-hwsection="Structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Pilings &amp; Posts</a>
-      <a href="#" class="hw-cat" data-hwcat="brackets" data-hwsection="Structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Hardware &amp; Brackets</a>
-      <a href="#" class="hw-cat" data-hwcat="composite" data-hwsection="Structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Composite Lumber</a>
-
-      <div style="padding:16px 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1; border-top:1px solid #E8E8E8; margin-top:12px;">Docking</div>
-      <a href="#" class="hw-cat" data-hwcat="bumpers" data-hwsection="Docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Bumpers &amp; Fenders</a>
-      <a href="#" class="hw-cat" data-hwcat="dockedge" data-hwsection="Docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Edge Profiles</a>
-      <a href="#" class="hw-cat" data-hwcat="cleats" data-hwsection="Docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Cleats &amp; Ties</a>
-      <a href="#" class="hw-cat" data-hwcat="dockboxes" data-hwsection="Docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Drip Pans &amp; Storage</a>
-
-      <div style="padding:16px 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1; border-top:1px solid #E8E8E8; margin-top:12px;">Water Access</div>
-      <a href="#" class="hw-cat" data-hwcat="steps" data-hwsection="Water Access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Steps</a>
-      <a href="#" class="hw-cat" data-hwcat="ladders" data-hwsection="Water Access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Dock Ladders</a>
-      <a href="#" class="hw-cat" data-hwcat="platforms" data-hwsection="Water Access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Swim Platforms</a>
-      <a href="#" class="hw-cat" data-hwcat="handrails" data-hwsection="Water Access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Safety &amp; Signage</a>
-    </div>
-
-    <!-- Right content -->
+    <aside class="hw-feed-sidebar">
+      <div class="sf-head">Shop All</div>
+      <details class="sf-group" open>
+        <summary>Lift Systems</summary>
+        <a href="#" class="hw-cat sf-link" data-hwcat="cables" data-hwsection="Lift Systems">Cables &amp; Cable Hardware<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="chain" data-hwsection="Lift Systems">Chain<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="pulleys" data-hwsection="Lift Systems">Pulleys<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="pipehangers" data-hwsection="Lift Systems">Pipe &amp; Pipe Hangers<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="bunkmounts" data-hwsection="Lift Systems">Bunk Mounts<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="switches" data-hwsection="Lift Systems">Switches &amp; Controls<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="liftcradles" data-hwsection="Lift Systems">Lift Cradles<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="catwalks" data-hwsection="Lift Systems">Catwalks<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="lifthardware" data-hwsection="Lift Systems">Hardware<span class="sf-count"></span></a>
+      </details>
+      <details class="sf-group" open>
+        <summary>Structure</summary>
+        <a href="#" class="hw-cat sf-link" data-hwcat="decking" data-hwsection="Structure">Decking Boards<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="framing" data-hwsection="Structure">Dock Framing<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="pilings" data-hwsection="Structure">Pilings &amp; Posts<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="brackets" data-hwsection="Structure">Hardware &amp; Brackets<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="composite" data-hwsection="Structure">Composite Lumber<span class="sf-count"></span></a>
+      </details>
+      <details class="sf-group" open>
+        <summary>Docking</summary>
+        <a href="#" class="hw-cat sf-link" data-hwcat="bumpers" data-hwsection="Docking">Bumpers &amp; Fenders<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="dockedge" data-hwsection="Docking">Dock Edge Profiles<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="cleats" data-hwsection="Docking">Cleats &amp; Ties<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="dockboxes" data-hwsection="Docking">Drip Pans &amp; Storage<span class="sf-count"></span></a>
+      </details>
+      <details class="sf-group" open>
+        <summary>Water Access</summary>
+        <a href="#" class="hw-cat sf-link" data-hwcat="steps" data-hwsection="Water Access">Dock Steps<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="ladders" data-hwsection="Water Access">Dock Ladders<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="platforms" data-hwsection="Water Access">Swim Platforms<span class="sf-count"></span></a>
+        <a href="#" class="hw-cat sf-link" data-hwcat="handrails" data-hwsection="Water Access">Safety &amp; Signage<span class="sf-count"></span></a>
+      </details>
+      <details class="sf-group">
+        <summary>Elevate Products</summary>
+        <a href="#build" class="sf-link">Custom Boat Lift<span class="sf-tag">Inquire</span></a>
+        <a href="#boatlift" class="sf-link">Elevate Jetski Lift<span class="sf-tag">Order</span></a>
+        <a href="#config" class="sf-link">Elevate Lift Remote<span class="sf-tag">Order</span></a>
+        <a href="#motors" class="sf-link">Elevate Lift Motors<span class="sf-tag">Order</span></a>
+      </details>
+    </aside>
     <div class="hw-feed-wrap">
       <div id="hwPartsGrid"></div>
     </div>
@@ -5066,18 +5122,38 @@ function findHwProduct(partNum) {
 
 var bagIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 13H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>';
 
+// Short chip labels: options look like "Galvanized: 15 ft", so show the
+// colon-separated part that actually differs between a product's options
+function optionLabels(opts) {
+  var parts = opts.map(function(o) { return o.split(':').map(function(x) { return x.trim(); }); });
+  var len = Math.max.apply(null, parts.map(function(p) { return p.length; }));
+  for (var i = 0; i < len; i++) {
+    var seen = {};
+    parts.forEach(function(p) { seen[p[i] || ''] = true; });
+    if (Object.keys(seen).length > 1) return parts.map(function(p) { return p[i] || p.join(' '); });
+  }
+  return opts;
+}
+
 function productCardHtml(item) {
-  var sub = item.opts && item.opts.length > 1 ? item.opts.length + ' options' : 'Part #' + item.part;
+  var opts = item.opts || [];
+  // Up to two option chips, then "+N" — the hardware equivalent of colour swatches
+  var optsHtml = opts.length > 1
+    ? '<div class="hw-product-opts">'
+      + optionLabels(opts).slice(0, 2).map(function(o) { return '<span class="hw-opt-chip">' + o + '</span>'; }).join('')
+      + (opts.length > 2 ? '<span class="hw-opt-more">+' + (opts.length - 2) + '</span>' : '')
+      + '</div>'
+    : '';
   return '<a href="#" class="hw-product-card" data-hw-product="' + item.part + '">'
-    + (item.badge ? '<span class="hw-product-badge">' + item.badge + '</span>' : '')
-    + '<div class="hw-product-thumb">' + hwMedia(item, 72, 600) + '</div>'
+    + '<div class="hw-product-thumb">'
+    +   (item.badge ? '<span class="hw-product-badge">' + item.badge + '</span>' : '')
+    +   hwMedia(item, 72, 600)
+    +   '<button type="button" class="hw-quick-add">' + bagIcon + '<span>Quick Add</span></button>'
+    + '</div>'
     + '<div class="hw-product-info">'
     +   '<div class="hw-product-name">' + item.name + '</div>'
-    +   '<div class="hw-product-sub">' + sub + '</div>'
-    +   '<div class="hw-product-bottom">'
-    +     '<span class="hw-product-price">' + item.price + '</span>'
-    +     '<button type="button" class="hw-quick-add">' + bagIcon + '<span>Quick Add</span></button>'
-    +   '</div>'
+    +   '<div class="hw-product-price">' + item.price + '</div>'
+    +   optsHtml
     + '</div>'
     + '</a>';
 }
@@ -5093,6 +5169,8 @@ function makeCategoryFeed(gridId, links, catAttr, sectionOf) {
   links.forEach(function(el) {
     var cat = el.getAttribute(catAttr);
     if (hwCatalog[cat] && feed.cats.indexOf(cat) === -1) feed.cats.push(cat);
+    var count = el.querySelector('.sf-count');
+    if (count && hwCatalog[cat]) count.textContent = hwCatalog[cat].items.length;
     el.addEventListener('click', function(e) {
       e.preventDefault();
       jumpToFeedCategory(feed, cat);
@@ -5130,16 +5208,15 @@ function setFeedActive(feed, cat) {
   feed.links.forEach(function(el) {
     var isActive = el.getAttribute(feed.catAttr) === cat;
     el.classList.toggle('active', isActive);
-    el.style.borderLeftColor = isActive ? '#3E6AE1' : 'transparent';
-    el.style.background = isActive ? '#fff' : 'transparent';
-    el.style.color = isActive ? '#171A20' : '#5C5E62';
-    el.style.fontWeight = isActive ? '500' : '400';
-    if (isActive) {
-      // Keep the highlighted link visible inside the sticky sidebar
-      var side = el.parentElement;
-      if (el.offsetTop < side.scrollTop || el.offsetTop + el.offsetHeight > side.scrollTop + side.clientHeight) {
-        side.scrollTop = el.offsetTop - side.clientHeight / 2;
-      }
+    if (!isActive) return;
+    // Open the active section (collapse the others) and keep the link in view
+    var group = el.closest('.sf-group');
+    var side = el.closest('.hw-feed-sidebar');
+    side.querySelectorAll('.sf-group').forEach(function(g) {
+      if (g.querySelector('.hw-cat, .qs-cat')) g.open = g === group;
+    });
+    if (el.offsetTop < side.scrollTop || el.offsetTop + el.offsetHeight > side.scrollTop + side.clientHeight) {
+      side.scrollTop = el.offsetTop - side.clientHeight / 2;
     }
   });
 }
