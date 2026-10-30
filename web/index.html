@@ -922,7 +922,6 @@ body {
   cursor: pointer; border: 1px solid #E8E8E8; border-radius: 8px;
 }
 .shop-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1; }
-.hw-product-card:hover div:first-child { border-color: #D0D1D2 !important; }
 
 .shop-card-badge {
   font-size: 11px; font-weight: 600; text-transform: uppercase;
@@ -948,7 +947,41 @@ body {
 }
 .shop-card:hover .shop-card-image svg,
 .shop-card:hover .shop-card-image img { transform: scale(1.08); }
-.hw-product-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 10%; box-sizing: border-box; }
+.hw-feed-wrap { flex: 1; min-width: 0; padding: 32px 40px 80px; background: #EDECE8; }
+.hw-feed-section + .hw-feed-section { margin-top: 64px; }
+.hw-feed-head { margin-bottom: 20px; }
+.hw-feed-eyebrow { font-size: 12px; color: #878A8F; text-transform: uppercase; letter-spacing: 1px; }
+.hw-feed-title { font-size: 32px; font-weight: 600; color: #171A20; margin: 4px 0 0; }
+.hw-feed-complete .hw-feed-section:last-of-type { min-height: calc(100vh - 220px); }
+.hw-feed-end { text-align: center; font-size: 13px; color: #878A8F; padding: 56px 0 0; }
+.hw-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.hw-product-card {
+  position: relative; display: flex; flex-direction: column; background: #fff;
+  border-radius: 12px; overflow: hidden; text-decoration: none; color: #171A20;
+  cursor: pointer; transition: box-shadow 0.2s ease;
+}
+.hw-product-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
+.hw-product-badge {
+  position: absolute; top: 18px; left: 18px; z-index: 1; padding: 4px 8px; border-radius: 6px;
+  background: #E8E3D9; font-size: 11px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase;
+}
+.hw-product-thumb { aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.hw-product-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 8%; box-sizing: border-box; transition: transform 0.3s ease; }
+.hw-product-card:hover .hw-product-thumb img { transform: scale(1.04); }
+.hw-product-info { display: flex; flex-direction: column; flex: 1; padding: 6px 14px 14px; }
+.hw-product-name { font-size: 13px; font-weight: 700; line-height: 1.35; letter-spacing: 0.4px; text-transform: uppercase; }
+.hw-product-sub { font-size: 13px; color: #5C5E62; margin-top: 4px; }
+.hw-product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 6px; }
+.hw-product-price { font-size: 12px; font-weight: 700; }
+.hw-quick-add {
+  display: inline-flex; align-items: center; gap: 5px; padding: 4px 0; background: none; border: none;
+  font: inherit; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+  color: #171A20; cursor: pointer; white-space: nowrap;
+}
+.hw-quick-add svg { width: 12px; height: 12px; }
+.hw-quick-add:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 1200px) { .hw-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .hw-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hw-feed-wrap { padding: 24px 16px 64px; } .hw-feed-sidebar { display: none !important; } .hw-feed-title { font-size: 26px; } }
 
 .shop-card-title {
   font-size: 14px; font-weight: 700; margin-bottom: 6px;
@@ -2801,7 +2834,7 @@ body {
     </div>
   </nav>
   <div style="display:flex; min-height:calc(100vh - 80px);">
-    <div style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
+    <div class="hw-feed-sidebar" style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
       <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
       <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Lift Systems</div>
       <a href="#build" style="display:flex; align-items:center; justify-content:space-between; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none;">Custom Boat Lift <span style="padding:3px 10px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:600;">Inquire</span></a>
@@ -2820,12 +2853,8 @@ body {
       <a href="#" class="qs-cat" data-qscat="catwalks" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Catwalks</a>
       <a href="#" class="qs-cat" data-qscat="lifthardware" data-qspage="lifts" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Hardware</a>
     </div>
-    <div style="flex:1; padding:32px 40px;">
-      <div style="margin-bottom:28px;">
-        <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Lift Systems</div>
-        <h1 style="font-size:32px; font-weight:600; color:#171A20; margin-top:4px;" id="qsLiftsTitle">Cables &amp; Cable Hardware</h1>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;" id="qsLiftsGrid"></div>
+    <div class="hw-feed-wrap">
+      <div id="qsLiftsGrid"></div>
     </div>
   </div>
 </div>
@@ -2850,7 +2879,7 @@ body {
     </div>
   </nav>
   <div style="display:flex; min-height:calc(100vh - 80px);">
-    <div style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
+    <div class="hw-feed-sidebar" style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
       <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
       <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Structure</div>
       <a href="#" class="qs-cat" data-qscat="decking" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Decking Boards</a>
@@ -2859,12 +2888,8 @@ body {
       <a href="#" class="qs-cat" data-qscat="brackets" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Hardware &amp; Brackets</a>
       <a href="#" class="qs-cat" data-qscat="composite" data-qspage="structure" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Composite Lumber</a>
     </div>
-    <div style="flex:1; padding:32px 40px;">
-      <div style="margin-bottom:28px;">
-        <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Structure</div>
-        <h1 style="font-size:32px; font-weight:600; color:#171A20; margin-top:4px;" id="qsStructureTitle">Decking Boards</h1>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;" id="qsStructureGrid"></div>
+    <div class="hw-feed-wrap">
+      <div id="qsStructureGrid"></div>
     </div>
   </div>
 </div>
@@ -2889,7 +2914,7 @@ body {
     </div>
   </nav>
   <div style="display:flex; min-height:calc(100vh - 80px);">
-    <div style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
+    <div class="hw-feed-sidebar" style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
       <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
       <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Docking</div>
       <a href="#" class="qs-cat" data-qscat="bumpers" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Bumpers &amp; Fenders</a>
@@ -2897,12 +2922,8 @@ body {
       <a href="#" class="qs-cat" data-qscat="cleats" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Cleats &amp; Ties</a>
       <a href="#" class="qs-cat" data-qscat="dockboxes" data-qspage="docking" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Drip Pans &amp; Storage</a>
     </div>
-    <div style="flex:1; padding:32px 40px;">
-      <div style="margin-bottom:28px;">
-        <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Docking</div>
-        <h1 style="font-size:32px; font-weight:600; color:#171A20; margin-top:4px;" id="qsDockingTitle">Bumpers &amp; Fenders</h1>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;" id="qsDockingGrid"></div>
+    <div class="hw-feed-wrap">
+      <div id="qsDockingGrid"></div>
     </div>
   </div>
 </div>
@@ -2927,7 +2948,7 @@ body {
     </div>
   </nav>
   <div style="display:flex; min-height:calc(100vh - 80px);">
-    <div style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
+    <div class="hw-feed-sidebar" style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
       <a href="#hardware" style="display:block; padding:8px 20px 16px; font-size:12px; color:#3E6AE1; text-decoration:none; font-weight:500;">&larr; View All Categories</a>
       <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Water Access</div>
       <a href="#" class="qs-cat" data-qscat="steps" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none; border-left:3px solid #3E6AE1; background:#fff; font-weight:500;">Dock Steps</a>
@@ -2935,12 +2956,8 @@ body {
       <a href="#" class="qs-cat" data-qscat="platforms" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Swim Platforms</a>
       <a href="#" class="qs-cat" data-qscat="handrails" data-qspage="access" style="display:block; padding:8px 20px; font-size:13px; color:#5C5E62; text-decoration:none; border-left:3px solid transparent;">Safety &amp; Signage</a>
     </div>
-    <div style="flex:1; padding:32px 40px;">
-      <div style="margin-bottom:28px;">
-        <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;">Water Access</div>
-        <h1 style="font-size:32px; font-weight:600; color:#171A20; margin-top:4px;" id="qsAccessTitle">Dock Steps</h1>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;" id="qsAccessGrid"></div>
+    <div class="hw-feed-wrap">
+      <div id="qsAccessGrid"></div>
     </div>
   </div>
 </div>
@@ -2967,7 +2984,7 @@ body {
 
   <div style="display:flex; min-height:calc(100vh - 80px);">
     <!-- Left sidebar -->
-    <div style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
+    <div class="hw-feed-sidebar" style="width:260px; background:#F8F9FA; border-right:1px solid #E8E8E8; padding:16px 0; flex-shrink:0; position:sticky; top:80px; height:calc(100vh - 80px); overflow-y:auto;">
       <div style="padding:0 20px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#3E6AE1;">Lift Systems</div>
       <a href="#build" style="display:flex; align-items:center; justify-content:space-between; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none;">Custom Boat Lift <span style="padding:3px 10px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:600;">Inquire</span></a>
       <a href="#boatlift" style="display:flex; align-items:center; justify-content:space-between; padding:8px 20px; font-size:13px; color:#171A20; text-decoration:none;">Elevate Jetski Lift <span style="padding:3px 10px; background:#3E6AE1; color:#fff; border-radius:4px; font-size:11px; font-weight:600;">Order</span></a>
@@ -3006,12 +3023,8 @@ body {
     </div>
 
     <!-- Right content -->
-    <div style="flex:1; padding:32px 40px;">
-      <div style="margin-bottom:28px;">
-        <div style="font-size:12px; color:#878A8F; text-transform:uppercase; letter-spacing:1px;" id="hwSectionTitle">Lift Systems</div>
-        <h1 style="font-size:32px; font-weight:600; color:#171A20; margin-top:4px;" id="hwCatTitle">Cables &amp; Cable Hardware</h1>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;" id="hwPartsGrid"></div>
+    <div class="hw-feed-wrap">
+      <div id="hwPartsGrid"></div>
     </div>
   </div>
 </div>
@@ -4000,14 +4013,14 @@ function showPage(page) {
   if (page === 'boatlift') renderLift();
   if (page === 'motors') renderMotor();
   if (page === 'hardware') {
-    renderHwCategory(pendingHwCat || 'cables', pendingHwSection || 'Lift Systems');
+    resetCategoryFeed(hwFeeds.hardware, pendingHwCat);
     pendingHwCat = null;
     pendingHwSection = null;
   }
-  if (page === 'qs-lifts') renderQsPage('lifts', 'cables');
-  if (page === 'qs-structure') renderQsPage('structure', 'decking');
-  if (page === 'qs-docking') renderQsPage('docking', 'bumpers');
-  if (page === 'qs-access') renderQsPage('access', 'steps');
+  if (page === 'qs-lifts') resetCategoryFeed(hwFeeds.lifts);
+  if (page === 'qs-structure') resetCategoryFeed(hwFeeds.structure);
+  if (page === 'qs-docking') resetCategoryFeed(hwFeeds.docking);
+  if (page === 'qs-access') resetCategoryFeed(hwFeeds.access);
 }
 
 window.addEventListener('hashchange', function() {
@@ -4344,6 +4357,12 @@ document.addEventListener('click', e => {
   // Toggle correct panel on click (mobile fallback)
   if (e.target.closest('[data-toggle-dropdown]')) {
     var which = e.target.closest('[data-toggle-dropdown]').getAttribute('data-toggle-dropdown');
+    // Shop acts as Shop All
+    if (which === 'shop-mega') {
+      closeAllPanels();
+      if (location.hash === '#hardware') showPage('hardware'); else location.hash = 'hardware';
+      return;
+    }
     var panels = { 'shop-mega': 'megaPanelShop', resources: 'megaPanelResources', liftsystems: 'megaPanel', wateraccess: 'megaPanelLiving', docking: 'megaPanelProtection', dealers: 'megaPanelDealers', structure: 'megaPanelStructure' };
     var targetPanel = panels[which];
     if (targetPanel) {
@@ -4506,6 +4525,20 @@ document.addEventListener('click', e => {
     e.preventDefault();
     var title = shopCard.querySelector('.shop-card-title').textContent;
     showProduct(title);
+    return;
+  }
+
+  // Quick Add on a hardware product card → straight into the cart
+  var quickAdd = e.target.closest('.hw-quick-add');
+  if (quickAdd) {
+    e.preventDefault();
+    var qaProduct = findHwProduct(quickAdd.closest('.hw-product-card').getAttribute('data-hw-product'));
+    if (qaProduct) {
+      addToCart(qaProduct.name, parsePrice(qaProduct.price));
+      var qaLabel = quickAdd.querySelector('span');
+      qaLabel.textContent = 'Added';
+      setTimeout(function() { qaLabel.textContent = 'Quick Add'; }, 1400);
+    }
     return;
   }
 
@@ -5020,66 +5053,158 @@ function hwMedia(item, svgSize, imgWidth) {
   return item.img.replace('width="32" height="32"', 'width="' + svgSize + '" height="' + svgSize + '"');
 }
 
-function renderProductGrid(gridId, data) {
-  var grid = document.getElementById(gridId);
-  if (!grid || !data) return;
-  grid.innerHTML = data.items.map(function(item) {
-    return '<a href="#" class="hw-product-card" data-hw-product="' + item.part + '" style="display:flex; flex-direction:column; text-decoration:none; color:inherit; cursor:pointer;">'
-      + '<div class="hw-product-thumb" style="aspect-ratio:1; background:#FFFFFF; border:1px solid #E8E8E8; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; transition:background 0.2s; overflow:hidden;">' + hwMedia(item, 56, 600) + '</div>'
-      + '<div style="font-size:14px; font-weight:500; color:#171A20; line-height:1.4;">' + item.name + '</div>'
-      + '<div style="font-size:15px; font-weight:600; color:#171A20; margin-top:6px;">' + item.price + '</div>'
-      + '</a>';
-  }).join('');
+function findHwProduct(partNum) {
+  var catKeys = Object.keys(hwCatalog);
+  for (var k = 0; k < catKeys.length; k++) {
+    var items = hwCatalog[catKeys[k]].items;
+    for (var j = 0; j < items.length; j++) {
+      if (items[j].part === partNum) return items[j];
+    }
+  }
+  return null;
 }
 
-function renderHwCategory(cat, section) {
+var bagIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 13H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>';
+
+function productCardHtml(item) {
+  var sub = item.opts && item.opts.length > 1 ? item.opts.length + ' options' : 'Part #' + item.part;
+  return '<a href="#" class="hw-product-card" data-hw-product="' + item.part + '">'
+    + (item.badge ? '<span class="hw-product-badge">' + item.badge + '</span>' : '')
+    + '<div class="hw-product-thumb">' + hwMedia(item, 72, 600) + '</div>'
+    + '<div class="hw-product-info">'
+    +   '<div class="hw-product-name">' + item.name + '</div>'
+    +   '<div class="hw-product-sub">' + sub + '</div>'
+    +   '<div class="hw-product-bottom">'
+    +     '<span class="hw-product-price">' + item.price + '</span>'
+    +     '<button type="button" class="hw-quick-add">' + bagIcon + '<span>Quick Add</span></button>'
+    +   '</div>'
+    + '</div>'
+    + '</a>';
+}
+
+// ── Continuous category feed ──
+// Each shop page shows its categories one after another: scrolling near the
+// bottom appends the next category, the sidebar link for the category in view
+// is highlighted, and clicking a sidebar link scrolls to that category.
+var hwFeeds = {};
+
+function makeCategoryFeed(gridId, links, catAttr, sectionOf) {
+  var feed = { grid: document.getElementById(gridId), links: links, catAttr: catAttr, sectionOf: sectionOf, cats: [], count: 0, active: null, lockUntil: 0 };
+  links.forEach(function(el) {
+    var cat = el.getAttribute(catAttr);
+    if (hwCatalog[cat] && feed.cats.indexOf(cat) === -1) feed.cats.push(cat);
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      jumpToFeedCategory(feed, cat);
+    });
+  });
+  return feed;
+}
+
+function appendFeedCategory(feed) {
+  if (feed.count >= feed.cats.length) return false;
+  var cat = feed.cats[feed.count++];
   var data = hwCatalog[cat];
-  if (!data) return;
-  document.getElementById('hwCatTitle').innerHTML = data.title;
-  if (section) document.getElementById('hwSectionTitle').textContent = section;
-  document.querySelectorAll('.hw-cat').forEach(function(el) {
-    var isActive = el.getAttribute('data-hwcat') === cat;
+  feed.grid.insertAdjacentHTML('beforeend',
+    '<section class="hw-feed-section" data-feed-cat="' + cat + '">'
+    + '<div class="hw-feed-head"><div class="hw-feed-eyebrow">' + feed.sectionOf(cat) + '</div>'
+    + '<h2 class="hw-feed-title">' + data.title + '</h2></div>'
+    + '<div class="hw-grid">' + data.items.map(productCardHtml).join('') + '</div>'
+    + '</section>');
+  if (feed.count === feed.cats.length) {
+    feed.grid.classList.add('hw-feed-complete');
+    feed.grid.insertAdjacentHTML('beforeend', '<div class="hw-feed-end">You’ve seen everything in this collection.</div>');
+  }
+  return true;
+}
+
+function feedNavOffset(feed) {
+  var page = feed.grid.closest('[id^="page-"]');
+  var nav = page && page.querySelector('.home-nav');
+  return (nav ? nav.offsetHeight : 80) + 16;
+}
+
+function setFeedActive(feed, cat) {
+  if (feed.active === cat) return;
+  feed.active = cat;
+  feed.links.forEach(function(el) {
+    var isActive = el.getAttribute(feed.catAttr) === cat;
     el.classList.toggle('active', isActive);
     el.style.borderLeftColor = isActive ? '#3E6AE1' : 'transparent';
     el.style.background = isActive ? '#fff' : 'transparent';
     el.style.color = isActive ? '#171A20' : '#5C5E62';
     el.style.fontWeight = isActive ? '500' : '400';
+    if (isActive) {
+      // Keep the highlighted link visible inside the sticky sidebar
+      var side = el.parentElement;
+      if (el.offsetTop < side.scrollTop || el.offsetTop + el.offsetHeight > side.scrollTop + side.clientHeight) {
+        side.scrollTop = el.offsetTop - side.clientHeight / 2;
+      }
+    }
   });
-  renderProductGrid('hwPartsGrid', data);
 }
 
-document.querySelectorAll('.hw-cat').forEach(function(el) {
-  el.addEventListener('click', function(e) {
-    e.preventDefault();
-    renderHwCategory(el.getAttribute('data-hwcat'), el.getAttribute('data-hwsection'));
-  });
+// Load more categories while the end of the feed is within reach, then sync the sidebar
+function updateCategoryFeed(feed) {
+  if (!feed.grid.offsetParent) return;
+  while (feed.grid.getBoundingClientRect().bottom < window.innerHeight + 900 && appendFeedCategory(feed)) {}
+  if (Date.now() < feed.lockUntil) return;
+  var offset = feedNavOffset(feed) + 40;
+  var sections = feed.grid.querySelectorAll('.hw-feed-section');
+  var current = feed.cats[0];
+  for (var i = 0; i < sections.length; i++) {
+    if (sections[i].getBoundingClientRect().top <= offset) current = sections[i].getAttribute('data-feed-cat');
+  }
+  setFeedActive(feed, current);
+}
+
+function resetCategoryFeed(feed, startCat) {
+  feed.grid.innerHTML = '';
+  feed.grid.classList.remove('hw-feed-complete');
+  feed.count = 0;
+  feed.active = null;
+  setFeedActive(feed, feed.cats[0]);
+  updateCategoryFeed(feed);
+  if (startCat) jumpToFeedCategory(feed, startCat, true);
+}
+
+function jumpToFeedCategory(feed, cat, instant) {
+  var idx = feed.cats.indexOf(cat);
+  if (idx === -1) return;
+  while (feed.count <= idx && appendFeedCategory(feed)) {}
+  var section = feed.grid.querySelector('[data-feed-cat="' + cat + '"]');
+  if (!section) return;
+  // Load enough below the target that the page is tall enough to bring it to the top
+  while (feed.grid.getBoundingClientRect().bottom - section.getBoundingClientRect().top < window.innerHeight * 1.5 && appendFeedCategory(feed)) {}
+  setFeedActive(feed, cat);
+  feed.lockUntil = Date.now() + (instant ? 0 : 900);
+  window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - feedNavOffset(feed), behavior: instant ? 'auto' : 'smooth' });
+}
+
+hwFeeds.hardware = makeCategoryFeed('hwPartsGrid', Array.prototype.slice.call(document.querySelectorAll('.hw-cat')), 'data-hwcat', function(cat) {
+  var link = document.querySelector('.hw-cat[data-hwcat="' + cat + '"]');
+  return link ? link.getAttribute('data-hwsection') : '';
 });
 
-// ── Per-category Shop More Items pages ──
 var qsGridMap = { lifts: 'qsLiftsGrid', structure: 'qsStructureGrid', docking: 'qsDockingGrid', access: 'qsAccessGrid' };
-var qsTitleMap = { lifts: 'qsLiftsTitle', structure: 'qsStructureTitle', docking: 'qsDockingTitle', access: 'qsAccessTitle' };
-
-function renderQsPage(page, cat) {
-  var data = hwCatalog[cat];
-  if (!data) return;
-  var titleEl = document.getElementById(qsTitleMap[page]);
-  if (titleEl) titleEl.innerHTML = data.title;
-  document.querySelectorAll('.qs-cat[data-qspage="' + page + '"]').forEach(function(el) {
-    var isActive = el.getAttribute('data-qscat') === cat;
-    el.style.borderLeftColor = isActive ? '#3E6AE1' : 'transparent';
-    el.style.background = isActive ? '#fff' : 'transparent';
-    el.style.color = isActive ? '#171A20' : '#5C5E62';
-    el.style.fontWeight = isActive ? '500' : '400';
-  });
-  renderProductGrid(qsGridMap[page], data);
-}
-
-document.querySelectorAll('.qs-cat').forEach(function(el) {
-  el.addEventListener('click', function(e) {
-    e.preventDefault();
-    renderQsPage(el.getAttribute('data-qspage'), el.getAttribute('data-qscat'));
+var qsSectionMap = { lifts: 'Lift Systems', structure: 'Structure', docking: 'Docking', access: 'Water Access' };
+Object.keys(qsGridMap).forEach(function(page) {
+  hwFeeds[page] = makeCategoryFeed(qsGridMap[page], Array.prototype.slice.call(document.querySelectorAll('.qs-cat[data-qspage="' + page + '"]')), 'data-qscat', function() {
+    return qsSectionMap[page];
   });
 });
+
+var feedTicking = false;
+function onFeedScroll() {
+  if (feedTicking) return;
+  feedTicking = true;
+  requestAnimationFrame(function() {
+    feedTicking = false;
+    Object.keys(hwFeeds).forEach(function(k) { updateCategoryFeed(hwFeeds[k]); });
+  });
+}
+window.addEventListener('scroll', onFeedScroll, { passive: true });
+window.addEventListener('resize', onFeedScroll);
 
 // ── Promo banner sits above the nav: offset the nav and page content by its height ──
 function layoutPromoBanner() {
