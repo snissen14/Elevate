@@ -310,12 +310,11 @@ body {
 .nb h2 { font-size: clamp(28px, 2.2vw, 40px); font-weight: 700; letter-spacing: -0.5px; color: #171A20; margin: 0 0 28px; }
 .nb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .nb-card { position: relative; display: flex; flex-direction: column; min-width: 0; }
-.nb-media { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; background: #F4F4F4; }
-.nb-img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.35s ease, transform 0.5s ease; }
+.nb-media { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; background: #F4F4F4; border-radius: 16px; }
+.nb-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 10%; box-sizing: border-box; mix-blend-mode: multiply; opacity: 0; transition: opacity 0.35s ease, transform 0.5s ease; }
 .nb-img.on { opacity: 1; }
-.nb-contain .nb-img { padding: 8%; box-sizing: border-box; mix-blend-mode: multiply; }
 .nb-card:hover .nb-img.on { transform: scale(1.03); }
-.nb-badge { position: absolute; top: 18px; left: 18px; z-index: 2; background: #3FB8A0; color: #fff; font-size: 13px; font-weight: 600; padding: 4px 9px; border-radius: 3px; letter-spacing: 0.2px; }
+.nb-badge { position: absolute; top: 18px; left: 18px; z-index: 2; background: #3FB8A0; color: #fff; font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 6px; letter-spacing: 0.2px; }
 .nb-dots { position: absolute; z-index: 3; left: 18px; bottom: 18px; display: flex; gap: 4px; padding: 8px 9px; background: #fff; border-radius: 999px; }
 .nb-dot { width: 14px; height: 3px; border: 0; padding: 0; border-radius: 2px; background: #D0D1D2; cursor: pointer; transition: background 0.2s, width 0.2s; }
 .nb-dot.on { width: 22px; background: #171A20; }
@@ -323,6 +322,10 @@ body {
 .nb-title { display: block; font-size: 20px; font-weight: 700; line-height: 1.25; color: #171A20; text-decoration: none; }
 .nb-title:hover { text-decoration: underline; text-underline-offset: 3px; }
 .nb-desc { margin: 10px 0 0; font-size: 13px; line-height: 1.55; color: #393C41; }
+.nb-reviews { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 13px; color: #5C5E62; text-decoration: none; }
+.nb-reviews:hover { color: #171A20; }
+.nb-stars { display: inline-flex; gap: 2px; }
+.nb-stars svg { width: 15px; height: 15px; fill: #F5A623; }
 .nb-swatches { display: flex; gap: 8px; margin-top: 14px; }
 .nb-swatch { width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12); position: relative; }
 .nb-swatch.on::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid #3FB8A0; }
@@ -1481,60 +1484,56 @@ body {
       <h2>New Products &amp; Bestsellers</h2>
       <div class="nb-grid">
         <div class="nb-card">
-          <a class="nb-media nb-contain" href="#config">
-            <img class="nb-img on" src="Elevate%20app%20banner%201.jpg" alt="Elevate Remote with the Elevate app" loading="lazy" style="object-fit:contain;"><img class="nb-img" src="boat%20on%20lift.png" alt="Boat on a lift controlled by the Elevate Remote" loading="lazy" style="object-fit:contain;">
+          <a class="nb-media" href="#" data-nb-pdp="Large Nylon Folding Dock Cleat — 9&quot; Flip-Up Safety Cleat">
+            <img class="nb-img on" src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Bigger_cleat_cover_photo.png?v=1743702484&width=1200" alt="Large Nylon Folding Dock Cleat — 9&quot; Flip-Up Safety Cleat" loading="lazy">
             <span class="nb-badge">New</span>
-            <div class="nb-dots"><button type="button" class="nb-dot on" data-nb-dot="0" aria-label="Image 1"></button><button type="button" class="nb-dot" data-nb-dot="1" aria-label="Image 2"></button></div>
           </a>
           <div class="nb-body">
-            <a class="nb-title" href="#config">Elevate Remote</a>
-            <p class="nb-desc">Wireless lift control from your phone or keyfob. 6 months of the Elevate app included.</p>
-            <div class="nb-swatches"><span class="nb-swatch on" title="Inlet Green" style="background:#597978;"></span><span class="nb-swatch" title="Offshore Black" style="background:#151213;"></span><span class="nb-swatch" title="Harbour Mist" style="background:#AFB8BA;"></span></div>
-            <div class="nb-price">Starting at $599</div>
+            <a class="nb-title" href="#" data-nb-pdp="Large Nylon Folding Dock Cleat — 9&quot; Flip-Up Safety Cleat">Large Nylon Folding Dock Cleat</a>
+            <p class="nb-desc">9&Prime; black nylon flip-up safety cleat. Folds flat so nothing snags on the dock.</p>
+            <a class="nb-reviews" href="#" data-nb-pdp="Large Nylon Folding Dock Cleat — 9&quot; Flip-Up Safety Cleat" aria-label="Rated 5 out of 5, 8 reviews" data-rating="5"><span class="nb-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>8 Reviews</a>
+            <div class="nb-price">$34.50</div>
           </div>
-          <a class="nb-btn" href="#config"><span>Add to Cart</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.1"/><circle cx="9.5" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg></a>
+          <button type="button" class="nb-btn" data-nb-add="Large Nylon Folding Dock Cleat — 9&quot; Flip-Up Safety Cleat" data-nb-price="$34.50"><span>Add to Cart</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.1"/><circle cx="9.5" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg></button>
         </div>
         <div class="nb-card">
-          <a class="nb-media" href="#build">
-            <img class="nb-img on" src="Custom%20cradle.jpg" alt="Boat resting on a custom cradle lift under a boathouse" loading="lazy" style="object-fit:cover;"><img class="nb-img" src="boat%20on%20lift.png" alt="Custom boat lift rendering" loading="lazy" style="object-fit:cover;">
+          <a class="nb-media" href="#" data-nb-pdp="Gem Remotes GR1: Wireless Boat Lift Remote">
+            <img class="nb-img on" src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/gemwebpic1.png?v=1693575658&width=1200" alt="Gem Remotes GR1: Wireless Boat Lift Remote" loading="lazy">
             <span class="nb-badge">New</span>
-            <div class="nb-dots"><button type="button" class="nb-dot on" data-nb-dot="0" aria-label="Image 1"></button><button type="button" class="nb-dot" data-nb-dot="1" aria-label="Image 2"></button></div>
           </a>
-          <div class="nb-body">
-            <a class="nb-title" href="#build">Custom Boat Lift</a>
-            <p class="nb-desc">Engineered around your hull and installed by our team. Over 15,000 waterfronts built.</p>
-            
-            <div class="nb-price">Custom Quote</div>
-          </div>
-          <a class="nb-btn" href="#build"><span>Get a Quote</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.1"/><circle cx="9.5" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg></a>
-        </div>
-        <div class="nb-card">
-          <a class="nb-media nb-contain" href="#" data-nb-pdp="Gem Remotes GR1: Wireless Boat Lift Remote">
-            <img class="nb-img on" src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/gemwebpic1.png?v=1693575658&width=1200" alt="Gem Remotes GR1: Wireless Boat Lift Remote" loading="lazy" style="object-fit:contain;">
-            
-          </a>
-          
           <div class="nb-body">
             <a class="nb-title" href="#" data-nb-pdp="Gem Remotes GR1: Wireless Boat Lift Remote">Gem Remotes GR1 Wireless Remote</a>
             <p class="nb-desc">Wireless control for any electric lift motor. Includes a 3-button handheld transmitter.</p>
-            
+            <a class="nb-reviews" href="#" data-nb-pdp="Gem Remotes GR1: Wireless Boat Lift Remote" aria-label="Rated 5 out of 5, 4 reviews" data-rating="5"><span class="nb-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>4 Reviews</a>
             <div class="nb-price">$579.99</div>
           </div>
           <button type="button" class="nb-btn" data-nb-add="Gem Remotes GR1: Wireless Boat Lift Remote" data-nb-price="$579.99"><span>Add to Cart</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.1"/><circle cx="9.5" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg></button>
         </div>
         <div class="nb-card">
-          <a class="nb-media nb-contain" href="#" data-nb-pdp="Galvanized Boat Lift Guide Posts">
-            <img class="nb-img on" src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Guidepole_Galvanized_main_pic.png?v=1751889800&width=1200" alt="Galvanized Boat Lift Guide Posts" loading="lazy" style="object-fit:contain;">
+          <a class="nb-media" href="#" data-nb-pdp="Galvanized Boat Lift Guide Posts">
+            <img class="nb-img on" src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Guidepole_Galvanized_main_pic.png?v=1751889800&width=1200" alt="Galvanized Boat Lift Guide Posts" loading="lazy">
             
           </a>
-          
           <div class="nb-body">
             <a class="nb-title" href="#" data-nb-pdp="Galvanized Boat Lift Guide Posts">Galvanized Guide Posts</a>
             <p class="nb-desc">Heavy-duty galvanized guide poles. Fits I-beam cradles with a 2.5&Prime;&ndash;4&Prime; flange.</p>
-            
+            <a class="nb-reviews" href="#" data-nb-pdp="Galvanized Boat Lift Guide Posts" aria-label="Rated 5 out of 5, 2 reviews" data-rating="5"><span class="nb-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>2 Reviews</a>
             <div class="nb-price">From $65.95</div>
           </div>
           <button type="button" class="nb-btn" data-nb-add="Galvanized Boat Lift Guide Posts" data-nb-price="From $65.95"><span>Add to Cart</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.1"/><circle cx="9.5" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg></button>
+        </div>
+        <div class="nb-card">
+          <a class="nb-media" href="#" data-nb-pdp="1/4&quot; Marine Grade Boat Lift Cable/PWC Lift Cable">
+            <img class="nb-img on" src="https://cdn.shopify.com/s/files/1/0327/9637/7226/files/Cablepic1.png?v=1754483550&width=1200" alt="1/4&quot; Marine Grade Boat Lift Cable/PWC Lift Cable" loading="lazy">
+            
+          </a>
+          <div class="nb-body">
+            <a class="nb-title" href="#" data-nb-pdp="1/4&quot; Marine Grade Boat Lift Cable/PWC Lift Cable">1/4&Prime; Marine Grade Lift Cable</a>
+            <p class="nb-desc">Premium boat and PWC lift cable in galvanized or stainless steel.</p>
+            <a class="nb-reviews" href="#" data-nb-pdp="1/4&quot; Marine Grade Boat Lift Cable/PWC Lift Cable" aria-label="Rated 5 out of 5, 1 review" data-rating="5"><span class="nb-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>1 Review</a>
+            <div class="nb-price">From $9.90</div>
+          </div>
+          <button type="button" class="nb-btn" data-nb-add="1/4&quot; Marine Grade Boat Lift Cable/PWC Lift Cable" data-nb-price="From $9.90"><span>Add to Cart</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.1"/><circle cx="9.5" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg></button>
         </div>
       </div>
     </div>
